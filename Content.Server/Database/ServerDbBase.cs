@@ -263,6 +263,7 @@ namespace Content.Server.Database
             }
 
             var barkVoice = profile.BarkVoice ?? SharedHumanoidAppearanceSystem.DefaultBarkVoice; // Goob Station - Barks
+            var voice = profile.Voice ?? SharedHumanoidAppearanceSystem.DefaultVoice; // Erida TTS
 
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
@@ -270,6 +271,7 @@ namespace Content.Server.Database
                 profile.Species,
                 profile.Height, // Goobstation: port EE height/width sliders
                 profile.Width, // Goobstation: port EE height/width sliders
+                voice,
                 profile.Age,
                 sex,
                 gender,

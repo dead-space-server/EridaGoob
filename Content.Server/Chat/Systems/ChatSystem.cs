@@ -52,10 +52,13 @@ using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
 using Content.Shared._RMC14.CCVar;
+using Content.Server._Erida.TTS;
+using Content.Shared._Erida.TTS;
 
 // Goob start - the blind dont see
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Traits.Assorted;
+using Content.Server.SS220.Chat.Systems;
 // Goob end
 
 namespace Content.Server.Chat.Systems;
@@ -89,6 +92,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly LanguageSystem _language = default!; // Einstein Engines - Language
     [Dependency] private readonly ChatProtectionSystem _chatProtection = default!; // Orion
     [Dependency] private readonly EmoteProtectionSystem _emoteProtection = default!; // Orion
+    [Dependency] private readonly IEntityManager _entityManager = default!; // Erida-edit
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
@@ -448,7 +452,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         string? sender = null,
         bool playDefaultSound = true,
         SoundSpecifier? announcementSound = null,
-        Color? colorOverride = null)
+        Color? colorOverride = null,
+        EntityUid? user = null) // Erida
     {
         sender ??= Loc.GetString("chat-manager-sender-announcement");
 
@@ -461,20 +466,21 @@ public sealed partial class ChatSystem : SharedChatSystem
             return;
         }
 
-        // Orion-Start
-        if (_chatProtection.CheckICMessage(message, source))
-            return;
-        // Orion-End
+        if (!_entityManager.TryGetComponent<StationDataComponent>(station, out var stationDataComp)) return;
 
-        if (!TryComp<StationDataComponent>(station, out var stationDataComp)) return;
+        string voice = "Announcer";
+        if (TryComp<TTSComponent>(user, out var ttsComp) && ttsComp.VoicePrototypeId != null)
+            voice = ttsComp.VoicePrototypeId;
+        // Erida-end
 
         var filter = _stationSystem.GetInStation(stationDataComp);
 
         _chatManager.ChatMessageToManyFiltered(filter, ChatChannel.Radio, message, wrappedMessage, source, false, true, colorOverride);
-
-        if (playDefaultSound)
+        if (announcementSound != null || playDefaultSound) // Corvax-TTS
         {
-            _audio.PlayGlobal(announcementSound ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
+            announcementSound ??= DefaultAnnouncementSound;
+            var announcementEv = new AnnouncementSpokeEvent(filter, _audio.GetSound(announcementSound), AudioParams.Default.WithVolume(-2f), message, voiceId: voice); // Erida
+            RaiseLocalEvent(announcementEv);
         }
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement on {station} from {sender}: {message}");

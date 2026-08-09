@@ -411,6 +411,18 @@ namespace Content.Client.Lobby.UI
 
             #endregion SpawnPriority
 
+            // Corvax-TTS-Start
+            #region Voice
+
+            if (configurationManager.GetCVar(CCVars.TTSEnabled))
+            {
+                TTSContainer.Visible = true;
+                InitializeVoice();
+            }
+
+            #endregion
+            // Corvax-TTS-End
+
             #region Eyes
 
             EyeColorPicker.OnEyeColorPicked += newColor =>
@@ -1814,5 +1826,18 @@ namespace Content.Client.Lobby.UI
             ImportButton.Disabled = false;
             ExportButton.Disabled = false;
         }
+
+        // Corvax-TTS-Start
+        private void SetVoice(string newVoice)
+        {
+            // Erida start
+            if (Profile?.Voice == newVoice)
+                return;
+            // Erida end
+
+            Profile = Profile?.WithVoice(newVoice);
+            SetDirty(); // Erida edit
+        }
+        // Corvax-TTS-End
     }
 }

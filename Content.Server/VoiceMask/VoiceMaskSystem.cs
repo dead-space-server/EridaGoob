@@ -58,6 +58,8 @@ public sealed partial class VoiceMaskSystem : EntitySystem
         SubscribeLocalEvent<VoiceMaskComponent, InventoryRelayedEvent<TransformSpeechEvent>>(OnTransformSpeechInventory, before: [typeof(AccentSystem)]);
         SubscribeLocalEvent<VoiceMaskComponent, ImplantRelayEvent<TransformSpeechEvent>>(OnTransformSpeechImplant, before: [typeof(AccentSystem)]);
 
+        InitializeTTS(); // Corvax-TTS
+
         Subs.CVar(_cfgManager, CCVars.MaxNameLength, value => _maxNameLength = value, true);
     }
 
@@ -197,6 +199,7 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     {
         if (_uiSystem.HasUi(entity, VoiceMaskUIKey.Key))
             _uiSystem.SetUiState(entity.Owner, VoiceMaskUIKey.Key, new VoiceMaskBuiState(GetCurrentVoiceName(entity), entity.Comp.VoiceMaskSpeechVerb, entity.Comp.Active, entity.Comp.AccentHide,
+                entity.Comp.VoiceId,
                 entity.Comp.JobIconProtoId)); // GabyStation -> Radio icons
     }
     #endregion

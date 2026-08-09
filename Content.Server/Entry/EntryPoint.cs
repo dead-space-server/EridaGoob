@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._Erida.TTS;
 using Content.Server._Goobstation.Antag;
 using Content.Server._Orion.ServerProtection.Chat;
 using Content.Server.Acz;
@@ -137,6 +138,7 @@ namespace Content.Server.Entry
             _job.Initialize();
             _rateLimit.Initialize();
             _lastAntagManager.Initialize(); // Goobstation
+            IoCManager.Resolve<TTSManager>().Initialize(); // Corvax-TTS
         }
 
         public override void PostInit()

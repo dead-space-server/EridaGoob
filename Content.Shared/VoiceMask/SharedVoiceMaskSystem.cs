@@ -17,17 +17,20 @@ public sealed class VoiceMaskBuiState : BoundUserInterfaceState
 {
     public readonly string Name;
     public readonly string? Verb;
+    public readonly string Voice; // Corvax-TTS
     public readonly bool Active;
     public readonly bool AccentHide;
     public ProtoId<JobIconPrototype>? JobIcon { get; } // GabyStation -> Radio icons
 
     public VoiceMaskBuiState(string name, string? verb, bool active, bool accentHide,
+        string voice,
         ProtoId<JobIconPrototype>? jobIcon) // GabyStation radio icons)
     {
         Name = name;
         Verb = verb;
         Active = active;
         AccentHide = accentHide;
+        Voice = voice;
         JobIcon = jobIcon; // GabyStation -> Radio icons
     }
 }

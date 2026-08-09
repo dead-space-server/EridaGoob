@@ -22,6 +22,9 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <ui:OptionSlider Name="SliderMaxAmbienceSounds" Title="{Loc 'ui-options-ambience-max-sounds'}"
                                  Margin="0 0 0 8" />
                 <ui:OptionSlider Name="SliderHighlightVolume" Title="{Loc 'ui-options-highlight-volume'}" /> <!-- Goobstation - Highlight chat Ping/Audio! -->
+                <ui:OptionSlider Name="SliderTtsVolume" Title="{Loc 'ui-options-tts-volume'}" /> <!-- Erida - TTS -->
+                <ui:OptionSlider Name="SliderTtsAnnounceVolume" Title="{Loc 'ui-options-tts-announce-volume'}"
+                                 Margin="0 0 0 8" /> <!-- Erida - TTS -->
 
                 <CheckBox Name="HearSelfCheckBox" Text="{Loc 'ui-options-hear-self'}" />
                 <CheckBox Name="LobbyMusicCheckBox" Text="{Loc 'ui-options-lobby-music'}" />
