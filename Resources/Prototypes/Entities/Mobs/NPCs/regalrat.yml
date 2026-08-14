@@ -156,6 +156,12 @@
         Burn: -0.3
   - type: TTS # Corvax-TTS
     voice: Monolith2
+  - type: ChangeSprite # Erida-edit
+    sprites:
+    - ratqueen
+    - ringmaster
+    - ratqueen_fat
+    - regalrat
 
 - type: entity
   id: MobRatKingBuff
