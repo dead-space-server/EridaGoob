@@ -1341,3 +1341,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/41
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: Minor fix
+- author: Anilori
+  changes:
+    - type: Tweak
+      message: бронированные береты/каски/кепки убраны из принтера униформы
+  id: 113
+  time: '2026-09-04T22:22:48.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/43
+  avatar_url: https://avatars.githubusercontent.com/u/183598448?v=4
+  title: Что за бизнес
