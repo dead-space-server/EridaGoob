@@ -28,8 +28,8 @@
   id: ClothingCommand
   recipes:
   # Captain
-  - ClothingHeadHatCapcap
-  - ClothingHeadHatCaptain
+  # - ClothingHeadHatCapcap Erida Change
+  # - ClothingHeadHatCaptain Erida Change
   - ClothingUniformJumpsuitCaptain
   - ClothingUniformJumpskirtCaptain
   - ClothingUniformJumpsuitCapFormal
@@ -92,8 +92,8 @@
   recipes:
   - ClothingUniformJumpsuitDetective
   - ClothingUniformJumpskirtDetective
-  - ClothingHeadHatBeretHoS
-  - ClothingHeadHatHoshat
+  # - ClothingHeadHatBeretHoS Erida Change
+  # - ClothingHeadHatHoshat Erida Change
   - ClothingUniformJumpsuitHoS
   - ClothingUniformJumpskirtHoS
   - ClothingUniformJumpsuitHosFormal
@@ -108,14 +108,14 @@
   - ClothingUniformJumpskirtSeniorOfficer
   - ClothingUniformJumpsuitPrisoner
   - ClothingUniformJumpskirtPrisoner
-  - ClothingHeadHatBeretSecurity
+  # - ClothingHeadHatBeretSecurity Erida Change
   - ClothingUniformJumpsuitSec
   - ClothingUniformJumpskirtSec
-  - ClothingHeadHatBeretBrigmedic
+  # - ClothingHeadHatBeretBrigmedic Erida Change
   - ClothingUniformJumpsuitBrigmedic
   - ClothingUniformJumpskirtBrigmedic
-  - ClothingHeadHatBeretWarden
-  - ClothingHeadHatWarden
+  # - ClothingHeadHatBeretWarden Erida Change
+  # - ClothingHeadHatWarden Erida Change
   - ClothingUniformJumpsuitWarden
   - ClothingUniformJumpskirtWarden
 
