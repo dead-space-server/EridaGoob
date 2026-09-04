@@ -48,7 +48,7 @@
       140: Dead
   - type: Butcherable
     spawned:
-    - id: DiamondOre1
+    - id: DiamondOre1Unprocessed #Erida-Edit
     - id: MaterialWatcherWing1
       maxAmount: 2
   - type: MovementSpeedModifier
@@ -97,7 +97,7 @@
     color: red
   - type: Butcherable # Lavaland Change
     spawned:
-    - id: DiamondOre1 # not unprocessed
+    - id: DiamondOre1Unprocessed #Erida-Edit
     - id: MaterialWatcherWing1
       maxAmount: 2
 
@@ -123,7 +123,7 @@
     fireCost: 50
   - type: Butcherable # Lavaland Change
     spawned:
-    - id: DiamondOre1 # not unprocessed
+    - id: DiamondOre1Unprocessed #Erida-Edit
     - id: MaterialWatcherIceWing1
       maxAmount: 2
 
@@ -149,7 +149,7 @@
     fireCost: 50
   - type: Butcherable # Lavaland Change
     spawned:
-    - id: DiamondOre1 # not unprocessed
+    - id: DiamondOre1Unprocessed #Erida-Edit
     - id: MaterialWatcherMagmaWing1
       maxAmount: 2
 
