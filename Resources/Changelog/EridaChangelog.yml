@@ -1350,3 +1350,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/43
   avatar_url: https://avatars.githubusercontent.com/u/183598448?v=4
   title: Что за бизнес
+- author: vanomorodellefake
+  changes:
+    - type: Fix
+      message: Борги и пропадающие текстуры
+  id: 114
+  time: '2026-09-05T09:50:33.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/46
+  avatar_url: https://avatars.githubusercontent.com/u/53963119?v=4
+  title: borg fixes
