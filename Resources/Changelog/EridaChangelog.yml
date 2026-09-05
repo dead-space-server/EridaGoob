@@ -1368,3 +1368,16 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/45
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Add] New background'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: СЩ получил частоту СБ
+    - type: Tweak
+      message: Всё оружие ОСЩ при спавне перенесено в его шкаф
+    - type: Tweak
+      message: Сила космического ветра сильно понижена
+  id: 116
+  time: '2026-09-05T11:46:19.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/47
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak] BSO changes | Space wind decreasing'
