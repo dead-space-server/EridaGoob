@@ -1359,3 +1359,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/46
   avatar_url: https://avatars.githubusercontent.com/u/53963119?v=4
   title: borg fixes
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: 'Новый фон лобби '
+  id: 115
+  time: '2026-09-05T09:51:26.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/45
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] New background'
