@@ -175,3 +175,7 @@
 - type: lobbyBackground
   id: detective
   background: /Textures/LobbyScreens/detective.webp
+
+- type: lobbyBackground
+  id: BaseRound
+  background: /Textures/LobbyScreens/BaseRound.png
