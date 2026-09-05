@@ -6,8 +6,10 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Silicons.Borgs.Components;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Silicons.Borgs;
@@ -24,6 +26,7 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
     [Dependency] private readonly SharedUserInterfaceSystem _userInterface = default!;
     [Dependency] protected readonly IPrototypeManager Prototypes = default!;
     [Dependency] private readonly InteractionPopupSystem _interactionPopup = default!;
+    [Dependency] private readonly INetManager _netManager = default!;
 
     public static readonly EntProtoId ActionId = "ActionSelectBorgType";
 
@@ -106,6 +109,13 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
         if (subtype != null)
             Dirty(ent.Owner, subtype);
 
+        if (_netManager.IsServer)
+        {
+            var netEntity = GetNetEntity(ent);
+            var ev = new UpdateBorgAppearanceEvent(netEntity);
+            RaiseNetworkEvent(ev);
+        }
+
         UpdateEntityAppearance(ent);
     }
 
@@ -176,5 +186,16 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
             State = movementState,
         };
         // Erida end
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class UpdateBorgAppearanceEvent : EntityEventArgs
+{
+    public NetEntity BorgEntity { get; }
+
+    public UpdateBorgAppearanceEvent(NetEntity borgEntity)
+    {
+        BorgEntity = borgEntity;
     }
 }

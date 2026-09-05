@@ -29,6 +29,7 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
 
         SubscribeLocalEvent<BorgSwitchableTypeComponent, AfterAutoHandleStateEvent>(AfterStateHandler);
         SubscribeLocalEvent<BorgSwitchableTypeComponent, ComponentStartup>(OnComponentStartup);
+        SubscribeNetworkEvent<UpdateBorgAppearanceEvent>(OnUpdateBorgAppearanceEvent);
     }
 
     private void OnComponentStartup(Entity<BorgSwitchableTypeComponent> ent, ref ComponentStartup args)
@@ -39,6 +40,15 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
     private void AfterStateHandler(Entity<BorgSwitchableTypeComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         UpdateEntityAppearance(ent);
+    }
+
+    private void OnUpdateBorgAppearanceEvent(UpdateBorgAppearanceEvent args)
+    {
+        var entity = GetEntity(args.BorgEntity);
+        if (!TryComp<BorgSwitchableTypeComponent>(entity, out var bSTComp))
+            return;
+
+        UpdateEntityAppearance((entity, bSTComp));
     }
 
     protected override void UpdateEntityAppearance(
