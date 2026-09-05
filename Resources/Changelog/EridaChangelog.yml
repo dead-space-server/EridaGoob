@@ -1359,7 +1359,7 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/46
   avatar_url: https://avatars.githubusercontent.com/u/53963119?v=4
   title: borg fixes
-- author: Lytheriia
+- author: Lytheriia | Doner4037
   changes:
     - type: Add
       message: 'Новый фон лобби '
