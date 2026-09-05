@@ -29,7 +29,7 @@ public sealed partial class CCVars
     ///     Useful to prevent clipping through objects.
     /// </summary>
     public static readonly CVarDef<float> SpaceWindMaxVelocity =
-        CVarDef.Create("atmos.space_wind_max_velocity", 30f, CVar.SERVERONLY);
+        CVarDef.Create("atmos.space_wind_max_velocity", 10f, CVar.SERVERONLY); // Erida 30 -> 10
 
     /// <summary>
     ///     The maximum force that may be applied to an object by pushing (i.e. not throwing) atmospheric pressure differences.
@@ -88,7 +88,7 @@ public sealed partial class CCVars
     ///     (I.e spacing is limited in large rooms heading into smaller spaces)
     /// </summary>
     public static readonly CVarDef<float> AtmosSpacingMaxWind =
-        CVarDef.Create("atmos.mmos_max_wind", 500f, CVar.SERVERONLY);
+        CVarDef.Create("atmos.mmos_max_wind", 250f, CVar.SERVERONLY); // Erida 500 -> 250
 
     /// <summary>
     ///     Whether atmos superconduction is enabled.

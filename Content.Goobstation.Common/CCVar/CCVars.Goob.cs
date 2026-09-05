@@ -21,7 +21,7 @@ public sealed partial class GoobCVars
     ///     And maybe do your part to fix that? :)
     /// </remarks>
     public static readonly CVarDef<float> SpaceWindMinimumCalculatedMass =
-        CVarDef.Create("atmos.space_wind_minimum_calculated_mass", 10f, CVar.SERVERONLY);
+        CVarDef.Create("atmos.space_wind_minimum_calculated_mass", 70f, CVar.SERVERONLY); // Erida 10 -> 70
 
     /// <summary>
     /// 	Calculated as 1/Mass, where Mass is the physics.Mass of the desired threshold.
@@ -117,7 +117,7 @@ public sealed partial class GoobCVars
     public static readonly CVarDef<bool> DisablePathfinding =
         CVarDef.Create("goob.disable_pathfinding", false, CVar.SERVER | CVar.SERVERONLY);
 
-  
+
     #region Player Listener
 
     /// <summary>

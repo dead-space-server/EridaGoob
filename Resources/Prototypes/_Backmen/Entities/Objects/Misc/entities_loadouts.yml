@@ -21,17 +21,6 @@
       enum.ThiefBackpackUIKey.Key:
         type: ThiefBackpackBoundUserInterface
 
-- type: entity
-  id: BlueShieldSetLoadouts
-  parent: ArmySetLoadouts
-  components:
-  - type: ThiefUndeterminedBackpack
-    maxSelectedSets: 1
-    possibleSets:
-    - UTAPMk1Set
-    - ShotgunGuardian17Set
-    - EG4RevolverSet # erida edit
-
 - type: thiefBackpackSet
   id: UTAPMk1Set
   name: duffel-category-utapmk1-name
@@ -47,7 +36,22 @@
   - MagazineRifle
   - TruncheonDT3Zlodey # erida edit
 
-- type: thiefBackpackSet
+- type: selectableSet
+  id: UTAPMk1Set
+  name: duffel-category-utapmk1-name
+  description: duffel-category-utapmk1-description
+  sprite:
+    sprite: _Erida/Objects/Weapons/Gunsx64/Rifles/utap-mark1/big.rsi
+    state: icon
+  content:
+  - Flash
+  - WeaponRifleUTAPM1
+  - MagazineRifle
+  - MagazineRifle
+  - MagazineRifle
+  - TruncheonDT3Zlodey # erida edit
+
+- type: selectableSet
   id: ShotgunGuardian17Set
   name: duffel-category-Guardian-name
   description: duffel-category-Guardian-description
@@ -76,7 +80,7 @@
     slots:
     - Belt
 
-- type: thiefBackpackSet
+- type: selectableSet
   id: EG4RevolverSet
   name: duffel-category-eg4-name
   description: duffel-category-eg4-description

@@ -18,6 +18,11 @@
     - BSOCQCSet
     - BSOChesterSet
     - BSOSyringeSet
+    # Erida start
+    - UTAPMk1Set
+    - ShotgunGuardian17Set
+    - EG4RevolverSet
+    # Erida end
     maxSelectedSets: 2
 
 
