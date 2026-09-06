@@ -69,6 +69,9 @@
     userWhitelist:
       components:
       - Actor
+  - type: GPS #Erida-Edit
+    gpsName: "Signal"
+    enabled: true
 
 - type: entity
   parent: LavalandTendrilBase
