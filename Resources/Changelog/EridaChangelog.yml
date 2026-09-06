@@ -1381,3 +1381,24 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/47
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Tweak] BSO changes | Space wind decreasing'
+- author: Anilori
+  changes:
+    - type: Tweak
+      message: Стоимость алмазной руды в поинтах уменьшена с 1000 до 350
+    - type: Tweak
+      message: >-
+        Из вотчеров при разделке падает необработанная алмазная руда дающая
+        поинты (1750 поинтов за тендрил)
+    - type: Tweak
+      message: Тендрилы вновь видно на ГПС при их прогрузке.
+    - type: Tweak
+      message: >-
+        Из сундука некрополиса вместе с бронёй аколита падают ещё шлем и
+        ботинки.
+    - type: Tweak
+      message: Протокинитический дробовик был улучшен
+  id: 117
+  time: '2026-09-06T08:38:07.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/44
+  avatar_url: https://avatars.githubusercontent.com/u/183598448?v=4
+  title: LavaTweaks
