@@ -87,14 +87,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletKinetic
-    count: 6 #Erida-Start
-    spread: 35
-  - type: Projectile
-    impactEffect: BulletImpactEffectKinetic
-    damage:
-      types:
-        Blunt: 15
-        Structural: 20 #Erida-End
+    count: 5 # Erida 4 -> 5
+    spread: 25 # Erida 20 -> 25
 
 - type: entity
   id: BulletCharge
