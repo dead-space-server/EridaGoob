@@ -19,3 +19,4 @@ contraband-examine-text-Highly-Illegal =
         *[item] [color={$color}]Этот предмет является крайне незаконной контрабандой![/color]
         [reagent] [color={$color}]Этот реагент является крайне незаконной контрабандой![/color]
     }
+contraband-examine-text-InteQ = [color=crimson]Этот предмет является крайне незаконной контрабандой InteQ![/color]

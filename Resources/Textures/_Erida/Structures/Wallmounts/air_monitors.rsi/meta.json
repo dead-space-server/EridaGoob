@@ -211,6 +211,9 @@
                     0.4
                 ]
             ]
+        },
+        {
+            "name": "alarmp_remote"
         }
     ]
 }

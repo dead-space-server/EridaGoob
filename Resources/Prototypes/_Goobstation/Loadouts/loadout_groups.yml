@@ -1027,6 +1027,16 @@
 
 # BSO
 - type: loadoutGroup
+  id: BlueshieldOfficerPreset
+  name: loadout-group-bso-preset
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - BlueshieldOfficerPresetCustom
+  - BlueshieldOfficerPresetErida
+  - BlueshieldOfficerPresetGoob
+
+- type: loadoutGroup
   id: BlueshieldOfficerHead
   name: loadout-group-bso-head
   minLimit: 0

@@ -1,0 +1,267 @@
+- type: entity
+  parent: ClothingUniformJumpskirtCaptain
+  id: ClothingUniformJumpskirtWhiteCaptain
+  name: white captain jumpskirt
+  description: White captain jumpsuit skirt symbolizing that your salary clearly exceeds the norm.
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/white_captain.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/white_captain.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitmaidblack
+  name: Black Maid Costume
+  description: This appears to be a classic French maid costume.
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/maid_black.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/maid_black.rsi
+
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitmaidblue
+  name: Blue Maid Costume
+  description: It's the same as the black one, but blue, don't offend its owner ;)
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/maid_blue.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/maid_blue.rsi
+
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitmaidpink
+  name: Pink Maid Costume
+  description: It's the same as the black one, but blue, don't offend its owner ;)
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/maid_pink.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/maid_pink.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpskirtCoSCC
+  name: centcom chief of staff jumpskirt
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/coscc_jumpskirt.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/coscc_jumpskirt.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpskirtCentcomDeputy
+  name: centcom deputy jumpskirt
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/centcom_jumpskirt.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/centcom_jumpskirt.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpskirtCentcomOperator
+  name: centcom operator jumpskirt
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/centcom_turtleneck_jumpskirt.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/centcom_turtleneck_jumpskirt.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtYukataAquamarine
+  name: aquamarine yukata
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukataaquamarine.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukataaquamarine.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtYukataBlack
+  name: black yukata
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatablack.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatablack.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtYukataBlue
+  name: blue yukata
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatablue.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatablue.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtYukataGreen
+  name: green yukata
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatagreen.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatagreen.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtYukataLightblue
+  name: lightblue yukata
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatalightblue.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatalightblue.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtYukataOrange
+  name: orange yukata
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukataorange.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukataorange.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtYukataPink
+  name: pink yukata
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatapink.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatapink.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtYukataRed
+  name: red yukata
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatared.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatared.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtYukataViolet
+  name: violet yukata
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukataviolet.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukataviolet.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtYukataYellow
+  name: yellow yukata
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatayellow.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/yukatayellow.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtKimonoMiku
+  name: miku kimono
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/kimonomiku.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpskirt/kimonomiku.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtNTNavyCaptain
+  name: nanotrasen navy captain jumpskirt
+  description:
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_captain.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_captain.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtNTNavyCapFormalDress
+  name: nanotrasen navy captain formal dress
+  description:
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_capformaldress.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_capformaldress.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtNTNavyOfficer
+  name: nanotrasen navy officer jumpskirt
+  description:
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_officer.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_officer.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtNTNavyWOEngi
+  suffix: Engineering
+  name: nanotrasen navy warrant officer jumpskirt
+  description:
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_ce.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_ce.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtNTNavyWOMed
+  suffix: Medical
+  name: nanotrasen navy warrant officer jumpskirt
+  description:
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_cmo.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_cmo.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtNTNavyMed
+  name: nanotrasen navy medical jumpskirt
+  description:
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_medical.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpskirt/nanotrasen_navy_medical.rsi

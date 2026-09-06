@@ -1,0 +1,44 @@
+- type: entity
+  parent: ClothingHandsGlovesCaptain
+  id: ClothingHandsGlovesCaptainWhite
+  name: white captain gloves
+  description: Royal white gloves with gold trim. Gorgeous.
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Hands/white_captain_gloves.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Hands/white_captain_gloves.rsi
+
+- type: entity
+  parent: ClothingHandsGlovesCaptain
+  id: ClothingHandsGlovesSheriff
+  name: sheriff gloves
+  description: Gloves with an ergonomic shape designed to hold a revolver.
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Hands/sheriff_gloves.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Hands/sheriff_gloves.rsi
+
+- type: entity
+  parent: [ClothingHandsKnuckleDustersSyndicate, BaseInteQContraband]
+  id: ClothingHandsKnuckleDustersInteQ
+  name: InteQ knuckle dusters
+  description: "Plastitanium knuckle dusters branded with the blood-red S. A real man beats someone to death with these."
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Hands/Gloves/KnuckleDusters/inteqknuckleduster.rsi
+    state: inteqknuckleduster
+  - type: Clothing
+    sprite: _Erida/Clothing/Hands/Gloves/KnuckleDusters/inteqknuckleduster.rsi
+
+- type: entity
+  parent: ClothingHandsGlovesCaptain
+  id: ClothingHandsGlovesNTNavyCaptain
+  name: nanotrasen navy captain gloves
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Hands/nanotarsen_navy_captain_gloves.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Hands/nanotarsen_navy_captain_gloves.rsi

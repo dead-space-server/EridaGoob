@@ -606,6 +606,66 @@
         },
         {
             "name": "representative_door"
+        },
+        {
+            "name": "nanotrasen_navy_armoury"
+        },
+        {
+            "name": "nanotrasen_navy_armoury_door"
+        },
+        {
+            "name": "nanotrasen_navy_captain"
+        },
+        {
+            "name": "nanotrasen_navy_captain_door"
+        },
+        {
+            "name": "nanotrasen_navy_ce"
+        },
+        {
+            "name": "nanotrasen_navy_ce_door"
+        },
+        {
+            "name": "nanotrasen_navy_ce_open"
+        },
+        {
+            "name": "nanotrasen_navy_closet"
+        },
+        {
+            "name": "nanotrasen_navy_closet_door"
+        },
+        {
+            "name": "nanotrasen_navy_closet_open"
+        },
+        {
+            "name": "nanotrasen_navy_cmo"
+        },
+        {
+            "name": "nanotrasen_navy_cmo_door"
+        },
+        {
+            "name": "nanotrasen_navy_engineer"
+        },
+        {
+            "name": "nanotrasen_navy_engineer_door"
+        },
+        {
+            "name": "nanotrasen_navy_medical"
+        },
+        {
+            "name": "nanotrasen_navy_medical_door"
+        },
+        {
+            "name": "nanotrasen_navy_officer"
+        },
+        {
+            "name": "nanotrasen_navy_officer_door"
+        },
+        {
+            "name": "nanotrasen_navy_sailor"
+        },
+        {
+            "name": "nanotrasen_navy_sailor_door"
         }
     ]
 }

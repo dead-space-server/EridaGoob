@@ -1,0 +1,21 @@
+﻿- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadHardsuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitSecurityPilot
+  name: security pilot hardsuit helmet
+  description: Armored hardsuit helmet for security needs.
+  components:
+  - type: Sprite
+    sprite: _Backmen/Clothing/Head/Hardsuits/sec-pilot-hardsuit.rsi
+  - type: Clothing
+    sprite: _Backmen/Clothing/Head/Hardsuits/sec-pilot-hardsuit.rsi
+  - type: PointLight
+    color: blue
+    radius: 7
+    energy: 3
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9

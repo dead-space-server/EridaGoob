@@ -17,3 +17,16 @@
       - id: ChemistryBottleEphedrine
       - id: Handcuffs
       - id: Handcuffs
+
+# erida edit
+- type: entity
+  id: ClothingBeltKatanaSheathFilled
+  parent: ClothingBeltKatanaSheath
+  suffix: Filled
+  components:
+  - type: ContainerFill
+    containers:
+      item-1:
+      - Katana
+      item-2:
+      - Wakizashi

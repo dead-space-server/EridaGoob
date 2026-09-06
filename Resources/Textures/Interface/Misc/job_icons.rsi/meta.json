@@ -208,6 +208,54 @@
         },
         {
             "name": "SecurityClown"
+        },
+        {
+            "name": "CBURN"
+        },
+        {
+            "name": "DeathSquad"
+        },
+        {
+            "name": "ERTChaplain"
+        },
+        {
+            "name": "ERTEngineer"
+        },
+        {
+            "name": "ERTJanitor"
+        },
+        {
+            "name": "ERTLeader"
+        },
+        {
+            "name": "ERTMedical"
+        },
+        {
+            "name": "ERTSecurity"
+        },
+        {
+            "name": "IAA"
+        },
+        {
+            "name": "Ninja"
+        },
+        {
+            "name": "Pilot"
+        },
+        {
+            "name": "Pirate"
+        },
+        {
+            "name": "SyndicateCommander"
+        },
+        {
+            "name": "SyndicateCorpsman"
+        },
+        {
+            "name": "SyndicateOperative"
+        },
+        {
+            "name": "Wizard"
         }
     ]
 }

@@ -1,0 +1,253 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCommandCaptain
+  name: captain command jumpsuit
+  description: Black suit with gold shoulder straps.
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/captain_command.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/captain_command.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitWhiteCaptain
+  name: white captain jumpsuit
+  description: Captain white jumpsuit symbolizes that your salary is clearly above the norm.
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpsuit/captain_white.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpsuit/captain_white.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSheriff
+  name: sheriff jumpsuit
+  description: Jumpsuit showing your status is how terrible... the great ruler.
+  components:
+    - type: Sprite
+      sprite: _Erida/Clothing/Uniforms/Jumpsuit/sheriff.rsi
+    - type: Clothing
+      sprite: _Erida/Clothing/Uniforms/Jumpsuit/sheriff.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformArbitr
+  name: Arbitr Uniform
+  description: An incredibly expensive Arbiter suit from an unknown corporation.
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/arbitr.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/arbitr.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCoSCC
+  name: centcom chief of staff jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/coscc_jumpsuit.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/coscc_jumpsuit.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCentcomDeputy
+  name: centcom deputy jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/centcom_jumpsuit.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/centcom_jumpsuit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCentcomClerc
+  name: centcom clerc jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/centcom_assistant_jumpsuit.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/centcom_assistant_jumpsuit.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCentcomEngineer
+  name: centcom engineer jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/centcom_engineer_jumpsuit.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/centcom_engineer_jumpsuit.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCentcomCargo
+  name: centcom cargo jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/centcom_cargo_jumpsuit.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/centcom_cargo_jumpsuit.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCentcomOperator
+  name: centcom operator jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/centcom_turtleneck.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/centcom_turtleneck.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitOSO
+  name: OSO jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/oso_jumpsuit.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/oso_jumpsuit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitEnglishRed
+  name: red english costume
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/redenglishcostume.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/redenglishcostume.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitEnglishBlue
+  name: blue english costume
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/blueenglishcostume.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/blueenglishcostume.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitEnglishViolet
+  name: violet english costume
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/violetenglishcostume.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/violetenglishcostume.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitNTNavyCaptain
+  name: nanotrasen navy captain jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_captain.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_captain.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitNTNavyCapFormal
+  name: nanotrasen navy captain formal suit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_capformal.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_capformal.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitNTNavyOfficer
+  name: nanotrasen navy officer jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_officer.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_officer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitNTNavySailor
+  name: nanotrasen navy sailor jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_sailor.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_sailor.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitNTNavyWOEngi
+  suffix: Engineering
+  name: nanotrasen navy warrant officer jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_ce.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_ce.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitNTNavyEngi
+  name: nanotrasen navy engineer jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_engineer.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_engineer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitNTNavyWOMed
+  name: nanotrasen navy medical warrant officer jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_cmo.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_cmo.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitNTNavyMed
+  name: nanotrasen navy medical jumpsuit
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_medical.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/nanotrasen_navy_medical.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitHelldiver
+  name: Униформа B-01 "Тактик"
+  description: Это стандартная униформа солдата Супер-Земли.
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/helldivers_uniform.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Uniforms/Jumpsuit/helldivers_uniform.rsi

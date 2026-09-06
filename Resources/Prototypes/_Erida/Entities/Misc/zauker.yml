@@ -1,0 +1,8 @@
+﻿# erida edit - ZaukerCanisterBroken for Erida maps
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: ZaukerCanisterBroken
+  components:
+  - type: Sprite
+    sprite: _Erida/Structures/Storage/canister.rsi
+    state: healium

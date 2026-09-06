@@ -1,0 +1,160 @@
+- type: entity
+  parent: ClothingBeltSheath
+  id: ClothingBeltWhiteSheath
+  name: white sabre sheath
+  description: Style, shine, everything for the best sabers in the universe.
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Belt/white_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Erida/Clothing/Belt/white_sheath.rsi
+
+- type: entity
+  parent: ClothingBeltSheath
+  id: ClothingBeltSheriffSheath
+  name: sheriff sabre sheath
+  description: Practicality, durability, the saber will definitely not end up in your leg.
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Belt/sheriff_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Erida/Clothing/Belt/sheriff_sheath.rsi
+
+# i think we need new sprite >.<
+- type: entity
+  parent: [ClothingBeltSyndieHolster]
+  id: ClothingBeltInteQHolster
+  name: inteq shoulder holster
+  description: A deep shoulder holster capable of holding many types of ballistics.
+
+- type: entity
+  parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase]
+  id: ClothingBeltNTNavyWebbing
+  name: chest rig
+  description:
+  components:
+  - type: Sprite
+    sprite:  _Erida/Clothing/Belt/nanotarsen_navy_webbing.rsi
+  - type: Clothing
+    sprite:  _Erida/Clothing/Belt/nanotarsen_navy_webbing.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.1
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: [ClothingBeltBase, ClothingSlotBase, BaseCommandContraband]
+  id: ClothingBeltNTNavySheath
+  name: nanotrasen navy sabre sheath
+  description:
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Belt/nanotarsen_navy_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Erida/Clothing/Belt/nanotarsen_navy_sheath.rsi
+  - type: Item
+    size: Ginormous
+  - type: ItemSlots
+    slots:
+      item:
+        name: Sabre
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound: /Audio/Items/sheath.ogg
+        ejectSound: /Audio/Items/unsheath.ogg
+        whitelist:
+          tags:
+          - CaptainNTNavySabre
+          - CaptainSabre
+  - type: ItemMapper
+    mapLayers:
+      sheath-sabre:
+        whitelist:
+          tags:
+          - CaptainNTNavySabre
+          - CaptainSabre
+  - type: Appearance
+
+# - type: entity
+#   parent: [ClothingBeltNTNavyWebbing, ClothingSlotBase, BaseCommandContraband]
+#   id: ClothingBeltNTNavyCaptainWebbing
+#   name: nanotrasen navy captain webbing
+#   description:
+#   components:
+#   - type: Sprite
+#     sprite: _Erida/Clothing/Belt/nanotarsen_navy_websheath.rsi
+#     state: sheath
+#   - type: Clothing
+#     sprite: _Erida/Clothing/Belt/nanotarsen_navy_websheath.rsi
+#   - type: Item
+#     size: Ginormous
+#   - type: ItemSlots
+#     slots:
+#       item:
+#         name: Sabre
+#         insertVerbText: sheath-insert-verb
+#         ejectVerbText: sheath-eject-verb
+#         insertSound: /Audio/Items/sheath.ogg
+#         ejectSound: /Audio/Items/unsheath.ogg
+#         whitelist:
+#           tags:
+#           - CaptainNTNavySabre
+#           - CaptainSabre
+#   - type: ItemMapper
+#     mapLayers:
+#       sheath-sabre:
+#         whitelist:
+#           tags:
+#           - CaptainNTNavySabre
+#           - CaptainSabre
+#   - type: Appearance
+
+- type: entity
+  parent: [ClothingBeltBase, ClothingSlotBase, BaseSyndicateContraband]
+  id: ClothingBeltSheathSyndicate
+  name: rapier sheath
+  description: A sinister, thin sheath, suitable for a rapier.
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Belt/syndie_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Erida/Clothing/Belt/syndie_sheath.rsi
+  - type: Item
+    size: Ginormous
+  - type: ItemSlots
+    slots:
+      item:
+        name: rapier
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound: /Audio/Items/sheath.ogg
+        ejectSound: /Audio/Items/unsheath.ogg
+        whitelist:
+          tags:
+          - SyndicateRapier
+  - type: ItemMapper
+    mapLayers:
+      sheath-rapier:
+        whitelist:
+          tags:
+          - SyndicateRapier
+  - type: Appearance
+
+- type: entity
+  parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase]
+  id: ClothingBeltHelldiver
+  name: Пояс B-01 "Тактик"
+  description: Это стандартный пояс солдата Супер-Земли.
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Belt/helldiver_belt.rsi
+  - type: Clothing
+    sprite: _Erida/Clothing/Belt/helldiver_belt.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.1
+  - type: StaticPrice
+    price: 500

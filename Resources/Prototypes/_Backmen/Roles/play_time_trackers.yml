@@ -1,0 +1,7 @@
+# erida edit - только недостающие трекеры (остальные дублируют _Goobstation)
+
+- type: playTimeTracker
+  id: JobIAA
+
+- type: playTimeTracker
+  id: JobSecurityPilot

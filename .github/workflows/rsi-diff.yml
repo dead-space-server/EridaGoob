@@ -37,8 +37,24 @@ jobs:
           quotepath: false
           safe_output: false
 
+      - name: Check RSI diff size
+        id: rsi-size
+        shell: bash
+        env:
+          MODIFIED: ${{ steps.files.outputs.modified_files }}
+          REMOVED: ${{ steps.files.outputs.deleted_files }}
+          ADDED: ${{ steps.files.outputs.added_files }}
+        run: |
+          # erida edit: skip huge diffs that exceed the docker argument limit
+          if [ ${#MODIFIED} -gt 100000 ] || [ ${#REMOVED} -gt 100000 ] || [ ${#ADDED} -gt 100000 ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Diff changed RSIs
         id: diff
+        if: steps.rsi-size.outputs.skip != 'true'
         uses: space-wizards/RSIDiffBot@v1.1
         with:
           modified: ${{ steps.files.outputs.modified_files }}
@@ -50,6 +66,7 @@ jobs:
           headsha: ${{ github.event.pull_request.head.sha }}
 
       - name: Write full RSI diff body
+        if: steps.rsi-size.outputs.skip != 'true'
         shell: bash
         run: |
           python - <<'PY'
@@ -60,6 +77,7 @@ jobs:
           PY
 
       - name: Prepare RSI diff comment
+        if: steps.rsi-size.outputs.skip != 'true'
         id: rsi-comment
         run: >
           python Tools/Erida/prepare_rsi_diff_comment.py
@@ -77,6 +95,7 @@ jobs:
           retention-days: 7
 
       - name: Create or update RSI diff comment
+        if: steps.rsi-size.outputs.skip != 'true'
         uses: marocchino/sticky-pull-request-comment@v3.0.4
         with:
           header: erida-rsi-diff

@@ -1,12 +1,39 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterVestArmorSec
+  name: armor vest
+  description: A slim Type I armored vest that provides decent protection against most types of damage.
+  components:
+    - type: Sprite
+      sprite: _Corvax/Clothing/OuterClothing/Vests/armor_sec.rsi
+    - type: Clothing
+      sprite: _Corvax/Clothing/OuterClothing/Vests/armor_sec.rsi
 
 - type: entity
   parent: ClothingOuterArmorBasic
-  id: ClothingOuterVestArmorMedSec # Erida edit
+  id: ClothingOuterVestArmorMedSec
   name: security medic armor vest
   description: A security medic's armor vest, with little pockets for little things.
   components:
-  - type: Sprite
-    sprite: _Corvax/Clothing/OuterClothing/Vests/armor_sec_med.rsi
-  - type: Clothing
-    sprite: _Corvax/Clothing/OuterClothing/Vests/armor_sec_med.rsi
+    - type: Sprite
+      sprite: _Corvax/Clothing/OuterClothing/Vests/armor_sec_med.rsi
+    - type: Clothing
+      sprite: _Corvax/Clothing/OuterClothing/Vests/armor_sec_med.rsi
+
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterVestSecurityMedic
+  name: security medic vest
+  description: A lightweight vest worn by the Security Medic.
+  components:
+    - type: Sprite
+      sprite: _Corvax/Clothing/OuterClothing/Vests/vest_security_medic.rsi
+    - type: Clothing
+      sprite: _Corvax/Clothing/OuterClothing/Vests/vest_security_medic.rsi
+    #- type: Armor
+    #  modifiers:
+    #    coefficients: # Erida
+    #      Blunt: 0.7
+    #      Slash: 0.7
+    #      Piercing: 0.7
+    #      Heat: 0.8

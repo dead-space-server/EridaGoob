@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   name: improvised pneumatic cannon
   parent: [BaseStorageItem, BaseMinorContraband]
@@ -7,7 +5,7 @@
   description: Improvised using nothing but a pipe, some zipties, and a pneumatic cannon. Doesn't accept tanks without enough gas.
   components:
   - type: Sprite
-    sprite: _Erida/Objects/Weapons/Guns/Cannons/pneumatic_cannon.rsi
+    sprite: Objects/Weapons/Guns/Cannons/pneumatic_cannon.rsi
     layers:
     - state: icon
     - state: tank
@@ -63,8 +61,6 @@
       storagebase: !type:Container
         ents: []
       gas_tank: !type:ContainerSlot
-  - type: PacifismAllowedGun
-
 
 - type: entity
   parent: BaseStorageItem
@@ -74,7 +70,7 @@
   description: Load cream pie for optimal results.
   components:
   - type: Sprite
-    sprite: _Erida/Objects/Weapons/Guns/Cannons/pie_cannon.rsi
+    sprite: Objects/Weapons/Guns/Cannons/pie_cannon.rsi
     layers:
     - state: piecannon
   - type: Storage
@@ -100,7 +96,7 @@
   - type: Item
     size: Large
   - type: Clothing
-    sprite: _Erida/Objects/Weapons/Guns/Cannons/pie_cannon.rsi
+    sprite: Objects/Weapons/Guns/Cannons/pie_cannon.rsi
     quickEquip: false
     slots:
     - Back
@@ -116,7 +112,7 @@
   description: Deliver a generous portion of cream directly to the crew! Automatically bakes pies over time.
   components:
   - type: Sprite
-    sprite: _Erida/Objects/Weapons/Guns/Cannons/pie_cannon.rsi
+    sprite: Objects/Weapons/Guns/Cannons/pie_cannon.rsi
     layers:
     - state: piecannon
   - type: Gun
@@ -141,46 +137,6 @@
   - type: AmmoCounter
   - type: Item
     size: Normal
-
-# Goobstation - proper syringe guns
-#- type: entity
-#  name: syringe gun
-#  parent: BaseStorageItem
-#  id: LauncherSyringe
-#  description: Load full of poisoned syringes for optimal fun.
-#  components:
-#  - type: Sprite
-#    sprite: _Erida/Objects/Weapons/Guns/Cannons/syringe_gun.rsi
-#    layers:
-#    - state: syringe_gun
-#  - type: Storage
-#    maxItemSize: Normal
-#    grid:
-#   - 0,0,2,0
-#    whitelist:
-#      tags:
-#      - SyringeGunAmmo
-#  - type: Gun
-#    fireRate: 1
-#    selectedMode: SemiAuto
-#    availableModes:
-#    - SemiAuto
-#    - FullAuto
-#    soundGunshot:
-#      path: /Audio/Weapons/Guns/Gunshots/syringe_gun.ogg
-#    soundEmpty:
-#      path: /Audio/Weapons/Guns/Empty/empty.ogg
-#    clumsyProof: true
-#  - type: ContainerAmmoProvider
-#    container: storagebase
-#  - type: Item
-#    size: Large
-#    shape:
-#   - 0,0,2,1
-# - type: ContainerContainer
-#   containers:
-#      storagebase: !type:Container
-#        ents: []
 
 # shoots bullets instead of throwing them, no other changes
 - type: entity

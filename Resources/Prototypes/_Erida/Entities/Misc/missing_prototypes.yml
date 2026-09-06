@@ -1,0 +1,102 @@
+﻿# erida edit - missing prototypes for Erida maps
+- type: entity
+  id: DrinkKiraSpecial
+  parent: DrinkBase
+  name: Kira Special
+  description: A special drink.
+  components:
+  - type: Sprite
+    sprite: _Erida/Objects/Consumable/Drinks/glass_clear.rsi
+    state: icon
+  - type: SolutionContainerManager
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: FigureSpawner
+  parent: MarkerBase
+  name: Figure Spawner
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - ToyFigurineGreytider
+    chance: 1
+    offset: 0.0
+
+- type: entity
+  id: HandheldHealthAnalyzerEmpty
+  parent: HandheldHealthAnalyzer
+  name: Empty Handheld Health Analyzer
+  components:
+  - type: Sprite
+    sprite: _Erida/Objects/Specific/Medical/healthanalyzer.rsi
+    state: icon
+  - type: Item
+    size: Small
+
+- type: entity
+  id: HandheldHealthAnalyzerUnpowered
+  parent: HandheldHealthAnalyzer
+  name: Unpowered Handheld Health Analyzer
+  components:
+  - type: Sprite
+    sprite: _Erida/Objects/Specific/Medical/healthanalyzer.rsi
+    state: icon_unpowered
+  - type: Item
+    size: Small
+
+- type: entity
+  id: SpacemenFigureSpawner
+  parent: FigureSpawner
+  name: Spacemen Figure Spawner
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - ToyFigurinePassenger
+    chance: 1
+    offset: 0.0
+
+- type: entity
+  id: TorsoSkeleton
+  parent: BaseItem
+  name: Torso Skeleton
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/Toys/skeleton.rsi
+    state: skeletonGoon
+  - type: Item
+    size: Normal
+
+- type: entity
+  id: ToySkeleton
+  parent: BaseItem
+  name: Toy Skeleton
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/Toys/skeleton.rsi
+    state: skeletonGoon
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: ToySpawner
+  parent: MarkerBase
+  name: Toy Spawner
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - ToySkeleton
+      - ToyFigurineGreytider
+    chance: 1
+    offset: 0.0
+
+- type: entity
+  id: WarpPointBombing
+  parent: MarkerBase
+  name: Warp Point Bombing
+  components:
+  - type: Sprite
+    sprite: Markers/cross.rsi
+    state: red
+  - type: WarpPoint
+    location: BombingSite

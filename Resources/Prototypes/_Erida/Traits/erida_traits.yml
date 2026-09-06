@@ -39,7 +39,6 @@
     invert: true
   effects:
   - !type:AddCompsEffect
-    removeExisting: true
     components:
      - type: Vocal
        sounds:
@@ -61,7 +60,6 @@
     invert: true
   effects:
   - !type:AddCompsEffect
-    removeExisting: true
     components:
      - type: MessyDrinker
        spillChance: 0.33

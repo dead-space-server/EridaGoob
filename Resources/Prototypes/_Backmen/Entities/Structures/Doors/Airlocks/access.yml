@@ -1,0 +1,40 @@
+- type: entity
+  parent: DoubleGlassAirlock
+  id: DoubleGlassAirlockCentcomLocked
+  name: Double Glass Airlock
+  suffix: CentCom, Locked
+  components:
+    - type: ContainerFill
+      containers:
+        board: [ DoorElectronicsCentralCommand ]
+
+- type: entity
+  parent: DoubleGlassAirlock
+  id: DoubleGlassAirlockSyndicateLocked
+  name: Double Glass Airlock
+  suffix: Syndicate, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSyndicateAgent ]
+
+#Hatches
+- type: entity
+  parent: AirlockHatchCentcomm
+  id: AirlockHatchCentcommLocked
+  name: CentCom Hatch
+  suffix: CentCom, Locked
+  components:
+    - type: ContainerFill
+      containers:
+        board: [ DoorElectronicsCentralCommand ]
+
+- type: entity
+  parent: AirlockHatchMaint
+  id: AirlockHatchMaintLocked
+  name: Maintenance Hatch
+  suffix: Maint, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsMaintenance ]

@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
+﻿# SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
   parent: ClothingHeadBase
@@ -27,3 +27,51 @@
     sprite: _Erida/Clothing/Head/Hats/lightblueberet.rsi
   - type: Clothing
     sprite: _Erida/Clothing/Head/Hats/lightblueberet.rsi
+
+# erida edit
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHelmetKendoMen
+  name: men
+  description: The quintessential head armor of the kendo practitioner.
+  components:
+  - type: Sprite
+    sprite: _Backmen/Clothing/Head/Helmets/men.rsi
+  - type: Clothing
+    sprite: _Backmen/Clothing/Head/Helmets/men.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.95
+        Piercing: 0.95
+
+# erida edit
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadDarkSurgeonHat
+  name: dark surgeon hat
+  description: The surgeon's black headdress also has a small mirror.
+  components:
+  - type: Sprite
+    sprite: _Backmen/Clothing/Head/Hats/surgeon_hat.rsi
+  - type: Clothing
+    sprite: _Backmen/Clothing/Head/Hats/surgeon_hat.rsi
+
+# erida edit
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadCapSecurityPilot
+  name: security pilot cap
+  description: Security pilot's cap.
+  components:
+  - type: Sprite
+    sprite: _Backmen/Clothing/Head/Hats/secpilotcap.rsi
+  - type: Clothing
+    sprite: _Backmen/Clothing/Head/Hats/secpilotcap.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5

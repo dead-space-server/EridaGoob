@@ -33,3 +33,6 @@
 - type: metabolismGroup
   id: PlantMetabolisms
   name: metabolism-group-plant-metabolisms
+- type: metabolismGroup
+  id: Digestion
+  name: metabolism-group-digestion
