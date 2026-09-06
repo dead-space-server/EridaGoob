@@ -93,7 +93,7 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 15
+        Blunt: 10
         Structural: 20 #Erida-End
 
 - type: entity
