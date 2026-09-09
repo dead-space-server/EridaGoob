@@ -142,7 +142,7 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
     {
 
         // Erida start
-        if (subtypePrototype.StatesWhiteList.Count != 0)
+        if (subtypePrototype != null && subtypePrototype.StatesWhiteList.Count != 0)
         {
             var switchableState = EnsureComp<BorgSwitchableStateComponent>(entity.Owner);
             switchableState.DoAfterDuration = subtypePrototype.DoAfterDuration;
@@ -168,11 +168,11 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
         }
 
         // Erida start
-        var movementState = subtypePrototype.HaveMotionAnimation != null && subtypePrototype.HaveMotionAnimation.Value
+        var movementState = subtypePrototype != null && subtypePrototype.HaveMotionAnimation != null && subtypePrototype.HaveMotionAnimation.Value
             ? prototype.SpriteBodyState + "_moving"
             : prototype.SpriteBodyMovementState;
 
-        if (movementState is null || subtypePrototype.HaveMotionAnimation == false)
+        if (movementState is null || subtypePrototype != null && subtypePrototype.HaveMotionAnimation == false)
         {
             RemComp<SpriteMovementComponent>(entity);
             return;
