@@ -67,6 +67,7 @@
     - GasTurbineBlades
     - GasTurbineStators
     - NuclearSafetyTools
+    - AdvancedEmitters        # Omu - advanced emitters
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NailgunEvilStatic

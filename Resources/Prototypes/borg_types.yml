@@ -246,7 +246,7 @@
   # erida edit end
   - BorgModuleMusique
   - BorgModuleService
-  # - BorgModuleClowning # goobedit
+  - BorgModuleClowning
   - BorgModuleGardening
   - BorgModuleHarvesting
   - BorgModuleLollypop # Goobstation

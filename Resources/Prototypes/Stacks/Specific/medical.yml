@@ -3,7 +3,7 @@
 # Topical medicines
 
 - type: stack
-  parent: BaseSmallStack
+  parent: BaseTopicalStack # goob
   id: Ointment
   name: stack-ointment
   icon: { sprite: "/Textures/_Erida/Objects/Specific/Medical/medical.rsi", state: ointment }
@@ -11,7 +11,7 @@
   maxCount: 15 # Erida fix
 
 - type: stack
-  parent: BaseSmallStack
+  parent: BaseTopicalStack # goob
   id: AloeCream
   name: stack-aloe-cream
   icon: { sprite: "/Textures/_Erida/Objects/Specific/Hydroponics/aloe.rsi", state: cream }
@@ -19,7 +19,7 @@
   maxCount: 15 # Erida fix
 
 - type: stack
-  parent: BaseSmallStack
+  parent: BaseTopicalStack # goob
   id: Gauze
   maxCount: 15 # Erida
   name: stack-gauze
@@ -27,7 +27,7 @@
   spawn: Gauze
 
 - type: stack
-  parent: BaseSmallStack
+  parent: BaseTopicalStack # goob
   id: Brutepack
   name: stack-brutepack
   icon: { sprite: "/Textures/_Erida/Objects/Specific/Medical/medical.rsi", state: gauze }
@@ -35,7 +35,7 @@
   maxCount: 15 # Erida fix
 
 - type: stack
-  parent: BaseSmallStack
+  parent: BaseTopicalStack # goob
   id: Bloodpack
   name: stack-bloodpack
   icon: { sprite: "/Textures/_Erida/Objects/Specific/Medical/medical.rsi", state: bloodpack }
@@ -43,14 +43,14 @@
   maxCount: 15 # Erida fix
 
 - type: stack
-  parent: BaseSmallStack
+  parent: BaseTopicalStack # goob
   id: MedicatedSuture
   name: stack-medicated-suture
   icon: {sprite: "/Textures/_Erida/Objects/Specific/Medical/medical.rsi", state: medicated-suture }
   spawn: MedicatedSuture
 
 - type: stack
-  parent: BaseSmallStack
+  parent: BaseTopicalStack # goob
   id: RegenerativeMesh
   name: stack-regenerative-mesh
   icon: {sprite: "/Textures/_Erida/Objects/Specific/Medical/medical.rsi", state: regenerative-mesh}
