@@ -1730,3 +1730,61 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/63
   avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
   title: Minor fixes + WenderDelta update
+- author: rOmannn299
+  changes:
+    - type: Tweak
+      message: Ремап Аспида
+    - type: Add
+      message: Должность ПНТ, вещи ПНТ в комнату ОСЩ
+    - type: Add
+      message: Шахтерский шаттл и защита от метеоров для него
+    - type: Add
+      message: Законник для ГСБ
+    - type: Add
+      message: Ксенобиология и необходимые предметы для нее
+    - type: Add
+      message: Больше камер для ИИ и СБ
+    - type: Add
+      message: >-
+        Турель СБ в оружейную, Турель командования на мостик, турель
+        командования в хранилище, внешние турели  для ИИ, для всех турелей,
+        кроме турелей ИИ, добавлены консоли управления
+    - type: Add
+      message: Консоль восстановления ИИ
+    - type: Add
+      message: Более прочная защита от метеоров для ИИ
+    - type: Add
+      message: Больше пожарных шлюзов в техи
+    - type: Add
+      message: Сервер вирусологии
+    - type: Add
+      message: Больше ресурсов в техи
+    - type: Add
+      message: Больше веселья в техи! Изменены некоторые секретки и лут в них
+    - type: Add
+      message: Техфабы отделов
+    - type: Tweak
+      message: Оружие на стойках в Оружейной заменено на сейфы
+    - type: Tweak
+      message: Добавлены уточнения к старым маякам, добавлены новые маяки
+    - type: Tweak
+      message: >-
+        Суперматерия заменена на губовскую, суперматерии добавлены заземляющие
+        стержни, добавлена консоль контроля суперматерии
+    - type: Tweak
+      message: >-
+        Гермозатворы в бриге. Теперь многие гермозатворы брига имеют собственные
+        кнопки для локальной активации
+    - type: Fix
+      message: Кресла заменены на спавнеры кресел
+    - type: Fix
+      message: >-
+        Двери инженерного отдела в комнате якоря заменены на защищённые двери
+        командования
+    - type: Fix
+      message: Некорректные камеры, летающие посреди комнат без опоры
+  id: 131
+  time: '2026-09-25T22:31:06.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/65
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: Aspid
