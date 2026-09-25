@@ -199,7 +199,15 @@
             "name": "pda-warden"
         },
         {
-            "name": "pda-wizard"
+            "name": "pda-wizard",
+            "delays": [
+                [
+                  0.75,
+                  0.25,
+                  0.25,
+                  0.25
+                ]
+            ]
         },
         {
             "name": "pda-zookeeper"
