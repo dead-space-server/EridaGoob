@@ -118,7 +118,17 @@
             "name": "stripe_top"
         },
         {
-            "name": "wizard"
+            "name": "wizard",
+            "delays": [
+                [
+                0.2,
+                0.2,
+                0.2,
+                0.2,
+                0.2,
+                0.2
+                ]
+            ]
         },
         {
             "name": "idpilot"
