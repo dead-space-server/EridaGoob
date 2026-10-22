@@ -10,14 +10,14 @@
   - type: Clothing
     sprite: _Erida/Clothing/Belt/champion.rsi
   - type: EnergyShield
-    energyConsuptionPerDamage: 5
+    energyConsuptionPerDamage: -5
     shield: BaseEnergyShield
     modifiers:
       coefficients:
-        Blunt: 1
-        Slash: 1
-        Piercing: 1
-        Heat: 1
+        Blunt: 0
+        Slash: 0
+        Piercing: 0
+        Heat: 0
   - type: StaticPrice
     price: 500
   - type: PowerCellDraw

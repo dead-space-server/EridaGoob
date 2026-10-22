@@ -6,5 +6,5 @@ namespace Content.Shared._Erida.EnergyShield.Components;
 public sealed partial class EnergyShieldedComponent : Component
 {
     [DataField]
-    public EntityUid EnergyShield = default;
+    public EntityUid EnergyShieldSource = default;
 }

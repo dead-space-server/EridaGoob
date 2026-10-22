@@ -265,8 +265,6 @@ namespace Content.Shared.Damage
             if (before.Cancelled)
                 return null;
 
-            damage = before.Damage; // Erida-edit
-
             // For entities with a body, route damage through body parts and then sum it up
             if (_bodyQuery.TryGetComponent(uid.Value, out var body)
                 && body.BodyType == BodyType.Complex)
