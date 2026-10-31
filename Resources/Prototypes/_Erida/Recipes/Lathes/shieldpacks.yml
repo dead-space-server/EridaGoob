@@ -1,0 +1,25 @@
+- type: latheRecipe
+  id: ShieldPackBase
+  result: ClothingBeltShieldPack
+  completetime: 5
+  materials:
+    Steel: 1000
+    Glass: 300
+
+- type: latheRecipe
+  id: ShieldPackMining
+  result: ClothingBeltShieldPackMining
+  completetime: 5
+  materials:
+    Steel: 1000
+    Glass: 300
+    Silver: 100
+
+- type: latheRecipe
+  id: ShieldPackSecurity
+  result: ClothingBeltShieldPackSecurity
+  completetime: 5
+  materials:
+    Steel: 1000
+    Glass: 300
+    Diamond: 50

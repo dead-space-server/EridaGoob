@@ -196,6 +196,48 @@ namespace Content.Shared.Damage
 
             return newDamage;
         }
+        // Erida-start
+        public static DamageSpecifier ApplyModifierSet(DamageSpecifier damageSpec, DamageModifierSet modifierSet, out DamageSpecifier absorbed)
+        {
+            DamageSpecifier newDamage = new(damageSpec.ArmorPenetration, damageSpec.PartDamageVariation, damageSpec.WoundSeverityMultipliers); // Goob edit
+            newDamage.DamageDict.EnsureCapacity(damageSpec.DamageDict.Count);
+
+            absorbed = new(damageSpec.ArmorPenetration, damageSpec.PartDamageVariation, damageSpec.WoundSeverityMultipliers); // Goob edit
+            newDamage.DamageDict.EnsureCapacity(damageSpec.DamageDict.Count);
+
+            foreach (var (key, value) in damageSpec.DamageDict)
+            {
+                if (value == 0)
+                    continue;
+
+                if (value < 0)
+                {
+                    newDamage.DamageDict[key] = value;
+                    continue;
+                }
+
+                float newValue = value.Float();
+
+                if (modifierSet.FlatReduction.TryGetValue(key, out var reduction))
+                    newValue = Math.Max(0f, newValue - reduction); // flat reductions can't heal you
+
+                if (modifierSet.Coefficients.TryGetValue(key, out var coefficient))
+                    newValue *= coefficient; // coefficients can heal you, e.g. cauterizing bleeding
+
+                if (newValue != 0)
+                    newDamage.DamageDict[key] = FixedPoint2.New(newValue);
+
+                var absorbedValue = value - FixedPoint2.New(newValue);
+                if (absorbedValue != 0)
+                    absorbed.DamageDict[key] = absorbedValue;
+
+                if (newValue != 0)
+                    newDamage.DamageDict[key] = FixedPoint2.New(newValue);
+            }
+
+            return newDamage;
+        }
+        // Erida-end
 
         /// <summary>
         ///     Reduce (or increase) damages by applying multiple modifier sets.
