@@ -1,0 +1,199 @@
+
+- type: entity
+  parent: [ClothingBeltBase, PowerCellSlotSmallItem, BaseToggleClothing]
+  id: ClothingBeltShieldPackBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Erida/Clothing/Belt/shieldpack.rsi
+  - type: Appearance
+  - type: GenericVisualizer
+  - type: ShieldPack
+  - type: StaticPrice
+    price: 500
+  - type: PowerCellDraw
+    drawRate: 5
+  - type: ToggleCellDraw
+  - type: ToggleClothing
+    action: ActionToggleShieldPack
+    mustEquip: false
+  - type: ItemTogglePrefix
+    prefixOn: on
+  - type: ToggleClothingPrefix
+    prefixOn: on
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+    fitsInCharger: true
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+  - type: BatterySlotRequiresLock
+    itemSlot: cell_slot
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: BaseAction
+  id: ActionToggleShieldPack
+  name: Toggle Energy Shield
+  description: Toggles the energy shield on and off.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+  - type: InstantAction
+    event: !type:ToggleActionEvent
+
+- type: entity
+  id: ClothingBeltShieldPack
+  parent: ClothingBeltShieldPackBase
+  components:
+  - type: ShieldPack
+    blockShooting: true
+    energyConsuptionPerDamage: 100
+    shield: EnergyBodyShield
+    modifiers:
+      coefficients:
+        Blunt: 0
+        Slash: 0
+        Piercing: 0
+        Heat: 0
+  - type: Sprite
+    layers:
+    - state: shieldpack_basic
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: {state: shieldpack_basic_on}
+          False: {state: shieldpack_basic}
+
+- type: entity
+  id: ClothingBeltShieldPackPowerCell
+  parent: ClothingBeltShieldPack
+  suffix: High-Capacity Battery
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  id: ClothingBeltShieldPackMining
+  parent: ClothingBeltShieldPackBase
+  components:
+  - type: ShieldPack
+    blockShooting: true
+    energyConsuptionPerDamage: 25
+    shield: EnergyBodyShieldMiner
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+  - type: Sprite
+    layers:
+    - state: shieldpack_mining
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: {state: shieldpack_mining_on}
+          False: {state: shieldpack_mining}
+
+- type: entity
+  id: ClothingBeltShieldPackMiningPowerCell
+  parent: ClothingBeltShieldPackMining
+  suffix: High-Capacity Battery
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  id: ClothingBeltShieldPackSecurity
+  parent: ClothingBeltShieldPackBase
+  components:
+  - type: ShieldPack
+    energyConsuptionPerDamage: 50
+    shield: EnergyBodyShieldSecurity
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+  - type: Sprite
+    layers:
+    - state: shieldpack_security
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: {state: shieldpack_security_on}
+          False: {state: shieldpack_security}
+  - type: PowerCellDraw
+    drawRate: 10
+
+- type: entity
+  id: ClothingBeltShieldPackSecurityPowerCell
+  parent: ClothingBeltShieldPackSecurity
+  suffix: High-Capacity Battery
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  id: EnergyBodyShieldBase
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Erida/Effects/shields.rsi
+    drawdepth: Effects
+    noRot: true
+  - type: PointLight
+    radius: 5
+    power: 2
+  - type: Tag
+    tags:
+      - HideContextMenu
+
+- type: entity
+  id: EnergyBodyShield
+  parent: EnergyBodyShieldBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: unfathomable_shield
+  - type: PointLight
+    color: "#ffffff"
+
+- type: entity
+  id: EnergyBodyShieldMiner
+  parent: EnergyBodyShieldBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: psychic
+  - type: PointLight
+    color: "#E67CF6"
+
+- type: entity
+  id: EnergyBodyShieldSecurity
+  parent: EnergyBodyShieldBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: shield-flash
+    color: "#f00000"
+  - type: PointLight
+    color: "#f00000"

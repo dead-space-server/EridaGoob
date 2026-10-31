@@ -513,6 +513,11 @@
     # - ServiceWeapons
     - SpecOpsGoogles
     - PowerCells
+    # Erida-start
+    - BaseShieldPacks
+    - MiningShieldPacks
+    - SecurityShieldPacks
+    # Erida-end
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SyndicateAmmoStatic

@@ -1,10 +1,8 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace Content.Shared._Erida.EnergyShield.Components;
+namespace Content.Shared._Erida.ShieldPack.Components;
 
 [RegisterComponent]
 public sealed partial class EnergyShieldedComponent : Component
 {
     [DataField]
-    public EntityUid EnergyShieldSource = default;
+    public EntityUid ShieldPackSource = default!;
 }
