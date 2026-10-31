@@ -1,8 +1,10 @@
+using Robust.Shared.GameStates;
+
 namespace Content.Shared._Erida.ShieldPack.Components;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class EnergyShieldedComponent : Component
 {
-    [DataField]
+    [DataField, AutoNetworkedField]
     public EntityUid ShieldPackSource = default!;
 }

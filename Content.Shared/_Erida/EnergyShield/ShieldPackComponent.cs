@@ -1,9 +1,10 @@
 using Content.Shared.Damage;
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Erida.ShieldPack.Components;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ShieldPackComponent : Component
 {
     [DataField(required: true)]
@@ -15,13 +16,13 @@ public sealed partial class ShieldPackComponent : Component
     [DataField(required: true)]
     public EntProtoId Shield = "BaseShieldPack";
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public EntityUid? CurrentShield = null;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public bool Activated = false;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public bool BlockShooting = false;
 
     [DataField]

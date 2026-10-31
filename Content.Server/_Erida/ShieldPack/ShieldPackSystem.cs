@@ -92,8 +92,8 @@ public sealed class ShieldPackSystem : SharedShieldPackSystem
         esComp.CurrentShield = shield;
         var esedComp = EnsureComp<EnergyShieldedComponent>(user.Value);
         esedComp.ShieldPackSource = uid;
-        //Dirty(uid, esComp);
-        //Dirty(user.Value, esedComp);
+        Dirty(uid, esComp);
+        Dirty(user.Value, esedComp);
         return true;
     }
 
@@ -109,7 +109,7 @@ public sealed class ShieldPackSystem : SharedShieldPackSystem
         _entityManager.QueueDeleteEntity(esComp.CurrentShield);
         if (deleteESComp)
             _entityManager.RemoveComponent<EnergyShieldedComponent>(user.Value);
-        //Dirty(uid, esComp);
+        Dirty(uid, esComp);
         return true;
     }
 
