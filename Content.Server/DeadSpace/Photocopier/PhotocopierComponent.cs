@@ -5,7 +5,6 @@ using Content.Shared.DeadSpace.Photocopier;
 using Content.Shared.Paper;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.DeadSpace.Photocopier;
 
@@ -99,8 +98,8 @@ public sealed partial class PhotocopierComponent : Component
     /// <summary>
     /// Chosen paper form than will be printed
     /// </summary>
-    [DataField("chosenPaper", customTypeSerializer: typeof(PrototypeIdSerializer<PaperworkFormPrototype>))]
-    public string? ChosenPaper = null;
+    [DataField("chosenPaper")]
+    public ProtoId<PaperworkFormPrototype>? ChosenPaper = null;
 
     [ViewVariables]
     public int TonerLeft = 30;
@@ -121,8 +120,8 @@ public sealed partial class PhotocopierPrintout
     [DataField("content", required: true)]
     public string Content { get; private set; } = default!;
 
-    [DataField("prototypeId", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>), required: true)]
-    public string PrototypeId { get; private set; } = default!;
+    [DataField("prototypeId", required: true)]
+    public EntProtoId PrototypeId { get; private set; } = default!;
 
     [DataField("stampState")]
     public string? StampState { get; private set; }

@@ -63,7 +63,7 @@ public sealed partial class SpaceLightSystem : EntitySystem
 
     private static Color ParseSpaceLightColor(string value)
     {
-        var color = Color.TryFromHex(value) ?? Color.FromHex(CCVars.DefaultSpaceLightColor); // erida edit
+        var color = Color.TryFromHex(value, out var parsed) ? parsed : Color.FromHex(CCVars.DefaultSpaceLightColor); // erida edit
 
         return Color.FromSrgb(color);
     }

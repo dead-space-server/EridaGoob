@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client.Graphics;
 using Content.Goobstation.Shared.VoiceChat;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -19,6 +20,7 @@ public sealed partial class VoiceCanadianSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
 
     private static readonly ProtoId<ShaderPrototype> Shader = "VoiceCanadian";
+    public const string PostShaderId = "voice-canadian";
     private static readonly float[] HingeTargets = { -1f, 0f, 1f };
 
     private const float Pixel = 1f / EyeManager.PixelsPerMeter;
@@ -46,7 +48,7 @@ public sealed partial class VoiceCanadianSystem : EntitySystem
         foreach (var (uid, state) in _flapping)
         {
             if (TryComp<SpriteComponent>(uid, out var sprite))
-                Release(sprite, state);
+                Release(sprite);
         }
 
         _flapping.Clear();
@@ -99,32 +101,26 @@ public sealed partial class VoiceCanadianSystem : EntitySystem
 
         foreach (var uid in _stopped)
         {
-            if (_flapping.Remove(uid, out var state) && TryComp<SpriteComponent>(uid, out var sprite))
-                Release(sprite, state);
+            if (_flapping.Remove(uid) && TryComp<SpriteComponent>(uid, out var sprite))
+                Release(sprite);
         }
     }
 
     private bool CanFlap(EntityUid uid, SpriteComponent sprite)
     {
-        // erida edit: the old engine has a single post-shader slot, so only flap when it's
-        // free or already ours (stealth, holopad holograms and flight own it otherwise).
-        if (sprite.PostShader != null &&
-            !(_flapping.TryGetValue(uid, out var owned) && sprite.PostShader == owned.Shader))
-            return false;
-
         var rotation = Math.Abs(sprite.Rotation.Reduced().Theta);
         if (!sprite.NoRotation || Math.Min(rotation, Math.Tau - rotation) > MaxRotation)
             return false;
 
-        return true;
+        return !_sprite.HasPostShader(sprite, ContentPostShaderIds.Stealth);
     }
 
     private void UpdateFlap(EntityUid uid, SpriteComponent sprite, VoiceChatCanadianComponent canadian, float open, TimeSpan now, float frameTime)
     {
         if (open < OpenThreshold)
         {
-            if (_flapping.Remove(uid, out var old))
-                Release(sprite, old);
+            if (_flapping.Remove(uid))
+                Release(sprite);
 
             return;
         }
@@ -132,9 +128,11 @@ public sealed partial class VoiceCanadianSystem : EntitySystem
         if (!_flapping.TryGetValue(uid, out var state))
         {
             state = new FlapState(_prototype.Index(Shader).InstanceUnique());
-            sprite.PostShader = state.Shader;
-            sprite.RaiseShaderEvent = true;
-            sprite.GetScreenTexture = false;
+            _sprite.SetPostShader(sprite, new SpriteComponent.PostShaderArgs(PostShaderId, state.Shader)
+            {
+                RaiseShaderEvent = true,
+                Before = ContentPostShaderIds.BeforeOutlines,
+            });
             state.Target = _random.Pick(HingeTargets);
             state.Hinge = state.Target;
             state.NextSwitch = now + NextPivotTime(canadian);
@@ -159,7 +157,7 @@ public sealed partial class VoiceCanadianSystem : EntitySystem
 
     private void OnBeforeRender(EntityUid uid, VoiceChatCanadianComponent component, ref BeforePostShaderRenderEvent args)
     {
-        if (!_flapping.TryGetValue(uid, out var state))
+        if (args.Id != PostShaderId || !_flapping.TryGetValue(uid, out var state))
             return;
 
         var matrix = args.Viewport.GetWorldToLocalMatrix();
@@ -183,8 +181,8 @@ public sealed partial class VoiceCanadianSystem : EntitySystem
 
     private void OnShutdown(Entity<VoiceChatCanadianComponent> ent, ref ComponentShutdown args)
     {
-        if (_flapping.Remove(ent.Owner, out var state) && TryComp<SpriteComponent>(ent, out var sprite))
-            Release(sprite, state);
+        if (_flapping.Remove(ent.Owner) && TryComp<SpriteComponent>(ent, out var sprite))
+            Release(sprite);
     }
 
     private float PickTarget(float current)
@@ -200,14 +198,9 @@ public sealed partial class VoiceCanadianSystem : EntitySystem
         return TimeSpan.FromSeconds(_random.NextFloat(min, max));
     }
 
-    private void Release(SpriteComponent sprite, FlapState state)
+    private void Release(SpriteComponent sprite)
     {
-        if (sprite.PostShader != state.Shader)
-            return;
-
-        sprite.PostShader = null;
-        sprite.GetScreenTexture = false;
-        sprite.RaiseShaderEvent = false;
+        _sprite.RemovePostShader(sprite, PostShaderId);
     }
 
     private sealed partial class FlapState(ShaderInstance shader)

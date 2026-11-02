@@ -5,7 +5,7 @@ using Robust.Shared.GameObjects;
 
 namespace Content.Shared._RMC14.Vehicle;
 
-public sealed class VehicleGunResolveSystem : EntitySystem
+public sealed partial class VehicleGunResolveSystem : EntitySystem
 {
     [Dependency] private VehicleWeaponsSystem _weapons = default!;
 

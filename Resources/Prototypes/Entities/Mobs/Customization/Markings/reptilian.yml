@@ -126,6 +126,7 @@
 
 - type: marking
   id: LizardTailSmooth
+  wagging: LizardTailSmoothAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   sprites:
@@ -136,6 +137,7 @@
 
 - type: marking
   id: LizardTailLarge
+  wagging: LizardTailLargeAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   sprites:
@@ -144,6 +146,7 @@
 
 - type: marking
   id: LizardTailSpikes
+  wagging: LizardTailSpikesAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   sprites:
@@ -152,6 +155,7 @@
 
 - type: marking
   id: LizardTailLTiger
+  wagging: LizardTailLTigerAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   sprites:
@@ -160,6 +164,7 @@
 
 - type: marking
   id: LizardTailDTiger
+  wagging: LizardTailDTigerAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   sprites:
@@ -168,6 +173,7 @@
 
 - type: marking
   id: LizardTailAquatic
+  wagging: LizardTailAquaticAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   sprites:

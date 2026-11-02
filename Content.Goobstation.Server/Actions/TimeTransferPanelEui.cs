@@ -13,13 +13,13 @@ using Robust.Shared.Network;
 
 namespace Content.Goobstation.Server.Actions;
 
-public sealed class TimeTransferPanelEui : BaseEui
+public sealed partial class TimeTransferPanelEui : BaseEui
 {
-    [Dependency] private readonly IAdminManager _adminMan = default!;
-    [Dependency] private readonly ILogManager _log = default!;
-    [Dependency] private readonly IPlayerLocator _playerLocator = default!;
-    [Dependency] private readonly IServerDbManager _databaseMan = default!;
-    [Dependency] private readonly EridaWebhooks _webhooks = default!; // Erida edit
+    [Dependency] private IAdminManager _adminMan = default!;
+    [Dependency] private ILogManager _log = default!;
+    [Dependency] private IPlayerLocator _playerLocator = default!;
+    [Dependency] private IServerDbManager _databaseMan = default!;
+    [Dependency] private EridaWebhooks _webhooks = default!; // Erida edit
 
     private readonly ISawmill _sawmill;
 

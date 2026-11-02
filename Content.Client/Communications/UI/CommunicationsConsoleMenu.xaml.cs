@@ -8,9 +8,9 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Goobstation.Common.CCVar; // erida edit
-using Content.Goobstation.Shared.VoiceChat; // erida edit
-using Robust.Client.Player; // erida edit
+using Content.Goobstation.Common.CCVar; // Goobstation - Voice chat
+using Content.Goobstation.Shared.VoiceChat; // Goobstation - Voice chat
+using Robust.Client.Player; // Goobstation - Voice chat
 
 namespace Content.Client.Communications.UI
 {
@@ -20,8 +20,8 @@ namespace Content.Client.Communications.UI
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly ILocalizationManager _loc = default!;
-        [Dependency] private readonly IEntityManager _entManager = default!; // erida edit
-        [Dependency] private readonly IPlayerManager _player = default!; // erida edit
+        [Dependency] private readonly IEntityManager _entManager = default!; // Goobstation - Voice chat
+        [Dependency] private readonly IPlayerManager _player = default!; // Goobstation - Voice chat
 
         public bool CanAnnounce;
         public bool CanBroadcast;
@@ -35,8 +35,8 @@ namespace Content.Client.Communications.UI
         public event Action<string>? OnAlertLevel;
         public event Action<string>? OnAnnounce;
         public event Action<string>? OnBroadcast;
-        public event Action? OnVoiceBroadcast; // erida edit
-        public EntityUid Console; // erida edit
+        public event Action? OnVoiceBroadcast; // Goobstation - Voice chat
+        public EntityUid Console; // Goobstation - Voice chat
 
         public CommunicationsConsoleMenu()
         {
@@ -66,6 +66,7 @@ namespace Content.Client.Communications.UI
 
             BroadcastButton.OnPressed += _ => OnBroadcast?.Invoke(Rope.Collapse(MessageInput.TextRope));
             BroadcastButton.Disabled = !CanBroadcast;
+            VoiceBroadcastButton.OnPressed += _ => OnVoiceBroadcast?.Invoke(); // Goobstation - Voice chat
 
             VoiceBroadcastButton.OnPressed += _ => OnVoiceBroadcast?.Invoke(); // erida edit
 
@@ -89,10 +90,10 @@ namespace Content.Client.Communications.UI
         {
             base.FrameUpdate(args);
             UpdateCountdown();
-            UpdateVoiceBroadcast(); // erida edit
+            UpdateVoiceBroadcast(); // Goobstation - Voice chat
         }
 
-        // erida edit
+        // Goobstation - Voice chat
         private void UpdateVoiceBroadcast()
         {
             if (!_cfg.GetCVar(GoobCVars.VoiceChatEnabled) ||

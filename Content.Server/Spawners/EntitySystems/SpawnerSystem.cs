@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Threading;
 using Content.Server.Spawners.Components;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 using Content.Shared.Friends.Components; // Shitmed Change
 using Content.Shared._Shitmed.Spawners.EntitySystems; // Shitmed Change
 using Content.Server.Spawners.Components;
@@ -19,7 +19,6 @@ public sealed class SpawnerSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
         SubscribeLocalEvent<TimedSpawnerComponent, MapInitEvent>(OnMapInit);
     }
 

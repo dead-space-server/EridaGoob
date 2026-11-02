@@ -45,7 +45,7 @@ public sealed partial class VehicleSystem : EntitySystem
     [Dependency] private SharedJobSystem _job = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private MapLoaderSystem _mapLoader = default!;
-    [Dependency] private IMapManager _mapManager = default!;
+    [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private MobStateSystem _mobState = default!;
@@ -186,7 +186,7 @@ public sealed partial class VehicleSystem : EntitySystem
     {
         if (TryComp(ent.Owner, out interior) &&
             interior.MapId != MapId.Nullspace &&
-            _mapManager.MapExists(interior.MapId))
+            _map.MapExists(interior.MapId))
         {
             return true;
         }
@@ -327,9 +327,9 @@ public sealed partial class VehicleSystem : EntitySystem
         if (_net.IsClient)
             return;
 
-        if (interior.MapId != MapId.Nullspace && _mapManager.MapExists(interior.MapId))
+        if (interior.MapId != MapId.Nullspace && _map.MapExists(interior.MapId))
         {
-            _mapManager.DeleteMap(interior.MapId);
+            _map.DeleteMap(interior.MapId);
         }
         else if (interior.Map.IsValid() && Exists(interior.Map))
         {
@@ -948,10 +948,10 @@ public sealed partial class VehicleSystem : EntitySystem
     {
         vehicle = null;
         var mapId = _transform.GetMapId(interiorEntity);
-        if (mapId == MapId.Nullspace || !_mapManager.MapExists(mapId))
+        if (mapId == MapId.Nullspace || !_map.MapExists(mapId))
             return false;
 
-        var mapUid = _mapManager.GetMapEntityId(mapId);
+        var mapUid = _map.GetMap(mapId);
         if (!TryComp(mapUid, out VehicleInteriorLinkComponent? link) ||
             Deleted(link.Vehicle))
         {
@@ -1030,7 +1030,7 @@ public sealed partial class VehicleSystem : EntitySystem
             !TryComp(vehicle, out VehicleEnterComponent? _) ||
             !TryComp(vehicle, out VehicleInteriorComponent? interior) ||
             interior.MapId == MapId.Nullspace ||
-            !_mapManager.MapExists(interior.MapId))
+            !_map.MapExists(interior.MapId))
         {
             return false;
         }

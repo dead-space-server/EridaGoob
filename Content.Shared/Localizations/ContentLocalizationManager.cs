@@ -33,7 +33,7 @@ namespace Content.Shared.Localizations
 
             _loc.LoadCulture(culture);
             _loc.LoadCulture(fallbackCulture); // Erida
-            _loc.SetFallbackCluture(fallbackCulture); // Erida
+            _loc.SetFallbackCulture(fallbackCulture); // Erida
             _loc.AddFunction(culture, "MANY", FormatMany); // Erida
             _loc.AddFunction(culture, "PRESSURE", FormatPressure);
             _loc.AddFunction(culture, "POWERWATTS", FormatPowerWatts);

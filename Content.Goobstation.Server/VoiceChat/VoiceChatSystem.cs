@@ -870,7 +870,7 @@ public sealed partial class VoiceChatSystem : EntitySystem
         if (_player.TryGetSessionById(user, out var session) && session.AttachedEntity is { } uid && !_ghostQuery.HasComp(uid))
         {
             var effect = VoiceEffect.None;
-            if (speaker.SelectedEffect != VoiceEffect.None)
+            if (speaker.SelectedEffect != VoiceEffect.None && HasVoiceChanger(uid))
                 effect = speaker.SelectedEffect;
             else if (TryComp<VoiceChatEffectComponent>(uid, out var builtIn))
                 effect = builtIn.Effect;
