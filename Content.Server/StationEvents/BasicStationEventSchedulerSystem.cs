@@ -115,7 +115,7 @@ namespace Content.Server.StationEvents
                 occurrences.Add(ev.Key.ID, 0);
             }
 
-            var eventScheduler = _protoMan.Index(eventSchedulerProto); // Erida
+            var eventScheduler = IoCManager.Resolve<IPrototypeManager>().Index(eventSchedulerProto);
 
             if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
             {
@@ -160,7 +160,7 @@ namespace Content.Server.StationEvents
             _stationEvent ??= GetSys<EventManagerSystem>();
             _protoMan ??= IoCManager.Resolve<IPrototypeManager>(); // Erida
 
-            var eventScheduler = _protoMan.Index(eventSchedulerProto); // Erida
+            var eventScheduler = IoCManager.Resolve<IPrototypeManager>().Index(eventSchedulerProto);
 
             if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
                 yield break;
@@ -184,7 +184,7 @@ namespace Content.Server.StationEvents
             _stationEvent ??= GetSys<EventManagerSystem>();
             _protoMan ??= IoCManager.Resolve<IPrototypeManager>(); // Erida
 
-            var eventScheduler = _protoMan.Index(eventSchedulerProto); // Erida
+            var eventScheduler = IoCManager.Resolve<IPrototypeManager>().Index(eventSchedulerProto);
 
             if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
                 yield break;
@@ -212,7 +212,7 @@ namespace Content.Server.StationEvents
             _stationEvent ??= GetSys<EventManagerSystem>();
             _protoMan ??= IoCManager.Resolve<IPrototypeManager>(); // Erida
 
-            var eventScheduler = _protoMan.Index(eventSchedulerProto); // Erida
+            var eventScheduler = IoCManager.Resolve<IPrototypeManager>().Index(eventSchedulerProto);
 
             if (!eventScheduler.TryGetComponent<BasicStationEventSchedulerComponent>(out var basicScheduler, _compFac))
                 return 0f;

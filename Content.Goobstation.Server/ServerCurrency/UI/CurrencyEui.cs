@@ -14,17 +14,17 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Server.ServerCurrency.UI
 {
-    public sealed class CurrencyEui : BaseEui
+    public sealed partial class CurrencyEui : BaseEui
     {
-        [Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;
-        [Dependency] private readonly IAdminNotesManager _notesMan = default!;
-        [Dependency] private readonly IPrototypeManager _protoMan = default!;
-        [Dependency] private readonly IChatManager _chat = default!; // Erida edit
-        [Dependency] private readonly EridaWebhooks _webhooks = default!; // Erida edit
-        [Dependency] private readonly ILogManager _log = default!;
+        [Dependency] private ICommonCurrencyManager _currencyMan = default!;
+        [Dependency] private IAdminNotesManager _notesMan = default!;
+        [Dependency] private IPrototypeManager _protoMan = default!;
+
+        [Dependency] private IChatManager _chat = default!; // Erida edit
+        [Dependency] private EridaWebhooks _webhooks = default!; // Erida edit
+        [Dependency] private ILogManager _log = default!;
 
         private readonly ISawmill _sawmill;
-
         public CurrencyEui()
         {
             IoCManager.InjectDependencies(this);

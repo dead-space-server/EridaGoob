@@ -95,82 +95,6 @@ class Resampler {
     }
 }
 
-class NoiseSuppressor {
-    constructor(rate) {
-        const freq = 85;
-        const w0 = 2 * Math.PI * freq / rate;
-        const cosw = Math.cos(w0);
-        const sinw = Math.sin(w0);
-        const alpha = sinw / (2 * Math.SQRT1_2);
-        const a0 = 1 + alpha;
-        this.b0 = ((1 + cosw) / 2) / a0;
-        this.b1 = (-(1 + cosw)) / a0;
-        this.b2 = ((1 + cosw) / 2) / a0;
-        this.a1 = (-2 * cosw) / a0;
-        this.a2 = (1 - alpha) / a0;
-        this.x1 = 0;
-        this.x2 = 0;
-        this.y1 = 0;
-        this.y2 = 0;
-        this.noiseDb = -78;
-        this.gain = 1;
-    }
-
-    highpass(x) {
-        const y = this.b0 * x + this.b1 * this.x1 + this.b2 * this.x2 - this.a1 * this.y1 - this.a2 * this.y2;
-        this.x2 = this.x1;
-        this.x1 = x;
-        this.y2 = this.y1;
-        this.y1 = y;
-        return Number.isFinite(y) ? y : 0;
-    }
-
-    process(samples) {
-        let energy = 0;
-        for (let i = 0; i < samples.length; i++) {
-            const y = this.highpass(samples[i]);
-            samples[i] = y;
-            energy += y * y;
-        }
-
-        const rms = Math.sqrt(energy / samples.length);
-        const db = 20 * Math.log10(rms + 1e-12);
-
-        if (db < this.noiseDb)
-            this.noiseDb += (db - this.noiseDb) * 0.3;
-        else if (db < this.noiseDb + 6)
-            this.noiseDb += (db - this.noiseDb) * 0.05;
-        else
-            this.noiseDb += 0.02;
-
-        if (this.noiseDb < -90)
-            this.noiseDb = -90;
-        else if (this.noiseDb > -35)
-            this.noiseDb = -35;
-
-        const open = this.noiseDb + 7;
-        let target;
-        if (db >= open + 5)
-            target = 1;
-        else if (db <= open - 5)
-            target = 0;
-        else {
-            const t = (db - (open - 5)) / 10;
-            target = t * t * (3 - 2 * t);
-        }
-
-        this.gain += (target - this.gain) * (target > this.gain ? 0.6 : 0.12);
-        if (this.gain < 0.001)
-            this.gain = 0;
-
-        if (this.gain < 0.999) {
-            const g = this.gain;
-            for (let i = 0; i < samples.length; i++)
-                samples[i] *= g;
-        }
-    }
-}
-
 class AdpcmEncoder {
     constructor() {
         this.predictor = 0;
@@ -235,7 +159,6 @@ class VoiceCaptureProcessor extends AudioWorkletProcessor {
         super();
         this.resampler = new Resampler(sampleRate, OUTPUT_RATE);
         this.encoder = new AdpcmEncoder();
-        this.ns = new NoiseSuppressor(OUTPUT_RATE);
         this.frame = new Float32Array(FRAME_SAMPLES);
         this.pcm = new Int16Array(FRAME_SAMPLES);
         this.frameLength = 0;
@@ -251,7 +174,6 @@ class VoiceCaptureProcessor extends AudioWorkletProcessor {
         this.muted = false;
         this.allowed = false;
         this.pushToTalk = false;
-        this.noiseSuppression = true;
         this.net = null;
         this.emit = this.emit.bind(this);
         this.port.onmessage = event => this.configure(event.data);
@@ -267,7 +189,7 @@ class VoiceCaptureProcessor extends AudioWorkletProcessor {
         if (message.type !== "config")
             return;
 
-        for (const key of ["mode", "threshold", "gain", "muted", "allowed", "pushToTalk", "noiseSuppression"]) {
+        for (const key of ["mode", "threshold", "gain", "muted", "allowed", "pushToTalk"]) {
             if (key in message)
                 this[key] = message[key];
         }
@@ -282,9 +204,6 @@ class VoiceCaptureProcessor extends AudioWorkletProcessor {
     }
 
     processFrame() {
-        if (this.noiseSuppression)
-            this.ns.process(this.frame);
-
         let energy = 0;
         for (let i = 0; i < FRAME_SAMPLES; i++) {
             let value = this.frame[i] * this.gain;

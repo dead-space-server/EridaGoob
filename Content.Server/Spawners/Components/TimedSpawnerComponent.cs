@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Threading;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -13,8 +12,7 @@ namespace Content.Server.Spawners.Components;
 /// Can configure the set of entities, spawn timing, spawn chance,
 /// and min/max number of entities to spawn.
 /// </summary>
-[RegisterComponent, EntityCategory("Spawner")]
-[AutoGenerateComponentPause]
+[RegisterComponent, EntityCategory("Spawner"), AutoGenerateComponentPause]
 public sealed partial class TimedSpawnerComponent : Component, ISerializationHooks
 {
     /// <summary>
@@ -49,11 +47,8 @@ public sealed partial class TimedSpawnerComponent : Component, ISerializationHoo
     [DataField]
     public int MaximumEntitiesSpawned = 1;
 
-    /// <summary>
-    /// The time at which the current interval will have elapsed and entities may be spawned.
-    /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan NextFire = TimeSpan.Zero;
+    public TimeSpan NextFire;
 
     void ISerializationHooks.AfterDeserialization()
     {

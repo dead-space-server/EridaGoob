@@ -252,6 +252,7 @@ public abstract partial class SharedHumanoidAppearanceSystem : EntitySystem //go
 
         _identity.QueueIdentityUpdate(target);
         Dirty(target, targetHumanoid);
+        RaiseMarkingsChanged(target); // Goob
     }
 
     /// <summary>
@@ -348,6 +349,7 @@ public abstract partial class SharedHumanoidAppearanceSystem : EntitySystem //go
         humanoid.MarkingSet.EnsureSpecies(species, humanoid.SkinColor, _markingManager);
         var oldMarkings = humanoid.MarkingSet.GetForwardEnumerator().ToList();
         humanoid.MarkingSet = new(oldMarkings, prototype.MarkingPoints, _markingManager, _proto);
+        RaiseMarkingsChanged(uid); // Goob
 
         if (sync)
             Dirty(uid, humanoid);
@@ -662,6 +664,7 @@ public abstract partial class SharedHumanoidAppearanceSystem : EntitySystem //go
         }
 
         humanoid.MarkingSet.AddBack(prototype.MarkingCategory, markingObject);
+        RaiseMarkingsChanged(uid); // Goob
 
         if (sync)
             Dirty(uid, humanoid);
@@ -708,6 +711,7 @@ public abstract partial class SharedHumanoidAppearanceSystem : EntitySystem //go
         var markingObject = new Marking(marking, colors);
         markingObject.Forced = forced;
         humanoid.MarkingSet.AddBack(prototype.MarkingCategory, markingObject);
+        RaiseMarkingsChanged(uid); // Goob
 
         if (sync)
             Dirty(uid, humanoid);

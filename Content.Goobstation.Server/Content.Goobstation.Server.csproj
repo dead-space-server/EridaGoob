@@ -10,19 +10,17 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <OutputType Condition="'$(FullRelease)' != 'True'">Exe</OutputType>
     <NoWarn>1998</NoWarn>
-    <WarningsAsErrors>nullable</WarningsAsErrors>
+    <WarningsAsErrors>nullable;RA0049;RA0051</WarningsAsErrors>
     <ServerGarbageCollection>true</ServerGarbageCollection>
   </PropertyGroup>
   <Import Project="../MSBuild/Content.props" />
   <ItemGroup>
-    <!-- erida edit: Concentus replaced with NWaves for voice chat -->
-    <PackageReference Include="NWaves" />
     <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
+    <PackageReference Include="NWaves" />
   </ItemGroup>
 
   <Import Project="..\RobustToolbox\Imports\Shared.props" />
 
-  <!-- erida edit: voice chat web assets -->
   <ItemGroup>
     <EmbeddedResource Include="VoiceChat\Web\**" LogicalName="VoiceChat.Web.%(Filename)%(Extension)" />
   </ItemGroup>
@@ -34,4 +32,5 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   </ItemGroup>
 
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
+  <Import Project="..\RobustToolbox\MSBuild\Robust.EntitySystemSubscriptionsGenerator.targets" />
 </Project>

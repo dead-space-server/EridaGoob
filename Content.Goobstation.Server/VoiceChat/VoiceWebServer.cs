@@ -37,7 +37,7 @@ public sealed class VoiceWebServer : IDisposable
     private const int MaxMessageBytes = 4096;
     private const int MaxConnections = 1024;
     private const int MaxQueuedFrames = 4096;
-    private const double FrameBurst = 120;
+    private const double FrameBurst = 30;
     private const double FramesPerSecond = 55;
 
     private static readonly TimeSpan HandshakeTimeout = TimeSpan.FromSeconds(10);

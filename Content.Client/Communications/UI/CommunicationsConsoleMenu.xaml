@@ -48,7 +48,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                     Text="{Loc 'comms-console-menu-voice-broadcast-button'}"
                     ToolTip="{Loc 'comms-console-menu-voice-broadcast-button-tooltip'}"
                     StyleClasses="OpenBoth"
-                    Visible="False"/> <!-- erida edit -->
+                    Visible="False"/> <!-- Goobstation - Voice chat -->
 
                 <OptionButton Name="AlertLevelButton"
                     Access="Public"
@@ -64,7 +64,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <RichTextLabel Name="CountdownLabel"/>
 
                 <Button Name="EmergencyShuttleButton"
-                    Access="Public" 
+                    Access="Public"
                     Text="Placeholder Text"
                     ToolTip="{Loc 'comms-console-menu-emergency-shuttle-button-tooltip'}"/>
             </BoxContainer>

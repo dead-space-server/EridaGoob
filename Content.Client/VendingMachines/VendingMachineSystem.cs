@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Client._Reserve.VendingMachines;
+using Content.Client._Funkystation.VendingMachines; // Goob
 using Content.Shared.VendingMachines;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
@@ -62,7 +62,7 @@ public sealed class VendingMachineSystem : SharedVendingMachineSystem
             component.ContrabandInventory.Add(entry.Key, new(entry.Value));
         }
 
-        if (UISystem.TryGetOpenUi<BoundUserInterface>(uid, VendingMachineUiKey.Key, out var baseBui) && baseBui is IVendingMachineBoundUi bui) // erida edit
+        if (UISystem.TryGetOpenUi<BoundUserInterface>(uid, VendingMachineUiKey.Key, out var baseBui) && baseBui is IVendingMachineBoundUi bui) // Goob
         {
             if (fullUiUpdate)
             {
@@ -82,7 +82,7 @@ public sealed class VendingMachineSystem : SharedVendingMachineSystem
 
         if (UISystem.TryGetOpenUi<BoundUserInterface>(entity.Owner,
                 VendingMachineUiKey.Key,
-                out var baseBui) && baseBui is IVendingMachineBoundUi bui) // erida edit
+                out var baseBui) && baseBui is IVendingMachineBoundUi bui) // Goob
         {
             bui.UpdateAmounts();
         }
