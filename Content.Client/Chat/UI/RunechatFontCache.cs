@@ -9,6 +9,8 @@ public sealed class RunechatFontCache
 {
     [Dependency] private IResourceCache _resources = default!;
 
+    private const string FallbackFontPath = "/Fonts/unifont-17.0.03.otf"; // Erida edit
+
     private readonly Dictionary<(string, int), Font> _fonts = new();
     private readonly Dictionary<(string, int), Stylesheet> _sheets = new();
 
@@ -17,7 +19,11 @@ public sealed class RunechatFontCache
         if (_fonts.TryGetValue((path, size), out var font))
             return font;
 
-        font = new VectorFont(_resources.GetResource<FontResource>(path), size);
+        // Erida start
+        font = new StackedFont(
+            new VectorFont(_resources.GetResource<FontResource>(path), size),
+            new VectorFont(_resources.GetResource<FontResource>(FallbackFontPath), size));
+        // Erida end
         _fonts[(path, size)] = font;
         return font;
     }

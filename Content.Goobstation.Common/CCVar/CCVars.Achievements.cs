@@ -5,7 +5,7 @@ namespace Content.Goobstation.Common.CCVar;
 public sealed partial class GoobCVars
 {
     public static readonly CVarDef<bool> AchievementsEnabled =
-        CVarDef.Create("achievements.enabled", true, CVar.SERVERONLY);
+        CVarDef.Create("achievements.enabled", false, CVar.SERVERONLY);
 
     public static readonly CVarDef<string> AchievementsExcludedPresets =
         CVarDef.Create("achievements.excluded_presets", "Sandbox,Deathmatch", CVar.SERVERONLY);
