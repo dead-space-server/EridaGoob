@@ -2030,3 +2030,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/81
   avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
   title: '[Mapping] Halloween-Stations'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Upstream
+  id: 148
+  time: '2026-11-02T00:49:50.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/86
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: Upstream
