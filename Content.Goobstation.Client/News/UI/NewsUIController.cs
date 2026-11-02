@@ -31,12 +31,12 @@ public sealed partial class NewsUIController : UIController, IOnStateEntered<Lob
 
     public void OnStateEntered(LobbyState state)
     {
-        SchedulePopups();
+        // SchedulePopups(); // Erida edit
     }
 
     public void OnStateEntered(GameplayState state)
     {
-        SchedulePopups();
+        // SchedulePopups(); // Erida edit
     }
 
     public override void FrameUpdate(FrameEventArgs args)
