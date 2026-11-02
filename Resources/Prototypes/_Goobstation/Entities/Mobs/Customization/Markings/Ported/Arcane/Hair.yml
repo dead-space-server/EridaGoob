@@ -590,15 +590,6 @@
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Ported/Arcane/_Orion/Mobs/Customization/human_hair.rsi
     state: hair_curly
-
-- type: marking
-  id: dave
-  bodyPart: Hair
-  markingCategory: Hair
-  sprites:
-  - sprite: _Goobstation/Mobs/Customization/Ported/Arcane/_Orion/Mobs/Customization/human_hair.rsi
-    state: hair_dave
-
 - type: marking
   id: diagonal_bangs
   bodyPart: Hair

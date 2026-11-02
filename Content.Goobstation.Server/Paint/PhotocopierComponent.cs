@@ -4,7 +4,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Goobstation.Server.Paint;
 
-[RegisterComponent, AutoGenerateComponentPause]
+[RegisterComponent, AutoGenerateComponentPause, ComponentProtoName("GoobPhotocopier")] // erida edit: "Photocopier" is taken by DeadSpace
 public sealed partial class PhotocopierComponent : Component
 {
     [DataField]

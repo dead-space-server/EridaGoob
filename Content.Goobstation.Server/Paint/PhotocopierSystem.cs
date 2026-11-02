@@ -45,7 +45,7 @@ public sealed partial class PhotocopierSystem : EntitySystem
             {
                 copier.State = PhotocopierState.Printing;
                 copier.NextStage = now + copier.PrintTime;
-                _appearance.SetData(uid, PhotocopierVisuals.State, copier.State);
+                _appearance.SetData(uid, GoobPhotocopierVisuals.State, copier.State);
                 _audio.PlayPvs(copier.PrintSound, uid);
                 continue;
             }
@@ -128,7 +128,7 @@ public sealed partial class PhotocopierSystem : EntitySystem
         ent.Comp.State = PhotocopierState.Scanning;
         ent.Comp.NextStage = _timing.CurTime + ent.Comp.ScanTime;
         SetLocked(ent, true);
-        _appearance.SetData(ent, PhotocopierVisuals.State, ent.Comp.State);
+        _appearance.SetData(ent, GoobPhotocopierVisuals.State, ent.Comp.State);
         _audio.PlayPvs(ent.Comp.ScanSound, ent);
         return true;
     }
@@ -165,7 +165,7 @@ public sealed partial class PhotocopierSystem : EntitySystem
         ent.Comp.Target = null;
         ent.Comp.User = null;
         SetLocked(ent, false);
-        _appearance.SetData(ent, PhotocopierVisuals.State, ent.Comp.State);
+        _appearance.SetData(ent, GoobPhotocopierVisuals.State, ent.Comp.State);
     }
 
     private void SetLocked(Entity<PhotocopierComponent> ent, bool locked)

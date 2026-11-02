@@ -122,7 +122,7 @@ namespace Content.Goobstation.Server.ServerCurrency.Commands
     public sealed partial class AddServerCurrencyCommand : IConsoleCommand
     {
         [Dependency] private ICommonCurrencyManager _currencyMan = default!;
-        [Dependency] private readonly EridaWebhooks _eridaWebhooks = default!; // Erida edit
+        [Dependency] private EridaWebhooks _eridaWebhooks = default!; // Erida edit
 
         public string Command => Loc.GetString("server-currency-add-command");
         public string Description => Loc.GetString("server-currency-add-command-description");
@@ -171,7 +171,7 @@ namespace Content.Goobstation.Server.ServerCurrency.Commands
     public sealed partial class RemoveServerCurrencyCommand : IConsoleCommand
     {
         [Dependency] private ICommonCurrencyManager _currencyMan = default!;
-        [Dependency] private readonly EridaWebhooks _eridaWebhooks = default!; // Erida edit
+        [Dependency] private EridaWebhooks _eridaWebhooks = default!; // Erida edit
 
         public string Command => Loc.GetString("server-currency-remove-command");
         public string Description => Loc.GetString("server-currency-remove-command-description");
@@ -220,7 +220,7 @@ namespace Content.Goobstation.Server.ServerCurrency.Commands
     public sealed partial class SetServerCurrencyCommand : IConsoleCommand
     {
         [Dependency] private ICommonCurrencyManager _currencyMan = default!;
-        [Dependency] private readonly EridaWebhooks _eridaWebhooks = default!; // Erida edit
+        [Dependency] private EridaWebhooks _eridaWebhooks = default!; // Erida edit
 
         public string Command => Loc.GetString("server-currency-set-command");
         public string Description => Loc.GetString("server-currency-set-command-description");

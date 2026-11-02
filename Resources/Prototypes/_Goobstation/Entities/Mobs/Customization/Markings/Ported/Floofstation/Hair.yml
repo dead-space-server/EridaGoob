@@ -1,22 +1,6 @@
 # Ported from https://github.com/Fansana/floofstation1/tree/eff4e2d97f9094bf9cb0019c47bd058cfd6a9f3d
 
 - type: marking
-  id: ADTAllShavedFemale
-  bodyPart: Hair
-  markingCategory: Hair
-  sprites:
-  - sprite: _Goobstation/Mobs/Customization/Ported/Floofstation/_ADT/Mobs/Customization/Hair/hair.rsi
-    state: shaved_female
-
-- type: marking
-  id: ADTAllhonor
-  bodyPart: Hair
-  markingCategory: Hair
-  sprites:
-  - sprite: _Goobstation/Mobs/Customization/Ported/Floofstation/_ADT/Mobs/Customization/Hair/hair.rsi
-    state: honor
-
-- type: marking
   id: HumanFembun
   bodyPart: Hair
   markingCategory: Hair

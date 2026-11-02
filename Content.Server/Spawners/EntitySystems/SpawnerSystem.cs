@@ -35,13 +35,13 @@ public sealed class SpawnerSystem : EntitySystem
 
             OnTimerFired(uid, timedSpawner);
 
-            timedSpawner.NextFire += TimeSpan.FromSeconds(timedSpawner.IntervalSeconds);
+            timedSpawner.NextFire += timedSpawner.IntervalSeconds;
         }
     }
 
     private void OnMapInit(Entity<TimedSpawnerComponent> ent, ref MapInitEvent args)
     {
-        ent.Comp.NextFire = _timing.CurTime + TimeSpan.FromSeconds(ent.Comp.IntervalSeconds);
+        ent.Comp.NextFire = _timing.CurTime + ent.Comp.IntervalSeconds;
     }
 
     private void OnTimerFired(EntityUid uid, TimedSpawnerComponent component)

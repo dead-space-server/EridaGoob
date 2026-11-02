@@ -3,7 +3,7 @@ using Robust.Shared.Serialization;
 namespace Content.Goobstation.Shared.Paint;
 
 [Serializable, NetSerializable]
-public enum PhotocopierVisuals : byte
+public enum GoobPhotocopierVisuals : byte
 {
     State,
 }
