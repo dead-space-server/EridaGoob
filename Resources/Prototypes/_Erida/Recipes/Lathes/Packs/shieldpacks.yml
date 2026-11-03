@@ -1,0 +1,14 @@
+- type: latheRecipePack
+  id: BaseShieldPacks
+  recipes:
+  - ShieldPackBase
+
+- type: latheRecipePack
+  id: MiningShieldPacks
+  recipes:
+  - ShieldPackMining
+
+- type: latheRecipePack
+  id: SecurityShieldPacks
+  recipes:
+  - ShieldPackSecurity

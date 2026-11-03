@@ -1,0 +1,44 @@
+- type: technology
+  id: BaseShieldPackTech
+  name: research-technology-base-shield-pack
+  icon:
+    sprite: _Erida/Clothing/Belt/shieldpack.rsi
+    state: shieldpack_basic
+  discipline: Arsenal
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - ShieldPackBase
+  position: 5,4
+
+- type: technology
+  id: MinerShieldpackTech
+  name: research-technology-miner-shield-pack
+  icon:
+    sprite: _Erida/Clothing/Belt/shieldpack.rsi
+    state: shieldpack_mining
+  discipline: Arsenal
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - ShieldPackMining
+  position: 6,5
+  technologyPrerequisites:
+  - BaseShieldPackTech
+  - SalvageEquipment
+
+- type: technology
+  id: SecurityShieldpackTech
+  name: research-technology-security-shield-pack
+  icon:
+    sprite: _Erida/Clothing/Belt/shieldpack.rsi
+    state: shieldpack_security
+  discipline: Arsenal
+  tier: 1
+  cost: 7500
+  recipeUnlocks:
+  - ShieldPackSecurity
+  position: 6,4
+  technologyPrerequisites:
+  - BaseShieldPackTech
+  - WeaponLaserCellRevolverTech
