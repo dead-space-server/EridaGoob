@@ -104,6 +104,8 @@
     repairRate: 0.007
   - type: HardpointIntegrity
     maxIntegrity: 150
+  - type: VehicleRamBonus
+    ramDamageMultiplier: 1.5
   - type: HardpointVisual
     vehicleState: snowplow_0
 

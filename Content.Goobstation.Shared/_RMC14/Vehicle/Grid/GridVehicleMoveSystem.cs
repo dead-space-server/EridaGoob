@@ -44,6 +44,7 @@ public sealed partial class GridVehicleMoverSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
+    [Dependency] private VehicleRamBonusSystem _ramBonus = default!;
     [Dependency] private SharedRMCPowerSystem _rmcPower = default!;
     [Dependency] private RMCSizeStunSystem _size = default!;
     [Dependency] private StandingStateSystem _standing = default!;

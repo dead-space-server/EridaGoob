@@ -108,6 +108,7 @@
   - type: ToolTileCompatible # Goobstation
     delay: 2
   - type: Welder
+  - type: Blowtorch # Erida edit
   - type: PointLight
     enabled: false
     radius: 1.5

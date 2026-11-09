@@ -106,6 +106,10 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.Arcade2);
             human.AddFunction(ContentKeyFunctions.Arcade3);
             human.AddFunction(ContentKeyFunctions.OfferItem); // erida edit
+            // Erida start
+            human.AddFunction(ContentKeyFunctions.VehicleToggleHeadlights);
+            human.AddFunction(ContentKeyFunctions.VehicleBoost);
+            // Erida end
             // Shitmed Change Start - TODO: Add hands, feet and groin targeting.
             human.AddFunction(ContentKeyFunctions.TargetHead);
             human.AddFunction(ContentKeyFunctions.TargetChest);

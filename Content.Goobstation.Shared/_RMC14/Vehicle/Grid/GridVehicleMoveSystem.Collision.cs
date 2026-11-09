@@ -807,11 +807,13 @@ public sealed partial class GridVehicleMoverSystem : EntitySystem
 
     private void SmashTarget(EntityUid target, EntityUid vehicle, VehicleSmashableComponent smashable)
     {
+        var damageAmount = smashable.DamageOnHit * _ramBonus.GetRamDamageMultiplier(vehicle);
+
         var damage = new DamageSpecifier
         {
             DamageDict =
             {
-                [CollisionDamageType] = smashable.DamageOnHit,
+                [CollisionDamageType] = damageAmount,
             },
         };
 

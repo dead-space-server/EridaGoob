@@ -32,6 +32,13 @@
     penetrateDamage: 25
     damagePenalty: 0.1
   - type: Structure # WD EDIT. TODO: Kill me pls
+  - type: VehicleSmashable
+    damageOnHit: 3
+    deleteOnHit: false
+    slowdownMultiplier: 0.5
+    slowdownDuration: 1.2
+    smashSound:
+      path: /Audio/Effects/metal_break1.ogg
 
 - type: entity
   # This means that it's not anchored on spawn.
