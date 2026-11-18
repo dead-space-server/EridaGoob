@@ -2062,3 +2062,12 @@ Entries:
   media:
     - >-
       https://github.com/user-attachments/assets/d4c240d1-a1c9-4c3f-b7b8-d384a490e4c9
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Порт приближения экрана с Trauma
+  id: 151
+  time: '2026-11-18T22:54:46.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/90
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Port] Zoom feature'
