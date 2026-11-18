@@ -81,101 +81,124 @@
 - type: lobbyBackground
   id: TooManyCooks
   background: /Textures/LobbyScreens/TooManyCooks.webp
-  name: Too Many Cooks
+  name: lobby-state-background-toomanycooks-name # Erida edit
   artist: orangealligator
 
 - type: lobbyBackground
   id: suboptimal
   background: /Textures/LobbyScreens/suboptimal.webp
-  name: Suboptimal
+  name: lobby-state-background-suboptimal-name # Erida edit
   artist: 4vvv
 
 - type: lobbyBackground
   id: spacedragon
   background: /Textures/LobbyScreens/spacedragon.webp
-  name: Space Dragon
+  name: lobby-state-background-spacedragon-name # Erida edit
   artist: asardonicsailor
 
 - type: lobbyBackground
   id: nukies-bridge
   background: /Textures/LobbyScreens/nukies_bridge.webp
-  name: Nukies Bridge!!
+  name: lobby-state-background-nukiesbridge-name # Erida edit
   artist: seyriix
 
 - type: lobbyBackground
   id: MushroomAnnihilator
   background: /Textures/LobbyScreens/MushroomAnnihilator.webp
-  name: Mango Flavored Mushroom Annihilator
+  name: lobby-state-background-mushroomannihilator-name # Erida edit
   artist: zymshok
 
 - type: lobbyBackground
   id: heretic
   background: /Textures/LobbyScreens/heretic.webp
-  name: Heretic
+  name: lobby-state-background-heretic-name # Erida edit
   artist: Cheeki
 
 - type: lobbyBackground
   id: etu-hop
   background: /Textures/LobbyScreens/fuckingkillHoPalready.webp
-  name: E tu, HoP?
+  name: lobby-state-background-etuhop-name # Erida edit
   artist: MsMunde
 
 - type: lobbyBackground
   id: etzils-hungry
   background: /Textures/LobbyScreens/etzilshungry.webp
-  name: Etzil's Hungry
+  name: lobby-state-background-etzilshungry-name # Erida edit
   artist: IdiotVibes
 
 - type: lobbyBackground
   id: aCalmEvac
   background: /Textures/LobbyScreens/aCalmEvac.webp
-  name: A Calm Evac
+  name: lobby-state-background-acalmevac-name # Erida edit
   artist: navi__.
 
 - type: lobbyBackground
   id: YouLookLonely
   background: /Textures/LobbyScreens/you-look-lonely.webp
+  name: lobby-state-background-youlooklonely-name
+  artist: DreamlyJack
 
 - type: lobbyBackground
   id: Summer2025DragonLeash
   background: /Textures/LobbyScreens/summer2025-dragon-leash.webp
+  name: lobby-state-background-summer2025dragonleash-name
+  artist: dreamlyjack
 
 - type: lobbyBackground
   id: SingulordCage
   background: /Textures/LobbyScreens/singulord-cage.webp
+  name: lobby-state-background-singulordcage-name
+  artist: Gasper_horned
 
 - type: lobbyBackground
   id: Revenant
   background: /Textures/LobbyScreens/revenant.webp
+  name: lobby-state-background-revenant-name
+  artist: mrzipka
 
 - type: lobbyBackground
   id: NukieWar
   background: /Textures/LobbyScreens/nukie-war.webp
+  name: lobby-state-background-nukiewar-name
+  artist: slvtr455
 
 - type: lobbyBackground
   id: NewYearParty
   background: /Textures/LobbyScreens/new-year-party.webp
+  name: lobby-state-background-newyearparty-name
+  artist: thevictorplumber
 
 - type: lobbyBackground
   id: NewYearBar
   background: /Textures/LobbyScreens/new-year-bar.webp
+  name: lobby-state-background-newyearbar-name
+  artist: ko4erga
 
 - type: lobbyBackground
   id: MenAtWork
   background: /Textures/LobbyScreens/men-at-work.webp
+  name: lobby-state-background-menatwork-name
+  artist: DreamlyJack
 
 - type: lobbyBackground
   id: barparty
   background: /Textures/LobbyScreens/bar_party.webp
+  name: lobby-state-background-barparty-name
+  artist: lukumpaxat
 
 - type: lobbyBackground
   id: dedsquad
   background: /Textures/LobbyScreens/Epsil.webp
+  name: lobby-state-background-dedsquad-name
 
 - type: lobbyBackground
   id: detective
   background: /Textures/LobbyScreens/detective.webp
+  name: lobby-state-background-detective-name
+  artist: byiron4ik
 
 - type: lobbyBackground
   id: BaseRound
   background: /Textures/LobbyScreens/BaseRound.png
+  name: lobby-state-background-baseround-name
+  artist: doner4037

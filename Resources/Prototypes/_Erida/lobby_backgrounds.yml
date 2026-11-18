@@ -1,0 +1,339 @@
+# Animated lobby backgrounds, LuaM ones are ported from Monolith-DS (LuaM).
+# Frames are 000, 001, ... in the folder, background points at the first one.
+
+- type: lobbyBackground
+  id: LuaMGalaxy1
+  background: /Textures/_LuaM/LobbyScreens/LuaMGalaxy1/000.webp
+  frames: 14
+  frameTime: 0.15
+  name: lobby-state-background-luamgalaxy1
+  artist: lobby-state-background-luam-artist
+
+- type: lobbyBackground
+  id: LuaMSky1
+  background: /Textures/_LuaM/LobbyScreens/LuaMSky1/000.webp
+  frames: 10
+  frameTime: 0.1
+  name: lobby-state-background-luamsky1
+  artist: lobby-state-background-luam-artist
+
+- type: lobbyBackground
+  id: LuaMSky2
+  background: /Textures/_LuaM/LobbyScreens/LuaMSky2/000.webp
+  frames: 10
+  frameTime: 0.08
+  name: lobby-state-background-luamsky2
+  artist: lobby-state-background-luam-artist
+
+- type: lobbyBackground
+  id: LuaMPlanets1
+  background: /Textures/_LuaM/LobbyScreens/LuaMPlanets1/000.webp
+  frames: 20
+  frameTime: 0.2
+  name: lobby-state-background-luamplanets1
+  artist: lobby-state-background-luam-artist
+
+- type: lobbyBackground
+  id: LuaMPlanets2
+  background: /Textures/_LuaM/LobbyScreens/LuaMPlanets2/000.webp
+  frames: 15
+  frameTime: 0.1
+  name: lobby-state-background-luamplanets2
+  artist: lobby-state-background-luam-artist
+
+- type: lobbyBackground
+  id: LuaMSpace1
+  background: /Textures/_LuaM/LobbyScreens/LuaMSpace1/000.webp
+  frames: 20
+  frameTime: 0.1
+  name: lobby-state-background-luamspace1
+  artist: lobby-state-background-luam-artist
+
+- type: lobbyBackground
+  id: LuaMSpace2
+  background: /Textures/_LuaM/LobbyScreens/LuaMSpace2/000.webp
+  frames: 24
+  frameTime: 0.1
+  name: lobby-state-background-luamspace2
+  artist: lobby-state-background-luam-artist
+
+- type: lobbyBackground
+  id: LuaMSpace3
+  background: /Textures/_LuaM/LobbyScreens/LuaMSpace3/000.webp
+  frames: 20
+  frameTime: 0.1
+  name: lobby-state-background-luamspace3
+  artist: lobby-state-background-luam-artist
+
+- type: lobbyBackground
+  id: EridaBar
+  background: /Textures/_Erida/Lobby/Animations/bar/000.webp
+  frames: 119
+  frameTime: 0.03
+  name: lobby-state-background-erida-bar
+
+- type: lobbyBackground
+  id: EridaBilly
+  background: /Textures/_Erida/Lobby/Animations/billy/000.webp
+  frames: 120
+  frameTime: 0.06
+  name: lobby-state-background-erida-billy
+
+- type: lobbyBackground
+  id: EridaBlackHole
+  background: /Textures/_Erida/Lobby/Animations/black_hole/000.webp
+  frames: 13
+  frameTime: 0.1
+  name: lobby-state-background-erida-black-hole
+
+- type: lobbyBackground
+  id: EridaBlackHole2
+  background: /Textures/_Erida/Lobby/Animations/black_hole2/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-black-hole2
+
+- type: lobbyBackground
+  id: EridaBlackHoleIsland
+  background: /Textures/_Erida/Lobby/Animations/black_hole_island/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-black-hole-island
+
+- type: lobbyBackground
+  id: EridaBladeRunner
+  background: /Textures/_Erida/Lobby/Animations/blade_runner/000.webp
+  frames: 3
+  frameTime: 0.1
+  name: lobby-state-background-erida-blade-runner
+
+- type: lobbyBackground
+  id: EridaEarth
+  background: /Textures/_Erida/Lobby/Animations/earth/000.webp
+  frames: 20
+  frameTime: 0.1
+  name: lobby-state-background-erida-earth
+
+- type: lobbyBackground
+  id: EridaEclipse
+  background: /Textures/_Erida/Lobby/Animations/eclipse/000.webp
+  frames: 20
+  frameTime: 0.1
+  name: lobby-state-background-erida-eclipse
+
+- type: lobbyBackground
+  id: EridaEvangelionElevator
+  background: /Textures/_Erida/Lobby/Animations/evangelion_elevator/000.webp
+  frames: 59
+  frameTime: 0.1
+  name: lobby-state-background-erida-evangelion-elevator
+
+- type: lobbyBackground
+  id: EridaEveningBridge
+  background: /Textures/_Erida/Lobby/Animations/evening_bridge/000.webp
+  frames: 35
+  frameTime: 0.1
+  name: lobby-state-background-erida-evening-bridge
+
+- type: lobbyBackground
+  id: EridaEveningSun
+  background: /Textures/_Erida/Lobby/Animations/evening_sun/000.webp
+  frames: 60
+  frameTime: 0.1
+  name: lobby-state-background-erida-evening-sun
+
+- type: lobbyBackground
+  id: EridaEveningSun2
+  background: /Textures/_Erida/Lobby/Animations/evening_sun2/000.webp
+  frames: 28
+  frameTime: 0.1
+  name: lobby-state-background-erida-evening-sun2
+
+- type: lobbyBackground
+  id: EridaEveningSun3
+  background: /Textures/_Erida/Lobby/Animations/evening_sun3/000.webp
+  frames: 38
+  frameTime: 0.1
+  name: lobby-state-background-erida-evening-sun3
+
+- type: lobbyBackground
+  id: EridaEveningSun4
+  background: /Textures/_Erida/Lobby/Animations/evening_sun4/000.webp
+  frames: 20
+  frameTime: 0.1
+  name: lobby-state-background-erida-evening-sun4
+
+- type: lobbyBackground
+  id: EridaEveningSun5
+  background: /Textures/_Erida/Lobby/Animations/evening_sun5/000.webp
+  frames: 76
+  frameTime: 0.1
+  name: lobby-state-background-erida-evening-sun5
+
+- type: lobbyBackground
+  id: EridaEveningSun6
+  background: /Textures/_Erida/Lobby/Animations/evening_sun6/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-evening-sun6
+
+- type: lobbyBackground
+  id: EridaEveningSun7
+  background: /Textures/_Erida/Lobby/Animations/evening_sun7/000.webp
+  frames: 36
+  frameTime: 0.1
+  name: lobby-state-background-erida-evening-sun7
+
+- type: lobbyBackground
+  id: EridaEveningSun8
+  background: /Textures/_Erida/Lobby/Animations/evening_sun8/000.webp
+  frames: 20
+  frameTime: 0.1
+  name: lobby-state-background-erida-evening-sun8
+
+- type: lobbyBackground
+  id: EridaEveningWindow
+  background: /Textures/_Erida/Lobby/Animations/evening_window/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-evening-window
+
+- type: lobbyBackground
+  id: EridaFrieren
+  background: /Textures/_Erida/Lobby/Animations/frieren/000.webp
+  frames: 130
+  frameTime: 0.1
+  name: lobby-state-background-erida-frieren
+
+- type: lobbyBackground
+  id: EridaGraveyard
+  background: /Textures/_Erida/Lobby/Animations/graveyard/000.webp
+  frames: 16
+  frameTime: 0.1
+  name: lobby-state-background-erida-graveyard
+
+- type: lobbyBackground
+  id: EridaGutsVsGriffit
+  background: /Textures/_Erida/Lobby/Animations/guts_vs_griffit/000.webp
+  frames: 12
+  frameTime: 0.1
+  name: lobby-state-background-erida-guts-vs-griffit
+
+- type: lobbyBackground
+  id: EridaHomerStarfall
+  background: /Textures/_Erida/Lobby/Animations/homer_starfall/000.webp
+  frames: 32
+  frameTime: 0.1
+  name: lobby-state-background-erida-homer-starfall
+
+- type: lobbyBackground
+  id: EridaIslandEvening
+  background: /Textures/_Erida/Lobby/Animations/island_evening/000.webp
+  frames: 80
+  frameTime: 0.1
+  name: lobby-state-background-erida-island-evening
+
+- type: lobbyBackground
+  id: EridaJungle
+  background: /Textures/_Erida/Lobby/Animations/jungle/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-jungle
+
+- type: lobbyBackground
+  id: EridaKvazar
+  background: /Textures/_Erida/Lobby/Animations/kvazar/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-kvazar
+
+- type: lobbyBackground
+  id: EridaLain
+  background: /Textures/_Erida/Lobby/Animations/lain/000.webp
+  frames: 24
+  frameTime: 0.1
+  name: lobby-state-background-erida-lain
+
+- type: lobbyBackground
+  id: EridaMonolith
+  background: /Textures/_Erida/Lobby/Animations/monolith/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-monolith
+
+- type: lobbyBackground
+  id: EridaNebula
+  background: /Textures/_Erida/Lobby/Animations/nebula/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-nebula
+
+- type: lobbyBackground
+  id: EridaNeonSity
+  background: /Textures/_Erida/Lobby/Animations/neon_sity/000.webp
+  frames: 100
+  frameTime: 0.1
+  name: lobby-state-background-erida-neon-sity
+
+- type: lobbyBackground
+  id: EridaNightMoon
+  background: /Textures/_Erida/Lobby/Animations/night_moon/000.webp
+  frames: 20
+  frameTime: 0.1
+  name: lobby-state-background-erida-night-moon
+
+- type: lobbyBackground
+  id: EridaRedSkull
+  background: /Textures/_Erida/Lobby/Animations/red_skull/000.webp
+  frames: 7
+  delays: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 2.0]
+  name: lobby-state-background-erida-red-skull
+
+- type: lobbyBackground
+  id: EridaSky
+  background: /Textures/_Erida/Lobby/Animations/sky/000.webp
+  frames: 31
+  frameTime: 0.1
+  name: lobby-state-background-erida-sky
+
+- type: lobbyBackground
+  id: EridaSpaceDesert
+  background: /Textures/_Erida/Lobby/Animations/space_desert/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-space-desert
+
+- type: lobbyBackground
+  id: EridaSpaceGirl
+  background: /Textures/_Erida/Lobby/Animations/space_girl/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-space-girl
+
+- type: lobbyBackground
+  id: EridaSpaceStarts
+  background: /Textures/_Erida/Lobby/Animations/space_starts/000.webp
+  frames: 20
+  frameTime: 0.1
+  name: lobby-state-background-erida-space-starts
+
+- type: lobbyBackground
+  id: EridaSunnyPTL
+  background: /Textures/_Erida/Lobby/Animations/sunny_PTL/000.webp
+  frames: 40
+  frameTime: 0.1
+  name: lobby-state-background-erida-sunny-ptl
+
+- type: lobbyBackground
+  id: EridaSunnyPTL2
+  background: /Textures/_Erida/Lobby/Animations/sunny_PTL2/000.webp
+  frames: 29
+  frameTime: 0.1
+  name: lobby-state-background-erida-sunny-ptl2
+
+- type: lobbyBackground
+  id: EridaSunnyCity
+  background: /Textures/_Erida/Lobby/Animations/sunny_city/000.webp
+  frames: 34
+  frameTime: 0.1
+  name: lobby-state-background-erida-sunny-city
