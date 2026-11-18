@@ -13,18 +13,37 @@ using Robust.Shared.Player;
 
 namespace Content.Server._Erida.Sponsor;
 
-public sealed class SponsorManagerSystem : EntitySystem
+public sealed partial class SponsorManagerSystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly EridaServerApi _eridaServerApi = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private EridaServerApi _eridaServerApi = default!;
 
-    private Dictionary<NetUserId, SponsorStatus> _cachedPlayers = [];
+    private readonly Dictionary<NetUserId, SponsorStatus> _cachedPlayers = [];
 
     public override void Initialize()
     {
+        SubscribeNetworkEvent<SponsorStatusRequest>(OnStatusRequest);
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
 
         base.Initialize();
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _playerManager.PlayerStatusChanged -= OnPlayerStatusChanged;
+    }
+
+    private void OnStatusRequest(SponsorStatusRequest msg, EntitySessionEventArgs args)
+    {
+        SendStatus(args.SenderSession);
+    }
+
+    private void SendStatus(ICommonSession session)
+    {
+        var rank = _cachedPlayers.TryGetValue(session.UserId, out var status) ? status.Rank : (int?) null;
+        RaiseNetworkEvent(new SponsorStatusResponse { Rank = rank }, session);
     }
 
     private async void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs args)
@@ -32,7 +51,7 @@ public sealed class SponsorManagerSystem : EntitySystem
         switch (args.NewStatus)
         {
             case SessionStatus.Connected:
-                await RefreshChachedPlayerStatus(args.Session);
+                await RefreshCachedPlayerStatus(args.Session);
                 break;
             case SessionStatus.Disconnected:
                 _cachedPlayers.Remove(args.Session.UserId);
@@ -40,11 +59,43 @@ public sealed class SponsorManagerSystem : EntitySystem
         }
     }
 
-    private async Task RefreshChachedPlayerStatus(ICommonSession session)
+    private async Task RefreshCachedPlayerStatus(ICommonSession session)
     {
         var status = await _eridaServerApi.GetSponsorUserDataOrNull(session.UserId);
+
+        // The player may have left while the bot was answering, Disconnected has already cleared the cache.
+        if (session.Status is not (SessionStatus.Connected or SessionStatus.InGame))
+            return;
+
         if (status != null)
             _cachedPlayers[session.UserId] = status;
+        else
+            _cachedPlayers.Remove(session.UserId);
+
+        SendStatus(session);
+    }
+
+    /// <summary>
+    /// Pretends the player has this subscription rank until they leave. Weekly tokens are counted by the bot and stay
+    /// as they are.
+    /// </summary>
+    /// <returns>False if the rank is not positive.</returns>
+    public bool TrySetFakeRank(ICommonSession session, int rank)
+    {
+        if (rank <= 0)
+            return false;
+
+        _cachedPlayers[session.UserId] = new SponsorStatus { Rank = rank, StartedAt = DateTimeOffset.UtcNow };
+        SendStatus(session);
+        return true;
+    }
+
+    /// <summary>
+    /// Replaces a rank from <see cref="TrySetFakeRank"/> with the real status from the bot.
+    /// </summary>
+    public Task ClearFakeRank(ICommonSession session)
+    {
+        return RefreshCachedPlayerStatus(session);
     }
 
     public bool IsSponsor(NetUserId userId)
@@ -54,11 +105,6 @@ public sealed class SponsorManagerSystem : EntitySystem
 
     public bool GetCachedUserInfo(NetUserId userId, [NotNullWhen(true)] out SponsorStatus? status)
     {
-        status = null;
-        if (!IsSponsor(userId))
-            return false;
-
-        status = _cachedPlayers[userId];
-        return true;
+        return _cachedPlayers.TryGetValue(userId, out status);
     }
 }
