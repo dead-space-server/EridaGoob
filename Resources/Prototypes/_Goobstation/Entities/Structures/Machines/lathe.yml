@@ -138,6 +138,7 @@
     - BluespaceTheory
     - ScienceClothing
     - ConstructionBagOfHolding
+    - MiningShieldPacks # Erida-edit
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SalvageExplosivesStatic # Seismic charges - they're pretty cheap in salvage vendor anyway so why not
@@ -229,11 +230,16 @@
     # Einstein Engines Packs
     - Translators
     - TranslatorImplanters
+    # Erida-start
+    - BaseShieldPacks
+    - MiningShieldPacks
+    #Erida-end
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - MechBoardsSecurity
     - MechBoardsCargo
     - MechBoardsCivilian # Evil ass traitor scientist in a honker... with a rocket launcher because the honker is emagged too.
+    - SecurityShieldPacks # Erida-edit
   - type: MaterialStorage
     whitelist:
       tags:
