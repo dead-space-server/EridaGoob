@@ -19,7 +19,6 @@ public sealed partial class GridStencilSystem : EntitySystem
 
     [Dependency] private IClyde _clyde = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private IMapManager _mapManager = default!; // erida edit
     [Dependency] private SharedMapSystem _maps = default!; // erida edit
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedTransformSystem _xform = default!;
@@ -80,12 +79,12 @@ public sealed partial class GridStencilSystem : EntitySystem
             () =>
             {
                 _grids.Clear();
-                _mapManager.FindGridsIntersecting(mapId, worldBounds, ref _grids, approx: true, includeMap: true); // erida edit
+                _maps.FindGridsIntersecting(mapId, worldBounds, ref _grids, approx: true, includeMap: true); // erida edit
 
                 foreach (var grid in _grids)
                 {
                     var worldToTextureMatrix = Matrix3x2.Multiply(_xform.GetWorldMatrix(grid.Owner), invMatrix);
-                    var tiles = _maps.GetTilesEnumerator(grid.Owner, grid, worldBounds); // erida edit
+                    var tiles = _maps.GetTilesEnumerator(grid.Owner, grid.Comp, worldBounds); // erida edit
                     worldHandle.SetTransform(worldToTextureMatrix);
 
                     while (tiles.MoveNext(out var tileRef))
@@ -146,13 +145,13 @@ public sealed partial class GridStencilSystem : EntitySystem
             () =>
             {
                 _grids.Clear();
-                _mapManager.FindGridsIntersecting(mapId, worldBounds, ref _grids, approx: true, includeMap: true); // erida edit
+                _maps.FindGridsIntersecting(mapId, worldBounds, ref _grids, approx: true, includeMap: true); // erida edit
 
                 foreach (var grid in _grids)
                 {
                     var transform = _xform.GetWorldMatrix(grid.Owner);
                     var worldToTextureMatrix = Matrix3x2.Multiply(transform, invMatrix);
-                    var tiles = _maps.GetTilesEnumerator(grid.Owner, grid, worldBounds); // erida edit
+                    var tiles = _maps.GetTilesEnumerator(grid.Owner, grid.Comp, worldBounds); // erida edit
                     worldHandle.SetTransform(worldToTextureMatrix);
 
                     while (tiles.MoveNext(out var tileRef))

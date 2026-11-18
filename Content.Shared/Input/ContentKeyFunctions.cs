@@ -72,9 +72,9 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction ZoomIn = "ZoomIn";
         public static readonly BoundKeyFunction ResetZoom = "ResetZoom";
         public static readonly BoundKeyFunction ResistGrab = "ResistGrab"; // Goobstation - Grab Intent
-        // erida edit
         public static readonly BoundKeyFunction VoicePushToTalk = "VoicePushToTalk"; // Goobstation - Voice chat
         public static readonly BoundKeyFunction VoicePushToTalkRadio = "VoicePushToTalkRadio"; // Goobstation - Voice chat
+        public static readonly BoundKeyFunction NamePeek = "NamePeek"; // Goob
 
         // Shitmed Change Start
         public static readonly BoundKeyFunction TargetHead = "TargetHead";
@@ -167,10 +167,6 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction MappingRemoveDecal = "MappingRemoveDecal";
         public static readonly BoundKeyFunction MappingCancelEraseDecal = "MappingCancelEraseDecal";
         public static readonly BoundKeyFunction MappingOpenContextMenu = "MappingOpenContextMenu";
-        // erida edit start
-        public static readonly BoundKeyFunction VehicleToggleHeadlights = "VehicleToggleHeadlights";
-        public static readonly BoundKeyFunction VehicleBoost = "VehicleBoost";
-        // erida edit end
         // Erida start
         public static readonly BoundKeyFunction EditorNextObject = "EditorNextObject";
         public static readonly BoundKeyFunction EditorPreviousObject = "EditorPreviousObject";

@@ -5,6 +5,7 @@ using Content.Shared._DV.Carrying;
 using Content.Shared._Erida.Leash;
 using Content.Shared._Erida.Leash.Components;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Disposal.Components;
 using Content.Shared.Disposal.Unit;
 using Content.Shared.Disposal.Unit.Events;

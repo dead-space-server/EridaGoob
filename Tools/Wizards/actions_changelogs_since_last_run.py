@@ -6,6 +6,7 @@ Sends updates to a Discord webhook for new changelog entries since the last GitH
 Automatically figures out the last run and changelog contents with the GitHub API.
 """
 
+import json
 import os
 import re
 import time
@@ -14,7 +15,6 @@ from pathlib import Path
 from typing import Any, Iterable
 from urllib.parse import parse_qsl, urlencode, urlparse
 
-import json
 import requests
 import yaml
 
@@ -22,39 +22,420 @@ DEBUG = False
 DEBUG_CHANGELOG_FILE_OLD = Path("Resources/Changelog/Old.yml")
 GITHUB_API_URL = os.environ.get("GITHUB_API_URL", "https://api.github.com")
 
-# https://discord.com/developers/docs/resources/webhook
-DISCORD_EMBED_DESCRIPTION_LIMIT = 3900
-MAX_CHANGE_MESSAGE_LENGTH = 1000
-DISCORD_MESSAGE_DELAY_SECONDS = 0.5
-ERIDA_EMBED_COLOR = 0x6D3286
-
 CHANGELOG_FILE = "Resources/Changelog/EridaChangelog.yml" # Erida edit
 
-TYPES_TO_EMOJI = {"Fix": "🐛", "Add": "🆕", "Remove": "❌", "Tweak": "⚒️"}
-TYPES_TO_LABELS = {
-    "Fix": "Исправлено",
-    "Add": "Добавлено",
-    "Remove": "Удалено",
-    "Tweak": "Изменено",
-}
-
+# https://discord.com/developers/docs/components/reference
+# All text in a components message counts towards one 4000 character limit.
+MESSAGE_TEXT_BUDGET = 3600
+MESSAGE_COMPONENT_BUDGET = 35
+MAX_CHANGE_MESSAGE_LENGTH = 500
+DISCORD_MESSAGE_DELAY_SECONDS = 0.5
 DISCORD_COMPONENTS_V2_FLAG = 1 << 15
 DISCORD_MEDIA_GALLERY_MAX_ITEMS = 10
+ERIDA_EMBED_COLOR = 0x6D3286
+
+TYPE_ORDER = ["Add", "Tweak", "Fix", "Remove"]
+TYPES_TO_EMOJI = {
+    "Add": "<:cl_add:1572691007001333780>",
+    "Tweak": "<:cl_tweak:1572691136760385637>",
+    "Fix": "<:cl_fix:1572691037711892541>",
+    "Remove": "<:cl_remove:1572691118741659668>",
+}
+TYPES_TO_LABELS = {
+    "Add": "Добавлено",
+    "Tweak": "Изменено",
+    "Fix": "Исправлено",
+    "Remove": "Удалено",
+}
+OTHER_LABEL = "Прочее"
 
 HTTP_TIMEOUT_SECONDS = 30
 MEDIA_MAX_DOWNLOAD_SIZE = 10 * 1024 * 1024
+# Webhook uploads share the server's file limit, 10 MB without boosts.
+MEDIA_MAX_TOTAL_SIZE = 10 * 1024 * 1024
 MEDIA_READ_CHUNK_SIZE = 64 * 1024
 MEDIA_FILE_EXTENSIONS = frozenset({
     ".apng", ".avif", ".bmp", ".gif", ".jpeg", ".jpg",
     ".m4v", ".mkv", ".mov", ".mp4", ".png", ".webm", ".webp",
 })
-_media_counter = 0
 
 ChangelogEntry = dict[str, Any]
+Component = dict[str, Any]
+
 
 class MediaTypeError(RuntimeError):
     pass
 
+
+def main():
+    if not os.environ.get("DISCORD_WEBHOOK_URL_ERIDA"):
+        raise RuntimeError("DISCORD_WEBHOOK_URL_ERIDA is not set")
+
+    if DEBUG:
+        # to debug this script locally, you can use
+        # a separate local file as the old changelog
+        last_changelog_stream = DEBUG_CHANGELOG_FILE_OLD.read_text()
+        publish_context = None
+    else:
+        # when running this normally in a GitHub actions workflow,
+        # it will get the old changelog from the GitHub API
+        last_changelog_stream, publish_context = get_last_changelog()
+
+    last_changelog = yaml.safe_load(last_changelog_stream)
+    with open(CHANGELOG_FILE, "r") as f:
+        cur_changelog = yaml.safe_load(f)
+
+    entries = list(group_changelog_entries_by_pull_request(
+        diff_changelog(last_changelog, cur_changelog)
+    ))
+
+    if not entries:
+        print("No new changelog entries since the last successful publish")
+        return
+
+    change_count = sum(len(entry["changes"]) for entry in entries)
+    print(
+        f"Sending {len(entries)} pull request changelog entries "
+        f"with {change_count} changes since the last successful publish"
+    )
+    send_changelog(entries, publish_context)
+
+
+# region GitHub
+
+def get_last_changelog() -> tuple[str, dict[str, Any]]:
+    github_repository = os.environ["GITHUB_REPOSITORY"]
+    github_run = os.environ["GITHUB_RUN_ID"]
+    github_token = os.environ["GITHUB_TOKEN"]
+
+    session = requests.Session()
+    session.headers["Authorization"] = f"Bearer {github_token}"
+    session.headers["Accept"] = "application/vnd.github+json"
+    session.headers["X-GitHub-Api-Version"] = "2022-11-28"
+
+    current_run = get_current_run(session, github_repository, github_run)
+    most_recent = get_most_recent_workflow(session, current_run)
+    last_sha = most_recent["head_sha"]
+    print(f"Last successful publish job was {most_recent['id']}: {last_sha}")
+    last_changelog_stream = get_last_changelog_by_sha(
+        session, last_sha, github_repository
+    )
+
+    return last_changelog_stream, {
+        "github_repository": github_repository,
+        "current_run": current_run,
+        "previous_run": most_recent,
+    }
+
+
+def get_current_run(
+    sess: requests.Session, github_repository: str, github_run: str
+) -> Any:
+    resp = sess.get(
+        f"{GITHUB_API_URL}/repos/{github_repository}/actions/runs/{github_run}"
+    )
+    resp.raise_for_status()
+    return resp.json()
+
+
+def get_most_recent_workflow(
+    sess: requests.Session, current_run: dict[str, Any]
+) -> Any:
+    past_runs = get_past_runs(sess, current_run)
+    for run in past_runs["workflow_runs"]:
+        # First past successful run that isn't our current run.
+        if run["id"] == current_run["id"]:
+            continue
+
+        return run
+
+    raise RuntimeError("No previous successful publish workflow run found")
+
+
+def get_past_runs(sess: requests.Session, current_run: Any) -> Any:
+    """
+    Get all successful workflow runs before our current one.
+    """
+    params = {"status": "success", "created": f"<={current_run['created_at']}"}
+    resp = sess.get(f"{current_run['workflow_url']}/runs", params=params)
+    resp.raise_for_status()
+    return resp.json()
+
+
+def get_last_changelog_by_sha(
+    sess: requests.Session, sha: str, github_repository: str
+) -> str:
+    """
+    Use GitHub API to get the previous version of the changelog YAML (Actions builds are fetched with a shallow clone)
+    """
+    resp = sess.get(
+        f"{GITHUB_API_URL}/repos/{github_repository}/contents/{CHANGELOG_FILE}",
+        headers={"Accept": "application/vnd.github.raw"},
+        params={"ref": sha},
+    )
+    resp.raise_for_status()
+    return resp.text
+
+# endregion
+
+
+# region Changelog
+
+def diff_changelog(
+    old: dict[str, Any], cur: dict[str, Any]
+) -> Iterable[ChangelogEntry]:
+    """
+    Find all new entries not present in the previous publish.
+    """
+    old_entry_keys = {get_entry_pull_request_key(e) for e in old.get("Entries", [])}
+    return (
+        e
+        for e in cur.get("Entries", [])
+        if get_entry_pull_request_key(e) not in old_entry_keys
+    )
+
+
+def group_changelog_entries_by_pull_request(
+    entries: Iterable[ChangelogEntry],
+) -> Iterable[ChangelogEntry]:
+    """
+    Merges entries of the same PR so each PR is referenced once.
+    """
+    grouped: dict[str, ChangelogEntry] = {}
+
+    for entry in entries:
+        changes = list(entry.get("changes") or [])
+        if not changes:
+            print(f"Skipping changelog entry {entry.get('id')} without changes")
+            continue
+
+        key = get_entry_pull_request_key(entry)
+        existing = grouped.get(key)
+        if existing:
+            existing["changes"].extend(changes)
+            existing["media"] = list(existing.get("media") or []) + list(entry.get("media") or [])
+            continue
+
+        grouped[key] = dict(entry, changes=changes)
+
+    return grouped.values()
+
+
+def get_entry_pull_request_key(entry: ChangelogEntry) -> str:
+    url = str(entry.get("url") or "").strip()
+    if url:
+        return url
+
+    return f"{entry.get('id')}:{entry.get('title')}"
+
+
+def get_pull_request_number(url: Any) -> str | None:
+    match = re.search(r"/pull/(\d+)", str(url or ""))
+    return match.group(1) if match else None
+
+
+def format_pull_request_ref(entry: ChangelogEntry) -> str:
+    url = str(entry.get("url") or "").strip()
+    number = get_pull_request_number(url)
+    if not url or not number:
+        return ""
+
+    return f"[`#{number}`]({url})"
+
+# endregion
+
+
+# region Message layout
+
+def text(content: str) -> Component:
+    return {"type": 10, "content": content}
+
+
+def separator(divider: bool) -> Component:
+    return {"type": 14, "divider": divider, "spacing": 1 if divider else 2}
+
+
+def build_header(publish_context: dict[str, Any] | None, role_id: str | None) -> str:
+    context = publish_context or {}
+    current_run = context.get("current_run") or {}
+    previous_run = context.get("previous_run") or {}
+    repository = context.get("github_repository")
+
+    meta = [format_discord_date(current_run.get("updated_at") or current_run.get("created_at"))]
+
+    current_sha = current_run.get("head_sha")
+    if repository and current_sha:
+        previous_sha = previous_run.get("head_sha")
+        target = (
+            f"compare/{previous_sha}...{current_sha}" if previous_sha
+            else f"tree/{current_sha}"
+        )
+        meta.append(f"[`{current_sha[:7]}`](https://github.com/{repository}/{target})")
+
+    if role_id:
+        meta.append(f"<@&{role_id}>")
+
+    return "# Обновление сервера\n-# " + " · ".join(meta)
+
+
+def format_discord_date(value: Any) -> str:
+    timestamp = datetime.now(timezone.utc)
+    if value:
+        try:
+            timestamp = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        except ValueError:
+            pass
+
+    if timestamp.tzinfo is None:
+        timestamp = timestamp.replace(tzinfo=timezone.utc)
+
+    return f"<t:{int(timestamp.timestamp())}:D>"
+
+
+def get_change_type(change: dict[str, Any]) -> str:
+    change_type = str(change.get("type") or "")
+    return change_type if change_type in TYPES_TO_LABELS else OTHER_LABEL
+
+
+def get_change_message(change: dict[str, Any]) -> str:
+    return truncate(str(change.get("message") or "").strip(), MAX_CHANGE_MESSAGE_LENGTH)
+
+
+def strip_title_tag(title: str) -> str:
+    return re.sub(r"^\s*\[[^\]]*\]\s*", "", title) or title
+
+
+def media_gallery(media: list[tuple]) -> Component:
+    items = []
+    for name, _, _, _, entry in media:
+        item: dict[str, Any] = {"media": {"url": f"attachment://{name}"}}
+        title = truncate(str(entry.get("title") or ""), 1000)
+        if title:
+            item["description"] = title
+        items.append(item)
+
+    return {"type": 12, "items": items}
+
+
+def build_highlight_blocks(entries: list[ChangelogEntry], media: list[tuple]) -> list[list[Component]]:
+    """
+    Highlighted PRs go first with their own title, every change line and their media right below.
+    """
+    blocks: list[list[Component]] = []
+    for entry in entries:
+        lines = [f"## {strip_title_tag(str(entry.get('title') or 'Без названия'))}"]
+        meta = [str(entry.get("author") or "").strip(), format_pull_request_ref(entry)]
+        lines.append("-# " + " · ".join(m for m in meta if m))
+
+        for change in entry["changes"]:
+            message = get_change_message(change)
+            if not message:
+                continue
+            emoji = TYPES_TO_EMOJI.get(get_change_type(change), "▪️")
+            lines.append(f"{emoji} {message}")
+
+        block = [separator(True), text(truncate("\n".join(lines), MESSAGE_TEXT_BUDGET))]
+        entry_media = [m for m in media if m[4] is entry]
+        if entry_media:
+            block.append(media_gallery(entry_media))
+        blocks.append(block)
+
+    if blocks:
+        blocks[-1].append(separator(True))
+
+    return blocks
+
+
+def build_section_blocks(entries: list[ChangelogEntry]) -> list[list[Component]]:
+    """
+    Groups every change by type, splitting a section when it outgrows one message.
+    """
+    by_type: dict[str, list[str]] = {}
+    for entry in entries:
+        ref = format_pull_request_ref(entry)
+        for change in entry["changes"]:
+            message = get_change_message(change)
+            if message:
+                by_type.setdefault(get_change_type(change), []).append(f"- {message} {ref}".rstrip())
+
+    sections: list[str] = []
+    for change_type in [*TYPE_ORDER, OTHER_LABEL]:
+        lines = by_type.get(change_type)
+        if not lines:
+            continue
+
+        emoji = TYPES_TO_EMOJI.get(change_type)
+        label = TYPES_TO_LABELS.get(change_type, OTHER_LABEL)
+        title = f"### {emoji} {label}" if emoji else f"### {label}"
+
+        current = title
+        for line in lines:
+            if len(current) + len(line) + 1 > MESSAGE_TEXT_BUDGET:
+                sections.append(current)
+                current = title
+            current += "\n" + line
+        sections.append(current)
+
+    return [[separator(False), text(section)] for section in sections]
+
+
+def build_media_block(media: list[tuple]) -> list[Component]:
+    if not media:
+        return []
+
+    refs = list(dict.fromkeys(format_pull_request_ref(m[4]) for m in media))
+    caption = "### Скриншоты"
+    if any(refs):
+        caption += "\n-# " + " ".join(r for r in refs if r)
+
+    return [separator(False), text(caption), media_gallery(media)]
+
+
+def build_footer(entries: list[ChangelogEntry], media_links: list[str]) -> list[Component]:
+    authors = list(dict.fromkeys(
+        str(entry.get("author") or "").strip() for entry in entries
+    ))
+    lines = [f"🔗 {url}" for url in media_links]
+    lines.append("-# Авторы: " + (", ".join(a for a in authors if a) or "неизвестно"))
+    return [separator(True), text(truncate("\n".join(lines), MESSAGE_TEXT_BUDGET))]
+
+
+def block_length(block: list[Component]) -> int:
+    return sum(len(c.get("content", "")) for c in block)
+
+
+def pack_messages(header: str, blocks: list[list[Component]]) -> list[list[Component]]:
+    """
+    Packs blocks in order into as few containers as the per-message text and component limits allow.
+    """
+    messages: list[list[Component]] = []
+    current: list[Component] = [text(header)]
+    length = len(header)
+
+    for block in blocks:
+        # A block never exceeds the budget, so a message holding only its first line always takes it.
+        overflows = (
+            length + block_length(block) > MESSAGE_TEXT_BUDGET
+            or len(current) + len(block) > MESSAGE_COMPONENT_BUDGET
+        )
+        if overflows and len(current) > 1:
+            messages.append(current)
+            current = [text("-# Продолжение")]
+            length = 0
+
+        current += block
+        length += block_length(block)
+
+    messages.append(current)
+    return [
+        [{"type": 17, "accent_color": ERIDA_EMBED_COLOR, "components": components}]
+        for components in messages
+    ]
+
+# endregion
+
+
+# region Media
 
 def iter_media_urls(entry: ChangelogEntry) -> Iterable[str]:
     media = entry.get("media") or []
@@ -92,8 +473,7 @@ def detect_media_type(data: bytes) -> tuple[str, str]:
     raise MediaTypeError("unrecognized media content")
 
 
-def download_media(session: requests.Session, url: str):
-    global _media_counter
+def download_media(session: requests.Session, url: str) -> tuple[str, str, bytes] | None:
     try:
         response = session.get(url, stream=True, timeout=HTTP_TIMEOUT_SECONDS)
         response.raise_for_status()
@@ -122,199 +502,102 @@ def download_media(session: requests.Session, url: str):
             return None
         mime = "application/octet-stream"
 
-    _media_counter += 1
-    return f"changelog-media-{_media_counter}{ext}", mime, bytes(data), url
-
-def main():
-    webhook_erida = os.environ.get("DISCORD_WEBHOOK_URL_ERIDA")
-
-    if not webhook_erida:
-        raise RuntimeError("DISCORD_WEBHOOK_URL_ERIDA is not set")
-
-    if DEBUG:
-        # to debug this script locally, you can use
-        # a separate local file as the old changelog
-        last_changelog_stream = DEBUG_CHANGELOG_FILE_OLD.read_text()
-        publish_context = None
-    else:
-        # when running this normally in a GitHub actions workflow,
-        # it will get the old changelog from the GitHub API
-        last_changelog_stream, publish_context = get_last_changelog()
-
-    last_changelog = yaml.safe_load(last_changelog_stream)
-    with open(CHANGELOG_FILE, "r") as f:
-        cur_changelog = yaml.safe_load(f)
-
-    diff = list(diff_changelog(last_changelog, cur_changelog))
-    entries = list(group_changelog_entries_by_pull_request(diff))
-
-    if not entries:
-        print("No new changelog entries since the last successful publish")
-        return
-
-    change_count = sum(len(entry.get("changes") or []) for entry in entries)
-    print(
-        f"Sending {len(entries)} pull request changelog entries "
-        f"with {change_count} changes since the last successful publish"
-    )
-    send_changelog(entries, publish_context)
-
-def get_most_recent_workflow(
-    sess: requests.Session, current_run: dict[str, Any]
-) -> Any:
-    past_runs = get_past_runs(sess, current_run)
-    for run in past_runs["workflow_runs"]:
-        # First past successful run that isn't our current run.
-        if run["id"] == current_run["id"]:
-            continue
-
-        return run
-
-    raise RuntimeError("No previous successful publish workflow run found")
+    return ext, mime, bytes(data)
 
 
-def get_current_run(
-    sess: requests.Session, github_repository: str, github_run: str
-) -> Any:
-    resp = sess.get(
-        f"{GITHUB_API_URL}/repos/{github_repository}/actions/runs/{github_run}"
-    )
-    resp.raise_for_status()
-    return resp.json()
-
-
-def get_past_runs(sess: requests.Session, current_run: Any) -> Any:
+def collect_media(
+    session: requests.Session, entries: list[ChangelogEntry]
+) -> tuple[list[tuple], list[str]]:
     """
-    Get all successful workflow runs before our current one.
+    Downloads PR media for the gallery. Anything over the count or size limit is sent as a link.
     """
-    params = {"status": "success", "created": f"<={current_run['created_at']}"}
-    resp = sess.get(f"{current_run['workflow_url']}/runs", params=params)
-    resp.raise_for_status()
-    return resp.json()
-
-
-def get_last_changelog() -> tuple[str, dict[str, Any]]:
-    github_repository = os.environ["GITHUB_REPOSITORY"]
-    github_run = os.environ["GITHUB_RUN_ID"]
-    github_token = os.environ["GITHUB_TOKEN"]
-
-    session = requests.Session()
-    session.headers["Authorization"] = f"Bearer {github_token}"
-    session.headers["Accept"] = "application/vnd.github+json"
-    session.headers["X-GitHub-Api-Version"] = "2022-11-28"
-
-    current_run = get_current_run(session, github_repository, github_run)
-    most_recent = get_most_recent_workflow(session, current_run)
-    last_sha = most_recent["head_sha"]
-    print(f"Last successful publish job was {most_recent['id']}: {last_sha}")
-    last_changelog_stream = get_last_changelog_by_sha(
-        session, last_sha, github_repository
-    )
-
-    return last_changelog_stream, {
-        "github_repository": github_repository,
-        "current_run": current_run,
-        "previous_run": most_recent,
-    }
-
-
-def get_last_changelog_by_sha(
-    sess: requests.Session, sha: str, github_repository: str
-) -> str:
-    """
-    Use GitHub API to get the previous version of the changelog YAML (Actions builds are fetched with a shallow clone)
-    """
-    params = {
-        "ref": sha,
-    }
-    headers = {"Accept": "application/vnd.github.raw"}
-
-    resp = sess.get(
-        f"{GITHUB_API_URL}/repos/{github_repository}/contents/{CHANGELOG_FILE}",
-        headers=headers,
-        params=params,
-    )
-    resp.raise_for_status()
-    return resp.text
-
-
-def diff_changelog(
-    old: dict[str, Any], cur: dict[str, Any]
-) -> Iterable[ChangelogEntry]:
-    """
-    Find all new entries not present in the previous publish.
-    """
-    old_entry_keys = {get_entry_pull_request_key(e) for e in old.get("Entries", [])}
-    return (
-        e
-        for e in cur.get("Entries", [])
-        if get_entry_pull_request_key(e) not in old_entry_keys
-    )
-
-
-def group_changelog_entries_by_pull_request(
-    entries: Iterable[ChangelogEntry],
-) -> Iterable[ChangelogEntry]:
-    """
-    Discord messages are grouped by PR so players can react to every PR separately.
-    """
-    grouped: dict[str, ChangelogEntry] = {}
+    media: list[tuple] = []
+    links: list[str] = []
+    total_size = 0
 
     for entry in entries:
-        changes = list(entry.get("changes") or [])
-        if not changes:
-            print(f"Skipping changelog entry {entry.get('id')} without changes")
-            continue
+        for url in iter_media_urls(entry):
+            if len(media) >= DISCORD_MEDIA_GALLERY_MAX_ITEMS:
+                links.append(url)
+                continue
 
-        key = get_entry_pull_request_key(entry)
-        existing = grouped.get(key)
-        if existing:
-            existing.setdefault("changes", []).extend(changes)
-            continue
+            downloaded = download_media(session, url)
+            if not downloaded or total_size + len(downloaded[2]) > MEDIA_MAX_TOTAL_SIZE:
+                links.append(url)
+                continue
 
-        grouped[key] = dict(entry, changes=changes)
+            ext, mime, data = downloaded
+            total_size += len(data)
+            media.append((f"changelog-media-{len(media) + 1}{ext}", mime, data, url, entry))
 
-    return grouped.values()
+    return media, links
 
-
-def get_entry_pull_request_key(entry: ChangelogEntry) -> str:
-    url = str(entry.get("url") or "").strip()
-    if url:
-        return url
-
-    return f"{entry.get('id')}:{entry.get('title')}"
+# endregion
 
 
-def get_discord_body(embed: dict[str, Any]) -> dict[str, Any]:
-    return {
-        "embeds": [embed],
-        "allowed_mentions": {"parse": []},
-        "flags": 0,
-    }
+# region Sending
 
-def entry_to_container(entry, media_files, link_urls):
-    embed = entry_to_embed(entry)
-    components = [
-        {"type": 10, "content": f"**{embed['title']}**" if not embed.get("url")
-            else f"**[{embed['title']}]({embed['url']})**"},
-        {"type": 14, "divider": True, "spacing": 1},
-        {"type": 10, "content": embed["description"]},
+def get_webhooks() -> list[tuple[str, str | None]]:
+    """
+    Webhook URL and the optional role pinged in its header. Only the Erida server gets a ping.
+    """
+    role_id = os.environ.get("DISCORD_CHANGELOG_ROLE_ERIDA", "").strip()
+    webhooks = []
+    for name, role in (("ERIDA", role_id if role_id.isdigit() else None), ("DEADSPACE", None)):
+        url = os.environ.get(f"DISCORD_WEBHOOK_URL_{name}")
+        if url:
+            webhooks.append((url, role))
+
+    if not webhooks:
+        raise RuntimeError("No Discord webhooks configured!")
+
+    return webhooks
+
+
+def send_changelog(
+    entries: list[ChangelogEntry],
+    publish_context: dict[str, Any] | None,
+) -> None:
+    with requests.Session() as session:
+        media, media_links = collect_media(session, entries)
+
+    highlights = [e for e in entries if e.get("highlight")]
+    regular = [e for e in entries if not e.get("highlight")]
+    blocks = [
+        *build_highlight_blocks(highlights, media),
+        *build_section_blocks(regular),
+        build_media_block([m for m in media if not m[4].get("highlight")])
+        + build_footer(entries, media_links),
     ]
-    if link_urls:
-        components.append({"type": 10, "content": "\n".join(f"🔗 {u}" for u in link_urls)})
-    if media_files:
-        components.append({"type": 14, "divider": True, "spacing": 1})
-        components.append({"type": 12, "items": [
-            {"media": {"url": f"attachment://{name}"}} for name, _, _, _ in media_files
-        ]})
-    components.append({"type": 14, "divider": True, "spacing": 1})
-    components.append({"type": 10, "content": f"-# {embed['footer']['text']}"})
-    return {"type": 17, "accent_color": ERIDA_EMBED_COLOR, "components": components}
 
-def cv2_url(webhook_url):
-    p = urlparse(webhook_url)
-    q = dict(parse_qsl(p.query)); q["with_components"] = "true"
-    return p._replace(query=urlencode(q)).geturl()
+    for webhook_url, role_id in get_webhooks():
+        messages = pack_messages(build_header(publish_context, role_id), blocks)
+        for index, components in enumerate(messages, start=1):
+            body: dict[str, Any] = {
+                "components": components,
+                "flags": DISCORD_COMPONENTS_V2_FLAG,
+                # Only the header of the first message holds the role mention.
+                "allowed_mentions": {"parse": [], "roles": [role_id] if role_id and index == 1 else []},
+            }
+
+            payload = json.dumps(components)
+            attached = [m for m in media if f"attachment://{m[0]}\"" in payload]
+            files = None
+            if attached:
+                body["attachments"] = [{"id": i, "filename": m[0]} for i, m in enumerate(attached)]
+                files = [(f"files[{i}]", (m[0], m[2], m[1])) for i, m in enumerate(attached)]
+
+            send_with_retry(webhook_url, body, f"Erida changelog {index}/{len(messages)}", files)
+            if index != len(messages):
+                time.sleep(DISCORD_MESSAGE_DELAY_SECONDS)
+
+
+def with_components_url(webhook_url: str) -> str:
+    parsed = urlparse(webhook_url)
+    query = dict(parse_qsl(parsed.query))
+    query["with_components"] = "true"
+    return parsed._replace(query=urlencode(query)).geturl()
+
 
 def send_with_retry(
     webhook_url: str,
@@ -334,7 +617,7 @@ def send_with_retry(
 
     while True:
         try:
-            response = requests.post(cv2_url(webhook_url), **kwargs)
+            response = requests.post(with_components_url(webhook_url), **kwargs)
         except requests.exceptions.RequestException as e:
             retry_attempt += 1
             if retry_attempt > max_retries:
@@ -365,6 +648,7 @@ def send_with_retry(
         print(f"Sent to {name} webhook")
         break
 
+
 def get_retry_after(response: requests.Response, retry_attempt: int) -> float:
     try:
         retry_after = float(response.json().get("retry_after", 0))
@@ -384,200 +668,7 @@ def get_retry_after(response: requests.Response, retry_attempt: int) -> float:
 
     return retry_after + 0.25
 
-
-def send_entry(session: requests.Session, entry: ChangelogEntry, name: str) -> None:
-    media_files, link_urls = [], []
-    for url in iter_media_urls(entry):
-        downloaded = download_media(session, url)
-        if downloaded:
-            media_files.append(downloaded)
-        else:
-            link_urls.append(url)
-
-    link_urls += [f[3] for f in media_files[DISCORD_MEDIA_GALLERY_MAX_ITEMS:]]
-    media_files = media_files[:DISCORD_MEDIA_GALLERY_MAX_ITEMS]
-
-    body: dict[str, Any] = {
-        "components": [entry_to_container(entry, media_files, link_urls)],
-        "flags": DISCORD_COMPONENTS_V2_FLAG,
-        "allowed_mentions": {"parse": []},
-    }
-    if media_files:
-        body["attachments"] = [
-            {"id": i, "filename": f[0]} for i, f in enumerate(media_files)
-        ]
-    files = [(f"files[{i}]", (f[0], f[2], f[1])) for i, f in enumerate(media_files)]
-
-    send_discord_webhook(body, name, files)
-
-def send_discord_webhook(body: dict[str, Any], message_name: str, files=None) -> None:
-    webhook_urls = [
-        os.environ.get("DISCORD_WEBHOOK_URL_ERIDA"),
-        os.environ.get("DISCORD_WEBHOOK_URL_DEADSPACE"),
-    ]
-
-    if not any(webhook_urls):
-        raise RuntimeError("No Discord webhooks configured!")
-
-    for webhook_url in webhook_urls:
-        if webhook_url:
-            send_with_retry(webhook_url, body, message_name, files)
-
-def changelog_entries_to_embeds(entries: Iterable[ChangelogEntry]) -> list[dict[str, Any]]:
-    """Process structured changelog entries into Discord embeds."""
-    return [entry_to_embed(entry) for entry in entries]
-
-
-def entry_to_embed(entry: ChangelogEntry) -> dict[str, Any]:
-    lines: list[str] = []
-    grouped_changes: dict[str, list[str]] = {}
-
-    for change in entry.get("changes") or []:
-        change_type = str(change.get("type") or "Other")
-        emoji = TYPES_TO_EMOJI.get(change_type, "❓")
-        message = truncate(str(change.get("message") or ""), MAX_CHANGE_MESSAGE_LENGTH)
-        if not message:
-            continue
-
-        grouped_changes.setdefault(change_type, []).append(f"- {emoji} {message}")
-
-    for change_type, changes in grouped_changes.items():
-        if lines:
-            lines.append("")
-        label = TYPES_TO_LABELS.get(change_type, "Прочее")
-        lines.append(f"**{label}**")
-        lines.extend(changes)
-
-    description = truncate(
-        "\n".join(lines) or "Без описанных изменений",
-        DISCORD_EMBED_DESCRIPTION_LIMIT,
-    )
-    title = format_entry_title(entry)
-
-    embed: dict[str, Any] = {
-        "title": title,
-        "description": description,
-        "color": ERIDA_EMBED_COLOR,
-        "footer": {
-            "text": truncate(str(entry.get("author") or "Unknown"), 256),
-        },
-    }
-
-    url = entry.get("url")
-    if url and str(url).strip():
-        embed["url"] = str(url)
-
-    avatar_url = entry.get("avatar_url")
-    if avatar_url and str(avatar_url).strip():
-        embed["footer"]["icon_url"] = str(avatar_url)
-
-    timestamp = entry.get("time")
-    if timestamp:
-        embed["timestamp"] = str(timestamp)
-
-    return embed
-
-
-def format_entry_title(entry: ChangelogEntry) -> str:
-    title = str(entry.get("title") or "Changelog update")
-    pr_number = get_pull_request_number(entry.get("url"))
-    if pr_number:
-        title = f"#{pr_number} - {title}"
-
-    return truncate(title, 256)
-
-
-def get_pull_request_number(url: Any) -> str | None:
-    if not url:
-        return None
-
-    match = re.search(r"/pull/(\d+)", str(url))
-    if not match:
-        return None
-
-    return match.group(1)
-
-
-def create_header_embed(
-    entries: list[ChangelogEntry], publish_context: dict[str, Any] | None
-) -> dict[str, Any]:
-    change_count = sum(len(entry.get("changes") or []) for entry in entries)
-    current_run = (publish_context or {}).get("current_run") or {}
-    previous_run = (publish_context or {}).get("previous_run") or {}
-    github_repository = (publish_context or {}).get("github_repository")
-
-    previous_update = format_discord_date(
-        previous_run.get("updated_at") or previous_run.get("created_at")
-    )
-    version = format_version_link(github_repository, current_run.get("head_sha"))
-
-    description = (
-        f"Предыдущее обновление: {previous_update}\n"
-        f"Изменений: **{format_plural(len(entries), 'PR', 'PR', 'PR')}**, "
-        f"**{format_plural(change_count, 'пункт', 'пункта', 'пунктов')}**\n"
-        f"Версия: {version}"
-    )
-
-    embed: dict[str, Any] = {
-        "title": "Эрида - обновление серверов",
-        "description": description,
-        "color": ERIDA_EMBED_COLOR,
-    }
-
-    if github_repository and current_run.get("head_sha"):
-        embed["url"] = get_commit_tree_url(github_repository, current_run["head_sha"])
-
-    current_timestamp = current_run.get("updated_at") or current_run.get("created_at")
-    if current_timestamp:
-        embed["timestamp"] = str(current_timestamp)
-
-    return embed
-
-
-def format_discord_date(value: Any) -> str:
-    if not value:
-        return "неизвестно"
-
-    try:
-        timestamp = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
-    except ValueError:
-        return str(value)
-
-    if timestamp.tzinfo is None:
-        timestamp = timestamp.replace(tzinfo=timezone.utc)
-
-    return f"<t:{int(timestamp.timestamp())}:d>"
-
-
-def format_version_link(github_repository: Any, sha: Any) -> str:
-    if not sha:
-        return "неизвестно"
-
-    short_sha = str(sha)[:7]
-    if not github_repository:
-        return short_sha
-
-    return f"[{short_sha}]({get_commit_tree_url(github_repository, sha)})"
-
-
-def format_plural(value: int, one: str, few: str, many: str) -> str:
-    remainder = value % 100
-    if 11 <= remainder <= 14:
-        word = many
-    else:
-        last_digit = value % 10
-        if last_digit == 1:
-            word = one
-        elif 2 <= last_digit <= 4:
-            word = few
-        else:
-            word = many
-
-    return f"{value} {word}"
-
-
-def get_commit_tree_url(github_repository: Any, sha: Any) -> str:
-    return f"https://github.com/{github_repository}/tree/{sha}"
+# endregion
 
 
 def truncate(value: str, limit: int) -> str:
@@ -586,16 +677,6 @@ def truncate(value: str, limit: int) -> str:
 
     return value[: limit - 6].rstrip() + " [...]"
 
-
-def send_changelog(
-    entries: list[ChangelogEntry],
-    publish_context: dict[str, Any] | None,
-) -> None:
-    with requests.Session() as session:
-        for index, entry in enumerate(entries, start=1):
-            send_entry(session, entry, f"Erida changelog PR {index}/{len(entries)}")
-            if index != len(entries):
-                time.sleep(DISCORD_MESSAGE_DELAY_SECONDS)
 
 if __name__ == "__main__":
     main()

@@ -2,7 +2,7 @@ using Content.Shared._Lavaland.Chemistry.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.FixedPoint;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Lavaland.Chemistry.Systems;

@@ -29,7 +29,7 @@
 
         :root {
             color-scheme: dark;
-            --page: #0a0b10;
+            --page: #101014;
             --window: #252631;
             --header: #1f1f23;
             --divider: #434451;
@@ -68,30 +68,9 @@
             align-items: flex-start;
             justify-content: center;
             padding: 48px 16px;
-            background-color: var(--page);
+            background: var(--page);
             color: var(--text);
             font: 16px/1.35 "Noto Sans SS14", "Noto Sans", system-ui, sans-serif;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: -50%;
-            z-index: 0;
-            pointer-events: none;
-            background: url("space-bg.png") repeat;
-            background-size: 480px 480px;
-            animation: space-drift 180s linear infinite;
-        }
-
-        @keyframes space-drift {
-            from { transform: translate(0, 0); }
-            to { transform: translate(-480px, -240px); }
-        }
-
-        main.window {
-            position: relative;
-            z-index: 1;
         }
 
         .chamfer {
@@ -103,7 +82,6 @@
             width: 100%;
             max-width: 440px;
             background: var(--window);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
         }
 
         .window-header {
@@ -611,7 +589,7 @@
                 <output id="threshold-value" for="threshold"></output>
             </div>
 
-            <div class="field" id="effect-row">
+            <div class="field" id="effect-row" hidden>
                 <label class="field-label" for="effect">Voice changer</label>
                 <div class="select chamfer">
                     <select id="effect">

@@ -131,7 +131,7 @@
   - type: Speech
     speechSounds: Harpy
     speechVerb: Harpy
-    allowedEmotes: ['Chirp', 'Trill', 'Warble', 'Wurble', 'Mars', 'Belch']
+    allowedEmotes: ['Chirp', 'Trill', 'Warble', 'Wurble', 'Belch', 'Bagawk', 'Flap', 'Scree', 'Call', 'Squawk', 'Quack'] # Goob - bird and human emotes only
   - type: Vocal
     sounds:
       Male: SoundsHarpyMale
@@ -219,6 +219,8 @@
       - map: [ "enum.HumanoidVisualLayers.LArm" ]
       - map: [ "enum.HumanoidVisualLayers.RLeg" ]
       - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ] # goobstation
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ] # goobstation
       # Erida start
       - map: [ "underpants" ]
       - map: [ "undershirt" ]

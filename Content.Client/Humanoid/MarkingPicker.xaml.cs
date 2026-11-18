@@ -101,7 +101,7 @@ public sealed partial class MarkingPicker : Control
         CurrentSkinColor = skinColor;
         CurrentEyeColor = eyeColor;
 
-        Populate("");
+        QueuePopulate(); // Erida edit
     }
 
     public void SetSkinColor(Color color) => CurrentSkinColor = color;
@@ -110,13 +110,13 @@ public sealed partial class MarkingPicker : Control
     public void SetSex(Sex sex)
     {
         _currentSex = sex;
-        Populate("");
+        QueuePopulate(); // Erida edit
     }
 
     public void SetSpecies(string species)
     {
         _currentSpecies = species;
-        Populate("");
+        QueuePopulate(); // Erida edit
     }
 
     public MarkingPicker()
@@ -125,19 +125,21 @@ public sealed partial class MarkingPicker : Control
         IoCManager.InjectDependencies(this);
 
         _sprite = _entityManager.System<SpriteSystem>();
+        CMarkingTabs.OnTabChanged += BuildTab; // Erida edit
     }
 
     private string GetMarkingName(MarkingPrototype marking) => Loc.GetString($"marking-{marking.ID}");
 
     private IReadOnlyDictionary<string, MarkingPrototype> GetMarkings(MarkingCategories category)
     {
-        return IgnoreSpecies
+        return _markingManager.WithoutWaggingVariants(IgnoreSpecies
             ? _markingManager.MarkingsByCategoryAndSex(category, _currentSex)
-            : _markingManager.MarkingsByCategoryAndSpeciesAndSex(category, _currentSpecies, _currentSex);
+            : _markingManager.MarkingsByCategoryAndSpeciesAndSex(category, _currentSpecies, _currentSex)); // Goob
     }
 
     public void Populate(string filter)
     {
+        _populateQueued = false; // Erida edit
         CMarkingTabs.RemoveAllChildren();
         _categoryTabs.Clear();
 
@@ -157,6 +159,8 @@ public sealed partial class MarkingPicker : Control
             CMarkingTabs.SetTabTitle(i, Loc.GetString($"markings-category-{category.ToString()}"));
             i++;
         }
+
+        BuildTab(CMarkingTabs.CurrentTab); // Erida edit
     }
 
     public void PopulateUsed()
@@ -280,6 +284,7 @@ public sealed partial class MarkingPicker : Control
         private readonly Label _statusLabel;
         private readonly Button _reorderButton;
         private List<MarkingItem> _searchable = new();
+        private bool _built; // Erida edit
         private const int _columnWidth = 500;
 
         public CategoryTab(MarkingCategories category, IReadOnlyDictionary<string, MarkingPrototype> markings, MarkingPicker picker)
@@ -319,12 +324,6 @@ public sealed partial class MarkingPicker : Control
             _selectionItems.AddChild(_items);
             AddChild(_selectionItems);
 
-            foreach (var marking in _markings.Values.OrderBy(marking => Loc.GetString($"marking-{marking.ID}")))
-            {
-                _items.AddChild(new MarkingItem(marking, this));
-            }
-            _searchable = _items.GetSearchableControls().Cast<MarkingItem>().ToList();
-
             _orderingList = new BoxContainer
             {
                 Orientation = LayoutOrientation.Vertical,
@@ -359,6 +358,21 @@ public sealed partial class MarkingPicker : Control
 
             UpdatePointsLabel();
         }
+
+        // Erida start
+        public void EnsureBuilt()
+        {
+            if (_built)
+                return;
+
+            _built = true;
+            foreach (var marking in _markings.Values.OrderBy(marking => Loc.GetString($"marking-{marking.ID}")))
+            {
+                _items.AddChild(new MarkingItem(marking, this));
+            }
+            _searchable = _items.GetSearchableControls().Cast<MarkingItem>().ToList();
+        }
+        // Erida end
 
         public Texture SpriteFrame0(MarkingPrototype prototype) => _picker._sprite.Frame0(prototype.Sprites[0]);
 
@@ -514,7 +528,7 @@ public sealed partial class MarkingPicker : Control
         {
             base.Resized();
 
-            _items.Columns = Math.Max(1, (int)(Width / _columnWidth));
+            _items.Columns = Math.Max(1, (int) (Width / _columnWidth));
         }
     }
 

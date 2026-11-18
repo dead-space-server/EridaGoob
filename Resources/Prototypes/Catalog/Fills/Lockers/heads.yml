@@ -19,6 +19,11 @@
     - id: CargoMegaphone # goob - loudspeaker
     - id: SlotMachineHighRollerFlatPack # Goob - gambling
     - id: CargoComputerCommsFlatpack # erida edit
+    - id: CandyBowlFilledLollypopsMystery # Goob - Happy Halloween!
+    - !type:NestedSelector # Goob - Happy Halloween!
+      tableId: RandomSnackTable
+      rolls: !type:RangeNumberSelector
+        range: 1, 4
 
 - type: entity
   id: LockerQuarterMasterFilled
@@ -56,6 +61,11 @@
       conditions:
       - !type:PlayerCountCondition
         max: 15
+    - id: CandyBowlFilledLollypopsMystery # Goob - Happy Halloween!
+    - !type:NestedSelector # Goob - Happy Halloween!
+      tableId: RandomSnackTable
+      rolls: !type:RangeNumberSelector
+        range: 1, 4
 
 # No laser table + Laser table
 - type: entityTable
@@ -144,6 +154,11 @@
     - id: ServiceTechFabCircuitboard # Goobstation - Service Techfab
     - id: CommandMegaphone # goob - loudspeakers
     - id: ServiceComputerCommsFlatpack # erida edit
+    - id: CandyBowlFilledLollypopsMystery # Goob - Happy Halloween!
+    - !type:NestedSelector # Goob - Happy Halloween!
+      tableId: RandomSnackTable
+      rolls: !type:RangeNumberSelector
+        range: 1, 4
 
 - type: entity
   id: LockerHeadOfPersonnelFilled
@@ -187,6 +202,11 @@
     - id: RCDRechargingCE
     - id: EngiComputerCommsFlatpack # erida edit
     - id: MaterialSiloFlatpack # Goob
+    - id: CandyBowlFilledLollypopsMystery # Goob - Happy Halloween!
+    - !type:NestedSelector # Goob - Happy Halloween!
+      tableId: RandomSnackTable
+      rolls: !type:RangeNumberSelector
+        range: 1, 4
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -263,6 +283,11 @@
     - id: DiseaseDiagnoserFlatPack
     - id: VaccinatorFlatPack
     - id: MedicalComputerCommsFlatpack # erida edit
+    - id: CandyBowlFilledLollypopsMystery # Happy Halloween!
+    - !type:NestedSelector # Happy Halloween!
+      tableId: RandomSnackTable
+      rolls: !type:RangeNumberSelector
+        range: 1, 4
     # Goobstation End
 
 # Hardsuit table, used for suit storage as well
@@ -324,6 +349,11 @@
     - id: ClothingBeltGeminiHoloProjector # Goobstation - Who better to do science with than yourself?
     - id: MMI # Goobstation
     - id: ScienceComputerCommsFlatpack # erida edit
+    - id: CandyBowlFilledLollypopsMystery # Goob - Happy Halloween!
+    - !type:NestedSelector # Goob - Happy Halloween!
+      tableId: RandomSnackTable
+      rolls: !type:RangeNumberSelector
+        range: 1, 4
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -389,6 +419,7 @@
     - id: ClothingBeltSheathHeadOfSecurityFilled # Goobstation - security revamp
     - id: MaterialSiloFlatpack # Goob
     - id: SecurityComputerCommsFlatpack # erida edit
+    - id: FoodPacketLollypopTrash # Goob - ...happy halloween?
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -438,6 +469,11 @@
     - id: BikeHorn
     - id: FoodMango #Goobstation
       prob: 0.65
+    - !type:NestedSelector # Goob - Happy Halloween!
+      tableId: RandomSnackTable
+      prob: 0.9
+      rolls: !type:RangeNumberSelector
+        range: 2, 6
 
 - type: entity
   id: LockerFreezerVaultFilled

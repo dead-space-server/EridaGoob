@@ -61,12 +61,4 @@ public sealed partial class EntityWhitelist
     /// </summary>
     [DataField]
     public bool RequireAll;
-
-    // erida edit start
-    [DataField]
-    public Dictionary<EntProtoId<Content.Shared._RMC14.Marines.Skills.SkillDefinitionComponent>, int>? Skills;
-
-    [DataField]
-    public Content.Shared._RMC14.Stun.RMCSizes? MinMobSize;
-    // erida edit end
 }

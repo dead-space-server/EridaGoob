@@ -27,7 +27,7 @@ using Content.Shared.Preferences;
 using Content.Client.Guidebook;
 using Content.Client.Lobby.UI;
 using Content.Client.Players.PlayTimeTracking;
-using Content.Goobstation.Common.CCVar; // erida edit
+using Content.Goobstation.Common.CCVar; // Goobstation - Voice chat
 
 namespace Content.Client.UserInterface.Systems.EscapeMenu;
 
@@ -156,8 +156,15 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
             _guidebook.ToggleGuidebook();
         };
 
+        _escapeWindow.VoiceChatButton.OnPressed += _ => // Goobstation - Voice chat
+        {
+            CloseEscapeWindow();
+            _console.ExecuteCommand("voicechat");
+        };
+
         // Hide wiki button if we don't have a link for it.
         _escapeWindow.WikiButton.Visible = _cfg.GetCVar(CCVars.InfoLinksWiki) != "";
+        _cfg.OnValueChanged(GoobCVars.VoiceChatEnabled, OnVoiceChatEnabledChanged, true); // Goobstation - Voice chat
 
         // erida edit
         _escapeWindow.VoiceChatButton.OnPressed += _ =>
@@ -182,13 +189,14 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
         }
 
         CloseCharacterSetup(); // Goobstation - Character customization in escape menu
+        _cfg.UnsubValueChanged(GoobCVars.VoiceChatEnabled, OnVoiceChatEnabledChanged); // Goobstation - Voice chat
 
         _cfg.UnsubValueChanged(GoobCVars.VoiceChatEnabled, OnVoiceChatEnabledChanged); // erida edit
 
         CommandBinds.Unregister<EscapeUIController>();
     }
 
-    private void OnVoiceChatEnabledChanged(bool enabled) // erida edit
+    private void OnVoiceChatEnabledChanged(bool enabled) // Goobstation - Voice chat
     {
         if (_escapeWindow != null)
             _escapeWindow.VoiceChatButton.Visible = enabled;

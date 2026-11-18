@@ -1,14 +1,10 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
-using Content.Shared.Damage;
-using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-// erida edit start
-using Content.Shared.Vehicle.Components;
 
 namespace Content.Goobstation.Shared.Vehicles;
 
@@ -17,22 +13,6 @@ public sealed partial class VehicleComponent : Component
 {
     [ViewVariables]
     public EntityUid? Driver;
-
-    [ViewVariables]
-    public EntityUid? Operator { get => Driver; set => Driver = value; }
-
-    [DataField]
-    public VehicleMovementKind MovementKind = VehicleMovementKind.Standard;
-
-    [DataField]
-    public bool TransferDamage;
-
-    [DataField]
-    public DamageModifierSet? TransferDamageModifier;
-
-    [DataField]
-    public EntityWhitelist? OperatorWhitelist;
-    // erida edit end
 
     [ViewVariables]
     public EntityUid? HornAction;

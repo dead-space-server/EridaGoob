@@ -46,6 +46,7 @@ const ui = {
     gainValue: el("gain-value"),
     mute: el("mute"),
     device: el("device"),
+    effectRow: el("effect-row"),
     effect: el("effect"),
     noiseSuppression: el("noise-suppression"),
     echoCancellation: el("echo-cancellation"),
@@ -285,27 +286,18 @@ function pushConfig() {
         threshold: settings.threshold,
         gain: settings.gain,
         muted: settings.muted,
-        noiseSuppression: settings.noiseSuppression,
     });
 }
 
-function keepContextRunning() {
-    if (!context || context.state === "running")
-        return;
-    context.resume().catch(() => {});
-}
-
 async function startAudio() {
-    if (!context) {
+    if (!context)
         context = new AudioContext();
-        context.onstatechange = keepContextRunning;
-    }
     const resuming = context.resume();
 
     const constraints = {
         audio: {
             channelCount: 1,
-            noiseSuppression: false,
+            noiseSuppression: settings.noiseSuppression,
             echoCancellation: settings.echoCancellation,
             autoGainControl: settings.autoGainControl,
         },
@@ -344,17 +336,6 @@ async function startAudio() {
         const sink = context.createGain();
         sink.gain.value = 0;
         node.connect(sink).connect(context.destination);
-
-        const keepAlive = context.createBufferSource();
-        const keepAliveBuffer = context.createBuffer(1, 1, context.sampleRate);
-        keepAliveBuffer.getChannelData(0)[0] = 1;
-        keepAlive.buffer = keepAliveBuffer;
-        keepAlive.loop = true;
-        const keepAliveGain = context.createGain();
-        keepAliveGain.gain.value = 0.0001;
-        keepAlive.connect(keepAliveGain).connect(context.destination);
-        keepAlive.start();
-
         node.port.onmessage = event => {
             if (event.data.type === "level") {
                 lastLevel = event.data;
@@ -436,6 +417,7 @@ function render() {
     const transmitting = !!lastLevel.transmitting;
     document.body.classList.toggle("transmitting", transmitting);
     ui.thresholdRow.hidden = settings.mode !== "vad";
+    ui.effectRow.hidden = !(serverState && serverState.voiceChanger);
     ui.meterThreshold.hidden = settings.mode !== "vad";
     setText(ui.mute, settings.muted ? "Unmute" : "Mute");
     ui.mute.classList.toggle("negative", settings.muted);
@@ -590,8 +572,6 @@ function bindControls() {
     document.addEventListener("visibilitychange", () => {
         if (document.visibilityState === "visible")
             requestWakeLock();
-        keepContextRunning();
-        render();
     });
 
     ui.retry.addEventListener("click", () => {
@@ -607,7 +587,6 @@ function bindControls() {
 function init() {
     bindControls();
     renderLevel();
-    setInterval(keepContextRunning, 2000);
 
     if (!window.isSecureContext || !navigator.mediaDevices || !window.AudioWorkletNode) {
         setStatus("Microphone needs HTTPS.", "This page has to be served over HTTPS or from localhost.", "error");

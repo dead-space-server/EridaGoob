@@ -1,17 +1,18 @@
 
 using Content.Goobstation.Server.IoC;
-using Content.Goobstation.Server.VoiceChat; // erida edit
+using Content.Goobstation.Server.VoiceChat;
 using Content.Goobstation.Common.JoinQueue;
 using Content.Goobstation.Common.ServerCurrency;
 using Robust.Shared.ContentPack;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Server.Entry;
 
 public sealed class EntryPoint : GameServer
 {
-    private VoiceChatManager _voiceManager = default!; // erida edit
-    private VoiceLogManager _voiceLogs = default!; // erida edit
+    private VoiceChatManager _voiceManager = default!;
+    private VoiceLogManager _voiceLogs = default!;
     private ICommonCurrencyManager _curr = default!;
     private IJoinQueueManager _joinQueue = default!;
 
@@ -23,11 +24,13 @@ public sealed class EntryPoint : GameServer
 
         IoCManager.BuildGraph();
 
-        _voiceManager = IoCManager.Resolve<VoiceChatManager>(); // erida edit
-        _voiceManager.Initialize(); // erida edit
+        IoCManager.Resolve<IPrototypeManager>().RegisterIgnore("newsEntry");
 
-        _voiceLogs = IoCManager.Resolve<VoiceLogManager>(); // erida edit
-        _voiceLogs.Initialize(); // erida edit
+        _voiceManager = IoCManager.Resolve<VoiceChatManager>();
+        _voiceManager.Initialize();
+
+        _voiceLogs = IoCManager.Resolve<VoiceLogManager>();
+        _voiceLogs.Initialize();
 
         _joinQueue = IoCManager.Resolve<IJoinQueueManager>();
         _joinQueue.Initialize();
@@ -54,6 +57,6 @@ public sealed class EntryPoint : GameServer
 
         _curr.Shutdown();
         _voiceManager.Shutdown();
-        _voiceLogs.Shutdown(); // erida edit
+        _voiceLogs.Shutdown();
     }
 }

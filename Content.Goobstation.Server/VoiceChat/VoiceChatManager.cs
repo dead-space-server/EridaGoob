@@ -394,7 +394,6 @@ public sealed partial class VoiceChatManager
                      ("noto-sans-regular.woff2", "font/woff2"),
                      ("noto-sans-bold.woff2", "font/woff2"),
                      ("boxfont-round.woff2", "font/woff2"),
-                     ("space-bg.png", "image/png"),
                  })
         {
             using var stream = assembly.GetManifestResourceStream($"VoiceChat.Web.{name}");

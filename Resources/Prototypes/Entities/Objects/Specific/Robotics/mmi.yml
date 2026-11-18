@@ -29,18 +29,13 @@
   - type: Examiner
   - type: IntellicardableMind # Goobstation - we can finally turn clankers into humans
   - type: IntrinsicRadioReceiver
-  #- type: IntrinsicRadioTransmitter
+  #- type: IntrinsicRadioTransmitter # Goobstation - Remove binary from certain silicons
   #  channels:
-  #  - Binary # Goobstation - replaced with collective mind
+  #  - Binary
   - type: ActiveRadio
     channels:
-    # - Binary # Goobstation - replaced with collective mind
+  #  - Binary # Goobstation
     - Common
-  # Goobstation
-  - type: CollectiveMind
-    defaultChannel: Binary
-    channels:
-    - Binary
   - type: NameIdentifier
     group: MMI
   - type: DoAfter
@@ -114,6 +109,7 @@
       stopSearchVerbText: positronic-brain-stop-searching-verb-text
       stopSearchVerbPopup: positronic-brain-stopped-searching
       job: Borg
+      canBeWiped: false # Goob - sorry shitters
     - type: Organ
       slotId: posbrain
     - type: Brain
@@ -122,18 +118,13 @@
     - type: BorgBrain
     - type: IntellicardableMind # Goobstation - intellicard on more AIs
     - type: IntrinsicRadioReceiver
-    #- type: IntrinsicRadioTransmitter
+    #- type: IntrinsicRadioTransmitter # Goobstation - Remove binary from certain silicons
     #  channels:
-    #  - Binary # Goobstation - replaced with collective mind
+    #  - Binary
     - type: ActiveRadio
       channels:
-      # - Binary # Goobstation - replaced with collective mind
+      #- Binary # Goobstation
       - Common
-    # Goobstation
-    - type: CollectiveMind
-      defaultChannel: Binary
-      channels:
-      - Binary
     - type: NameIdentifier
       group: PositronicBrain
     - type: DoAfter

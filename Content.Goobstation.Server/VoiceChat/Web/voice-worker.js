@@ -15,7 +15,7 @@ let ready = false;
 let candidateIndex = 0;
 let preferredCandidate = -1;
 let reconnectAttempt = 0;
-let reconnectDeadline = 0;
+let reconnectTimer = 0;
 let stopped = true;
 let sequence = 0;
 let state = null;
@@ -50,19 +50,9 @@ function pushTransmit() {
     });
 }
 
-function scheduleReconnect(delay) {
-    reconnectDeadline = Date.now() + delay;
-}
-
-setInterval(() => {
-    if (!stopped && !socket && reconnectDeadline !== 0 && Date.now() >= reconnectDeadline) {
-        reconnectDeadline = 0;
-        connect();
-    }
-}, 500);
-
 function connect() {
-    reconnectDeadline = 0;
+    clearTimeout(reconnectTimer);
+    reconnectTimer = 0;
     if (stopped)
         return;
 
@@ -132,7 +122,7 @@ function connect() {
 
         const delay = RECONNECT_DELAYS[Math.min(reconnectAttempt, RECONNECT_DELAYS.length - 1)];
         reconnectAttempt++;
-        scheduleReconnect(delay);
+        reconnectTimer = setTimeout(connect, delay);
         self.postMessage({ type: "retrying", delay });
     };
 }
