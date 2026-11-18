@@ -2048,3 +2048,17 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/82
   avatar_url: https://avatars.githubusercontent.com/u/53963119?v=4
   title: Shield Packs
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Добавление системы для анимированных лобби
+    - type: Add
+      message: 47 новых анимированных фонов
+  id: 150
+  time: '2026-11-18T22:42:21.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/89
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] New animated lobby arts from Coloss'
+  media:
+    - >-
+      https://github.com/user-attachments/assets/d4c240d1-a1c9-4c3f-b7b8-d384a490e4c9
