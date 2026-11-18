@@ -118,7 +118,6 @@
     energy: 3
     softness: 2
     autoRot: true
-    lightMask: ConeSingle
     offset: "0,-0.9"
   - type: DoAfter
   - type: UserInterface
