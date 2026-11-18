@@ -12,6 +12,7 @@ if (!process.env.CHANGELOG_DIR) {
 }
 
 const ChangelogFilePath = `../../../${process.env.CHANGELOG_DIR}`
+const HighlightLabel = "Changelog: Highlight"; // Erida edit
 const MediaRegex = /!\[[^\]]*\]\((https?:\/\/[^\s)]+)\)|<img[^>]+src=["']([^"']+)["']|(https:\/\/github\.com\/user-attachments\/(?:assets|files)\/[\w\-\/.]+)/gi;
 
 // Regexes
@@ -22,7 +23,7 @@ const CommentRegex = /<!--.*?-->/gs; // HTML comments
 // Main function
 async function main() {
     const pr = await axios.get(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/pulls/${process.env.PR_NUMBER}`);
-    const { merged_at, body, user, title } = pr.data;
+    const { merged_at, body, user, title, labels } = pr.data;
 
     let commentlessBody = (body || "").replace(CommentRegex, '');
 
@@ -68,6 +69,7 @@ async function main() {
         avatar_url: user.avatar_url,
         title: title,
         ...(media.length && { media }), // Erida edit
+        ...((labels || []).some(l => l.name === HighlightLabel) && { highlight: true }), // Erida edit
     };
 
     // Erida start
