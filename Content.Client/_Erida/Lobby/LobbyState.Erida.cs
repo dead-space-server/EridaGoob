@@ -18,7 +18,10 @@ public sealed partial class LobbyState
     private void StartupErida()
     {
         _cfg.OnValueChanged(ECCVars.LobbyBackgroundRandom, OnLobbyBackgroundOptionChanged);
-        _cfg.OnValueChanged(ECCVars.LobbyBackground, OnLobbyBackgroundOptionChanged, true);
+        _cfg.OnValueChanged(ECCVars.LobbyBackground, OnLobbyBackgroundOptionChanged);
+
+        if (GetEridaLobbyBackground() != null)
+            UpdateLobbyBackground();
     }
 
     private void ShutdownErida()
