@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Erida.MagicMirror;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.MagicMirror;
 using Robust.Client.UserInterface;
@@ -23,6 +24,7 @@ public sealed class MagicMirrorBoundUserInterface : BoundUserInterface
 
         _window.OnHairSelected += tuple => SelectHair(MagicMirrorCategory.Hair, tuple.id, tuple.slot);
         _window.OnHairColorChanged += args => ChangeColor(MagicMirrorCategory.Hair, args.marking, args.slot);
+        _window.OnAppearanceChanged += args => ChangeGradient(args.category, args.marking, args.slot); // Erida edit
         _window.OnHairSlotAdded += delegate () { AddSlot(MagicMirrorCategory.Hair); };
         _window.OnHairSlotRemoved += args => RemoveSlot(MagicMirrorCategory.Hair, args);
 
@@ -42,6 +44,13 @@ public sealed class MagicMirrorBoundUserInterface : BoundUserInterface
     {
         SendMessage(new MagicMirrorChangeColorMessage(category, new(marking.MarkingColors), slot));
     }
+
+    // Erida start
+    private void ChangeGradient(MagicMirrorCategory category, Marking marking, int slot)
+    {
+        SendMessage(new MagicMirrorChangeGradientMessage(category, new(marking.MarkingColors), marking.Gradient, slot));
+    }
+    // Erida end
 
     private void RemoveSlot(MagicMirrorCategory category, int slot)
     {

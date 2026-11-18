@@ -30,7 +30,7 @@ public abstract partial class SharedHumanoidAppearanceSystem
         targetHumanoid.MarkingSet.Clear();
         foreach (var (_, list) in sourceHumanoid.MarkingSet.Markings)
             foreach (var marking in list)
-                AddMarking(target, marking.MarkingId, marking.MarkingColors, false, humanoid: targetHumanoid);
+                AddMarking(target, marking, false, humanoid: targetHumanoid); // Erida edit
 
         targetHumanoid.MarkingSet.EnsureSpecies(targetHumanoid.Species, targetHumanoid.SkinColor, _markingManager, _proto);
         targetHumanoid.MarkingSet.EnsureSexes(sourceHumanoid.Sex, _markingManager);

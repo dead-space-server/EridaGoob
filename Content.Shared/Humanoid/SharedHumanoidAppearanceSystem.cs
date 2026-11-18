@@ -127,6 +127,11 @@ public abstract partial class SharedHumanoidAppearanceSystem : EntitySystem //go
                     if (layerPair.Value is not SequenceDataNode layer)
                         continue;
 
+                    // Erida start
+                    if (TryMoveHairLayer(appearance, layerPair.Key, layer))
+                        continue;
+                    // Erida end
+
                     foreach (var marking in layer)
                         flat.Add(marking);
                 }
@@ -134,6 +139,8 @@ public abstract partial class SharedHumanoidAppearanceSystem : EntitySystem //go
 
             appearance["markings"] = flat;
         }
+
+        HoistDetailExaminableData(profile); // Erida edit
 
         foreach (var (eridaKey, wgoobKey) in FlavorTextKeyMap)
         {
@@ -567,7 +574,7 @@ public abstract partial class SharedHumanoidAppearanceSystem : EntitySystem //go
             {
                 if (!prototype.ForcedColoring)
                 {
-                    AddMarking(uid, marking.MarkingId, marking.MarkingColors, false);
+                    AddMarking(uid, marking, false); // Erida edit
                 }
                 else
                 {
@@ -587,12 +594,14 @@ public abstract partial class SharedHumanoidAppearanceSystem : EntitySystem //go
             _markingManager.CanBeApplied(profile.Species, profile.Sex, hairPrototype, _proto))
         {
             AddMarking(uid, profile.Appearance.HairStyleId, hairColor, false);
+            SetLastMarkingGradient(uid, MarkingCategories.Hair, profile.Appearance.HairGradient); // Erida edit
         }
 
         if (_markingManager.Markings.TryGetValue(profile.Appearance.FacialHairStyleId, out var facialHairPrototype) &&
             _markingManager.CanBeApplied(profile.Species, profile.Sex, facialHairPrototype, _proto))
         {
             AddMarking(uid, profile.Appearance.FacialHairStyleId, facialHairColor, false);
+            SetLastMarkingGradient(uid, MarkingCategories.FacialHair, profile.Appearance.FacialHairGradient); // Erida edit
         }
 
         humanoid.MarkingSet.EnsureSpecies(profile.Species, profile.Appearance.SkinColor, _markingManager, _proto);

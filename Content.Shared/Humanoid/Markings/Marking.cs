@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Shared._Erida.Humanoid.Markings;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Humanoid.Markings
@@ -44,6 +45,7 @@ namespace Content.Shared.Humanoid.Markings
             _markingColors = new(other.MarkingColors);
             Visible = other.Visible;
             Forced = other.Forced;
+            Gradient = other.Gradient; // Erida edit
         }
 
         /// <summary>
@@ -69,6 +71,11 @@ namespace Content.Shared.Humanoid.Markings
         /// </summary>
         [ViewVariables]
         public bool Forced;
+
+        // Erida start
+        [DataField]
+        public MarkingGradient? Gradient;
+        // Erida end
 
         public void SetColor(int colorIndex, Color color) =>
             _markingColors[colorIndex] = color;
@@ -108,7 +115,8 @@ namespace Content.Shared.Humanoid.Markings
             return MarkingId.Equals(other.MarkingId)
                 && _markingColors.SequenceEqual(other._markingColors)
                 && Visible.Equals(other.Visible)
-                && Forced.Equals(other.Forced);
+                && Forced.Equals(other.Forced)
+                && Gradient.Equals(other.Gradient); // Erida edit
         }
 
         // VERY BIG TODO: TURN THIS INTO JSONSERIALIZER IMPLEMENTATION
@@ -130,19 +138,19 @@ namespace Content.Shared.Humanoid.Markings
             foreach (Color color in _markingColors)
                 colorStringList.Add(color.ToHex());
 
-            return $"{sanitizedName}@{String.Join(',', colorStringList)}";
+            return MarkingGradient.AppendToDb($"{sanitizedName}@{String.Join(',', colorStringList)}", Gradient); // Erida edit
         }
 
         public static Marking? ParseFromDbString(string input)
         {
             if (input.Length == 0) return null;
-            var split = input.Split('@');
+            var split = MarkingGradient.SplitFromDb(input, out var gradient).Split('@'); // Erida edit
             if (split.Length != 2) return null;
             List<Color> colorList = new();
             foreach (string color in split[1].Split(','))
                 colorList.Add(Color.FromHex(color));
 
-            return new Marking(split[0], colorList);
+            return new Marking(split[0], colorList) { Gradient = gradient }; // Erida edit
         }
     }
 }

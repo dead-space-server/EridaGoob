@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
+using Content.Shared._Erida.Humanoid.Markings;
 using Content.Shared._RMC14.LinkAccount;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
@@ -304,13 +305,13 @@ namespace Content.Server.Database
                 new HumanoidCharacterAppearance
                 (
                     profile.HairName,
-                    Color.FromHex(profile.HairColor),
+                    Color.FromHex(MarkingGradient.SplitFromDb(profile.HairColor, out var hairGradient)), // Erida edit
                     profile.FacialHairName,
-                    Color.FromHex(profile.FacialHairColor),
+                    Color.FromHex(MarkingGradient.SplitFromDb(profile.FacialHairColor, out var facialHairGradient)), // Erida edit
                     Color.FromHex(profile.EyeColor),
                     Color.FromHex(profile.SkinColor),
                     markings
-                ),
+                ) { HairGradient = hairGradient, FacialHairGradient = facialHairGradient }, // Erida edit
                 spawnPriority,
                 jobs,
                 (PreferenceUnavailableMode) profile.PreferenceUnavailable,
@@ -356,9 +357,9 @@ namespace Content.Server.Database
             profile.Sex = humanoid.Sex.ToString();
             profile.Gender = humanoid.Gender.ToString();
             profile.HairName = appearance.HairStyleId;
-            profile.HairColor = appearance.HairColor.ToHex();
+            profile.HairColor = MarkingGradient.AppendToDb(appearance.HairColor.ToHex(), appearance.HairGradient); // Erida edit
             profile.FacialHairName = appearance.FacialHairStyleId;
-            profile.FacialHairColor = appearance.FacialHairColor.ToHex();
+            profile.FacialHairColor = MarkingGradient.AppendToDb(appearance.FacialHairColor.ToHex(), appearance.FacialHairGradient); // Erida edit
             profile.EyeColor = appearance.EyeColor.ToHex();
             profile.SkinColor = appearance.SkinColor.ToHex();
             profile.SpawnPriority = (int) humanoid.SpawnPriority;

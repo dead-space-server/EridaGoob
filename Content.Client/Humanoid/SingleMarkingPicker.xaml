@@ -23,7 +23,9 @@ SPDX-License-Identifier: MIT
 
         <!-- Color sliders -->
         <ScrollContainer MinHeight="200" HorizontalExpand="True">
-            <BoxContainer Name="ColorSelectorContainer" HorizontalExpand="True" />
+            <!-- Erida start -->
+            <BoxContainer Name="ColorSelectorContainer" HorizontalExpand="True" Orientation="Vertical" />
+            <!-- Erida end -->
         </ScrollContainer>
     </BoxContainer>
 </BoxContainer>
