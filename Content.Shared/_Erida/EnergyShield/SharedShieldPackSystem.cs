@@ -1,5 +1,6 @@
 using Content.Shared._Erida.ShieldPack.Components;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Weapons.Ranged.Events;
