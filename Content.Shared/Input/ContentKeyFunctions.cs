@@ -170,6 +170,7 @@ namespace Content.Shared.Input
         // Erida start
         public static readonly BoundKeyFunction EditorNextObject = "EditorNextObject";
         public static readonly BoundKeyFunction EditorPreviousObject = "EditorPreviousObject";
+        public static readonly BoundKeyFunction ZoomMod = "ZoomMod";
         // Erida end
     }
 }
