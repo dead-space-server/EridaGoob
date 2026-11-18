@@ -154,6 +154,8 @@
 - type: entity
   id: EnergyBodyShieldBase
   abstract: true
+  name: energy shield
+  description: A shimmering energy barrier.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite

@@ -16,6 +16,15 @@ ent-ClothingBeltShieldPackSecurity = Поясной щит службы безо
 ent-ClothingBeltShieldPackSecurityPowerCell = {ent-ClothingBeltShieldPackSecurity}
     .desc = {ent-ClothingBeltShieldPackSecurity.desc}
 
+ent-EnergyBodyShield = Энергетический щит
+    .desc = Мерцающий энергетический барьер.
+
+ent-EnergyBodyShieldMiner = {ent-EnergyBodyShield}
+    .desc = {ent-EnergyBodyShield.desc}
+
+ent-EnergyBodyShieldSecurity = {ent-EnergyBodyShield}
+    .desc = {ent-EnergyBodyShield.desc}
+
 ent-ActionToggleShieldPack = Переключить защиту щита
     .desc = Включает и выключает поясной щит.
 

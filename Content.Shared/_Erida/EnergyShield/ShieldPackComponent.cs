@@ -4,7 +4,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Erida.ShieldPack.Components;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class ShieldPackComponent : Component
 {
     [DataField(required: true)]
@@ -14,13 +14,13 @@ public sealed partial class ShieldPackComponent : Component
     public DamageModifierSet Modifiers = default!;
 
     [DataField(required: true)]
-    public EntProtoId Shield = "BaseShieldPack";
+    public EntProtoId Shield;
 
-    [DataField, AutoNetworkedField]
+    [ViewVariables]
     public EntityUid? CurrentShield = null;
 
     [DataField, AutoNetworkedField]
-    public bool Activated = false;
+    public EntityUid? Wearer = null;
 
     [DataField, AutoNetworkedField]
     public bool BlockShooting = false;
@@ -28,12 +28,12 @@ public sealed partial class ShieldPackComponent : Component
     [DataField]
     public TimeSpan ActivateCooldown = TimeSpan.FromSeconds(15f);
 
-    [DataField]
+    [DataField, AutoNetworkedField, AutoPausedField]
     public TimeSpan? CantActivateUntil = null;
 
     [DataField]
     public TimeSpan PopupShotCooldown = TimeSpan.FromSeconds(3f);
 
-    [DataField]
+    [DataField, AutoPausedField]
     public TimeSpan NextPopupTime = TimeSpan.Zero;
 }
