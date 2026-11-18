@@ -221,22 +221,9 @@ public sealed partial class GunSystem : SharedGunSystem
         }
 
         // Define target coordinates relative to gun entity, so that network latency on moving grids doesn't fuck up the target location.
-        // erida edit
-        var aimRelativeTo = entity;
-        if (TransformSystem.GetMapId(aimRelativeTo) != mousePos.MapId)
-            aimRelativeTo = gun.Owner;
-
-        if (TransformSystem.GetMapId(aimRelativeTo) != mousePos.MapId)
-        {
-            if (gun.Comp.ShotCounter != 0)
-                RaisePredictiveEvent(new RequestStopShootEvent { Gun = GetNetEntity(gun) });
-
-            return;
-        }
-
         var target = GetBestTarget(_eyeManager.CurrentEye, mousePos);
 
-        var coordinates = TransformSystem.ToCoordinates(aimRelativeTo, mousePos);
+        var coordinates = TransformSystem.ToCoordinates(entity, mousePos);
 
         Log.Debug($"Sending shoot request tick {Timing.CurTick} / {Timing.CurTime}");
 

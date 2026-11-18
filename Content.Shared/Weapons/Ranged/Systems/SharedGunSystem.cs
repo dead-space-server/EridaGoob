@@ -229,11 +229,6 @@ public abstract partial class SharedGunSystem : EntitySystem
     {
         gun = default;
 
-        // erida edit start
-        if (TryGetVehicleGun(entity, out gun))
-            return true;
-        // erida edit end
-
         // Goobstation - mech equipment guns
         if (TryComp<MechComponent>(entity, out var mech) &&
             mech.CurrentSelectedEquipment.HasValue &&
@@ -389,9 +384,7 @@ public abstract partial class SharedGunSystem : EntitySystem
             shots = Math.Min(shots, gun.Comp.ShotsPerBurstModified - gun.Comp.ShotCounter);
         }
 
-        // erida edit
-        var fromCoordinates = Transform(user).Coordinates;
-        var attemptEv = new AttemptShootEvent(user, null, FromCoordinates: fromCoordinates, ToCoordinates: toCoordinates);
+        var attemptEv = new AttemptShootEvent(user, null);
         RaiseLocalEvent(gun, ref attemptEv);
 
         if (attemptEv.Cancelled)
@@ -408,16 +401,7 @@ public abstract partial class SharedGunSystem : EntitySystem
             return false;
         }
 
-        // erida edit
-        fromCoordinates = attemptEv.FromCoordinates;
-        if (attemptEv.ToCoordinates is { } rmcToOverride)
-            toCoordinates = rmcToOverride;
-
-        // erida edit
-        if (!Exists(fromCoordinates.EntityId))
-            fromCoordinates = new EntityCoordinates(gun.Owner, Vector2.Zero);
-        if (toCoordinates is not { } finalTo || !Exists(finalTo.EntityId))
-            toCoordinates = new EntityCoordinates(gun.Owner, gun.Comp.DefaultDirection);
+        var fromCoordinates = Transform(user).Coordinates;
         // Remove ammo
         var ev = new TakeAmmoEvent(shots, [], fromCoordinates, user);
 
@@ -849,10 +833,8 @@ public abstract partial class SharedGunSystem : EntitySystem
 /// <param name="User">The user that attempted to fire this gun.</param>
 /// <param name="Cancelled">Set this to true if the shot should be cancelled.</param>
 /// <param name="ThrowItems">Set this to true if the ammo shouldn't actually be fired, just thrown.</param>
-// erida edit start
 [ByRefEvent]
-public record struct AttemptShootEvent(EntityUid User, string? Message, bool Cancelled = false, bool ThrowItems = false, EntityCoordinates FromCoordinates = default, EntityCoordinates? ToCoordinates = null, bool ResetCooldown = false);
-// erida edit end
+public record struct AttemptShootEvent(EntityUid User, string? Message, bool Cancelled = false, bool ThrowItems = false);
 
 /// <summary>
 ///     Raised directed on the gun after firing.

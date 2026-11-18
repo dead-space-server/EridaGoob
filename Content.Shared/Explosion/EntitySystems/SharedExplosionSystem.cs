@@ -78,14 +78,4 @@ public abstract class SharedExplosionSystem : EntitySystem
     public virtual void ReloadMap()
     {
     }
-
-    // erida edit
-    public void SetExplosionResistance(EntityUid uid, float damageCoefficient, bool worn, ExplosionResistanceComponent? resistance = null)
-    {
-        resistance ??= EnsureComp<ExplosionResistanceComponent>(uid);
-        resistance.DamageCoefficient = damageCoefficient;
-        resistance.Worn = worn;
-        Dirty(uid, resistance);
-    }
-    // erida edit end
 }

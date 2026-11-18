@@ -716,11 +716,3 @@ binds:
   type: State
   key: H
 # erida edit end
-# erida edit start
-- function: VehicleToggleHeadlights
-  type: State
-  key: L
-- function: VehicleBoost
-  type: State
-  key: Space
-# erida edit end

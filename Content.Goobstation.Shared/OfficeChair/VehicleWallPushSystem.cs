@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.CCVar;
-using Content.Shared.Vehicle.Components;
 using Content.Goobstation.Shared.Vehicles;
 using Content.Shared._EinsteinEngines.Contests;
 using Content.Shared.Actions;
