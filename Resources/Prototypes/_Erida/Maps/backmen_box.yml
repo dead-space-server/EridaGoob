@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: BackmenBox
   mapName: 'Federation Box'
-  mapPath: /Maps/Erida/box.yml
+  mapPath: /Maps/_Erida/box.yml
   minPlayers: 0
   stations:
     Boxstation:

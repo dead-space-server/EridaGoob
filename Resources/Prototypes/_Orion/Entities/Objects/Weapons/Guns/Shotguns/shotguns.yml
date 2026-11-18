@@ -1,0 +1,14 @@
+# erida edit - port InteQ
+- type: entity
+  parent: [BaseMajorContraband, WeaponShotgunBulldog]
+  id: WeaponShotgunInteQBulldog
+  name: Bulldog
+  description: Magazine-fed shotgun designed for close quarters combat. Uses .12 shotgun shells. It is painted in the InteQ brand color.
+  suffix: Shotgun
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Shotguns/inteq_bulldog.rsi
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/Shotguns/inteq_bulldog.rsi
+  - type: Gun
+    fireRate: 2

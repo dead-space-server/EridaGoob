@@ -121,6 +121,9 @@
     state: pda-blueshield
   - type: PdaBorderColor
     borderColor: "#3c94c5"
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: CentcomPDA
@@ -282,6 +285,9 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-virology
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 # event-resctricted jobs
 - type: entity
@@ -292,6 +298,9 @@
   components:
   - type: Pda
     id: SecurityClownIDCard
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: JanitorPDA
@@ -300,6 +309,9 @@
   components:
   - type: Pda
     id: CommandMaidIDCard
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: MusicianPDA
@@ -309,6 +321,9 @@
   components:
   - type: Pda
     id: PartyMakerIDCard
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -328,6 +343,9 @@
     accentVColor: "#cc4d03"
   - type: Icon
     state: pda-roboticist
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -337,6 +355,9 @@
   components:
   - type: Pda
     id: RadioHostIDCard
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: CentcomPDA

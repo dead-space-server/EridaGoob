@@ -1,0 +1,8 @@
+# erida edit - port InteQ
+- type: entity
+  parent: AirAlarm
+  id: AirAlarmUnlocked
+  suffix: Unlocked
+  components:
+  - type: AccessReader
+    access: []

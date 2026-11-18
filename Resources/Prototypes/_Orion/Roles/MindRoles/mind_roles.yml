@@ -1,0 +1,11 @@
+# erida edit - port InteQ
+- type: entity
+  parent:
+  - BaseMindRoleAntag
+  - MindRoleGhostRoleNeutral
+  id: MindRoleGhostRoleInteQAntagonist
+  name: Ghost Role (InteQ Antagonist)
+  components:
+  - type: MindRole
+    roleType: InteQ
+    antagPrototype: GenericTeamAntagonist

@@ -1,0 +1,12 @@
+# erida edit - port InteQ
+- type: entity
+  parent: DeathRattleImplant
+  id: DeathRattleImplantInteQ
+  name: InteQ death rattle implant
+  description: This implant will inform the InteQ radio channel should the user fall into critical condition or die.
+  categories:
+  - HideSpawnMenu
+  components:
+  - type: RattleOnTrigger
+    radioChannel: InteQ
+    reportCoordinates: true

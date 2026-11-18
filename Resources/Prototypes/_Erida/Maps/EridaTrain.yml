@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaTrain
   mapName: 'Train'
-  mapPath: /Maps/Erida/train.yml
+  mapPath: /Maps/_Erida/train.yml
   maxRandomOffset: 0
   randomRotation: false
   # Corvax-start

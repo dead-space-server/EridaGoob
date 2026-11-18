@@ -1,0 +1,57 @@
+# erida edit - port InteQ
+- type: randomHumanoidSettings
+  id: InteQVanguard
+  randomizeName: false
+  speciesBlacklist:
+  - Monkey
+  - Kobold
+  - Abductor
+  - IPC
+  - Diona
+  - Vox
+  - Gingerbread
+  - Plasmaman
+  - Shadowkin
+  components:
+  - type: AntagImmune
+  - type: GhostRole
+    raffle:
+      settings: default
+    mindRoles:
+    - MindRoleGhostRoleInteQAntagonist
+    job: InteQVanguard
+  - type: RandomMetadata
+    nameSegments:
+    - InteQVanguardNamesPrefix
+    - NamesMilitaryLast
+    nameFormat: name-format-standard
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: NpcFactionMember
+    factions:
+    - InteQ
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    - OldFastCodes
+    understands:
+    - TauCetiBasic
+    - OldFastCodes
+  - type: InteQCallsign
+- type: randomHumanoidSettings
+  parent: InteQVanguard
+  id: InteQVanguardLeader
+  components:
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-leader
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-rules-team-antagonist
+    job: InteQVanguardLeader
+  - type: Loadout
+    prototypes:
+    - InteQVanguardLeaderGear
+  - type: RandomMetadata
+    nameSegments:
+    - InteQVanguardLeaderNamesPrefix
+    - NamesMilitaryLast
+    nameFormat: name-format-standard

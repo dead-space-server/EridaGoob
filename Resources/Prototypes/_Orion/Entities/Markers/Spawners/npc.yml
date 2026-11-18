@@ -1,0 +1,76 @@
+# erida edit - port InteQ
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSimpleSyndicateBlade
+  name: spawner Simple Syndicate Blade
+  categories:
+  - Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: alive
+      sprite: _Orion/Mobs/Npc/simple_syndicate/blade.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSimpleSyndicateBlade
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSimpleSyndicateKnife
+  name: spawner Simple Syndicate Knife
+  categories:
+  - Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: alive
+      sprite: _Orion/Mobs/Npc/simple_syndicate/knife.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSimpleSyndicateKnife
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSimpleSyndicatePistol
+  name: spawner Simple Syndicate Pistol
+  categories:
+  - Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: alive
+      sprite: _Orion/Mobs/Npc/simple_syndicate/pistol.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSimpleSyndicatePistol
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSimpleSyndicateSMG
+  name: spawner Simple Syndicate SMG
+  categories:
+  - Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: alive
+      sprite: _Orion/Mobs/Npc/simple_syndicate/smg.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSimpleSyndicateSMG
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSimpleSyndicateShotgun
+  name: spawner Simple Syndicate Shotgun
+  categories:
+  - Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: alive
+      sprite: _Orion/Mobs/Npc/simple_syndicate/shotgun.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSimpleSyndicateShotgun

@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaBox
   mapName: 'Box Station'
-  mapPath: /Maps/Erida/box.yml
+  mapPath: /Maps/_Erida/box.yml
   minPlayers: 10
   stations:
     Boxstation:

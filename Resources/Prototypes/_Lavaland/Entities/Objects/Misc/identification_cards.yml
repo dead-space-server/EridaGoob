@@ -9,3 +9,6 @@
     - state: idshaftminer
   - type: PresetIdCard
     job: ShaftMiner
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist

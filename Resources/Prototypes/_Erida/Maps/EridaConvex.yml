@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaConvex
   mapName: 'Convex'
-  mapPath: /Maps/Erida/convex.yml
+  mapPath: /Maps/_Erida/convex.yml
   minPlayers: 45
   stations:
     Convex:

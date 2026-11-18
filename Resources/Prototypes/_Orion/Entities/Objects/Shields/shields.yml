@@ -1,0 +1,13 @@
+# erida edit - port InteQ
+- type: entity
+  parent:
+  - BaseMajorContraband
+  - EnergyShield
+  id: EnergyShieldInteQ
+  name: InteQ energy shield
+  description: Exotic energy shield, when folded, can even fit in your pocket.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Melee/inteq_e_shield.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Melee/inteq_e_shield.rsi

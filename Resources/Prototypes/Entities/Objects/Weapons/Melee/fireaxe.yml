@@ -91,7 +91,7 @@
         Slash: 10
         Structural: 80
   - type: IgniteOnMeleeHit
-    fireStacks: 5 #Goobchange
+    fireStacks: 1 # Erida edit
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Melee/fireaxeflaming.rsi # Goobstation - resprite
     state: icon

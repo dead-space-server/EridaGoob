@@ -1,0 +1,15 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+
+<controls:FancyWindow xmlns="https://spacestation14.io"
+               xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+               Title="{Loc 'inteq-callsign-window-title'}"
+               MinSize="420 130">
+    <BoxContainer Orientation="Vertical" Margin="5">
+        <Label Text="{Loc 'inteq-callsign-info'}" />
+        <BoxContainer Orientation="Horizontal" Margin="5">
+            <LineEdit Name="NameSelector" HorizontalExpand="True" PlaceHolder="{Loc 'inteq-callsign-placeholder'}" />
+            <Button Name="NameSetButton" Text="{Loc 'inteq-callsign-set'}" />
+        </BoxContainer>
+        <Button Name="RandomButton" Text="{Loc 'inteq-callsign-random'}" HorizontalExpand="True" Margin="5" />
+    </BoxContainer>
+</controls:FancyWindow>

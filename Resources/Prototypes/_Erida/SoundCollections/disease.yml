@@ -1,0 +1,20 @@
+- type: soundCollection
+  id: FemaleMoan
+  files:
+  - /Audio/_Erida/Voice/Human/female_moan_1.ogg
+  - /Audio/_Erida/Voice/Human/female_moan_2.ogg
+  - /Audio/_Erida/Voice/Human/female_moan_3.ogg
+  - /Audio/_Erida/Voice/Human/female_moan_4.ogg
+  - /Audio/_Erida/Voice/Human/female_moan_5.ogg
+
+- type: soundCollection
+  id: MaleMoan
+  files:
+  - /Audio/_Erida/Voice/Human/male_moan_1.ogg
+  - /Audio/_Erida/Voice/Human/male_moan_2.ogg
+  - /Audio/_Erida/Voice/Human/male_moan_3.ogg
+
+- type: soundCollection
+  id: Wink
+  files:
+  - /Audio/_Erida/Voice/Human/wink.ogg

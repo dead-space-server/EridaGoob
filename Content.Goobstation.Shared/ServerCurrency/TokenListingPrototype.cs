@@ -22,6 +22,12 @@ public sealed partial class TokenListingPrototype : IPrototype
     [DataField("price", required: true)]
     public int Price { get; private set; }
 
+    [DataField("category")]
+    public string Category { get; private set; } = "main";
+
+    [DataField("order")]
+    public int Order { get; private set; }
+
     [DataField("adminNote", required: true)]
     public string AdminNote { get; private set; } = string.Empty;
 }

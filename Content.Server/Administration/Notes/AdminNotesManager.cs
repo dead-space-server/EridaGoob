@@ -70,7 +70,17 @@ public sealed class AdminNotesManager : IAdminNotesManager, IPostInjectInit
         await ui.UpdateNotes();
     }
 
-    public async Task AddAdminRemark(ICommonSession createdBy, Guid player, NoteType type, string message, NoteSeverity? severity, bool secret, DateTime? expiryTime)
+    public Task AddAdminRemark(ICommonSession createdBy, Guid player, NoteType type, string message, NoteSeverity? severity, bool secret, DateTime? expiryTime)
+    {
+        return AddRemark(createdBy.UserId, createdBy.Name, player, type, message, severity, secret, expiryTime);
+    }
+
+    public Task AddSystemRemark(Guid player, NoteType type, string message, NoteSeverity? severity, bool secret, DateTime? expiryTime)
+    {
+        return AddRemark(null, Loc.GetString("system-user"), player, type, message, severity, secret, expiryTime);
+    }
+
+    private async Task AddRemark(Guid? createdBy, string createdByName, Guid player, NoteType type, string message, NoteSeverity? severity, bool secret, DateTime? expiryTime)
     {
         message = message.Trim();
 
@@ -80,7 +90,7 @@ public sealed class AdminNotesManager : IAdminNotesManager, IPostInjectInit
         if (await _db.GetPlayerRecordByUserId((NetUserId) player) is null)
             return;
 
-        var sb = new StringBuilder($"{createdBy.Name} added a");
+        var sb = new StringBuilder($"{createdByName} added a");
 
         if (secret && type == NoteType.Note)
         {
@@ -128,14 +138,14 @@ public sealed class AdminNotesManager : IAdminNotesManager, IPostInjectInit
             case NoteType.Note:
                 if (severity is null)
                     throw new ArgumentException("Severity cannot be null for a note", nameof(severity));
-                noteId = await _db.AddAdminNote(roundId, player, playtime, message, severity.Value, secret, createdBy.UserId, createdAt, expiryTime);
+                noteId = await _db.AddAdminNote(roundId, player, playtime, message, severity.Value, secret, createdBy, createdAt, expiryTime);
                 break;
             case NoteType.Watchlist:
                 secret = true;
-                noteId = await _db.AddAdminWatchlist(roundId, player, playtime, message, createdBy.UserId, createdAt, expiryTime);
+                noteId = await _db.AddAdminWatchlist(roundId, player, playtime, message, createdBy, createdAt, expiryTime);
                 break;
             case NoteType.Message:
-                noteId = await _db.AddAdminMessage(roundId, player, playtime, message, createdBy.UserId, createdAt, expiryTime);
+                noteId = await _db.AddAdminMessage(roundId, player, playtime, message, createdBy, createdAt, expiryTime);
                 seen = false;
                 break;
             case NoteType.ServerBan: // Add bans using the ban panel, not note edit
@@ -154,8 +164,8 @@ public sealed class AdminNotesManager : IAdminNotesManager, IPostInjectInit
             message,
             severity,
             secret,
-            createdBy.Name,
-            createdBy.Name,
+            createdByName,
+            createdByName,
             createdAt,
             createdAt,
             expiryTime,

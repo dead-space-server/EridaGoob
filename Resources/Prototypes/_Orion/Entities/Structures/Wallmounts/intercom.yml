@@ -1,0 +1,12 @@
+# erida edit - port InteQ
+- type: entity
+  parent: Intercom
+  id: IntercomInteQ
+  suffix: InteQ
+  components:
+  - type: ContainerFill
+    containers:
+      board:
+      - IntercomElectronics
+      key_slots:
+      - EncryptionKeyInteQ

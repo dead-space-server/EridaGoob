@@ -1807,3 +1807,235 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/66
   avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
   title: lighting + a couple of minor changes and additions
+- author: vanomorodellefake
+  changes:
+    - type: Add
+      message: >-
+        Лидер ОБР теперь имеет в своём стартовом снаряжении селектор вооружения
+        ОБР
+  id: 133
+  time: '2026-10-02T15:30:27.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/67
+  avatar_url: https://avatars.githubusercontent.com/u/53963119?v=4
+  title: Added in ERTLeaderGearEVA ERTSecurityUndeterminedWeapon
+- author: rOmannn299
+  changes:
+    - type: Add
+      message: >-
+        Шаттл СБ был значительно усилен, добавлено вооружение для шаттла,
+        добавлены ЭМИ боеприпасы и батареи для лазеров в комнату Пилота под
+        доступами оружейной
+    - type: Add
+      message: Короб с антикварным пистолетом
+    - type: Add
+      message: Измельчитель слаймов и дренажи в ксенобио
+    - type: Add
+      message: Стиральные машины в бриге, на мостике, в туалеты
+    - type: Add
+      message: Аптечка от ожогов бригмедику
+    - type: Add
+      message: Больше шкафов заключенных для генпоп пермабрига
+    - type: Tweak
+      message: Спавнеры в техах, другие незначительные изменения техов
+    - type: Fix
+      message: >-
+        Доступы в комнату журналиста и радиоведущего, все машины радиоведущего
+        теперь связаны между собой
+    - type: Fix
+      message: Некорректные названия некоторых маяков заменены на более подходящие
+    - type: Fix
+      message: >-
+        Некорректная кнопка, направленная в дверь, в комнате детектива
+        исправлена на корректную
+    - type: Fix
+      message: Отсоединенные багованные тайлы были удалены
+  id: 134
+  time: '2026-10-03T00:29:29.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/68
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: Box
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Система покраски ID карт и кпк
+    - type: Add
+      message: Шкаф ГП получил упакованный покрасчик кпк и ID карт
+  id: 135
+  time: '2026-10-03T22:03:24.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/69
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] Pda painter'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: >-
+        Магнит обломков теперь можно отключить досрочно, отпустив притянутый
+        обломок.
+  id: 136
+  time: '2026-10-04T11:40:48.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/70
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: ' [Tweak] Salvage magnet offers can now be cancelled '
+- author: rOmannn299
+  changes:
+    - type: Add
+      message: Стиральные машины в туалеты, бриг, мед и на мостик
+    - type: Add
+      message: Измельчитель слаймов и дренажи в ксенобио
+    - type: Tweak
+      message: Незначительные правки техов и секреток
+    - type: Tweak
+      message: Исправлены некоторые стулья и скамейки
+    - type: Fix
+      message: Доступы в комнату журналиста и радиоведущего
+  id: 137
+  time: '2026-10-05T22:52:13.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/72
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: WonderDelta
+- author: OpenWendor
+  changes:
+    - type: Add
+      message: Вещи InteQ
+    - type: Add
+      message: Сизо InteQ на лавалэнде
+  id: 138
+  time: '2026-10-06T00:43:10.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/71
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: InteQ
+- author: rOmannn299
+  changes:
+    - type: Add
+      message: Пистолет ГСБ на Аспиде
+    - type: Tweak
+      message: Небольшие изменения техов на Аспиде
+  id: 139
+  time: '2026-10-12T06:58:30.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/75
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: remap-Aspid
+- author: rOmannn299
+  changes:
+    - type: Add
+      message: Стиральные машины на аванпост интека
+    - type: Add
+      message: Больше плат и каркасов машин на аванпост интека
+    - type: Add
+      message: Переработчик мусора для доп ресурсов, больше мусора по аванпосту интека
+    - type: Add
+      message: >-
+        Ослабленная версия разрушителя доступов на аванпост, доступ к некоторым
+        машинам убран раундстартом (остальное взламывайте)
+    - type: Tweak
+      message: >-
+        Уменьшено количество турелей, изменена позиция некоторых, ров с лавой
+        увеличен на 1 тайл
+    - type: Tweak
+      message: Аванпост Интека больше не видно на сканнере масс
+    - type: Tweak
+      message: Убраны спавнеры мин на аванпосте Интека
+    - type: Tweak
+      message: >-
+        Добавлено больше скрубберов и вентиляций на аванпост, старые соединены с
+        сигнализациями
+    - type: Tweak
+      message: Прочие мелкие фиксы и изменения баланса аванпоста Интек
+  id: 140
+  time: '2026-10-12T06:59:15.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/73
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: remap-InteQ
+- author: OW
+  changes:
+    - type: Tweak
+      message: Интерфейс магазина губ-токенов
+    - type: Fix
+      message: Корректная выдача заметки после покупки губ-токена
+  id: 141
+  time: '2026-10-12T14:55:06.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/74
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: Shop-fix
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Новые предметы для предстоящего праздника
+  id: 142
+  time: '2026-10-14T14:23:43.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/76
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] Halloween decorations'
+  media:
+    - >-
+      https://github.com/user-attachments/assets/ba04ae16-2493-44b6-81b5-1b89cd0389af
+- author: Wendor
+  changes:
+    - type: Add
+      message: Возможность общаться через войс-чат
+    - type: Tweak
+      message: Старая система голосового чата
+  id: 143
+  time: '2026-10-18T17:53:30.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/77
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: Voice
+- author: OW
+  changes:
+    - type: Add
+      message: >-
+        [Возвращение старого
+        контента](https://discord.com/channels/1357728304710422680/1560341452180033678)
+    - type: Add
+      message: >-
+        [Возможность менять свое имя за
+        InteQ](https://discord.com/channels/1357728304710422680/1559549267100700842)
+    - type: Tweak
+      message: >-
+        [Коса командира InteQ не
+        заряжается](https://discord.com/channels/1357728304710422680/1559206767097815060)
+    - type: Fix
+      message: >-
+        ["Вечные лаги и
+        вылеты"](https://discord.com/channels/1357728304710422680/1561543291483193344)
+  id: 144
+  time: '2026-10-23T01:19:26.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/78
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: Fix minor issues (1/?)
+- author: Mr
+  changes:
+    - type: Add
+      message: Возвращён старый контент с прошлой сборки, дополняющий текущий лаваленд
+  id: 145
+  time: '2026-10-29T07:22:42.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/80
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: Update lavalend
+- author: Mr
+  changes:
+    - type: Add
+      message: Контент для будущего ивента
+  id: 146
+  time: '2026-10-29T07:28:04.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/79
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: Core content
+- author: Mr
+  changes:
+    - type: Tweak
+      message: Хэллоуинское обновление на основных картах
+  id: 147
+  time: '2026-10-29T21:39:17.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/81
+  avatar_url: https://avatars.githubusercontent.com/u/178937366?v=4
+  title: '[Mapping] Halloween-Stations'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Upstream
+  id: 148
+  time: '2026-11-02T00:49:50.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/86
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: Upstream

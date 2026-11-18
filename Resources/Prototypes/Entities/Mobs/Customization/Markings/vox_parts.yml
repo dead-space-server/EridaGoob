@@ -171,6 +171,7 @@
 
 - type: marking
   id: VoxTail
+  wagging: VoxTailAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   forcedColoring: true
@@ -190,6 +191,7 @@
 
 - type: marking
   id: VoxTailShort
+  wagging: VoxTailShortAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   forcedColoring: true
@@ -209,6 +211,7 @@
 
 - type: marking
   id: VoxTailBig
+  wagging: VoxTailBigAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   forcedColoring: true
@@ -230,6 +233,7 @@
 
 - type: marking
   id: VoxTailSpikes
+  wagging: VoxTailSpikesAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   forcedColoring: true
@@ -249,6 +253,7 @@
 
 - type: marking
   id: VoxTailDocked
+  wagging: VoxTailDockedAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   forcedColoring: true
@@ -268,6 +273,7 @@
 
 - type: marking
   id: VoxTailSplit
+  wagging: VoxTailSplitAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   forcedColoring: true

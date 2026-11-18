@@ -1,0 +1,21 @@
+# erida edit - port InteQ
+- type: entity
+  parent: [ BaseMinorContraband, ClothingBeltStorageBase ]
+  id: ClothingBeltInteQWebbing
+  name: combat webbing
+  description: Unique and versatile chest mount in which you can store weapons and ammunition.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Belt/inteq_webbing.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Belt/inteq_webbing.rsi
+- type: entity
+  parent: [ BaseMinorContraband, ClothingBeltStorageBase ]
+  id: ClothingBeltInteQDropPouch
+  name: combat drop pouch
+  description: Improved unloading for storing various items
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Belt/inteq_droppouch.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Belt/inteq_droppouch.rsi

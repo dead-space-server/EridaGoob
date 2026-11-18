@@ -183,9 +183,9 @@
     damage:
       types:
         Blunt: 2
-        Heat: 2
+        Heat: 10
   - type: IgniteOnCollide
-    fireStacks: 2
+    fireStacks: 1 # Erida edit
 
 - type: entity
   id: BulletSleepshot

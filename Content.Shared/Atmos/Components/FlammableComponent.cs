@@ -50,7 +50,7 @@ namespace Content.Shared.Atmos.Components
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
-        public float MaximumFireStacks = 15f;
+        public float MaximumFireStacks = 10f; // Erida edit
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]

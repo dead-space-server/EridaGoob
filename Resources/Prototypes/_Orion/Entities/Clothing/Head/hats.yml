@@ -1,0 +1,64 @@
+# erida edit - port InteQ
+- type: entity
+  abstract: true
+  parent:
+  - ClothingHeadBase
+  id: ClothingHeadHatArmoredPlus
+  components:
+  - type: Armor
+    coverage:
+    - Head
+    traumaDeductions:
+      Dismemberment: 0.3
+      OrganDamage: 0.4
+      BoneDamage: 0.3
+      VeinsDamage: 0.1
+      NerveDamage: 0.1
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.7
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatInteQTacticalMaidHeadband
+  name: tactical maid headband
+  description: White headband - dont imagine yourself a Buster.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/inteq_headband.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/inteq_headband.rsi
+- type: entity
+  parent:
+  - ClothingHeadHatArmoredPlus
+  - BaseMinorContraband
+  id: ClothingHeadInteQBeret
+  name: InteQ beret
+  description: Brown beret with a gold emblem on it.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/inteq_beret.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/inteq_beret.rsi
+- type: entity
+  parent: ClothingHeadInteQBeret
+  id: ClothingHeadInteQHonorableBeret
+  name: InteQ honorable beret
+  description: White beret with a emblem on it.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/inteq_honorable_beret.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/inteq_honorable_beret.rsi
+- type: entity
+  parent: ClothingHeadInteQBeret
+  id: ClothingHeadHatInteQMAA
+  name: InteQ master at arms hat
+  description: Master at arms hat, looks intimidating, I doubt that you will like to communicate with its owner...
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/inteq_peaked.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/inteq_peaked.rsi

@@ -1,0 +1,19 @@
+# erida edit - port InteQ
+- type: entity
+  parent: Surgerykit
+  id: SurgerykitFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: SawElectric
+    - id: Drill
+    - id: Hemostat
+    - id: Scalpel
+    - id: Retractor
+    - id: MedicalStitches
+    - id: BoneGel
+    - id: Cautery
+    - id: ClothingHandsGlovesLatex
+    - id: ClothingMaskSterile
+    - id: PillCanisterTramadol

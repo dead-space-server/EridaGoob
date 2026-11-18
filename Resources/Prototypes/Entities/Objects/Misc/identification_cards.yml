@@ -60,6 +60,9 @@
     - state: idpassenger
   - type: PresetIdCard
     job: Passenger
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: PassengerIDCard
@@ -140,6 +143,7 @@
     - WhitelistChameleon
     - WhitelistChameleonIdCard
     - HighRiskItem
+    - PdaPainterWhitelist # Erida edit
   - type: StealTarget
     stealGroup: CaptainIDCard
 
@@ -154,6 +158,9 @@
     - state: idsecurityofficer
   - type: PresetIdCard
     job: SecurityOfficer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -166,6 +173,9 @@
     - state: idseniorofficer
   - type: PresetIdCard
     job: SecurityPilot
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -178,6 +188,9 @@
         - state: idwarden
     - type: PresetIdCard
       job: Warden
+    - type: Tag # Erida edit
+      tags:
+      - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -190,6 +203,9 @@
     - state: idstationengineer
   - type: PresetIdCard
     job: StationEngineer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -202,6 +218,9 @@
     - state: idmedicaldoctor
   - type: PresetIdCard
     job: MedicalDoctor
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -214,6 +233,9 @@
     - state: idparamedic
   - type: PresetIdCard
     job: Paramedic
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -229,6 +251,9 @@
   - type: Item # Goobstation - Chemist card
     heldPrefix: chemist
     sprite: _Goobstation/Objects/Misc/id_cards.rsi
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -241,6 +266,9 @@
     - state: idcargotechnician
   - type: PresetIdCard
     job: CargoTechnician
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -253,6 +281,9 @@
     - state: idshaftminer
   - type: PresetIdCard
     job: SalvageSpecialist
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -267,6 +298,9 @@
       heldPrefix: silver
     - type: PresetIdCard
       job: Quartermaster
+    - type: Tag # Erida edit
+      tags:
+      - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -279,6 +313,9 @@
     - state: idscientist
   - type: PresetIdCard
     job: Scientist
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -291,6 +328,9 @@
     - state: idclown
   - type: PresetIdCard
     job: Clown
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -303,6 +343,9 @@
     - state: idmime
   - type: PresetIdCard
     job: Mime
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -315,6 +358,9 @@
         - state: idchaplain
     - type: PresetIdCard
       job: Chaplain
+    - type: Tag # Erida edit
+      tags:
+      - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -327,6 +373,9 @@
     - state: idjanitor
   - type: PresetIdCard
     job: Janitor
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -339,6 +388,9 @@
     - state: idbartender
   - type: PresetIdCard
     job: Bartender
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -354,6 +406,7 @@
       name: Pun Pun
     - type: Tag #  Ignore Chameleon tags
       tags:
+      - PdaPainterWhitelist # Erida edit
       - DoorBumpOpener
 
 - type: entity
@@ -367,6 +420,9 @@
     - state: idcook
   - type: PresetIdCard
     job: Chef
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -379,6 +435,9 @@
         - state: idbotanist
     - type: PresetIdCard
       job: Botanist
+    - type: Tag # Erida edit
+      tags:
+      - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -391,6 +450,9 @@
         - state: idcurator
     - type: PresetIdCard
       job: Librarian
+    - type: Tag # Erida edit
+      tags:
+      - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -403,6 +465,9 @@
         - state: idlawyer
     - type: PresetIdCard
       job: Lawyer
+    - type: Tag # Erida edit
+      tags:
+      - PdaPainterWhitelist
 
 # erida edit
 - type: entity
@@ -416,6 +481,9 @@
         - state: idlawyer
     - type: PresetIdCard
       job: IAA
+    - type: Tag # Erida edit
+      tags:
+      - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -430,6 +498,9 @@
     heldPrefix: silver
   - type: PresetIdCard
     job: HeadOfPersonnel
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -444,6 +515,9 @@
     heldPrefix: silver
   - type: PresetIdCard
     job: ChiefEngineer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -458,6 +532,9 @@
     heldPrefix: silver
   - type: PresetIdCard
     job: ChiefMedicalOfficer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -472,6 +549,9 @@
     heldPrefix: silver
   - type: PresetIdCard
     job: ResearchDirector
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -486,6 +566,9 @@
     heldPrefix: silver
   - type: PresetIdCard
     job: HeadOfSecurity
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -513,6 +596,9 @@
     - state: idbrigmedic
   - type: PresetIdCard # goob
     job: Brigmedic
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -789,6 +875,9 @@
     - state: idpsychologist
   - type: PresetIdCard
     job: Psychologist
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -801,6 +890,9 @@
     - state: idreporter
   - type: PresetIdCard
     job: Reporter
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -813,6 +905,9 @@
     - state: iddetective
   - type: PresetIdCard
     job: Detective
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -841,6 +936,7 @@
     speechVerb: Robotic
   - type: Tag
     tags:
+    - PdaPainterWhitelist # Erida edit
     - DoorBumpOpener
     - WhitelistChameleon
     - WhitelistChameleonIdCard
@@ -890,6 +986,9 @@
     layers:
     - state: default
     - state: idseniorengineer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: ResearchIDCard
@@ -900,6 +999,9 @@
     layers:
     - state: default
     - state: idseniorresearcher
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: MedicalIDCard
@@ -910,6 +1012,9 @@
     layers:
     - state: default
     - state: idseniorphysician
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: SecurityIDCard
@@ -920,6 +1025,9 @@
     layers:
     - state: default
     - state: idseniorofficer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard

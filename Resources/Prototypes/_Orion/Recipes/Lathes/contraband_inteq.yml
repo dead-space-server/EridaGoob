@@ -1,0 +1,90 @@
+# erida edit - port InteQ
+- type: latheRecipe
+  id: CaseInteQ
+  result: CaseInteQ
+  completetime: 2
+  materials:
+    Steel: 450
+    Plastic: 250
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: MagazineBoxPistolInteQ
+  result: MagazineBoxPistolInteQ
+  materials:
+    Steel: 350
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: MagazineBoxLightRifleInteQ
+  result: MagazineBoxLightRifleInteQ
+  materials:
+    Steel: 1100
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: MagazineBoxShotgunInteQ
+  result: MagazineBoxShotgunInteQ
+  materials:
+    Steel: 650
+
+- type: latheRecipe
+  id: ClothingEyesGogglessInteQ
+  result: ClothingEyesGogglessInteQ
+  completetime: 2
+  materials:
+    Steel: 300
+    Glass: 200
+
+- type: latheRecipe
+  id: PlasmaSword
+  result: PlasmaSword
+  completetime: 10
+  materials:
+    Steel: 2500
+    Plasteel: 3000
+    Plastic: 3500
+    Plasma: 3300
+
+- type: latheRecipe
+  parent: PlasmaSword
+  id: PlasmaSwordAlt
+  result: PlasmaSwordAlt
+
+# erida edit - port InteQ
+- type: latheRecipe
+  id: ExGrenade
+  result: ExGrenade
+  completetime: 5
+  materials:
+    Steel: 900
+    Plastic: 100
+    Uranium: 1000
+
+- type: latheRecipe
+  id: WhiteholeGrenade
+  result: WhiteholeGrenade
+  completetime: 5
+  materials:
+    Steel: 950
+    Plastic: 120
+    Uranium: 1800
+
+- type: latheRecipe
+  id: C4
+  result: C4
+  completetime: 5
+  materials:
+    Steel: 1200
+    Plastic: 800
+    Uranium: 750
+
+- type: latheRecipe
+  id: EmpGrenade
+  result: EmpGrenade
+  completetime: 5
+  materials:
+    Steel: 1200
+    Plastic: 600
+    Plasma: 750
+    Glass: 800

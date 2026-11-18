@@ -1,0 +1,9 @@
+# erida edit - port InteQ
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconInteQSizo73
+  suffix: InteQ, Sizo-73
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-sizo-73
+    color: '#8B4513'

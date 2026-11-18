@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: BackmenDelta
   mapName: 'WonderDelta Station'
-  mapPath: /Maps/Erida/WonderDelta.yml
+  mapPath: /Maps/_Erida/WonderDelta.yml
   minPlayers: 8 # Erida
   stations:
     Delta:
@@ -13,7 +13,7 @@
             !type:NanotrasenNameGenerator
             prefixCreator: 'BM'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Erida/Shuttles/emergency_corvaxdelta.yml
+          emergencyShuttlePath: /Maps/_Erida/Shuttles/emergency_corvaxdelta.yml
         - type: StationJobs
           availableJobs:
             # security

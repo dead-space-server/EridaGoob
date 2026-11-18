@@ -39,6 +39,8 @@ public sealed partial class SalvageMagnetDataComponent : Component
     [DataField]
     public TimeSpan OfferCooldown = TimeSpan.FromMinutes(3);
 
+    [DataField] public TimeSpan OfferAfterCanceledCooldown = TimeSpan.FromMinutes(2.5f); // Erida edit
+
     /// <summary>
     /// Seeds currently offered
     /// </summary>

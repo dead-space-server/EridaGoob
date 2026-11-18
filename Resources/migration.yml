@@ -162,7 +162,6 @@ SpeedLoaderSpecialPractice: null
 SuitStorageCorpsman: null
 SuitStorageParamedic: null
 TableWoodReinforced: TableWood
-tatamimat: null
 ToyRenault: null
 ToySiobhan: null
 VendingMachineBoozeUnlocked: null
@@ -170,7 +169,6 @@ VendingMachineBoxingDrobe: null
 VendingMachineCourierDrobe: null
 VendingMachineMNKDrobe: null
 VendingMachineRepDrobe: null
-WallPaper: null
 WarpPointAI: null
 WarpPointArrivals: null
 WarpPointAtmos: null
@@ -187,9 +185,6 @@ WarpPointLibrary: null
 WarpPointMorgue: null
 WarpPointReporter: null
 WarpPointSingulo: null
-WashingMachine: null
-WashingMachineBroken: null
-WashingMachineFilledClothes: null
 WeaponShotgunKammererNonLethal: null
 WindoorSecureMailLocked: null
 WindoorSecureParamedicLocked: null
@@ -1016,3 +1011,6 @@ BorgModuleAdvancedChemical: BorgModuleAdvancedTopical
 
 # 2026-09-03
 LauncherSyringe: SyringePistol
+
+ChairOfficeLight: SpawnVehicleChairOfficeLight
+ChairOfficeDark: SpawnVehicleChairOfficeDark

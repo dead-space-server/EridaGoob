@@ -1,0 +1,40 @@
+# erida edit - port InteQ
+- type: entity
+  parent: ClothingModsuitGauntletsStandard
+  id: ClothingModsuitGauntletsSuspicious
+  name: suspicious hardsuit gauntlets
+  description: Special modular suit gloves that protect wearer from electric shock.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Hands/Modsuits/suspicious.rsi
+
+- type: entity
+  parent: ClothingModsuitHelmetStandard
+  id: ClothingModsuitHelmetSuspicious
+  name: suspicious hardsuit helmet
+  description: A special modular suit spaceproof helmet designed for compact folding inside modular suit control.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Modsuits/suspicious.rsi
+
+- type: entity
+  parent: ClothingModsuitChestplateStandard
+  id: ClothingModsuitChestplateSuspicious
+  name: suspicious hardsuit chestplate
+  description: A special modular suit spaceproof cover designed for compact folding inside modular suit control.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/OuterClothing/Modsuits/suspicious.rsi
+
+- type: entity
+  parent: ClothingModsuitBootsStandard
+  id: ClothingModsuitBootsSuspicious
+  name: suspicious hardsuit boots
+  description: A special modular suit boots designed for compact folding inside modular suit control.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Shoes/Modsuits/suspicious.rsi

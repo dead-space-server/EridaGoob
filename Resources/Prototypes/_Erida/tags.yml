@@ -9,3 +9,6 @@
 
 - type: Tag
   id: NoXeno
+
+- type: Tag
+  id: PdaPainterWhitelist

@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: BackmenHive
   mapName: 'The Hive'
-  mapPath: /Maps/Erida/hive.yml
+  mapPath: /Maps/_Erida/hive.yml
   minPlayers: 10
   stations:
     TheHive:
@@ -13,7 +13,7 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Erida/Shuttles/NTES_Seal.yml
+          emergencyShuttlePath: /Maps/_Erida/Shuttles/NTES_Seal.yml
         - type: StationJobs
           availableJobs:
           #civilian

@@ -101,11 +101,30 @@ public sealed partial class DecalPlacerWindow : DefaultWindow
             _rotation = args.Value;
             UpdateDecalPlacementInfo();
         };
+
         // Erida start
+        _decalCopySystem.UpdateCopyDecalButtons += active =>
+        {
+            SwitchCopy.Pressed = active;
+        };
+
+        _decalCopySystem.UpdateSelectedDecalId += id =>
+        {
+            _selected = id;
+        };
+
         SwitchCopy.OnPressed += args =>
         {
-            _decalPlacementSystem.SetActive(false);
-            _decalCopySystem.SetActive(true);
+            if (args.Button.Pressed)
+            {
+                _decalPlacementSystem.SetActive(false);
+                _decalCopySystem.SetActive(true);
+            }
+            else
+            {
+                _decalPlacementSystem.SetActive(true);
+                _decalCopySystem.SetActive(false);
+            }
         };
         // Erida end
         EnableAuto.OnToggled += args =>
@@ -240,7 +259,7 @@ public sealed partial class DecalPlacerWindow : DefaultWindow
     public override void Close()
     {
         base.Close();
-        _decalPlacementSystem.SetActive(false);
         _decalCopySystem.SetActive(false); // Erida
+        _decalPlacementSystem.SetActive(false);
     }
 }

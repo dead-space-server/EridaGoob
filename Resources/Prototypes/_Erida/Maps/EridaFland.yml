@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaFland
   mapName: 'Fland Installation'
-  mapPath: /Maps/Erida/fland.yml
+  mapPath: /Maps/_Erida/fland.yml
   minPlayers: 70
   stations:
     Fland:

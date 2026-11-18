@@ -19,14 +19,16 @@ namespace Content.Goobstation.Client.ServerCurrency.UI
     [GenerateTypedNameReferences]
     public sealed partial class CurrencyWindow : DefaultWindow
     {
-        [Dependency] private readonly ICommonCurrencyManager _serverCur = default!;
-        [Dependency] private readonly IClientAdminManager _adminManager = default!;
-        [Dependency] private readonly IClientConsoleHost _consoleHost = default!;
-        [Dependency] private readonly IPrototypeManager _protoManager = default!;
+        [Dependency] private ICommonCurrencyManager _serverCur = default!;
+        [Dependency] private IClientAdminManager _adminManager = default!;
+        [Dependency] private IClientConsoleHost _consoleHost = default!;
+        [Dependency] private IPrototypeManager _protoManager = default!;
         public event Action<ProtoId<TokenListingPrototype>>? OnBuy;
         private bool isAdmin = false;
-        private Dictionary<Button, (DateTime LastClick, TokenListingPrototype Listing)> _buttonClickTimes = new();
+        private readonly Dictionary<Button, TokenListingPrototype> _listingButtons = new();
+        private readonly Dictionary<Button, (DateTime LastClick, TokenListingPrototype Listing)> _buttonClickTimes = new();
         private const double DoubleClickTimeWindow = 1.5; // seconds
+        private const string AntagCategory = "antag";
 
         public CurrencyWindow()
         {
@@ -46,6 +48,9 @@ namespace Content.Goobstation.Client.ServerCurrency.UI
 
             _serverCur.ClientBalanceChange += UpdatePlayerBalance;
 
+            ShopTabs.SetTabTitle(0, Loc.GetString("gs-balanceui-shop-tab-main"));
+            ShopTabs.SetTabTitle(1, Loc.GetString("gs-balanceui-shop-tab-antag"));
+
             PopulateTokenButtons();
             UpdateButtonStates();
         }
@@ -53,19 +58,25 @@ namespace Content.Goobstation.Client.ServerCurrency.UI
         private void PopulateTokenButtons()
         {
             TokenListingsContainer.DisposeAllChildren();
+            AntagListingsContainer.DisposeAllChildren();
+            _listingButtons.Clear();
             _buttonClickTimes.Clear();
 
             var tokenListings = _protoManager.EnumeratePrototypes<TokenListingPrototype>()
-                .OrderByDescending(x => x.Price);
+                .OrderByDescending(x => x.Price)
+                .ThenBy(x => x.Order);
 
             foreach (var listing in tokenListings)
             {
                 var button = new Button
                 {
                     Text = Loc.GetString(listing.Name, ("price", listing.Price)),
-                    MinHeight = 40,
-                    ToolTip = Loc.GetString(listing.Description)
+                    MinHeight = 34,
+                    HorizontalExpand = true
                 };
+
+                if (listing.Description != string.Empty)
+                    button.ToolTip = Loc.GetString(listing.Description);
 
                 button.OnPressed += _ =>
                 {
@@ -99,8 +110,11 @@ namespace Content.Goobstation.Client.ServerCurrency.UI
                     });
                 };
 
-                TokenListingsContainer.AddChild(button);
-                TokenListingsContainer.AddChild(new Control { MinSize = new Vector2(0, 5) });
+                _listingButtons[button] = listing;
+
+                var container = listing.Category == AntagCategory ? AntagListingsContainer : TokenListingsContainer;
+                container.AddChild(button);
+                container.AddChild(new Control { MinSize = new Vector2(0, 3) });
             }
         }
 
@@ -137,17 +151,9 @@ namespace Content.Goobstation.Client.ServerCurrency.UI
                 balance = _serverCur.GetBalance();
 
             Header.Text = _serverCur.Stringify(balance.Value);
-            foreach (var child in TokenListingsContainer.Children)
+            foreach (var (button, listing) in _listingButtons)
             {
-                if (child is not Button button)
-                    continue;
-
-                var listing = _protoManager.EnumeratePrototypes<TokenListingPrototype>()
-                    .FirstOrDefault(x => Loc.GetString(x.Name, ("price", x.Price)) == button.Text);
-
-
-                if (listing != null)
-                    button.Disabled = balance < listing.Price;
+                button.Disabled = balance < listing.Price;
             }
         }
 

@@ -19,6 +19,7 @@ public sealed class DeviceListSystem : SharedDeviceListSystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<DeviceListComponent, ComponentInit>(OnInit); // Erida edit
         SubscribeLocalEvent<DeviceListComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<DeviceListComponent, BeforeBroadcastAttemptEvent>(OnBeforeBroadcast);
         SubscribeLocalEvent<DeviceListComponent, BeforePacketSentEvent>(OnBeforePacketSent);
@@ -70,6 +71,18 @@ public sealed class DeviceListSystem : SharedDeviceListSystem
             DebugTools.Assert(dev_comp.DeviceLists.Contains(listUid));
         }
     }
+
+    // Erida start
+    private void OnInit(Entity<DeviceListComponent> ent, ref ComponentInit args)
+    {
+        var query = GetEntityQuery<DeviceNetworkComponent>();
+        foreach (var device in ent.Comp.Devices)
+        {
+            if (query.TryGetComponent(device, out var network))
+                network.DeviceLists.Add(ent);
+        }
+    }
+    // Erida end
 
     private void OnShutdown(EntityUid uid, DeviceListComponent component, ComponentShutdown args)
     {

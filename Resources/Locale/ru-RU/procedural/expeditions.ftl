@@ -15,6 +15,7 @@ salvage-expedition-window-biome = Биом:
 salvage-expedition-window-modifiers = Модификаторы:
 offering-window-claimed = Принято
 offering-window-claim = Принять
+offering-window-cancel = Отменить
 salvage-expedition-window-next = Следующее предложение
 salvage-expedition-difficulty-players = Рекомендовано утилизаторов:
 salvage-expedition-difficulty-Moderate = Умеренная

@@ -60,13 +60,30 @@ public sealed class SalvageMagnetBoundUserInterface : BoundUserInterface
             option.Claimed = current.ActiveSeed == seed;
             var claimIndex = i;
 
-            option.ClaimPressed += _ =>
+
+            // Erida start
+            if (option.Claimed)
             {
-                SendMessage(new MagnetClaimOfferEvent
+                option.Disabled = false;
+                option.ClaimPressed += _ =>
                 {
-                    Index = claimIndex
-                });
-            };
+                    SendMessage(new MagnetCancelOfferEvent
+                    {
+                        Index = claimIndex
+                    });
+                };
+            }
+            else
+            {
+                option.ClaimPressed += _ =>
+                {
+                    SendMessage(new MagnetClaimOfferEvent
+                    {
+                        Index = claimIndex
+                    });
+                };
+            }
+            // Erida end
 
             // Begin DeltaV Additions: Mining points cost for wrecks
             if (offer.Cost > 0)

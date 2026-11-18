@@ -1,0 +1,5 @@
+# erida edit - port InteQ
+- type: roleType
+  id: InteQ
+  name: role-type-inteq-name
+  color: '#d82000'

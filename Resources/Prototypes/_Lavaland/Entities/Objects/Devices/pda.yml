@@ -28,3 +28,6 @@
       - NewsReaderCartridge
       - AstroNavCartridge
       - NanoChatCartridge # DeltaV
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist

@@ -1,0 +1,45 @@
+# erida edit - port InteQ
+- type: npcFaction
+  id: InteQ
+  hostile:
+  - NanoTrasen # erida edit - they fight players too
+  - Dragon
+  - SimpleHostile
+  - AllHostile
+  - Xeno
+  - Zombie
+  - Xenoborg
+  - Blob
+  - Shadowling
+  - Lavafauna
+  - Wraith
+  friendly:
+  - Syndicate
+  - InteQHostile
+- type: npcFaction
+  id: InteQHostile
+  hostile:
+  - NanoTrasen
+  - Dragon
+  - Mouse
+  - Passive
+  - PetsNT
+  - SimpleHostile
+  - SimpleNeutral
+  - AllHostile
+  - Syndicate
+  - Xeno
+  - Zombie
+  - Revolutionary
+  - Xenoborg
+  - Changeling
+  - Heretic
+  - Blob
+  - Wizard
+  - PirateFaction
+  - Shadowling
+  - Lavafauna
+  - Wraith
+  - Assistant
+  friendly:
+  - InteQ

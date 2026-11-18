@@ -1,0 +1,313 @@
+- type: entity
+  abstract: true
+  id: BaseHolidayDecoration
+  parent: BaseStructure
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+  - type: Pullable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: ItemToggle
+    activated: false
+    onActivate: true
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 5
+    energy: 0.85
+    softness: 1.7
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        lights_on:
+          True: { visible: true }
+          False: { visible: false }
+
+- type: entity
+  abstract: true
+  id: BaseGarlandDecoration
+  parent: BaseHolidayDecoration
+  components:
+  - type: Physics
+    canCollide: false
+  - type: PointLight
+    enabled: false
+    radius: 5
+    energy: 0.9
+    softness: 1.7
+    color: "#ffd98a"
+
+- type: entity
+  abstract: true
+  id: BasePumpkinDecoration
+  parent: BaseHolidayDecoration
+  components:
+  - type: PointLight
+    enabled: false
+    radius: 4
+    energy: 1
+    softness: 1.7
+    color: "#ffb347"
+
+- type: entity
+  id: DecorGarland1
+  parent: BaseGarlandDecoration
+  name: Starfall garland
+  description: A festive garland. Click it to switch the lights on or off.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: garland_1
+    - state: garland_1_lights
+    - state: garland_1_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorGarland2
+  parent: BaseGarlandDecoration
+  name: Twinkle garland
+  description: A festive garland. Click it to switch the lights on or off.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: garland_2
+    - state: garland_2_lights
+    - state: garland_2_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorGarland3
+  parent: BaseGarlandDecoration
+  name: Snowflake garland
+  description: A festive garland. Click it to switch the lights on or off.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: garland_3
+    - state: garland_3_lights
+    - state: garland_3_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorGarland4
+  parent: BaseGarlandDecoration
+  name: Candy garland
+  description: A festive garland. Click it to switch the lights on or off.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: garland_4
+    - state: garland_4_lights
+    - state: garland_4_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorGarland5
+  parent: BaseGarlandDecoration
+  name: Jingle garland
+  description: A festive garland. Click it to switch the lights on or off.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: garland_5
+    - state: garland_5_lights
+    - state: garland_5_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorGarland6
+  parent: BaseGarlandDecoration
+  name: Rainbow garland
+  description: A festive garland. Click it to switch the lights on or off.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: garland_6
+    - state: garland_6_lights
+    - state: garland_6_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorGarland7
+  parent: BaseGarlandDecoration
+  name: Flicker garland
+  description: A festive garland. Click it to switch the lights on or off.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: garland_7
+    - state: garland_7_lights
+    - state: garland_7_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorPumpkin1
+  parent: BasePumpkinDecoration
+  name: Grinning pumpkin
+  description: A carved pumpkin with a glow inside. Click it to light it up.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: pumpkin_1
+    - state: pumpkin_1_light
+      shader: unshaded
+    - state: pumpkin_1_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorPumpkin2
+  parent: BasePumpkinDecoration
+  name: Spooky pumpkin
+  description: A carved pumpkin with a glow inside. Click it to light it up.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: pumpkin_2
+    - state: pumpkin_2_light
+      shader: unshaded
+    - state: pumpkin_2_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorPumpkin3
+  parent: BasePumpkinDecoration
+  name: Sharp-toothed pumpkin
+  description: A carved pumpkin with a glow inside. Click it to light it up.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: pumpkin_3
+    - state: pumpkin_3_light
+      shader: unshaded
+    - state: pumpkin_3_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorPumpkin4
+  parent: BasePumpkinDecoration
+  name: Gossip pumpkin
+  description: A carved pumpkin with a glow inside. Click it to light it up.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: pumpkin_4
+    - state: pumpkin_4_light
+      shader: unshaded
+    - state: pumpkin_4_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorPumpkin5
+  parent: BasePumpkinDecoration
+  name: Sleepy pumpkin
+  description: A carved pumpkin with a glow inside. Click it to light it up.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: pumpkin_5
+    - state: pumpkin_5_light
+      shader: unshaded
+    - state: pumpkin_5_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorPumpkin6
+  parent: BasePumpkinDecoration
+  name: Angry pumpkin
+  description: A carved pumpkin with a glow inside. Click it to light it up.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: pumpkin_6
+    - state: pumpkin_6_light
+      shader: unshaded
+    - state: pumpkin_6_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorPumpkin7
+  parent: BasePumpkinDecoration
+  name: Surprised pumpkin
+  description: A carved pumpkin with a glow inside. Click it to light it up.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: pumpkin_7
+    - state: pumpkin_7_light
+      shader: unshaded
+    - state: pumpkin_7_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded
+
+- type: entity
+  id: DecorPumpkin8
+  parent: BasePumpkinDecoration
+  name: Jolly pumpkin
+  description: A carved pumpkin with a glow inside. Click it to light it up.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Erida/Holidays/halloween/pumkins.rsi
+    layers:
+    - state: pumpkin_8
+    - state: pumpkin_8_light
+      shader: unshaded
+    - state: pumpkin_8_on
+      map: [ "lights_on" ]
+      visible: false
+      shader: unshaded

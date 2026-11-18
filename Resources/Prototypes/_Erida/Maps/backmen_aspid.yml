@@ -1,7 +1,7 @@
 - type: gameMap
   id: BackmenAspid
   mapName: 'NCS Aspid'
-  mapPath: /Maps/Erida/aspid.yml
+  mapPath: /Maps/_Erida/aspid.yml
   minPlayers: 20
   maxPlayers: 60
   stations:

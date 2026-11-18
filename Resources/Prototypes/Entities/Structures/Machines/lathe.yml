@@ -35,6 +35,7 @@
       - !type:DoActsBehavior
         acts: ["Destruction"]
   - type: WiresPanel
+  - type: ESForcedFacingUi # Goob
   - type: ActivatableUI
     key: enum.LatheUiKey.Key
   - type: ActivatableUIRequiresPower
@@ -390,6 +391,7 @@
     - Modsuits
     - PowerCages
     - BorgModulesGoob
+    - SecBorgParts # Goob
     - BasicCybernetics
     - MedicalCybernetics
     - AdvancedCybernetics
@@ -780,6 +782,7 @@
     - type: MiningPointsLathe # DeltaV
     - type: MaterialStorageMagnetPickup # Frontier
     - type: OreSiloClient
+    - type: AlmanacOreCounter # Goobstation
 
 - type: entity
   parent: OreProcessor

@@ -1,0 +1,49 @@
+# erida edit - port InteQ
+- type: entity
+  parent: [BaseWeaponSubMachineGun, BaseGunWieldable, BaseMajorContraband]
+  id: WeaponSubMachineGunInteQSMG
+  name: InteQ submachine gun
+  description: Firearm that is often used by the InteQ. Uses 9mm auto ammo. It is painted in the InteQ brand color.
+  suffix: SubmachineGun
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/SMG/inteq_smg.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/SMG/inteq_smg.rsi
+  - type: GunWieldBonus
+    minAngle: -10
+    maxAngle: -8
+    angleIncrease: -1
+  - type: Gun
+    angleDecay: 20
+    minAngle: 11
+    maxAngle: 13
+    fireRate: 8
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/SMGs/mp7.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: MagazinePistolSubMachineGun
+        insertSound: /Audio/_Orion/Weapons/Guns/SMGs/mp5_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/SMGs/mp5_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistolSubMachineGun
+      gun_chamber:
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance

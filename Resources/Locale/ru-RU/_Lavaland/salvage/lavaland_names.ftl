@@ -52,3 +52,10 @@ lavaland-ruin-crystal = Лававый кристал
 lavaland-ruin-jadnost = Руины Жадности
 
 lavaland-ruin-reclaimer = NT-Реклеймер
+
+lavaland-ruin-bmc-research-facility = Исследовательская лаборатория Чёрной Мезы
+lavaland-ruin-bmc-research-outpost = Аванпост Чёрной Мезы
+lavaland-ruin-bmc-research-spot = Место исследований Чёрной Мезы
+lavaland-ruin-bmc-research-station = Станция Чёрной Мезы
+lavaland-ruin-bmc-military-shuttle = Шаттл Чёрной Мезы
+lavaland-ruin-bmc-evacuation-shuttle = Эвакуационный шаттл Чёрной Мезы

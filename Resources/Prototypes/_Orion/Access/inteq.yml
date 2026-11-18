@@ -1,0 +1,12 @@
+# erida edit - port InteQ
+- type: accessGroup
+  id: InteQ
+  tags:
+  - InteQVanguardLeader
+  - InteQVanguard
+- type: accessLevel
+  id: InteQVanguard
+  name: id-card-access-level-inteq-vanguard
+- type: accessLevel
+  id: InteQVanguardLeader
+  name: id-card-access-level-inteq-vanguard-leader

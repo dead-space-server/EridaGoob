@@ -58,6 +58,7 @@
     - MedkitCombatFilled # End of first line
     - MedkitCombatFilled
     - TelescopicShield
+    - ERTSecurityUndeterminedWeapon # Erida-edit
     #belt: # Goobstation prefilled
     #- Stunbaton
     #- Handcuffs
@@ -171,7 +172,7 @@
     - Nullrod # Goobstation
     - ExecutiveIDCard # Goobstation - Executive Access!
     belt:
-    - Bible
+    - ChaplainUndeterminedBible # Goobstation
     - Lantern
     - Lantern
     - Lantern

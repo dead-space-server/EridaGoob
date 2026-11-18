@@ -1,0 +1,152 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from tg-station",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "garland"
+        },
+        {
+            "name": "garland_1_on"
+        },
+        {
+            "name": "garland_2_on"
+        },
+        {
+            "name": "garland_3_on"
+        },
+        {
+            "name": "garland_4_on"
+        },
+        {
+            "name": "garland_5_on"
+        },
+        {
+            "name": "garland_6_on"
+        },
+        {
+            "name": "garland_7_on"
+        },
+        {
+            "name": "garland_1"
+        },
+        {
+            "name": "garland_2"
+        },
+        {
+            "name": "garland_3"
+        },
+        {
+            "name": "garland_4"
+        },
+        {
+            "name": "garland_5"
+        },
+        {
+            "name": "garland_6"
+        },
+        {
+            "name": "garland_7"
+        },
+        {
+            "name": "garland_1_lights"
+        },
+        {
+            "name": "garland_2_lights"
+        },
+        {
+            "name": "garland_3_lights"
+        },
+        {
+            "name": "garland_4_lights"
+        },
+        {
+            "name": "garland_5_lights"
+        },
+        {
+            "name": "garland_6_lights"
+        },
+        {
+            "name": "garland_7_lights"
+        },
+        {
+            "name": "pumpkin"
+        },
+        {
+            "name": "pumpkin_1"
+        },
+        {
+            "name": "pumpkin_2"
+        },
+        {
+            "name": "pumpkin_3"
+        },
+        {
+            "name": "pumpkin_4"
+        },
+        {
+            "name": "pumpkin_5"
+        },
+        {
+            "name": "pumpkin_6"
+        },
+        {
+            "name": "pumpkin_7"
+        },
+        {
+            "name": "pumpkin_8"
+        },
+        {
+            "name": "pumpkin_1_light"
+        },
+        {
+            "name": "pumpkin_2_light"
+        },
+        {
+            "name": "pumpkin_3_light"
+        },
+        {
+            "name": "pumpkin_4_light"
+        },
+        {
+            "name": "pumpkin_5_light"
+        },
+        {
+            "name": "pumpkin_6_light"
+        },
+        {
+            "name": "pumpkin_7_light"
+        },
+        {
+            "name": "pumpkin_8_light"
+        },
+        {
+            "name": "pumpkin_1_on"
+        },
+        {
+            "name": "pumpkin_2_on"
+        },
+        {
+            "name": "pumpkin_3_on"
+        },
+        {
+            "name": "pumpkin_4_on"
+        },
+        {
+            "name": "pumpkin_5_on"
+        },
+        {
+            "name": "pumpkin_6_on"
+        },
+        {
+            "name": "pumpkin_7_on"
+        },
+        {
+            "name": "pumpkin_8_on"
+        }
+    ]
+}

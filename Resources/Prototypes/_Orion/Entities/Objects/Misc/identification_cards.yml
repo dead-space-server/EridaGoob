@@ -1,0 +1,36 @@
+# erida edit - port InteQ
+- type: entity
+  parent: IDCardStandard
+  id: InteQVanguardLeaderIDCard
+  name: InteQ ID card
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Orion/Objects/Misc/id_cards.rsi
+      state: brown
+    - sprite: _Orion/Objects/Misc/id_cards.rsi
+      state: sword
+  - type: PresetIdCard
+    job: InteQVanguardLeader
+  - type: Access
+    groups:
+    - InteQ
+    tags:
+    - Maintenance
+- type: entity
+  parent: IDCardStandard
+  id: InteQVanguardIDCard
+  name: InteQ ID card
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Orion/Objects/Misc/id_cards.rsi
+      state: brown
+    - sprite: _Orion/Objects/Misc/id_cards.rsi
+      state: sword
+  - type: PresetIdCard
+    job: InteQVanguard
+  - type: Access
+    tags:
+    - InteQVanguard
+    - Maintenance

@@ -12,6 +12,8 @@ if (!process.env.CHANGELOG_DIR) {
 }
 
 const ChangelogFilePath = `../../../${process.env.CHANGELOG_DIR}`
+const HighlightLabel = "Changelog: Highlight"; // Erida edit
+const MediaRegex = /!\[[^\]]*\]\((https?:\/\/[^\s)]+)\)|<img[^>]+src=["']([^"']+)["']|(https:\/\/github\.com\/user-attachments\/(?:assets|files)\/[\w\-\/.]+)/gi;
 
 // Regexes
 const HeaderRegex = /^\s*(?::cl:|🆑) *([a-z0-9а-яё_\-,& ]+)?/img;
@@ -21,9 +23,11 @@ const CommentRegex = /<!--.*?-->/gs; // HTML comments
 // Main function
 async function main() {
     const pr = await axios.get(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/pulls/${process.env.PR_NUMBER}`);
-    const { merged_at, body, user, title } = pr.data;
+    const { merged_at, body, user, title, labels } = pr.data;
 
     let commentlessBody = (body || "").replace(CommentRegex, '');
+
+    const media = getMedia(commentlessBody); // Erida edit
 
     const headerMatch = HeaderRegex.exec(commentlessBody);
     if (!headerMatch) {
@@ -63,7 +67,9 @@ async function main() {
         time: time,
         url: `https://github.com/${process.env.GITHUB_REPOSITORY}/pull/${process.env.PR_NUMBER}`,
         avatar_url: user.avatar_url,
-        title: title
+        title: title,
+        ...(media.length && { media }), // Erida edit
+        ...((labels || []).some(l => l.name === HighlightLabel) && { highlight: true }), // Erida edit
     };
 
     // Erida start
@@ -74,6 +80,14 @@ async function main() {
 
     console.log(`Changelog updated with changes from PR #${process.env.PR_NUMBER}`);
 }
+
+// Erida start
+function getMedia(body) {
+    const urls = [];
+    for (const m of body.matchAll(MediaRegex)) urls.push(m[1] || m[2] || m[3]);
+    return [...new Set(urls)];
+}
+// Erida end
 
 function getChanges(body) {
     const matches = [];

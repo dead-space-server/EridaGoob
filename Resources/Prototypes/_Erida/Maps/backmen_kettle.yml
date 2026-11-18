@@ -1,7 +1,7 @@
 - type: gameMap
   id: BackmenKettle
   mapName: 'Kettle'
-  mapPath: /Maps/Erida/kettle.yml
+  mapPath: /Maps/_Erida/kettle.yml
   minPlayers: 25
   stations:
     Kettle:

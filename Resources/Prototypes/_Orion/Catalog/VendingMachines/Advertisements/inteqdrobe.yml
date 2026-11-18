@@ -1,0 +1,6 @@
+# erida edit - port InteQ
+- type: localizedDataset
+  id: InteQDrobeAds
+  values:
+    prefix: advertisement-inteqdrobe-
+    count: 1

@@ -2,6 +2,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared._Erida.Leash.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CCVar;
 using Content.Shared.Friction;
@@ -231,7 +232,7 @@ public abstract partial class SharedMoverController : VirtualController
         // If we can't move then just use tile-friction / no movement handling.
         if (!mover.CanMove
             || !PhysicsQuery.TryComp(uid, out var physicsComponent)
-            || PullableQuery.TryGetComponent(uid, out var pullable) && pullable.BeingPulled)
+            || PullableQuery.TryGetComponent(uid, out var pullable) && pullable.BeingPulled && !HasComp<CollarWearerComponent>(uid))
         {
             UsedMobMovement[uid] = false;
             return;
@@ -687,7 +688,7 @@ public abstract partial class SharedMoverController : VirtualController
 
         // If the coordinates have a FootstepModifier component
         // i.e. component that emit sound on footsteps emit that sound
-        var anchored = grid.GetAnchoredEntitiesEnumerator(position);
+        var anchored = _mapSystem.GetAnchoredEntities(xform.GridUid.Value, grid, position);
 
         while (anchored.MoveNext(out var maybeFootstep))
         {
@@ -936,7 +937,16 @@ public abstract partial class SharedMoverController : VirtualController
         // minPressedTime will be 1.05x the time it should take for you to go from 1 tile to another. Need to
         // account for diagonals being sqrt(2) length as well. Max of 10 seconds just in case.
         var distanceToDestination = (tileMovement.Destination - tileMovement.Origin.Position).Length();
-        var minPressedTime = Math.Min((1.05f / movementSpeed) * distanceToDestination, 20);
+        float minPressedTime;
+
+        if (movementSpeed == 0) // Goobstation: DO FUCKING NOT!!!!!
+        {
+            minPressedTime = 0.5f;
+        }
+        else
+        {
+            minPressedTime = Math.Min((1.05f / movementSpeed) * distanceToDestination, 20);
+        }
 
         // We need to stop the move once we are close enough. This isn't perfect, since it technically ends the move
         // 1 tick early in some cases. This is because there's a fundamental issue where because this is a physics-based

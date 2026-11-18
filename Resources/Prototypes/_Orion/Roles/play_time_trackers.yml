@@ -1,0 +1,5 @@
+# erida edit - port InteQ
+- type: playTimeTracker
+  id: InteQVanguard
+- type: playTimeTracker
+  id: InteQVanguardLeader

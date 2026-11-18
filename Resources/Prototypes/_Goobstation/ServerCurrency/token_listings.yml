@@ -1,14 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: tokenListing
-  id: HighTierAntagToken
-  name: gs-balanceui-shop-buy-token-antag
-  label: gs-balanceui-shop-token-antag
-  description: gs-balanceui-shop-buy-token-antag-desc
-  price: 3000
-  adminNote: gs-balanceui-remark-token-antag
-
-- type: tokenListing
   id: AdminAbuseToken
   name: gs-balanceui-shop-buy-token-admin-abuse
   label: gs-balanceui-shop-token-admin-abuse
@@ -23,3 +15,122 @@
   description: gs-balanceui-shop-buy-token-hat-desc
   price: 750
   adminNote: gs-balanceui-remark-token-hat
+
+# erida edit
+
+- type: tokenListing
+  id: AntagTokenDerelictCyborg
+  category: antag
+  order: 1
+  name: gs-balanceui-shop-buy-token-antag-derelict-cyborg
+  label: gs-balanceui-shop-token-antag-derelict-cyborg
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-derelict-cyborg
+
+- type: tokenListing
+  id: AntagTokenLoneAbductor
+  category: antag
+  order: 2
+  name: gs-balanceui-shop-buy-token-antag-lone-abductor
+  label: gs-balanceui-shop-token-antag-lone-abductor
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-lone-abductor
+
+- type: tokenListing
+  id: AntagTokenBingle
+  category: antag
+  order: 3
+  name: gs-balanceui-shop-buy-token-antag-bingle
+  label: gs-balanceui-shop-token-antag-bingle
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-bingle
+
+- type: tokenListing
+  id: AntagTokenBlob
+  category: antag
+  order: 4
+  name: gs-balanceui-shop-buy-token-antag-blob
+  label: gs-balanceui-shop-token-antag-blob
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-blob
+
+- type: tokenListing
+  id: AntagTokenContractor
+  category: antag
+  order: 5
+  name: gs-balanceui-shop-buy-token-antag-contractor
+  label: gs-balanceui-shop-token-antag-contractor
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-contractor
+
+- type: tokenListing
+  id: AntagTokenDragon
+  category: antag
+  order: 6
+  name: gs-balanceui-shop-buy-token-antag-dragon
+  label: gs-balanceui-shop-token-antag-dragon
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-dragon
+
+- type: tokenListing
+  id: AntagTokenHastur
+  category: antag
+  order: 7
+  name: gs-balanceui-shop-buy-token-antag-hastur
+  label: gs-balanceui-shop-token-antag-hastur
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-hastur
+
+- type: tokenListing
+  id: AntagTokenLaughterDemon
+  category: antag
+  order: 8
+  name: gs-balanceui-shop-buy-token-antag-laughter-demon
+  label: gs-balanceui-shop-token-antag-laughter-demon
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-laughter-demon
+
+- type: tokenListing
+  id: AntagTokenNinja
+  category: antag
+  order: 9
+  name: gs-balanceui-shop-buy-token-antag-ninja
+  label: gs-balanceui-shop-token-antag-ninja
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-ninja
+
+- type: tokenListing
+  id: AntagTokenWraith
+  category: antag
+  order: 10
+  name: gs-balanceui-shop-buy-token-antag-wraith
+  label: gs-balanceui-shop-token-antag-wraith
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-wraith
+
+- type: tokenListing
+  id: AntagTokenLoneOps
+  category: antag
+  order: 11
+  name: gs-balanceui-shop-buy-token-antag-lone-ops
+  label: gs-balanceui-shop-token-antag-lone-ops
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-lone-ops
+
+- type: tokenListing
+  id: AntagTokenSlasher
+  category: antag
+  order: 12
+  name: gs-balanceui-shop-buy-token-antag-slasher
+  label: gs-balanceui-shop-token-antag-slasher
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-slasher
+
+- type: tokenListing
+  id: AntagTokenSlaughterDemon
+  category: antag
+  order: 13
+  name: gs-balanceui-shop-buy-token-antag-slaughter-demon
+  label: gs-balanceui-shop-token-antag-slaughter-demon
+  price: 3000
+  adminNote: gs-balanceui-remark-token-antag-slaughter-demon

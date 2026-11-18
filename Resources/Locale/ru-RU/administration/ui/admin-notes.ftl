@@ -81,4 +81,4 @@ admin-remarks-command-description = Открыть страницу админ �
 admin-remarks-command-error = Админ замечания были отключены
 admin-remarks-title = Админ замечания
 # Misc
-system-user = [Система]
+system-user = Система

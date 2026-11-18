@@ -7,3 +7,14 @@
   - type: Sprite
     sprite: _Orion/Structures/Wallmounts/flags.rsi
     state: lizard
+
+# erida edit - port InteQ
+- type: entity
+  parent: BaseFlag
+  id: FlagInteQ
+  name: PMC InteQ flag
+  description: Brown-Orange flag with a shield in the center. The flag smells of blood.
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Wallmounts/flags.rsi
+    state: inteq

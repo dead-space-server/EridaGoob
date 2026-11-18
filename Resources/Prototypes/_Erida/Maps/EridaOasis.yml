@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaOasis
   mapName: 'Oasis'
-  mapPath: /Maps/Erida/oasis.yml
+  mapPath: /Maps/_Erida/oasis.yml
   minPlayers: 70
   stations:
     Oasis:

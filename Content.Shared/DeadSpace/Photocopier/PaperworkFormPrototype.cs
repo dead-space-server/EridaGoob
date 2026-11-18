@@ -2,7 +2,6 @@
 
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.DeadSpace.Photocopier;
@@ -18,6 +17,6 @@ public sealed partial class PaperworkFormPrototype : IPrototype
 
     [DataField("text", required: true)] public ResPath Text = default!;
 
-    [DataField("paperPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string PaperPrototype = default!;
+    [DataField("paperPrototype")]
+    public EntProtoId PaperPrototype = default!;
 }

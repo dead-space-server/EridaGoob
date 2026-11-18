@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaElkridge
   mapName: 'Elkridge Depot'
-  mapPath: /Maps/Erida/elkridge.yml
+  mapPath: /Maps/_Erida/elkridge.yml
   minPlayers: 15
   maxPlayers: 45
   stations:

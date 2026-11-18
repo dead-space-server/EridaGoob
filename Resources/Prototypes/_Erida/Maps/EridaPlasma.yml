@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaPlasma
   mapName: 'Plasma'
-  mapPath: /Maps/Erida/plasma.yml
+  mapPath: /Maps/_Erida/plasma.yml
   minPlayers: 30
   maxPlayers: 80
   stations:

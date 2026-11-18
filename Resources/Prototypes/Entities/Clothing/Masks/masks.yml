@@ -776,7 +776,9 @@
     sprite: Clothing/Mask/welding-gas.rsi
   - type: FlashImmunity
   - type: EyeProtection
-  - type: PhysicalComposition
+  - type: WeldingMaskOverlay # Goob
+    texture: /Textures/_Funkystation/Clothing/Head/Welding/weldingOverlayWeak.png # Goob
+  - type: PhysicalComposition #Goobstation - Recycle update
     materialComposition:
       Steel: 200
       Glass: 100

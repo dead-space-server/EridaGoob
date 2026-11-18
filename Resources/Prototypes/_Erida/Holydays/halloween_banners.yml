@@ -1,0 +1,154 @@
+- type: entity
+  abstract: true
+  id: BaseHalloweenTriangleDecoration
+  parent: BaseStructure
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+  - type: Pullable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: DecorHalloweenTriangleHPHW1
+  parent: BaseHalloweenTriangleDecoration
+  name: Happy Halloween bunting 1
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: HPHW1
+
+- type: entity
+  id: DecorHalloweenTriangleHPHW2
+  parent: BaseHalloweenTriangleDecoration
+  name: Happy Halloween bunting 2
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: HPHW2
+
+- type: entity
+  id: DecorHalloweenTriangleHPHW3
+  parent: BaseHalloweenTriangleDecoration
+  name: Happy Halloween bunting 3
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: HPHW3
+
+- type: entity
+  id: DecorHalloweenTriangleHPHW4
+  parent: BaseHalloweenTriangleDecoration
+  name: Happy Halloween bunting 4
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: HPHW4
+
+- type: entity
+  id: DecorHalloweenTriangleBlackOrange1
+  parent: BaseHalloweenTriangleDecoration
+  name: Black and orange Halloween bunting 1
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: blackorange1
+
+- type: entity
+  id: DecorHalloweenTriangleBlackOrange2
+  parent: BaseHalloweenTriangleDecoration
+  name: Black and orange Halloween bunting 2
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: blackorange2
+
+- type: entity
+  id: DecorHalloweenTriangleBlackOrange3
+  parent: BaseHalloweenTriangleDecoration
+  name: Black and orange Halloween bunting 3
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: blackorange3
+
+- type: entity
+  id: DecorHalloweenTriangleBlackWhite1
+  parent: BaseHalloweenTriangleDecoration
+  name: Black and white Halloween bunting 1
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: blackwhite1
+
+- type: entity
+  id: DecorHalloweenTriangleBlackWhite2
+  parent: BaseHalloweenTriangleDecoration
+  name: Black and white Halloween bunting 2
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: blackwhite2
+
+- type: entity
+  id: DecorHalloweenTriangleBlackWhite3
+  parent: BaseHalloweenTriangleDecoration
+  name: Black and white Halloween bunting 3
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: blackwhite3
+
+- type: entity
+  id: DecorHalloweenTriangleOrangeYellow1
+  parent: BaseHalloweenTriangleDecoration
+  name: Orange and yellow Halloween bunting 1
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: orangeyellow1
+
+- type: entity
+  id: DecorHalloweenTriangleOrangeYellow2
+  parent: BaseHalloweenTriangleDecoration
+  name: Orange and yellow Halloween bunting 2
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: orangeyellow2
+
+- type: entity
+  id: DecorHalloweenTriangleOrangeYellow3
+  parent: BaseHalloweenTriangleDecoration
+  name: Orange and yellow Halloween bunting 3
+  description: Triangular Halloween bunting for decorating the station.
+  components:
+  - type: Sprite
+    sprite: /Textures/_ADT/Holidays/triangles_halloween.rsi
+    state: orangeyellow3

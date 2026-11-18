@@ -143,3 +143,6 @@ alerts-rooted-desc = You are attached to the ground. You can't slip, but you abs
 
 alerts-stealthy-name = Pickpocketing
 alerts-stealthy-desc = Whether you are currently pickpocketing. Click to toggle.
+
+alerts-collared-name = [color=yellow]Collared[/color]
+alerts-collared-desc = You're wearing a [color=yellow]collar[/color]. Click the alert to try to work it loose.

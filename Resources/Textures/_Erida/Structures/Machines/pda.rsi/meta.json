@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from tgstation. Commit: fb1012102257b7b0a08d861fd2b8ba963c416e93",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "pdapainter"
+        },
+        {
+            "name": "pdapainter-off"
+        },
+        {
+            "name": "pdapainter-broken"
+        },
+        {
+            "name": "pdapainter-closed"
+        }
+    ]
+}

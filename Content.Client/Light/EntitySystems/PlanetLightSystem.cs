@@ -43,10 +43,7 @@ public sealed class PlanetLightSystem : EntitySystem
 
         SubscribeLocalEvent<GetClearColorEvent>(OnClearColor);
 
-        _cfgManager.OnValueChanged(CCVars.AmbientOcclusion, val =>
-        {
-            AmbientOcclusion = val;
-        }, true);
+        _cfgManager.OnValueChanged(CCVars.AmbientOcclusion, OnAmbientOcclusionChanged, true);
 
         _overlayMan.AddOverlay(new BeforeLightTargetOverlay());
         _overlayMan.AddOverlay(new RoofOverlay(EntityManager));
@@ -61,14 +58,26 @@ public sealed class PlanetLightSystem : EntitySystem
         ev.Color = Color.Transparent;
     }
 
+    private void OnAmbientOcclusionChanged(bool value)
+    {
+        AmbientOcclusion = value;
+    }
+
     public override void Shutdown()
     {
         base.Shutdown();
+        _cfgManager.UnsubValueChanged(CCVars.AmbientOcclusion, OnAmbientOcclusionChanged);
         _overlayMan.RemoveOverlay<BeforeLightTargetOverlay>();
         _overlayMan.RemoveOverlay<RoofOverlay>();
         _overlayMan.RemoveOverlay<TileEmissionOverlay>();
         _overlayMan.RemoveOverlay<LightBlurOverlay>();
         _overlayMan.RemoveOverlay<SunShadowOverlay>();
         _overlayMan.RemoveOverlay<AfterLightTargetOverlay>();
+
+        if (_overlayMan.TryGetOverlay<AmbientOcclusionOverlay>(out var ambientOcclusion))
+        {
+            ambientOcclusion.Dispose();
+            _overlayMan.RemoveOverlay<AmbientOcclusionOverlay>();
+        }
     }
 }

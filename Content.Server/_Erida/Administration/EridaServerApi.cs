@@ -7,12 +7,14 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Content.Shared._Erida.CCVar;
 using Robust.Shared.Configuration;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Erida.Administration;
 
 public sealed partial class EridaServerApi : IPostInjectInit
 {
-    [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private IConfigurationManager _config = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private HttpClient _http = default!;
     private ISawmill _sawmill = default!;
@@ -20,6 +22,7 @@ public sealed partial class EridaServerApi : IPostInjectInit
     private bool _isActive;
     private string _apiToken = string.Empty;
     private string _apiUrl = string.Empty;
+    private TimeSpan _nextHealthCheck;
 
     void IPostInjectInit.PostInject()
     {
@@ -32,12 +35,14 @@ public sealed partial class EridaServerApi : IPostInjectInit
         _config.OnValueChanged(ECCVars.ApiToken, token =>
         {
             _apiToken = token;
+            _nextHealthCheck = TimeSpan.Zero;
             _ = RefreshState();
         });
 
         _config.OnValueChanged(ECCVars.ApiUrl, url =>
         {
             _apiUrl = NormalizeUrl(url);
+            _nextHealthCheck = TimeSpan.Zero;
             _ = RefreshState();
         });
 
@@ -71,6 +76,21 @@ public sealed partial class EridaServerApi : IPostInjectInit
             _sawmill.Info("Successfully connected");
         else
             _sawmill.Warning("Api disabled");
+    }
+
+    /// <summary>
+    /// Checks the connection again if the API is inactive, so it recovers on its own after the bot was down.
+    /// The checks are spaced out by <see cref="ECCVars.ApiHealthCheckInterval"/>, callers in between get false.
+    /// </summary>
+    private async Task<bool> EnsureActive()
+    {
+        if (_isActive || _timing.RealTime < _nextHealthCheck)
+            return _isActive;
+
+        _nextHealthCheck = _timing.RealTime + TimeSpan.FromSeconds(_config.GetCVar(ECCVars.ApiHealthCheckInterval));
+        await RefreshState();
+
+        return _isActive;
     }
 
     private HttpRequestMessage CreateRequest(HttpMethod method, string path)

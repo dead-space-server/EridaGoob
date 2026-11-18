@@ -90,4 +90,4 @@ admin-remarks-command-error = Admin remarks have been disabled
 admin-remarks-title = Admin remarks
 
 # Misc
-system-user = [System]
+system-user = System

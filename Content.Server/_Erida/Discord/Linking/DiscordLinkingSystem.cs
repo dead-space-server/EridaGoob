@@ -31,6 +31,13 @@ public sealed class DiscordLinkingSystem : EntitySystem
         base.Initialize();
     }
 
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _playerManager.PlayerStatusChanged -= OnPlayerStatusChanged;
+    }
+
     private async void OnVerifyStatusRequest(VerifyStatusRequest msg, EntitySessionEventArgs args)
     {
         var session = args.SenderSession;
@@ -46,7 +53,8 @@ public sealed class DiscordLinkingSystem : EntitySystem
             }
         }
 
-        RaiseNetworkEvent(new VerifyStatusResponse { Verified = status?.Verified ?? false }, session);
+        if (IsConnected(session))
+            RaiseNetworkEvent(new VerifyStatusResponse { Verified = status?.Verified ?? false }, session);
     }
 
     /// <summary>
@@ -55,9 +63,16 @@ public sealed class DiscordLinkingSystem : EntitySystem
     /// <param name="session"></param>
     private async Task RefreshPlayer(ICommonSession session)
     {
-        var status = await _eridaServerApi.GetLinkedUserData(session.UserId);
-        if (status != null)
+        var status = await _eridaServerApi.GetLinkedUserDataOrNull(session.UserId);
+
+        // The player may have left while the bot was answering, Disconnected has already cleared the cache.
+        if (status != null && IsConnected(session))
             _cachedPlayers[session.UserId] = status;
+    }
+
+    private static bool IsConnected(ICommonSession session)
+    {
+        return session.Status is SessionStatus.Connected or SessionStatus.InGame;
     }
 
     private async void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs args)
@@ -107,7 +122,7 @@ public sealed class DiscordLinkingSystem : EntitySystem
     /// </returns>
     private async Task<LinkStatus> GetUserInfo(NetUserId userId)
     {
-        return await _eridaServerApi.GetLinkedUserData(userId)
+        return await _eridaServerApi.GetLinkedUserDataOrNull(userId)
             ?? new LinkStatus();
     }
 

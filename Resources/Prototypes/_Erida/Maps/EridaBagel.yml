@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaBagel
   mapName: 'Bagel Station'
-  mapPath: /Maps/Erida/bagel.yml
+  mapPath: /Maps/_Erida/bagel.yml
   minPlayers: 35
   maxPlayers: 80
   stations:

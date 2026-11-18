@@ -152,6 +152,8 @@
         sprite: Mobs/Customization/masking_helpers.rsi
         state: full
         visible: false
+      - map: ["enum.HumanoidVisualLayers.UndergarmentBottom"] # goobstation
+      - map: ["enum.HumanoidVisualLayers.UndergarmentTop"] # goobstation
       # Erida start
       - map: [ "underpants" ]
       - map: [ "undershirt" ]
@@ -258,6 +260,8 @@
           sprite: Mobs/Customization/masking_helpers.rsi
           state: full
           visible: false
+        - map: ["enum.HumanoidVisualLayers.UndergarmentBottom"] # goobstation
+        - map: ["enum.HumanoidVisualLayers.UndergarmentTop"] # goobstation
         # Erida start
         - map: [ "underpants" ]
         - map: [ "undershirt" ]

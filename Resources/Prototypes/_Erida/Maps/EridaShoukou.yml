@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaShoukou
   mapName: 'Shōkō'
-  mapPath: /Maps/Erida/shoukou.yml
+  mapPath: /Maps/_Erida/shoukou.yml
   minPlayers: 0
   maxPlayers: 50
   stations:

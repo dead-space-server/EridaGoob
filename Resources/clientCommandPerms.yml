@@ -41,6 +41,8 @@
     - saveconfig
     - chatwindow
     - adminwho # Erida - available to everybody
+    - voicechat # Goobstation - Voice chat
+    - achievements # Goobstation - Achievements
 
 - Flags: DEBUG
   Commands:

@@ -252,6 +252,7 @@
 
 - type: marking
   id: TailDropped
+  wagging: TailDroppedAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
   sprites:

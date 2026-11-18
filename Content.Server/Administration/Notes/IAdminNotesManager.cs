@@ -22,6 +22,8 @@ public interface IAdminNotesManager
     Task OpenEui(ICommonSession admin, NetUserId notedPlayer);
     Task OpenUserNotesEui(ICommonSession player);
     Task AddAdminRemark(ICommonSession createdBy, Guid player, NoteType type, string message, NoteSeverity? severity, bool secret, DateTime? expiryTime);
+    // erida edit
+    Task AddSystemRemark(Guid player, NoteType type, string message, NoteSeverity? severity, bool secret, DateTime? expiryTime);
     Task DeleteAdminRemark(int noteId, NoteType type, ICommonSession deletedBy);
     Task ModifyAdminRemark(int noteId, NoteType type, ICommonSession editedBy, string message, NoteSeverity? severity, bool secret, DateTime? expiryTime);
     /// <summary>

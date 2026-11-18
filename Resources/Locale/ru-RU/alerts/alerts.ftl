@@ -84,3 +84,6 @@ alerts-rooted-name = Корни
 alerts-rooted-desc = Вы укоренились к полу. Вы не можете поскользнуться, но поглощаете жидкости под собой.
 alerts-stealthy-name = Карманная кража
 alerts-stealthy-desc = Показывает, совершаете ли вы в данный момент карманную кражу. Нажмите, чтобы переключить.
+
+alerts-collared-name = [color=yellow]Ошейник[/color]
+alerts-collared-desc = На вас надет [color=yellow]ошейник[/color]. Щёлкните по иконке, чтобы попытаться его снять.

@@ -171,6 +171,9 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - NanoChatCartridge # DeltaV
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -186,6 +189,9 @@
       - NewsReaderCartridge
       - MedTekCartridge
       - NanoChatCartridge # DeltaV
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -197,6 +203,9 @@
     id: PassengerIDCard
   - type: PdaBorderColor
     borderColor: "#717059"
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -216,6 +225,9 @@
     accentVColor: "#949137"
   - type: Icon
     state: pda-interntech
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseMedicalPDA
@@ -238,6 +250,9 @@
   - type: GuideHelp
     guides:
     - MedicalDoctor
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseSecurityPDA
@@ -257,6 +272,9 @@
     accentVColor: "#A32D26"
   - type: Icon
     state: pda-interncadet
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseSecurityPDA
@@ -276,6 +294,9 @@
     accentVColor: "#DFDFDF"
   - type: Icon
     state: pda-seniorofficer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 # erida edit
 - type: entity
@@ -301,6 +322,9 @@
     borderColor: "#6f6192"
   - type: Icon
     state: pda-lawyer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -320,6 +344,9 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-internsci
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -339,6 +366,9 @@
     accentVColor: "#00cc35"
   - type: Icon
     state: pda-internservice
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -359,6 +389,9 @@
     state: pda-cook
   - type: ReplacementAccent # for random sentience event
     accent: italian
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -378,6 +411,9 @@
     accentVColor: "#00cc35"
   - type: Icon
     state: pda-hydro
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -430,6 +466,9 @@
         density: 5
         mask:
         - ItemMask
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: ClownPDA
@@ -490,6 +529,9 @@
   - type: Icon
     state: pda-mime
   - type: Muted # for random sentience event
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   name: chaplain PDA
@@ -508,6 +550,9 @@
     borderColor: "#333333"
   - type: Icon
     state: pda-chaplain
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: ChaplainPDA
@@ -546,6 +591,9 @@
     - NewsReaderCartridge
     - AstroNavCartridge
     - NanoChatCartridge # DeltaV
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -564,6 +612,9 @@
     borderColor: "#e39751"
   - type: Icon
     state: pda-cargo
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -592,6 +643,9 @@
       - NewsReaderCartridge
       - AstroNavCartridge
       - NanoChatCartridge # DeltaV
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -610,6 +664,9 @@
     borderColor: "#333333"
   - type: Icon
     state: pda-bartender
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseWidePDA
@@ -634,6 +691,9 @@
     borderColor: "#858585"
   - type: Icon
     state: pda-library
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: LibrarianPDA
@@ -669,6 +729,9 @@
     borderColor: "#6f6192"
   - type: Icon
     state: pda-lawyer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: LawyerPDA
@@ -698,6 +761,9 @@
     borderColor: "#5D2D56"
   - type: Icon
     state: pda-janitor
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -722,6 +788,9 @@
     borderColor: "#7C5D00"
   - type: Icon
     state: pda-captain
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -747,6 +816,9 @@
     accentHColor: "#447987"
   - type: Icon
     state: pda-hop
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -766,6 +838,9 @@
     accentHColor: "#447987"
   - type: Icon
     state: pda-ce
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -785,6 +860,9 @@
     accentVColor: "#A32D26"
   - type: Icon
     state: pda-engineer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseMedicalPDA
@@ -805,6 +883,9 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-cmo
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseMedicalPDA
@@ -827,6 +908,9 @@
   - type: GuideHelp
     guides:
     - MedicalDoctor
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: MedicalPDA
@@ -857,6 +941,9 @@
     accentVColor: "#2a4b5b"
   - type: Icon
     state: pda-paramedic
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseMedicalPDA
@@ -876,6 +963,9 @@
     accentVColor: "#B34200"
   - type: Icon
     state: pda-chemistry
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -896,6 +986,9 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-rd
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -915,6 +1008,9 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-science
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseSecurityPDA
@@ -943,6 +1039,9 @@
     - WantedListCartridge
     - LogProbeCartridge
     - NanoChatCartridge # DeltaV
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseSecurityPDA
@@ -962,6 +1061,9 @@
     accentVColor: "#949137"
   - type: Icon
     state: pda-warden
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseSecurityPDA
@@ -980,6 +1082,9 @@
     borderColor: "#A32D26"
   - type: Icon
     state: pda-security
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseSecurityPDA
@@ -1084,6 +1189,9 @@
     handheld: true
     program: 2
     bank: 100 # Defined in space-station-14.sf2
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: MusicianPDA
@@ -1114,6 +1222,9 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-atmos
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -1132,6 +1243,9 @@
     borderColor: "#288e4d"
   - type: Icon
     state: pda-clear
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: ClearPDA
@@ -1335,6 +1449,9 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-medical
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -1359,6 +1476,9 @@
     borderColor: "#3f3f74"
   - type: Icon
     state: pda-reporter
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseSecurityPDA
@@ -1386,6 +1506,9 @@
     - WantedListCartridge
     - LogProbeCartridge
     - NanoChatCartridge # DeltaV
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1415,6 +1538,9 @@
     - WantedListCartridge
     - MedTekCartridge
     - NanoChatCartridge # DeltaV
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: ClownPDA
@@ -1442,6 +1568,9 @@
   - type: Icon
     state: pda-cluwne
   - type: Unremoveable
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -1461,6 +1590,9 @@
     accentVColor: "#CD6900"
   - type: Icon
     state: pda-seniorengineer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -1481,6 +1613,9 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-seniorresearcher
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1501,6 +1636,9 @@
     accentVColor: "#B34200"
   - type: Icon
     state: pda-seniorphysician
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BaseSecurityPDA
@@ -1520,6 +1658,9 @@
     accentVColor: "#DFDFDF"
   - type: Icon
     state: pda-seniorofficer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: BasePDA
@@ -1539,6 +1680,9 @@
     accentVColor: "#DFDFDF"
   - type: Icon
     state: pda-seniorcourier
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: [ BaseMajorContraband, SyndiPDA ]

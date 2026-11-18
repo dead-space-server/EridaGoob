@@ -56,3 +56,6 @@ chat-language-Xeno-name = Ксенский
 chat-language-DroneTalk-name = Дроновый
 
 chat-language-Hydraspeak-name = Ги'дран'ский
+
+
+chat-language-OldFastCodes-name = Старый кодовый язык

@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaAmber
   mapName: 'Amber'
-  mapPath: /Maps/Erida/amber.yml
+  mapPath: /Maps/_Erida/amber.yml
   minPlayers: 0
   maxPlayers: 70
   stations:

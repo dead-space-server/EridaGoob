@@ -1,0 +1,44 @@
+# erida edit - port InteQ
+# Vanguard Time
+- type: loadoutEffectGroup
+  id: InteQVanguard
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: InteQVanguard
+      time: 18000
+
+# Head
+- type: loadout
+  id: InteQBeret
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: InteQVanguard
+  equipment:
+    head: ClothingHeadInteQBeret
+
+- type: loadout
+  id: InteQHatSoft
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: InteQVanguard
+  equipment:
+    head: ClothingHeadHatInteQSoft
+
+# Outer clothing
+- type: loadout
+  id: InteQWinter
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: InteQVanguard
+  equipment:
+    outerClothing: ClothingOuterWinterInteQ
+
+- type: loadout
+  id: InteQHoodie
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: InteQVanguard
+  equipment:
+    outerClothing: ClothingOuterHoodieInteQ

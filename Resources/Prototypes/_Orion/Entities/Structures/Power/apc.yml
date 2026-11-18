@@ -1,0 +1,8 @@
+# erida edit - port InteQ
+- type: entity
+  parent: APCBasic
+  id: APCBasicUnlocked
+  suffix: Unlocked, Basic, 50kJ
+  components:
+  - type: AccessReader
+    access: []

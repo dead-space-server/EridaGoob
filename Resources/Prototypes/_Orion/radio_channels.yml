@@ -1,0 +1,8 @@
+# erida edit - port InteQ
+- type: radioChannel
+  id: InteQ
+  name: chat-radio-inteq
+  keycode: ш
+  frequency: 1454
+  color: '#FF8C00'
+  longRange: true

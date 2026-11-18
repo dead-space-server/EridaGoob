@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaLoop
   mapName: 'Loop Station'
-  mapPath: /Maps/Erida/loop.yml
+  mapPath: /Maps/_Erida/loop.yml
   minPlayers: 0
   maxPlayers: 70
   stations:

@@ -1,0 +1,22 @@
+# erida edit - port InteQ
+- type: entity
+  parent: BaseBlueprint
+  id: BlueprintInteQ
+  name: InteQ blueprint
+  description: A blueprint with a schematic of a InteQ contraband. It can be inserted into an autolathe.
+  components:
+  - type: ScannableForPoints # Goob
+    points: 3
+  - type: Blueprint
+    providedRecipes:
+    - CaseInteQ
+    - MagazineBoxPistolInteQ
+    - MagazineBoxLightRifleInteQ
+    - MagazineBoxShotgunInteQ
+    - ClothingEyesGogglessInteQ
+    - PlasmaSword
+    - PlasmaSwordAlt
+    - ExGrenade
+    - WhiteholeGrenade
+    - C4
+    - EmpGrenade

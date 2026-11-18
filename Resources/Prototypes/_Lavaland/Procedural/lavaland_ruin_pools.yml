@@ -12,6 +12,7 @@
     SyndicateBase: 1
     HierophantArena: 1
     RougeAI: 1
+    InteQSizo: 1 # erida edit
     BiodomeBeach: 2
     BiodomeSnow: 2
     GolemShuttle: 1
@@ -30,6 +31,15 @@
     AbductorDebris: 1
     CultBase: 1
     Hunter: 1
+    #erida-edit-start
+    BlackMesaResearchFacility: 1
+    BlackMesaOutpost: 2
+    BlackMesaSpot: 4
+    BlackMesaSpot2: 4
+    BlackMesaResearchOblom: 2
+    BlackMesaResearchShuttleCrush: 4
+    BlackMesaTelega: 4
+    #erida-edit-end
     XenoNest: 1
     Reclaimer: 1
 #WIZDEN RUINS (only peak ones, rest are trash) man

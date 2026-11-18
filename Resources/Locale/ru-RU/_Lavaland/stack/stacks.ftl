@@ -34,3 +34,9 @@ stack-legion-skull =
         [1] череп легиона
        *[other] черепов легиона
     }
+
+piece-of-HEV-suit = часть костюма HEV
+strap-ALICE  = лямка ALICE
+gun-material =  запчасть оружия
+M9-steel = сталь М9
+gold-cable = высоко-скоростной кабель

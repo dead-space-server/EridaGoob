@@ -63,7 +63,7 @@ public sealed partial class OfferingWindowOption : PanelContainer
             if (_claimed)
             {
                 ClaimButton.AddStyleClass(StyleClass.Negative);
-                ClaimButton.Text = Loc.GetString("offering-window-claimed");
+                ClaimButton.Text = Loc.GetString("offering-window-cancel"); // Erida edit
             }
             else
             {

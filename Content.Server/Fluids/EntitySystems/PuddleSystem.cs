@@ -2,6 +2,7 @@
 
 using Content.Server.Fluids.Components;
 using Content.Shared.Inventory;
+using Content.Shared._Funkystation.WallStains; // Goob
 using Content.Server.Spreader;
 using Content.Goobstation.Common.Footprints;
 using Content.Shared.Chemistry;
@@ -47,20 +48,17 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [Dependency] private readonly StandingStateSystem _standing = default!; // Funky
 
 
-    [ValidatePrototypeId<ReagentPrototype>]
-    private const string Blood = "Blood";
+    private static readonly ProtoId<ReagentPrototype> Blood = "Blood";
 
-    [ValidatePrototypeId<ReagentPrototype>]
-    private const string Slime = "Slime";
+    private static readonly ProtoId<ReagentPrototype> Slime = "Slime";
 
-    [ValidatePrototypeId<ReagentPrototype>]
-    private const string CopperBlood = "CopperBlood";
+    private static readonly ProtoId<ReagentPrototype> CopperBlood = "CopperBlood";
 
-    [ValidatePrototypeId<ReagentPrototype>] // goobstation
-    private const string BloodChangeling = "BloodChangeling"; // goobstation
+    // goobstation
+    private static readonly ProtoId<ReagentPrototype> BloodChangeling = "BloodChangeling"; // goobstation
 
-    [ValidatePrototypeId<ReagentPrototype>] // goobstation
-    private const string BlackBlood = "BlackBlood"; // goobstation
+    // goobstation
+    private static readonly ProtoId<ReagentPrototype> BlackBlood = "BlackBlood"; // goobstation
 
     private static string[] _standoutReagents = [Blood, Slime, CopperBlood, BloodChangeling, BlackBlood]; // goobstation - added BloodChangeling, BlackBlood
 
@@ -490,6 +488,9 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
 
         _color.RaiseEffect(spilled.GetColor(_prototypeManager), targets,
             Filter.Pvs(entity, entityManager: EntityManager));
+
+        var wallSplash = new SplashOnWallEvent(coordinates, spilled.Clone()); // Goob
+        RaiseLocalEvent(ref wallSplash); // Goob
 
         return TrySpillAt(coordinates, spilled, out puddleUid, sound);
     }

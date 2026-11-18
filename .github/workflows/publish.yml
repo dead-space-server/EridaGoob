@@ -16,41 +16,43 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install system dependencies
-      run: sudo apt-get install -y python3-paramiko python3-lxml python3-requests python3-yaml
+      - name: Install system dependencies
+        run: sudo apt-get install -y python3-paramiko python3-lxml python3-requests python3-yaml
 
-    - uses: actions/checkout@v7.0.0
-      with:
-        submodules: 'recursive'
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v5.3.0
-      with:
-        dotnet-version: 10.0.x
+      - uses: actions/checkout@v7.0.0
+        with:
+          submodules: "recursive"
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v5.3.0
+        with:
+          dotnet-version: 10.0.x
 
-    - name: Fetch engine metadata
-      run: |
-        cd RobustToolbox
-        git fetch --depth=1
+      - name: Fetch engine metadata
+        run: |
+          cd RobustToolbox
+          git fetch --depth=1
 
-    - name: Restore .NET dependencies
-      run: dotnet restore
+      - name: Restore .NET dependencies
+        run: dotnet restore
 
-    - name: Build Packaging
-      run: dotnet build Content.Packaging --configuration Release --no-restore /m
+      - name: Build Packaging
+        run: dotnet build Content.Packaging --configuration Release --no-restore /m
 
-    - name: Package server
-      run: dotnet run --project Content.Packaging server --platform linux-x64 # only linux, no: --platform win-x64 --platform osx-x64 --platform linux-arm64
+      - name: Package server
+        run: dotnet run --project Content.Packaging server --platform linux-x64 # only linux, no: --platform win-x64 --platform osx-x64 --platform linux-arm64
 
-    - name: Package client
-      run: dotnet run --project Content.Packaging client --no-wipe-release
+      - name: Package client
+        run: dotnet run --project Content.Packaging client --no-wipe-release
 
-    - name: Publish version
-      run: Tools/Wizards/publish_multi_request.py
-      env:
-        PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      - name: Publish version
+        run: Tools/Wizards/publish_multi_request.py
+        env:
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
 
-    - name: Publish changelog (Discord)
-      run: Tools/Wizards/actions_changelogs_since_last_run.py
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DISCORD_WEBHOOK_URL_ERIDA: ${{ secrets.CHANGELOG_DISCORD_ERIDA_WEBHOOK }}
+      - name: Publish changelog (Discord)
+        run: Tools/Wizards/actions_changelogs_since_last_run.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISCORD_WEBHOOK_URL_ERIDA: ${{ secrets.CHANGELOG_DISCORD_ERIDA_WEBHOOK }}
+          DISCORD_WEBHOOK_URL_DEADSPACE: ${{ secrets.DISCORD_WEBHOOK_URL_DEADSPACE }}
+          DISCORD_CHANGELOG_ROLE_ERIDA: ${{ secrets.DISCORD_CHANGELOG_ROLE_ERIDA }}

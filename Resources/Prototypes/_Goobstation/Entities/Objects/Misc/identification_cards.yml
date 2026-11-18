@@ -80,6 +80,9 @@
     tags:
     - CentralCommand
     - BlueshieldOfficer
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -292,6 +295,9 @@
     - state: idsecurityclown
   - type: PresetIdCard
     job: SecurityClown
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -304,6 +310,9 @@
     - state: idcommandmaid
   - type: PresetIdCard
     job: CommandMaid
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -316,6 +325,9 @@
     - state: idpartymaker
   - type: PresetIdCard
     job: PartyMaker
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 # Crew
 
@@ -330,6 +342,9 @@
     - state: idroboticist
   - type: PresetIdCard
     job: Roboticist
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -342,6 +357,9 @@
     - state: idradiohost
   - type: PresetIdCard
     job: RadioHost
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 - type: entity
   parent: IDCardStandard
@@ -354,6 +372,9 @@
     - state: idvirologist
   - type: PresetIdCard
     job: Virologist
+  - type: Tag # Erida edit
+    tags:
+    - PdaPainterWhitelist
 
 # Outer Command
 - type: entity

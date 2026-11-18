@@ -12,3 +12,11 @@ public sealed class MagnetClaimOfferEvent : BoundUserInterfaceMessage
 {
     public int Index;
 }
+
+// Erida start
+[Serializable, NetSerializable]
+public sealed class MagnetCancelOfferEvent : BoundUserInterfaceMessage
+{
+    public int Index;
+}
+// Erida end

@@ -17,6 +17,7 @@
   name: necropolis chest
   suffix: Filled
   components:
+  - type: AlmanacBladeChestSpawner
   - type: EntityTableContainerFill
     containers:
       entity_storage: !type:NestedSelector
@@ -45,6 +46,10 @@
           - id: ClothingOuterArmorCult
           - id: ClothingHeadHelmetCult
           - id: ClothingShoesCult
+    - !type:AllSelector
+      children:
+      - id: WarpCubeB
+      - id: WarpCubeR
 #Erida-End
 
 - type: entityTable

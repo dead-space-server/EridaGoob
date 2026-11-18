@@ -1,0 +1,17 @@
+# erida edit - port InteQ
+- type: entity
+  parent: [BaseItem, BaseMajorContraband]
+  id: BaseInteQUplinkRadio
+  name: InteQ uplink
+  description: Suspiciously looking radio...
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Devices/inteq_uplink.rsi
+    layers:
+    - state: inteq-uplink
+  - type: Item
+    sprite: _Orion/Objects/Devices/inteq_uplink.rsi
+    heldPrefix: inteq-uplink
+  - type: ScannableForPoints # Goob
+    points: 3

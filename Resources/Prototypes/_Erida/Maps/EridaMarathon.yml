@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaMarathon
   mapName: 'Marathon Station'
-  mapPath: /Maps/Erida/marathon.yml
+  mapPath: /Maps/_Erida/marathon.yml
   minPlayers: 35
   maxPlayers: 70
   stations:

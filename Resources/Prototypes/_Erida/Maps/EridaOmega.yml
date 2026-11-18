@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: EridaOmega
   mapName: 'Omega'
-  mapPath: /Maps/Erida/omega.yml
+  mapPath: /Maps/_Erida/omega.yml
   # Corvax-start
   minPlayers: 0
   maxPlayers: 25
