@@ -73,6 +73,7 @@ public sealed partial class MiscTab : Control
             new(-1, Loc.GetString("ui-options-storage-limit-unlimited")),
         };
         Control.AddOptionDropDown(CCVars.StorageLimit, StorageLimitDropDown, storageLimitEntries);
+        AddLobbyBackgroundOptions(); // Erida edit
 
         Control.Initialize();
     }

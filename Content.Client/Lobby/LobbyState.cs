@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Client._Erida.Lobby;
 using Content.Client._RMC14.LinkAccount;
 using Content.Client.Audio;
 using Content.Client.GameTicking.Managers;
@@ -23,7 +24,7 @@ using Content.Client._Impstation.ReadyManifest; // Impstation - Ready Manifest
 
 namespace Content.Client.Lobby
 {
-    public sealed class LobbyState : Robust.Client.State.State
+    public sealed partial class LobbyState : Robust.Client.State.State // Erida edit
     {
         [Dependency] private readonly IBaseClient _baseClient = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
@@ -90,6 +91,7 @@ namespace Content.Client.Lobby
             _gameTicker.LobbyLateJoinStatusUpdated += LobbyLateJoinStatusUpdated;
 
             _serverCur.ClientBalanceChange += UpdatePlayerBalance; // Goobstation - Goob Coin
+            StartupErida(); // Erida edit
         }
 
         protected override void Shutdown()
@@ -101,6 +103,7 @@ namespace Content.Client.Lobby
             _gameTicker.LobbyLateJoinStatusUpdated -= LobbyLateJoinStatusUpdated;
             _contentAudioSystem.LobbySoundtrackChanged -= UpdateLobbySoundtrackInfo;
             _serverCur.ClientBalanceChange -= UpdatePlayerBalance; // Goobstation - Goob Coin
+            ShutdownErida(); // Erida edit
 
             _voteManager.ClearPopupContainer();
 
@@ -153,6 +156,8 @@ namespace Content.Client.Lobby
 
         public override void FrameUpdate(FrameEventArgs e)
         {
+            UpdateEridaLobbyBackground(e.DeltaSeconds); // Erida edit
+
             if (_gameTicker.IsGameStarted)
             {
                 Lobby!.StartTime.Text = string.Empty;
@@ -288,18 +293,14 @@ namespace Content.Client.Lobby
         // Goobstation - heavily modified to add credits for lobby backgrounds
         private void UpdateLobbyBackground()
         {
-            if (_gameTicker.LobbyBackground != null)
+            // Erida start
+            if (GetEridaLobbyBackground() is { } backgroundId)
             {
-                var lobbyBackground = _protoMan.Index(_gameTicker.LobbyBackground.Value);
-                Lobby!.Background.Texture = _resourceCache.GetResource<TextureResource>(lobbyBackground.Background);
-
-                var name = string.IsNullOrEmpty(lobbyBackground.Name)
-                    ? Loc.GetString("lobby-state-background-unknown-title")
-                    : lobbyBackground.Name;
-
-                var artist = string.IsNullOrEmpty(lobbyBackground.Artist)
-                    ? Loc.GetString("lobby-state-background-unknown-artist")
-                    : lobbyBackground.Artist;
+                var lobbyBackground = _protoMan.Index(backgroundId);
+                SetEridaLobbyBackground(lobbyBackground);
+                var name = EridaLobbyBackgrounds.Localize(lobbyBackground.Name, "lobby-state-background-unknown-title");
+                var artist = EridaLobbyBackgrounds.Localize(lobbyBackground.Artist, "lobby-state-background-unknown-artist");
+                // Erida end
 
                 var markup = Loc.GetString("lobby-state-background-text",
                     ("backgroundName", name),
@@ -311,7 +312,7 @@ namespace Content.Client.Lobby
             }
 
             _sawmill.Warning("_gameTicker.LobbyBackground was null! No lobby background selected.");
-            Lobby!.Background.Texture = null;
+            SetEridaLobbyBackground(null); // Erida edit
             Lobby!.LobbyBackground.SetMarkup(Loc.GetString("lobby-state-background-no-background-text"));
         }
 

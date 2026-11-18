@@ -35,6 +35,12 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <CheckBox Name="StaticStorageUI" Text="{Loc 'ui-options-static-storage-ui'}" />
                 <!-- erida edit -->
                 <ui:OptionDropDown Name="StorageLimitDropDown" Title="{Loc 'ui-options-storage-limit'}" />
+                <!-- Erida start -->
+                <Label Text="{Loc 'ui-options-lobby-header'}"
+                       StyleClasses="LabelKeyText"/>
+                <CheckBox Name="LobbyBackgroundRandomCheckBox" Text="{Loc 'ui-options-lobby-background-random'}" />
+                <ui:OptionDropDown Name="LobbyBackgroundDropDown" Title="{Loc 'ui-options-lobby-background'}" />
+                <!-- Erida end -->
                 <!-- Goobstation Edit Start -->
                 <Label Text="{Loc 'ui-options-preferences'}"
                        StyleClasses="LabelKeyText"/>
