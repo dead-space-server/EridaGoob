@@ -2084,3 +2084,18 @@ Entries:
     - >-
       https://github.com/user-attachments/assets/b5828de1-6426-4672-95e1-a335c61e6178
   highlight: true
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Фильтр маркингов по расе.
+    - type: Add
+      message: Выбранные маркинги показываются первыми в списке.
+    - type: Tweak
+      message: >-
+        Сняты расовые ограничения с маркингов, любой расе доступны маркинги всех
+        рас.
+  id: 153
+  time: '2026-11-19T01:15:25.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/92
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak] Markings filter'
