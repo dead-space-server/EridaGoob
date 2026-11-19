@@ -60,6 +60,7 @@ namespace Content.Client.Input
             // Erida start
             common.AddFunction(ContentKeyFunctions.EditorNextObject);
             common.AddFunction(ContentKeyFunctions.EditorPreviousObject);
+            common.AddFunction(ContentKeyFunctions.ZoomMod);
             // Erida end
 
             var human = contexts.GetContext("human");

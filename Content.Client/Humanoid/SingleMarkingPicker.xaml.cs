@@ -222,7 +222,7 @@ public sealed partial class SingleMarkingPicker : BoxContainer
 
         if (marking.MarkingColors.Count != proto.Sprites.Count)
         {
-            marking = new Marking(marking.MarkingId, proto.Sprites.Count);
+            marking = new Marking(marking.MarkingId, proto.Sprites.Count) { Gradient = marking.Gradient }; // Erida edit
         }
 
         for (var i = 0; i < marking.MarkingColors.Count; i++)
@@ -238,11 +238,14 @@ public sealed partial class SingleMarkingPicker : BoxContainer
             selector.OnColorChanged += color =>
             {
                 marking.SetColor(colorIndex, color);
+                UpdateGradientRoots(marking); // Erida edit
                 OnColorChanged!((_slot, marking));
             };
 
             ColorSelectorContainer.AddChild(selector);
         }
+
+        AddGradientControl(marking, proto); // Erida edit
     }
 
     private void SelectMarking(ItemList.ItemListSelectedEventArgs args)
@@ -265,6 +268,8 @@ public sealed partial class SingleMarkingPicker : BoxContainer
         {
             _markings[Slot].SetColor(i, oldMarking.MarkingColors[i]);
         }
+
+        _markings[Slot].Gradient = proto.ForcedColoring ? null : oldMarking.Gradient; // Erida edit
 
         PopulateColors();
 

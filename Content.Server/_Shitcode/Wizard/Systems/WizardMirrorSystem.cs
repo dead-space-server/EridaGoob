@@ -130,7 +130,7 @@ public sealed class WizardMirrorSystem : SharedWizardMirrorSystem
 
             if (!prototype.ForcedColoring)
             {
-                _humanoid.AddMarking(target, marking.MarkingId, marking.MarkingColors, false);
+                _humanoid.AddMarking(target, marking, false); // Erida edit
             }
             else
             {
@@ -146,12 +146,14 @@ public sealed class WizardMirrorSystem : SharedWizardMirrorSystem
             _markingManager.CanBeApplied(profile.Species, profile.Sex, hairPrototype, _proto))
         {
             _humanoid.AddMarking(target, profile.Appearance.HairStyleId, hairColor, false);
+            _humanoid.SetLastMarkingGradient(target, MarkingCategories.Hair, profile.Appearance.HairGradient); // Erida edit
         }
 
         if (_markingManager.Markings.TryGetValue(profile.Appearance.FacialHairStyleId, out var facialHairPrototype) &&
             _markingManager.CanBeApplied(profile.Species, profile.Sex, facialHairPrototype, _proto))
         {
             _humanoid.AddMarking(target, profile.Appearance.FacialHairStyleId, facialHairColor, false);
+            _humanoid.SetLastMarkingGradient(target, MarkingCategories.FacialHair, profile.Appearance.FacialHairGradient); // Erida edit
         }
 
         // Finally adding marking with forced colors

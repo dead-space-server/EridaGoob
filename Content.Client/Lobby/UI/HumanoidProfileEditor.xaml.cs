@@ -351,7 +351,7 @@ namespace Content.Client.Lobby.UI
                 Profile = Profile.WithCharacterAppearance(
                     Profile.Appearance.WithHairColor(newColor.marking.MarkingColors[0]));
                 UpdateCMarkingsHair();
-                ReloadPreview();
+                QueueProfilePreview(); // Erida edit
             };
 
             FacialHairPicker.OnMarkingSelect += newStyle =>
@@ -370,7 +370,7 @@ namespace Content.Client.Lobby.UI
                 Profile = Profile.WithCharacterAppearance(
                     Profile.Appearance.WithFacialHairColor(newColor.marking.MarkingColors[0]));
                 UpdateCMarkingsFacialHair();
-                ReloadPreview();
+                QueueProfilePreview(); // Erida edit
             };
 
             HairStylePicker.OnSlotRemove += _ =>
@@ -463,7 +463,7 @@ namespace Content.Client.Lobby.UI
                 Profile = Profile.WithCharacterAppearance(
                     Profile.Appearance.WithEyeColor(newColor));
                 Markings.CurrentEyeColor = Profile.Appearance.EyeColor;
-                ReloadProfilePreview();
+                QueueProfilePreview(); // Erida edit
             };
 
             #endregion Eyes
@@ -511,6 +511,7 @@ namespace Content.Client.Lobby.UI
             Markings.OnMarkingRemoved += OnMarkingChange;
             Markings.OnMarkingColorChange += OnMarkingChange;
             Markings.OnMarkingRankChange += OnMarkingChange;
+            InitializeMarkingGradients(); // Erida edit
 
             #endregion Markings
 
@@ -1792,7 +1793,7 @@ namespace Content.Client.Lobby.UI
                 return;
 
             Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithMarkings(markings.GetForwardEnumerator().ToList()));
-            ReloadProfilePreview();
+            QueueProfilePreview(); // Erida edit
         }
 
         private void OnSkinColorOnValueChanged()
@@ -1836,7 +1837,7 @@ namespace Content.Client.Lobby.UI
                     }
             }
 
-            ReloadProfilePreview();
+            QueueProfilePreview(); // Erida edit
         }
 
         protected override void Dispose(bool disposing)
@@ -2295,11 +2296,11 @@ namespace Content.Client.Lobby.UI
             }
             var hairMarking = Profile.Appearance.HairStyleId == HairStyles.DefaultHairStyle
                 ? new List<Marking>()
-                : new() { new(Profile.Appearance.HairStyleId, new List<Color>() { Profile.Appearance.HairColor }) };
+                : new() { new(Profile.Appearance.HairStyleId, [Profile.Appearance.HairColor]) { Gradient = Profile.Appearance.HairGradient } }; // Erida edit
 
             var facialHairMarking = Profile.Appearance.FacialHairStyleId == HairStyles.DefaultFacialHairStyle
                 ? new List<Marking>()
-                : new() { new(Profile.Appearance.FacialHairStyleId, new List<Color>() { Profile.Appearance.FacialHairColor }) };
+                : new() { new(Profile.Appearance.FacialHairStyleId, [Profile.Appearance.FacialHairColor]) { Gradient = Profile.Appearance.FacialHairGradient } }; // Erida edit
 
             HairStylePicker.UpdateData(
                 hairMarking,

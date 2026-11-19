@@ -257,9 +257,14 @@ public sealed partial class MarkingSet
                     continue;
                 }
 
+                // Erida start
+                if (list[i].Gradient is { } gradient)
+                    list[i].Gradient = marking.ForcedColoring ? null : gradient.Sanitized();
+                // Erida end
+
                 if (marking.Sprites.Count != list[i].MarkingColors.Count)
                 {
-                    list[i] = new Marking(marking.ID, marking.Sprites.Count);
+                    list[i] = new Marking(marking.ID, marking.Sprites.Count) { Gradient = list[i].Gradient }; // Erida edit
                 }
             }
 

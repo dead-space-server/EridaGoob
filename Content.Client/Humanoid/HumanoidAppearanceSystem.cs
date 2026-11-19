@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
+using Content.Client._Erida.Humanoid;
 using Content.Client.DisplacementMap;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid;
@@ -22,6 +23,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly DisplacementMapSystem _displacement = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly MarkingGradientSystem _markingGradient = default!; // Erida edit
 
     public override void Initialize()
     {
@@ -205,13 +207,13 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             ? profile.Appearance.SkinColor.WithAlpha(hairAlpha)
             : profile.Appearance.HairColor;
         var hair = new Marking(profile.Appearance.HairStyleId,
-            new[] { hairColor });
+            [hairColor]) { Gradient = profile.Appearance.HairGradient }; // Erida edit
 
         var facialHairColor = _markingManager.MustMatchSkin(profile.Species, HumanoidVisualLayers.FacialHair, out var facialHairAlpha, _prototypeManager)
             ? profile.Appearance.SkinColor.WithAlpha(facialHairAlpha)
             : profile.Appearance.FacialHairColor;
         var facialHair = new Marking(profile.Appearance.FacialHairStyleId,
-            new[] { facialHairColor });
+            [facialHairColor]) { Gradient = profile.Appearance.FacialHairGradient }; // Erida edit
 
         if (_markingManager.CanBeApplied(profile.Species, profile.Sex, hair, _prototypeManager))
         {
@@ -282,6 +284,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 if (_markingManager.TryGetMarking(marking, out var markingPrototype))
                 {
                     ApplyMarking(markingPrototype, marking.MarkingColors, marking.Visible, entity);
+                    _markingGradient.Apply((entity, entity.Comp2), markingPrototype, marking); // Erida edit
                     if (markingPrototype.BodyPart == HumanoidVisualLayers.UndergarmentTop)
                         applyUndergarmentTop = false;
                     else if (markingPrototype.BodyPart == HumanoidVisualLayers.UndergarmentBottom)
@@ -339,6 +342,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 continue;
             }
 
+            _markingGradient.Remove(spriteEnt, index); // Erida edit
             _sprite.LayerMapRemove(spriteEnt.AsNullable(), layerId);
             _sprite.RemoveLayer(spriteEnt.AsNullable(), index);
         }
@@ -553,7 +557,12 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             foreach (var marking in markingList)
             {
                 if (_markingManager.TryGetMarking(marking, out var markingPrototype) && markingPrototype.BodyPart == layer)
+                // Erida start
+                {
                     ApplyMarking(markingPrototype, marking.MarkingColors, marking.Visible, (ent, ent.Comp, sprite));
+                    _markingGradient.Apply((ent, sprite), markingPrototype, marking);
+                }
+                // Erida end
             }
         }
     }

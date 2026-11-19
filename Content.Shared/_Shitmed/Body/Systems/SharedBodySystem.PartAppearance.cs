@@ -76,7 +76,7 @@ public partial class SharedBodySystem
         {
             var category = MarkingCategoriesConversion.FromHumanoidVisualLayers(layer);
             if (bodyAppearance.MarkingSet.Markings.TryGetValue(category, out var markingList))
-                markingsByLayer[layer] = markingList.Select(m => new Marking(m.MarkingId, m.MarkingColors.ToList())).ToList();
+                markingsByLayer[layer] = markingList.Select(m => new Marking(m.MarkingId, m.MarkingColors.ToList()) { Gradient = m.Gradient }).ToList(); // Erida edit
         }
 
         component.Markings = markingsByLayer;
@@ -190,7 +190,7 @@ public partial class SharedBodySystem
             _humanoid.SetLayerVisibility((target, bodyAppearance), visualLayer, true);
             foreach (var marking in markingList)
             {
-                _humanoid.AddMarking(target, marking.MarkingId, marking.MarkingColors, true, true, bodyAppearance);
+                _humanoid.AddMarking(target, marking, true, true, bodyAppearance); // Erida edit
             }
         }
 
