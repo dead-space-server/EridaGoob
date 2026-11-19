@@ -55,42 +55,45 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
     public HumanoidCharacterAppearance(HumanoidCharacterAppearance other) :
         this(other.HairStyleId, other.HairColor, other.FacialHairStyleId, other.FacialHairColor, other.EyeColor, other.SkinColor, new(other.Markings))
     {
-
+        // Erida start
+        HairGradient = other.HairGradient;
+        FacialHairGradient = other.FacialHairGradient;
+        // Erida end
     }
 
     public HumanoidCharacterAppearance WithHairStyleName(string newName)
     {
-        return new(newName, HairColor, FacialHairStyleId, FacialHairColor, EyeColor, SkinColor, Markings);
+        return KeepGradients(new(newName, HairColor, FacialHairStyleId, FacialHairColor, EyeColor, SkinColor, Markings)); // Erida edit
     }
 
     public HumanoidCharacterAppearance WithHairColor(Color newColor)
     {
-        return new(HairStyleId, newColor, FacialHairStyleId, FacialHairColor, EyeColor, SkinColor, Markings);
+        return KeepGradients(new(HairStyleId, newColor, FacialHairStyleId, FacialHairColor, EyeColor, SkinColor, Markings)); // Erida edit
     }
 
     public HumanoidCharacterAppearance WithFacialHairStyleName(string newName)
     {
-        return new(HairStyleId, HairColor, newName, FacialHairColor, EyeColor, SkinColor, Markings);
+        return KeepGradients(new(HairStyleId, HairColor, newName, FacialHairColor, EyeColor, SkinColor, Markings)); // Erida edit
     }
 
     public HumanoidCharacterAppearance WithFacialHairColor(Color newColor)
     {
-        return new(HairStyleId, HairColor, FacialHairStyleId, newColor, EyeColor, SkinColor, Markings);
+        return KeepGradients(new(HairStyleId, HairColor, FacialHairStyleId, newColor, EyeColor, SkinColor, Markings)); // Erida edit
     }
 
     public HumanoidCharacterAppearance WithEyeColor(Color newColor)
     {
-        return new(HairStyleId, HairColor, FacialHairStyleId, FacialHairColor, newColor, SkinColor, Markings);
+        return KeepGradients(new(HairStyleId, HairColor, FacialHairStyleId, FacialHairColor, newColor, SkinColor, Markings)); // Erida edit
     }
 
     public HumanoidCharacterAppearance WithSkinColor(Color newColor)
     {
-        return new(HairStyleId, HairColor, FacialHairStyleId, FacialHairColor, EyeColor, newColor, Markings);
+        return KeepGradients(new(HairStyleId, HairColor, FacialHairStyleId, FacialHairColor, EyeColor, newColor, Markings)); // Erida edit
     }
 
     public HumanoidCharacterAppearance WithMarkings(List<Marking> newMarkings)
     {
-        return new(HairStyleId, HairColor, FacialHairStyleId, FacialHairColor, EyeColor, SkinColor, newMarkings);
+        return KeepGradients(new(HairStyleId, HairColor, FacialHairStyleId, FacialHairColor, EyeColor, SkinColor, newMarkings)); // Erida edit
     }
 
     public static HumanoidCharacterAppearance DefaultWithSpecies(string species)
@@ -217,7 +220,13 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
             facialHairColor,
             eyeColor,
             skinColor,
-            markingSet.GetForwardEnumerator().ToList());
+            markingSet.GetForwardEnumerator().ToList())
+        {
+            // Erida start
+            HairGradient = appearance.HairGradient?.Sanitized(),
+            FacialHairGradient = appearance.FacialHairGradient?.Sanitized(),
+            // Erida end
+        };
     }
 
     public bool MemberwiseEquals(ICharacterAppearance maybeOther)
@@ -230,6 +239,7 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
         if (!EyeColor.Equals(other.EyeColor)) return false;
         if (!SkinColor.Equals(other.SkinColor)) return false;
         if (!Markings.SequenceEqual(other.Markings)) return false;
+        if (!GradientsEqual(other)) return false; // Erida edit
         return true;
     }
 
@@ -243,7 +253,8 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
                FacialHairColor.Equals(other.FacialHairColor) &&
                EyeColor.Equals(other.EyeColor) &&
                SkinColor.Equals(other.SkinColor) &&
-               Markings.SequenceEqual(other.Markings);
+               Markings.SequenceEqual(other.Markings) &&
+               GradientsEqual(other); // Erida edit
     }
 
     public override bool Equals(object? obj)

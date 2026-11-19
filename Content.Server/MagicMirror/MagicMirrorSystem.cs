@@ -2,6 +2,7 @@
 
 using System.Linq;
 using Content.Server.DoAfter;
+using Content.Shared._Erida.MagicMirror;
 using Content.Server.Humanoid;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
@@ -20,7 +21,7 @@ namespace Content.Server.MagicMirror;
 /// <summary>
 /// Allows humanoids to change their appearance mid-round.
 /// </summary>
-public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
+public sealed partial class MagicMirrorSystem : SharedMagicMirrorSystem // Erida edit
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly DoAfterSystem _doAfterSystem = default!;
@@ -42,6 +43,7 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
             subs.Event<BoundUIClosedEvent>(OnUiClosed);
             subs.Event<MagicMirrorSelectMessage>(OnMagicMirrorSelect);
             subs.Event<MagicMirrorChangeColorMessage>(OnTryMagicMirrorChangeColor);
+            subs.Event<MagicMirrorChangeGradientMessage>(OnTryMagicMirrorChangeGradient); // Erida edit
             subs.Event<MagicMirrorAddSlotMessage>(OnTryMagicMirrorAddSlot);
             subs.Event<MagicMirrorRemoveSlotMessage>(OnTryMagicMirrorRemoveSlot);
         });
@@ -49,6 +51,7 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
 
         SubscribeLocalEvent<MagicMirrorComponent, MagicMirrorSelectDoAfterEvent>(OnSelectSlotDoAfter);
         SubscribeLocalEvent<MagicMirrorComponent, MagicMirrorChangeColorDoAfterEvent>(OnChangeColorDoAfter);
+        SubscribeLocalEvent<MagicMirrorComponent, MagicMirrorChangeGradientDoAfterEvent>(OnChangeGradientDoAfter); // Erida edit
         SubscribeLocalEvent<MagicMirrorComponent, MagicMirrorRemoveSlotDoAfterEvent>(OnRemoveSlotDoAfter);
         SubscribeLocalEvent<MagicMirrorComponent, MagicMirrorAddSlotDoAfterEvent>(OnAddSlotDoAfter);
     }

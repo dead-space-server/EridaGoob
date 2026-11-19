@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Client._Erida.Humanoid;
 using Content.Shared.Body.Systems;
 // Shitmed Change Start
 using Content.Shared._Shitmed.Body.Part;
@@ -15,6 +16,7 @@ public sealed class BodySystem : SharedBodySystem
 {
     // Shitmed Change Start
     [Dependency] private readonly MarkingManager _markingManager = default!;
+    [Dependency] private readonly MarkingGradientSystem _markingGradient = default!; // Erida edit
 
     private void ApplyMarkingToPart(MarkingPrototype markingPrototype,
         IReadOnlyList<Color>? colors,
@@ -66,6 +68,7 @@ public sealed class BodySystem : SharedBodySystem
                     continue;
 
                 ApplyMarkingToPart(markingPrototype, marking.MarkingColors, marking.Visible, sprite);
+                _markingGradient.Apply((target, sprite), markingPrototype, marking); // Erida edit
             }
     }
 

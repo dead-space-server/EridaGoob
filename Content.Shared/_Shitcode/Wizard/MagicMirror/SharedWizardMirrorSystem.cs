@@ -93,7 +93,13 @@ public abstract class SharedWizardMirrorSystem : EntitySystem
             facialHair.Item2,
             humanoid.EyeColor,
             humanoid.SkinColor,
-            humanoid.MarkingSet.GetForwardEnumerator().ToList());
+            humanoid.MarkingSet.GetForwardEnumerator().ToList())
+        {
+            // Erida start
+            HairGradient = hairMarkings is { Count: > 0 } ? hairMarkings[0].Gradient : null,
+            FacialHairGradient = facialHairMarkings is { Count: > 0 } ? facialHairMarkings[0].Gradient : null,
+            // Erida end
+        };
 
         var profile = new HumanoidCharacterProfile().WithGender(humanoid.Gender)
             .WithSex(humanoid.Sex)

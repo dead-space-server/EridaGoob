@@ -89,6 +89,7 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
             marking.SetColor(i, markings[index].MarkingColors[i]);
         }
 
+        marking.Gradient = markings[index].Gradient; // Erida edit
         humanoid.MarkingSet.Replace(category, index, marking);
         Dirty(uid, humanoid);
         RaiseMarkingsChanged(uid); // Goob

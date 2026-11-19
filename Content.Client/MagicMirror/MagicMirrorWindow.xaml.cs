@@ -26,14 +26,17 @@ public sealed partial class MagicMirrorWindow : DefaultWindow
     public MagicMirrorWindow()
     {
         RobustXamlLoader.Load(this);
+        InitializeAppearanceQueue(); // Erida edit
 
         HairPicker.OnMarkingSelect += args => OnHairSelected!(args);
-        HairPicker.OnColorChanged += args => OnHairColorChanged!(args);
+        HairPicker.OnColorChanged += args => QueueAppearance(MagicMirrorCategory.Hair, args); // Erida edit
+        HairPicker.OnGradientChanged += args => QueueAppearance(MagicMirrorCategory.Hair, args); // Erida edit
         HairPicker.OnSlotRemove += args => OnHairSlotRemoved!(args);
         HairPicker.OnSlotAdd += delegate { OnHairSlotAdded!(); };
 
         FacialHairPicker.OnMarkingSelect += args => OnFacialHairSelected!(args);
-        FacialHairPicker.OnColorChanged += args => OnFacialHairColorChanged!(args);
+        FacialHairPicker.OnColorChanged += args => QueueAppearance(MagicMirrorCategory.FacialHair, args); // Erida edit
+        FacialHairPicker.OnGradientChanged += args => QueueAppearance(MagicMirrorCategory.FacialHair, args); // Erida edit
         FacialHairPicker.OnSlotRemove += args => OnFacialHairSlotRemoved!(args);
         FacialHairPicker.OnSlotAdd += delegate { OnFacialHairSlotAdded!(); };
     }

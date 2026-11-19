@@ -270,7 +270,7 @@ public sealed partial class MarkingPicker : Control
         OnMarkingRankChange?.Invoke(_currentMarkings);
     }
 
-    private sealed class CategoryTab : BoxContainer
+    private sealed partial class CategoryTab : BoxContainer // Erida edit
     {
         private readonly MarkingCategories _category;
         private readonly IReadOnlyDictionary<string, MarkingPrototype> _markings;
@@ -532,7 +532,7 @@ public sealed partial class MarkingPicker : Control
         }
     }
 
-    private sealed class MarkingItem : BoxContainer, ISearchableControl
+    private sealed partial class MarkingItem : BoxContainer, ISearchableControl // Erida edit
     {
         private readonly MarkingPrototype _prototype;
         private readonly CategoryTab _tab;
@@ -680,6 +680,8 @@ public sealed partial class MarkingPicker : Control
                     _tab.MarkingColorChange(colors, _prototype);
                 };
             }
+
+            AddGradientControl(marking); // Erida edit
         }
 
         private static List<string> GetStateNames(MarkingPrototype marking)
@@ -725,6 +727,8 @@ public sealed partial class MarkingPicker : Control
                 {
                     sliders[i].Color = marking.MarkingColors[i];
                 }
+
+                UpdateGradientControl(marking); // Erida edit
             }
         }
 
