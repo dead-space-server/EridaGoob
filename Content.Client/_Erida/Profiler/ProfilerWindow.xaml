@@ -1,0 +1,53 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc erida-profiler-window-title}"
+                      SetSize="1000 650"
+                      MinSize="700 400">
+    <BoxContainer Orientation="Vertical" Margin="4" SeparationOverride="4">
+        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+            <RichTextLabel Name="OverviewLabel" HorizontalExpand="True" />
+            <Button Name="CopyButton" Text="{Loc erida-profiler-copy}" />
+            <controls:ConfirmButton Name="ResetButton" Text="{Loc erida-profiler-reset}" />
+        </BoxContainer>
+        <Label Name="StatusLabel" StyleClasses="LabelSubText" Visible="False" />
+        <TabContainer Name="Tabs" VerticalExpand="True">
+            <BoxContainer Orientation="Vertical" Margin="4" SeparationOverride="4">
+                <RichTextLabel Text="{Loc erida-profiler-systems-hint}" />
+                <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+                    <GridContainer Name="SystemsGrid" Columns="6" HorizontalExpand="True">
+                        <Button Name="SortName" Text="{Loc erida-profiler-column-name}" HorizontalExpand="True" />
+                        <Button Name="SortTotal" Text="{Loc erida-profiler-column-total}" MinWidth="110" />
+                        <Button Name="SortAvg" Text="{Loc erida-profiler-column-avg}" MinWidth="110" />
+                        <Button Name="SortMax" Text="{Loc erida-profiler-column-max}" MinWidth="110" />
+                        <Button Name="SortAlloc" Text="{Loc erida-profiler-column-alloc}" MinWidth="110" />
+                        <Button Name="SortCalls" Text="{Loc erida-profiler-column-calls}" MinWidth="80" />
+                    </GridContainer>
+                </ScrollContainer>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" Margin="4" SeparationOverride="4">
+                <BoxContainer Orientation="Vertical" MinWidth="260" SeparationOverride="4">
+                    <Label Name="ThresholdLabel" StyleClasses="LabelSubText" />
+                    <ItemList Name="SlowTickList" VerticalExpand="True" SelectMode="Single" />
+                </BoxContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="4">
+                    <RichTextLabel Name="SlowTickSummary" />
+                    <RichTextLabel Text="{Loc erida-profiler-slow-ticks-hint}" />
+                    <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+                        <BoxContainer Name="SlowTickNodes" Orientation="Vertical" HorizontalExpand="True" />
+                    </ScrollContainer>
+                </BoxContainer>
+            </BoxContainer>
+            <BoxContainer Orientation="Vertical" Margin="4" SeparationOverride="4">
+                <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                    <CheckBox Name="ShowWarnings" Text="{Loc erida-profiler-level-warning}" Pressed="True" />
+                    <CheckBox Name="ShowErrors" Text="{Loc erida-profiler-level-error}" Pressed="True" />
+                    <CheckBox Name="ShowFatal" Text="{Loc erida-profiler-level-fatal}" Pressed="True" />
+                </BoxContainer>
+                <Label Name="LogsEmptyLabel" Text="{Loc erida-profiler-logs-empty}" Visible="False" />
+                <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+                    <BoxContainer Name="LogList" Orientation="Vertical" HorizontalExpand="True" SeparationOverride="2" />
+                </ScrollContainer>
+            </BoxContainer>
+        </TabContainer>
+    </BoxContainer>
+</controls:FancyWindow>
