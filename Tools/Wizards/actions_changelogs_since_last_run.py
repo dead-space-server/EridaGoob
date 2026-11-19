@@ -36,10 +36,10 @@ ERIDA_EMBED_COLOR = 0x6D3286
 
 TYPE_ORDER = ["Add", "Tweak", "Fix", "Remove"]
 TYPES_TO_EMOJI = {
-    "Add": "<:cl_add:1572691007001333780>",
-    "Tweak": "<:cl_tweak:1572691136760385637>",
-    "Fix": "<:cl_fix:1572691037711892541>",
-    "Remove": "<:cl_remove:1572691118741659668>",
+    "Add": "<:cl_add:1572959084565504081>",
+    "Tweak": "<:cl_tweak:1572959155965395055>",
+    "Fix": "<:cl_fix:1572959108594667590>",
+    "Remove": "<:cl_remove:1572959134490558634>",
 }
 TYPES_TO_LABELS = {
     "Add": "Добавлено",
