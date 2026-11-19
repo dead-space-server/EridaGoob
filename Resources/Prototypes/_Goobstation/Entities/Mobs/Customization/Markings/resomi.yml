@@ -4,6 +4,7 @@
   id: ResomiFeathersBig
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Resomi]
   sprites:
   - sprite: _Floofstation/Mobs/Customization/resomi_parts.rsi
     state: tail
@@ -14,6 +15,7 @@
   id: ResomiEars
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Resomi]
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Resomi/Resomi_headtop.rsi
     state: resomi_ears
@@ -22,6 +24,7 @@
   id: ResomiFluffyChest
   bodyPart: Tail
   markingCategory: Chest
+  speciesRestriction: [Resomi]
   sprites:
   - sprite: _Goobstation/Mobs/Customization/Resomi/Resomi_chest.rsi
     state: resomifluffchest

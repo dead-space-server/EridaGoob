@@ -4,6 +4,7 @@
   id: TattooHiveChest
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Human, Dwarf, Felinid, Oni] # Delta V - Felinid; EE- Oni
   coloring:
     default:
       type:
@@ -17,6 +18,7 @@
   id: TattooNightlingChest
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Human, Dwarf, Felinid, Oni] # Delta V - Felinid; EE- Oni
   coloring:
     default:
       type:
@@ -30,6 +32,7 @@
   id: TattooNanotrasenChest
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Human, Dwarf, SlimePerson]
   coloring:
     default:
       type:
@@ -43,6 +46,7 @@
   id: TattooSilverburghLeftLeg
   bodyPart: LLeg
   markingCategory: LeftLeg
+  speciesRestriction: [Human, Dwarf, Felinid, Oni] # Delta V - Felinid; EE - Oni
   coloring:
     default:
       type:
@@ -56,6 +60,7 @@
   id: TattooSilverburghRightLeg
   bodyPart: RLeg
   markingCategory: RightLeg
+  speciesRestriction: [Human, Dwarf, Felinid, Oni] # Delta V - Felinid; EE - Oni
   coloring:
     default:
       type:
@@ -69,6 +74,7 @@
   id: TattooCampbellLeftArm
   bodyPart: LArm
   markingCategory: LeftArm
+  speciesRestriction: [Human, Dwarf, Felinid, Oni] # Delta V - Felinid; EE - Oni
   coloring:
     default:
       type:
@@ -82,6 +88,7 @@
   id: TattooCampbellRightArm
   bodyPart: RArm
   markingCategory: RightArm
+  speciesRestriction: [Human, Dwarf, Felinid, Oni] # Delta V - Felinid; EE - Oni
   coloring:
     default:
       type:
@@ -95,6 +102,7 @@
   id: TattooCampbellLeftLeg
   bodyPart: LLeg
   markingCategory: LeftLeg
+  speciesRestriction: [Human, Dwarf, Felinid, Oni] # Delta V - Felinid; EE - Oni
   coloring:
     default:
       type:
@@ -108,6 +116,7 @@
   id: TattooCampbellRightLeg
   bodyPart: RLeg
   markingCategory: RightLeg
+  speciesRestriction: [Human, Dwarf, Felinid, Oni] # Delta V - Felinid; EE - Oni
   coloring:
     default:
       type:
@@ -121,6 +130,7 @@
   id: TattooEyeRight
   bodyPart: Eyes
   markingCategory: Head
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin, Plasmaman, Feroxi] # Delta V - Felinid, Harpy, Rodentia, Feroxi; Goob - Tajaran; EE- Oni, Shadowkins
   coloring:
     default:
       type:
@@ -134,6 +144,7 @@
   id: TattooEyeLeft
   bodyPart: Eyes
   markingCategory: Head
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin, Plasmaman, Feroxi] # Delta V - Felinid, Harpy, Rodentia, Feroxi; Goob - Tajaran; EE- Oni, Shadowkins
   coloring:
     default:
       type:
@@ -147,6 +158,7 @@
   id: TattooTribal1
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin] # Delta V - Felinid, Harpy, Rodentia; Goob - Tajaran; EE- Oni, Shadowkins
   coloring:
     default:
       type:
@@ -160,6 +172,7 @@
   id: TattooLoops
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin] # Delta V - Felinid, Harpy, Rodentia; Goob - Tajaran; EE- Oni, Shadowkins
   coloring:
     default:
       type:
@@ -173,6 +186,7 @@
   id: BuffChest
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [ Human, Dwarf, Oni ] # ; EE- Oni
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -182,6 +196,7 @@
   id: TattooEyeMothRight
   bodyPart: Eyes
   markingCategory: Overlay
+  speciesRestriction: [Moth]
   coloring:
     default:
       type:
@@ -195,6 +210,7 @@
   id: TattooEyeMothLeft
   bodyPart: Eyes
   markingCategory: Overlay
+  speciesRestriction: [Moth]
   coloring:
     default:
       type:
@@ -208,6 +224,7 @@
   id: TattooEyeRightGlowy
   bodyPart: Eyes
   markingCategory: Head
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin] # Delta V - Felinid, Harpy, Rodentia; Goob - Tajaran; EE- Oni, Shadowkins
   coloring:
     default:
       type:
@@ -222,6 +239,7 @@
   id: TattooEyeLeftGlowy
   bodyPart: Eyes
   markingCategory: Head
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin] # Delta V - Felinid, Harpy, Rodentia; Goob - Tajaran; EE- Oni, Shadowkins
   coloring:
     default:
       type:
@@ -241,6 +259,7 @@
   # some of these limitations could possibly be removed with better control over how the marking can be customized - possibly removing stacking, allowing recoloring & clamping higher-end colors for the eyeshadow, etc.
   bodyPart: Eyes
   markingCategory: Overlay
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin] # Delta V - Felinid, Harpy, Rodentia; Goob - Tajaran; EE- Oni, Shadowkins
   forcedColoring: true
   sprites:
   - sprite: Mobs/Customization/tattoos.rsi
@@ -250,6 +269,7 @@
   id: TattooEyeshadowLower
   bodyPart: Eyes
   markingCategory: Overlay
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin] # Delta V - Felinid, Harpy, Rodentia; Goob - Tajaran; EE- Oni, Shadowkins
   forcedColoring: true
   sprites:
   - sprite: Mobs/Customization/tattoos.rsi

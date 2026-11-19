@@ -2,6 +2,7 @@
   id: dogEars
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Human, Dwarf]
   sprites:
     - sprite: _Goobstation/Mobs/Customization/dog_markings.rsi
       state: dog_ears_standard
@@ -10,6 +11,7 @@
   id: dogEarsWag
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Human, Dwarf]
   sprites:
     - sprite: _Goobstation/Mobs/Customization/dog_markings.rsi
       state: dog_ears_animated
