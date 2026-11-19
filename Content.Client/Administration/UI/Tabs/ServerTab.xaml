@@ -17,6 +17,7 @@ SPDX-License-Identifier: MIT
         </GridContainer>
         <GridContainer Columns="3">
             <cc:CommandButton Command="setdchat" Text="{Loc rmc-ui-toggle-dchat}" />
+            <cc:CommandButton Command="erida_profiler" Text="{Loc erida-profiler-open}" /> <!-- Erida edit -->
         </GridContainer>
     </BoxContainer>
 </Control>
