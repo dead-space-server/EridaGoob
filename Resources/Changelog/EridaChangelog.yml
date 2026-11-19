@@ -2099,3 +2099,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/92
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Tweak] Markings filter'
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Исправление лагов пришедших в апстриме
+  id: 154
+  time: '2026-11-19T17:05:49.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/93
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Fix] Client lags'
