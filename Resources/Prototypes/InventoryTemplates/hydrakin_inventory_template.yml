@@ -117,51 +117,43 @@
       blacklist:
         tags:
         - PetOnly
-   # Erida start
-    - name: toggle
-      slotTexture: toggle
-      slotFlags: INVISIBLE
-      stripTime: 6
-      uiWindowPos: 2,0
-      strippingWindowPos: 2,0
-      displayName: toggle
-      secondInventorySlots:
-      - undershirt
-      - underpants
-      - socks
-      - underpocket
-      whitelist:
-        tags:
-        - invisible
-    - name: undershirt
-      slotTexture: undershirt
-      slotFlags: UNDERSHIRT
-      stripTime: 8
-      uiWindowPos: 3,3
-      strippingWindowPos: 3,1
-      displayName: Undershirt
-    - name: underpants
-      slotTexture: underpants
-      slotFlags: UNDERPANTS
+    # Erida start
+    - name: underwearb
+      slotTexture: underwearb
+      slotFlags: UNDERWEARB
       stripTime: 12
-      uiWindowPos: 3,2
-      strippingWindowPos: 3,2
+      uiWindowPos: 2,0.5
+      strippingWindowPos: 1,6
       displayName: Underpants
+    - name: underweart
+      slotTexture: underweart
+      slotFlags: UNDERWEART
+      stripTime: 8
+      uiWindowPos: 2.5,0.5
+      strippingWindowPos: 2,6
+      displayName: Undershirt
     - name: socks
       slotTexture: socks
       slotFlags: SOCKS
       stripTime: 8
-      uiWindowPos: 3,1
-      strippingWindowPos: 3,3
+      uiWindowPos: 2.5,0
+      strippingWindowPos: 0,6
       displayName: Socks
     - name: underpocket
       slotTexture: underpocket
       slotFlags: UNDERPOCKET
       stripTime: 6
-      uiWindowPos: 3,0
-      strippingWindowPos: 3,0
+      uiWindowPos: 2,0
+      strippingWindowPos: 2,3
       displayName: underpocket
       whitelist:
         tags:
         - underpocket
+    - name: finger
+      slotTexture: finger
+      slotFlags: FINGER
+      stripTime: 2
+      uiWindowPos: 2,3
+      strippingWindowPos: 2,1
+      displayName: Finger
     # Erida end

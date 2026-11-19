@@ -30,10 +30,26 @@ public sealed partial class SlotDefinition
     [DataField("stripTime")] public TimeSpan StripTime { get; private set; } = TimeSpan.FromSeconds(4f);
 
     [DataField("uiWindowPos", required: true)]
-    public Vector2i UIWindowPosition { get; private set; }
+    public Vector2 UIWindowPosition { get; private set; } // Erida edit
 
     [DataField("strippingWindowPos", required: true)]
     public Vector2i StrippingWindowPos { get; private set; }
+
+    // Erida start
+    public const SlotFlags CompactUiSlotFlags =
+        SlotFlags.UNDERWEART | SlotFlags.UNDERWEARB | SlotFlags.SOCKS | SlotFlags.UNDERPOCKET | SlotFlags.FINGER;
+
+    [DataField("uiWindowScale")]
+    public float? UIWindowScale { get; private set; }
+
+    public float GetUiWindowScale()
+    {
+        if (UIWindowScale is { } scale)
+            return Math.Clamp(scale, 0.25f, 1f);
+
+        return (SlotFlags & CompactUiSlotFlags) != 0 ? 0.5f : 1f;
+    }
+    // Erida end
 
     [DataField("dependsOn")] public string? DependsOn { get; private set; }
 
@@ -68,8 +84,4 @@ public sealed partial class SlotDefinition
     ///     Entity blacklist for CanEquip checks.
     /// </summary>
     [DataField("blacklist")] public EntityWhitelist? Blacklist = null;
-
-    // Erida start
-    [DataField("secondInventorySlots")] public List<string> SecondInventorySlots = [];
-    // Erida end
 }

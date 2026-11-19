@@ -18,7 +18,7 @@
       - ClothMade
     - type: Clothing
       slots:
-        - UNDERPANTS
+        - UNDERWEARB
     - type: Sprite
       # noRot: true
       state: icon
@@ -43,7 +43,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: bee_shorts
 
 - type: entity
@@ -58,7 +58,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: boxer_briefs
 
 - type: entity
@@ -73,7 +73,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: boxers_assblastusa
 
 - type: entity
@@ -88,7 +88,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: boxers_commie
 
 - type: entity
@@ -103,7 +103,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: boxers_heart
 
 - type: entity
@@ -118,7 +118,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: boxers_striped
 
 - type: entity
@@ -133,7 +133,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: boxers_uk
 
 - type: entity
@@ -148,7 +148,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: boxers
 
 - type: entity
@@ -163,7 +163,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: briefs
 
 # - type: entity
@@ -193,7 +193,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: jockstrap
     - type: TemperatureProtection
       heatingCoefficient: 0.98
@@ -210,7 +210,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: ljonb
     - type: TemperatureProtection
       heatingCoefficient: 0.8
@@ -227,7 +227,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: panties_alt
 
 - type: entity
@@ -242,7 +242,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: panties_assblastusa
 
 - type: entity
@@ -257,7 +257,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: panties_bee-kini
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -274,7 +274,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: panties_commie
 
 # - type: entity
@@ -303,7 +303,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: panties_neko
 
 - type: entity
@@ -318,7 +318,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: panties_slim
 
 - type: entity
@@ -333,7 +333,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: panties_swimming
 
 # - type: entity
@@ -362,7 +362,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: panties_uk
 
 - type: entity
@@ -377,7 +377,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: panties
 
 # - type: entity
@@ -406,7 +406,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: pantyhose
 
 - type: entity
@@ -421,7 +421,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: striped_panties
 
 # - type: entity
@@ -449,6 +449,6 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/underpants.rsi
       clothingVisuals:
-        underpants:
+        underwearb:
           - state: thong
 

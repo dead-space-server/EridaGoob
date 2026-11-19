@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using System.Numerics;
 using Content.Client.Clothing;
 using Content.Client.Examine;
 using Content.Client.Verbs.UI;
@@ -281,7 +282,8 @@ namespace Content.Client.Inventory
             [ViewVariables] public bool Highlighted;
             [ViewVariables] public ContainerSlot? Container;
             [ViewVariables] public bool HasSlotGroup => SlotDef.SlotGroup != "Default";
-            [ViewVariables] public Vector2i ButtonOffset => SlotDef.UIWindowPosition;
+            [ViewVariables] public Vector2 ButtonOffset => SlotDef.UIWindowPosition; // Erida edit
+            [ViewVariables] public float UiWindowScale => SlotDef.GetUiWindowScale(); // Erida edit
             [ViewVariables] public string SlotName => SlotDef.Name;
             [ViewVariables] public bool ShowInWindow => SlotDef.ShowInWindow;
             [ViewVariables] public string SlotGroup => SlotDef.SlotGroup;

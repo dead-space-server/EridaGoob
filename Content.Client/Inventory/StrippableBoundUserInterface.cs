@@ -129,9 +129,6 @@ namespace Content.Client.Inventory
             {
                 foreach (var slot in inv.Slots)
                 {
-                    if (slot.SlotFlags == SlotFlags.INVISIBLE)
-                        continue;
-
                     AddInventoryButton(Owner, slot.Name, inv);
                 }
             }

@@ -1,159 +1,159 @@
 - type: loadout
   id: UnderwearBoxerShorts
   equipment:
-    underpants: ClothingUnderwearBoxerShorts
+    underwearb: ClothingUnderwearBoxerShorts
 
 - type: loadout
   id: BoxerShortsAssBlastUSA
   equipment:
-    underpants: ClothingUnderwearBoxerShortsAssBlastUSA
+    underwearb: ClothingUnderwearBoxerShortsAssBlastUSA
 
 - type: loadout
   id: BoxerShortsBee
   equipment:
-    underpants: ClothingUnderwearBoxerShortsBee
+    underwearb: ClothingUnderwearBoxerShortsBee
 
 - type: loadout
   id: BoxerShortsBriefs
   equipment:
-    underpants: ClothingUnderwearBoxerShortsBriefs
+    underwearb: ClothingUnderwearBoxerShortsBriefs
 
 - type: loadout
   id: BoxerShortsCommie
   equipment:
-    underpants: ClothingUnderwearBoxerShortsCommie
+    underwearb: ClothingUnderwearBoxerShortsCommie
 
 - type: loadout
   id: BoxerShortsHeart
   equipment:
-    underpants: ClothingUnderwearBoxerShortsHeart
+    underwearb: ClothingUnderwearBoxerShortsHeart
 
 - type: loadout
   id: BoxerShortsLong
   equipment:
-    underpants: ClothingUnderwearBoxerShortsLong
+    underwearb: ClothingUnderwearBoxerShortsLong
 
 - type: loadout
   id: BoxerShortsSponge
   equipment:
-    underpants: ClothingUnderwearBoxerShortsSponge
+    underwearb: ClothingUnderwearBoxerShortsSponge
 
 - type: loadout
   id: BoxerShortsStriped
   equipment:
-    underpants: ClothingUnderwearBoxerShortsStriped
+    underwearb: ClothingUnderwearBoxerShortsStriped
 
 - type: loadout
   id: BoxerShortsUK
   equipment:
-    underpants: ClothingUnderwearBoxerShortsUK
+    underwearb: ClothingUnderwearBoxerShortsUK
 
 - type: loadout
   id: Mankini
   equipment:
-    underpants: ClothingUnderwearMankini
+    underwearb: ClothingUnderwearMankini
 
 - type: loadout
   id: Panties
   equipment:
-    underpants: ClothingUnderwearPanties
+    underwearb: ClothingUnderwearPanties
 
 - type: loadout
   id: PantiesAssBlastUSA
   equipment:
-    underpants: ClothingUnderwearPantiesAssBlastUSA
+    underwearb: ClothingUnderwearPantiesAssBlastUSA
 
 - type: loadout
   id: PantiesBeeKini
   equipment:
-    underpants: ClothingUnderwearPantiesBeeKini
+    underwearb: ClothingUnderwearPantiesBeeKini
 
 - type: loadout
   id: PantiesBriefs
   equipment:
-    underpants: ClothingUnderwearPantiesBriefs
+    underwearb: ClothingUnderwearPantiesBriefs
 
 - type: loadout
   id: PantiesCommie
   equipment:
-    underpants: ClothingUnderwearPantiesCommie
+    underwearb: ClothingUnderwearPantiesCommie
 
 - type: loadout
   id: PantiesFishnet
   equipment:
-    underpants: ClothingUnderwearPantiesFishnet
+    underwearb: ClothingUnderwearPantiesFishnet
 
 - type: loadout
   id: PantiesFishnetLower
   equipment:
-    underpants: ClothingUnderwearPantiesFishnetLower
+    underwearb: ClothingUnderwearPantiesFishnetLower
 
 - type: loadout
   id: PantiesFishnetLowerAlt
   equipment:
-    underpants: ClothingUnderwearPantiesFishnetLowerAlt
+    underwearb: ClothingUnderwearPantiesFishnetLowerAlt
 
 - type: loadout
   id: PantiesHarley
   equipment:
-    underpants: ClothingUnderwearPantiesHarley
+    underwearb: ClothingUnderwearPantiesHarley
 
 - type: loadout
   id: PantiesJockstrap
   equipment:
-    underpants: ClothingUnderwearPantiesJockstrap
+    underwearb: ClothingUnderwearPantiesJockstrap
 
 - type: loadout
   id: PantiesKinky
   equipment:
-    underpants: ClothingUnderwearPantiesKinky
+    underwearb: ClothingUnderwearPantiesKinky
 
 - type: loadout
   id: PantiesLizared
   equipment:
-    underpants: ClothingUnderwearPantiesLizared
+    underwearb: ClothingUnderwearPantiesLizared
 
 - type: loadout
   id: PantiesNeko
   equipment:
-    underpants: ClothingUnderwearPantiesNeko
+    underwearb: ClothingUnderwearPantiesNeko
 
 - type: loadout
   id: PantiesSlim
   equipment:
-    underpants: ClothingUnderwearPantiesSlim
+    underwearb: ClothingUnderwearPantiesSlim
 
 - type: loadout
   id: PantiesStriped
   equipment:
-    underpants: ClothingUnderwearPantiesStriped
+    underwearb: ClothingUnderwearPantiesStriped
 
 - type: loadout
   id: PantiesSwimming
   equipment:
-    underpants: ClothingUnderwearPantiesSwimming
+    underwearb: ClothingUnderwearPantiesSwimming
 
 - type: loadout
   id: PantiesThin
   equipment:
-    underpants: ClothingUnderwearPantiesThin
+    underwearb: ClothingUnderwearPantiesThin
 
 - type: loadout
   id: PantiesUK
   equipment:
-    underpants: ClothingUnderwearPantiesUK
+    underwearb: ClothingUnderwearPantiesUK
 
 - type: loadout
   id: PantiesAlt
   equipment:
-    underpants: ClothingUnderwearPantiesAlt
+    underwearb: ClothingUnderwearPantiesAlt
 
 - type: loadout
   id: Thong
   equipment:
-    underpants: ClothingUnderwearThong
+    underwearb: ClothingUnderwearThong
 
 - type: loadout
   id: ThongBabydoll
   equipment:
-    underpants: ClothingUnderwearThongBabydoll
+    underwearb: ClothingUnderwearThongBabydoll

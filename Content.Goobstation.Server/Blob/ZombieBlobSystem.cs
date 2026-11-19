@@ -104,7 +104,7 @@ public sealed partial class ZombieBlobSystem : SharedZombieBlobSystem
     private void OnStartup(EntityUid uid, ZombieBlobComponent component, ComponentStartup args)
     {
         _ui.CloseUis(uid);
-        _inventory.TryUnequip(uid, "underpants", true, true);
+        _inventory.TryUnequip(uid, "underwearb", true, true);
         _inventory.TryUnequip(uid, "neck", true, true);
         _inventory.TryUnequip(uid, "mask", true, true);
         _inventory.TryUnequip(uid, "eyes", true, true);

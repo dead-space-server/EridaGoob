@@ -177,7 +177,7 @@
   - type: HeldSpeedModifier
   - type: GroupExamine
   - type: SlotBlock # Erida edit
-    blockList: [ UNDERSHIRT ]
+    blockList: [ UNDERWEART ]
     hideList: [ IDCARD ]
 
 - type: entity
