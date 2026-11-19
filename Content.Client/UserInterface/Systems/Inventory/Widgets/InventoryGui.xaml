@@ -22,11 +22,13 @@ SPDX-License-Identifier: AGPL-3.0-or-later
             HorizontalExpand="False"
             VerticalExpand="False"
             ButtonTexturePath="Slots/toggle"/>
+        <!-- Erida start -->
         <inventory:InventoryDisplay
             Name="InventoryHotbar"
             Access="Public"
             Visible="False"
             VerticalExpand="True"
             HorizontalAlignment="Center"/>
+        <!-- Erida end -->
     </Control>
 </widgets:InventoryGui>
