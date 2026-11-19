@@ -132,16 +132,15 @@ public sealed partial class MarkingPicker : Control
 
     private IReadOnlyDictionary<string, MarkingPrototype> GetMarkings(MarkingCategories category)
     {
-        return _markingManager.WithoutWaggingVariants(IgnoreSpecies
-            ? _markingManager.MarkingsByCategoryAndSex(category, _currentSex)
-            : _markingManager.MarkingsByCategoryAndSpeciesAndSex(category, _currentSpecies, _currentSex)); // Goob
+        return _markingManager.WithoutWaggingVariants(_markingManager.MarkingsByCategoryAndSex(category, _currentSex)); // Erida edit
     }
 
     public void Populate(string filter)
     {
-        _populateQueued = false; // Erida edit
-        CMarkingTabs.RemoveAllChildren();
-        _categoryTabs.Clear();
+        // Erida start
+        _populateQueued = false;
+        var currentTab = ClearTabs();
+        // Erida end
 
         var i = 0;
         foreach (var category in _markingCategories)
@@ -160,7 +159,7 @@ public sealed partial class MarkingPicker : Control
             i++;
         }
 
-        BuildTab(CMarkingTabs.CurrentTab); // Erida edit
+        RestoreTab(currentTab); // Erida edit
     }
 
     public void PopulateUsed()
@@ -302,14 +301,8 @@ public sealed partial class MarkingPicker : Control
                 PlaceHolder = Loc.GetString("markings-search"),
                 HorizontalExpand = true,
             };
-            _searchBar.OnTextChanged += _ =>
-            {
-                foreach (var element in _searchable)
-                {
-                    element.SetHiddenState(true, _searchBar.Text.Trim());
-                }
-            };
-            AddChild(_searchBar);
+            _searchBar.OnTextChanged += _ => UpdateVisibility(); // Erida edit
+            AddChild(CreateSearchRow()); // Erida edit
 
             _items = new GridContainer
             {
@@ -371,6 +364,7 @@ public sealed partial class MarkingPicker : Control
                 _items.AddChild(new MarkingItem(marking, this));
             }
             _searchable = _items.GetSearchableControls().Cast<MarkingItem>().ToList();
+            SetupFilter();
         }
         // Erida end
 
@@ -414,6 +408,7 @@ public sealed partial class MarkingPicker : Control
 
             RefreshItems();
             RebuildOrderingList();
+            UpdateVisibility(); // Erida edit
         }
 
         public void RefreshItems()
@@ -431,14 +426,14 @@ public sealed partial class MarkingPicker : Control
         {
             if (args.Pressed)
             {
-                _searchBar.Visible = false;
+                _searchRow.Visible = false; // Erida edit
                 _selectionItems.Visible = false;
                 _orderingItems.Visible = true;
                 RebuildOrderingList();
             }
             else
             {
-                _searchBar.Visible = true;
+                _searchRow.Visible = true; // Erida edit
                 _selectionItems.Visible = true;
                 _orderingItems.Visible = false;
             }

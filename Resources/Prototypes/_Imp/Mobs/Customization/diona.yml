@@ -6,6 +6,7 @@
   id: DionaFirefly
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/chest.rsi
     state: firefly
@@ -16,6 +17,7 @@
   id: DionaLivingNymph
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/chest.rsi
     state: livingnymph
@@ -24,6 +26,7 @@
   id: DionaMossChest
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/chest.rsi
     state: moss
@@ -32,6 +35,7 @@
   id: MycenaChest
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/chest.rsi
     state: mycena
@@ -40,6 +44,7 @@
   id: MycenaChestGlow
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/chest.rsi
     state: mycena
@@ -50,6 +55,7 @@
   id: ShelfChest
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/chest.rsi
     state: shelf
@@ -60,6 +66,7 @@
   id: Amanita
   bodyPart: Head
   markingCategory: HeadTop
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/head.rsi
     state: amanita1
@@ -70,6 +77,7 @@
   id: DionaBigFirefly
   bodyPart: Head
   markingCategory: Head
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/head.rsi
     state: bigfirefly
@@ -79,6 +87,7 @@
   id: JackHead
   bodyPart: Head
   markingCategory: HeadSide
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/head.rsi
     state: jack
@@ -88,6 +97,7 @@
   id: MycenaHead
   bodyPart: Head
   markingCategory: HeadSide
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/head.rsi
     state: mycena
@@ -96,6 +106,7 @@
   id: MycenaHeadGlow
   bodyPart: Head
   markingCategory: HeadSide
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/head.rsi
     state: mycena
@@ -106,6 +117,7 @@
   id: ShelfHead
   bodyPart: Head
   markingCategory: HeadSide
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/head.rsi
     state: shelf
@@ -114,6 +126,7 @@
   id: MycenaArm
   bodyPart: LArm
   markingCategory: LeftArm
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/larm.rsi
     state: mycena
@@ -122,6 +135,7 @@
   id: MycenaArmGlow
   bodyPart: LArm
   markingCategory: LeftArm
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/larm.rsi
     state: mycena
@@ -132,6 +146,7 @@
   id: DionaMoonBloom
   bodyPart: HeadSide
   markingCategory: HeadSide
+  speciesRestriction: [ Diona ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Diona/headtop.rsi
     state: moonbloom

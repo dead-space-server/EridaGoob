@@ -73,6 +73,7 @@ public sealed partial class MarkingSet
         }
 
         Points = MarkingPoints.CloneMarkingPointDictionary(points.Points);
+        AddDefaultPoints(); // Erida edit
 
         foreach (var marking in markings)
         {
@@ -120,6 +121,7 @@ public sealed partial class MarkingSet
         }
 
         Points = MarkingPoints.CloneMarkingPointDictionary(points.Points);
+        AddDefaultPoints(); // Erida edit
     }
 
     /// <summary>
@@ -152,8 +154,8 @@ public sealed partial class MarkingSet
         IoCManager.Resolve(ref prototypeManager);
 
         var toRemove = new List<(MarkingCategories category, string id)>();
-        var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
-        var onlyWhitelisted = prototypeManager.Index(speciesProto.MarkingPoints).OnlyWhitelisted;
+        // var speciesProto = prototypeManager.Index<SpeciesPrototype>(species); // Erida edit
+        // var onlyWhitelisted = prototypeManager.Index(speciesProto.MarkingPoints).OnlyWhitelisted; // Erida edit
 
         foreach (var (category, list) in Markings)
         {
@@ -165,6 +167,7 @@ public sealed partial class MarkingSet
                     continue;
                 }
 
+                /* Erida edit
                 if (onlyWhitelisted && prototype.SpeciesRestrictions == null)
                 {
                     toRemove.Add((category, marking.MarkingId));
@@ -175,6 +178,7 @@ public sealed partial class MarkingSet
                 {
                     toRemove.Add((category, marking.MarkingId));
                 }
+                */
             }
         }
 

@@ -207,13 +207,13 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             ? profile.Appearance.SkinColor.WithAlpha(hairAlpha)
             : profile.Appearance.HairColor;
         var hair = new Marking(profile.Appearance.HairStyleId,
-            [hairColor]) { Gradient = profile.Appearance.HairGradient }; // Erida edit
+            new List<Color> { hairColor }) { Gradient = profile.Appearance.HairGradient }; // Erida edit
 
         var facialHairColor = _markingManager.MustMatchSkin(profile.Species, HumanoidVisualLayers.FacialHair, out var facialHairAlpha, _prototypeManager)
             ? profile.Appearance.SkinColor.WithAlpha(facialHairAlpha)
             : profile.Appearance.FacialHairColor;
         var facialHair = new Marking(profile.Appearance.FacialHairStyleId,
-            [facialHairColor]) { Gradient = profile.Appearance.FacialHairGradient }; // Erida edit
+            new List<Color> { facialHairColor }) { Gradient = profile.Appearance.FacialHairGradient }; // Erida edit
 
         if (_markingManager.CanBeApplied(profile.Species, profile.Sex, hair, _prototypeManager))
         {

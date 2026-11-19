@@ -5,6 +5,7 @@
   bodyPart: Snout
   markingCategory: Snout
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: beak
@@ -20,6 +21,7 @@
   bodyPart: Snout
   markingCategory: Snout
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: beak_squarecere
@@ -34,6 +36,7 @@
   bodyPart: Snout
   markingCategory: Snout
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: beak_shaved
@@ -48,6 +51,7 @@
   bodyPart: Snout
   markingCategory: Snout
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: beak_hooked
@@ -62,6 +66,7 @@
   bodyPart: LArm
   markingCategory: LeftArm
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: l_arm
@@ -76,6 +81,7 @@
   bodyPart: LLeg
   markingCategory: LeftLeg
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: l_leg
@@ -90,6 +96,7 @@
   bodyPart: RArm
   markingCategory: RightArm
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: r_arm
@@ -104,6 +111,7 @@
   bodyPart: RLeg
   markingCategory: RightLeg
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: r_leg
@@ -118,6 +126,7 @@
   bodyPart: RHand
   markingCategory: RightHand
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: r_hand
@@ -132,6 +141,7 @@
   bodyPart: LHand
   markingCategory: LeftHand
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: l_hand
@@ -146,6 +156,7 @@
   bodyPart: LFoot
   markingCategory: LeftFoot
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: l_foot
@@ -160,6 +171,7 @@
   bodyPart: RFoot
   markingCategory: RightFoot
   forcedColoring: true
+  speciesRestriction: [Vox]
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: r_foot
@@ -174,6 +186,7 @@
   wagging: VoxTailAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Vox]
   forcedColoring: true
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -194,6 +207,7 @@
   wagging: VoxTailShortAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Vox]
   forcedColoring: true
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -214,6 +228,7 @@
   wagging: VoxTailBigAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Vox]
   forcedColoring: true
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -236,6 +251,7 @@
   wagging: VoxTailSpikesAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Vox]
   forcedColoring: true
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -256,6 +272,7 @@
   wagging: VoxTailDockedAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Vox]
   forcedColoring: true
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
@@ -276,6 +293,7 @@
   wagging: VoxTailSplitAnimated # Goob
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Vox]
   forcedColoring: true
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi

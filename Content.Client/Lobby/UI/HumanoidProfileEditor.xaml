@@ -185,7 +185,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <BoxContainer Name="MarkingsTab" Orientation="Vertical" Margin="10">
                     <!-- Markings -->
                     <ScrollContainer VerticalExpand="True">
-                        <humanoid:MarkingPicker Name="Markings" IgnoreCategories="Hair,FacialHair" />
+                        <humanoid:MarkingPicker Name="Markings" IgnoreCategories="Hair,FacialHair,UndergarmentTop,UndergarmentBottom" /> <!-- Erida edit -->
                     </ScrollContainer>
                 </BoxContainer>
             </TabContainer>

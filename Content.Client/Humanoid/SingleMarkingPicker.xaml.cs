@@ -158,7 +158,7 @@ public sealed partial class SingleMarkingPicker : BoxContainer
         _species = species;
         _totalPoints = totalPoints;
 
-        _markingPrototypeCache = _markingManager.MarkingsByCategoryAndSpecies(Category, _species);
+        _markingPrototypeCache = _markingManager.AllowedMarkings(Category, _species); // Erida edit
 
         Visible = _markingPrototypeCache.Count != 0;
         if (_markingPrototypeCache.Count == 0)
@@ -178,7 +178,7 @@ public sealed partial class SingleMarkingPicker : BoxContainer
             throw new ArgumentException("Tried to populate marking list without a set species!");
         }
 
-        _markingPrototypeCache ??= _markingManager.MarkingsByCategoryAndSpecies(Category, _species);
+        _markingPrototypeCache ??= _markingManager.AllowedMarkings(Category, _species); // Erida edit
 
         MarkingSelectorContainer.Visible = _markings != null && _markings.Count != 0;
         if (_markings == null || _markings.Count == 0)

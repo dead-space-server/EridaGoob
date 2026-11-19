@@ -5,6 +5,7 @@
   id: ChitinidAntennasDefault
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_antennas.rsi
     state: default
@@ -13,6 +14,7 @@
   id: ChitinidAntennasCurly
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_antennas.rsi
     state: curly
@@ -21,6 +23,7 @@
   id: ChitinidAntennasGray
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_antennas.rsi
     state: gray
@@ -29,6 +32,7 @@
   id: ChitinidAntennasSlick
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_antennas.rsi
     state: slick
@@ -37,6 +41,7 @@
   id: ChitinidAntennasLong
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_antennas.rsi
     state: long
@@ -45,6 +50,7 @@
   id: ChitinidAntennasBee
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_antennas.rsi
     state: bee
@@ -53,6 +59,7 @@
   id: ChitinidAntennasShort
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_antennas.rsi
     state: short
@@ -61,6 +68,7 @@
   id: ChitinidAntennasFirefly
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_antennas.rsi
     state: firefly_primary
@@ -71,6 +79,7 @@
   id: ChitinidAntennasRadar
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_antennas.rsi
     state: radar
@@ -79,6 +88,7 @@
   id: ChitinidAntennasSpeed
   bodyPart: HeadTop
   markingCategory: HeadTop
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_antennas.rsi
     state: speed
@@ -89,6 +99,7 @@
   id: ChitinidWingsDefault
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_wings.rsi
     state: default
@@ -97,6 +108,7 @@
   id: ChitinidWingsSmooth
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_wings.rsi
     state: smooth
@@ -105,6 +117,7 @@
   id: ChitinidWingsHoneypot
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_wings.rsi
     state: honeypot_primary
@@ -115,6 +128,7 @@
   id: ChitinidWingsStubby
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_wings.rsi
     state: stubby
@@ -123,6 +137,7 @@
   id: ChitinidWingsBee
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_wings.rsi
     state: bee_primary
@@ -133,6 +148,7 @@
   id: ChitinidWingsFirefly
   bodyPart: Tail
   markingCategory: Tail
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_wings.rsi
     state: firefly_primary
@@ -145,6 +161,7 @@
   id: ChitinidChestCharred
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: charred_chest
@@ -153,6 +170,7 @@
   id: ChitinidHeadCharred
   bodyPart: Head
   markingCategory: Head
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: charred_head
@@ -161,6 +179,7 @@
   id: ChitinidLLegCharred
   bodyPart: LLeg
   markingCategory: LeftLeg # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: charred_l_leg
@@ -169,6 +188,7 @@
   id: ChitinidRLegCharred
   bodyPart: RLeg
   markingCategory: RightLeg # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: charred_r_leg
@@ -177,6 +197,7 @@
   id: ChitinidLArmCharred
   bodyPart: LArm
   markingCategory: LeftArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: charred_l_arm
@@ -185,6 +206,7 @@
   id: ChitinidRArmCharred
   bodyPart: RArm
   markingCategory: RightArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: charred_r_arm
@@ -194,6 +216,7 @@
   id: ChitinidChestPlated
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: plated_chest
@@ -202,6 +225,7 @@
   id: ChitinidLArmPlated
   bodyPart: LArm
   markingCategory: LeftArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: plated_l_arm
@@ -210,6 +234,7 @@
   id: ChitinidRArmPlated
   bodyPart: RArm
   markingCategory: RightArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: plated_r_arm
@@ -219,6 +244,7 @@
   id: ChitinidChestStripes
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: stripes_chest
@@ -227,6 +253,7 @@
   id: ChitinidHeadStripes
   bodyPart: Head
   markingCategory: Head
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: stripes_head
@@ -235,6 +262,7 @@
   id: ChitinidLLegStripes
   bodyPart: LLeg
   markingCategory: LeftLeg # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: stripes_l_leg
@@ -243,6 +271,7 @@
   id: ChitinidRLegStripes
   bodyPart: RLeg
   markingCategory: RightLeg # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: stripes_r_leg
@@ -251,6 +280,7 @@
   id: ChitinidLArmStripes
   bodyPart: LArm
   markingCategory: LeftArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: stripes_l_arm
@@ -259,6 +289,7 @@
   id: ChitinidRArmStripes
   bodyPart: RArm
   markingCategory: RightArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: stripes_r_arm
@@ -268,6 +299,7 @@
   id: ChitinidChestRadiant
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: radiant_chest
@@ -276,6 +308,7 @@
   id: ChitinidHeadRadiant
   bodyPart: Head
   markingCategory: Head
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: radiant_head
@@ -284,6 +317,7 @@
   id: ChitinidLLegRadiant
   bodyPart: LLeg
   markingCategory: LeftLeg # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: radiant_l_leg
@@ -292,6 +326,7 @@
   id: ChitinidRLegRadiant
   bodyPart: RLeg
   markingCategory: RightLeg # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: radiant_r_leg
@@ -300,6 +335,7 @@
   id: ChitinidLArmRadiant
   bodyPart: LArm
   markingCategory: LeftArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: radiant_l_arm
@@ -308,6 +344,7 @@
   id: ChitinidRArmRadiant
   bodyPart: RArm
   markingCategory: LeftArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: radiant_r_arm
@@ -317,6 +354,7 @@
   id: ChitinidChestToxic
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: toxic_chest
@@ -325,6 +363,7 @@
   id: ChitinidHeadToxic
   bodyPart: Head
   markingCategory: Head
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: toxic_head
@@ -333,6 +372,7 @@
   id: ChitinidLLegToxic
   bodyPart: LLeg
   markingCategory: LeftLeg # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: toxic_l_leg
@@ -341,6 +381,7 @@
   id: ChitinidRLegToxic
   bodyPart: RLeg
   markingCategory: RightLeg # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: toxic_r_leg
@@ -349,6 +390,7 @@
   id: ChitinidLArmToxic
   bodyPart: LArm
   markingCategory: LeftArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: toxic_l_arm
@@ -357,6 +399,7 @@
   id: ChitinidRArmToxic
   bodyPart: RArm
   markingCategory: RightArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: toxic_r_arm
@@ -366,6 +409,7 @@
   id: ChitinidChestSpotted
   bodyPart: Chest
   markingCategory: Chest
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: spotted_chest
@@ -374,6 +418,7 @@
   id: ChitinidHeadSpotted
   bodyPart: Head
   markingCategory: Head
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: spotted_head
@@ -382,6 +427,7 @@
   id: ChitinidLLegSpotted
   bodyPart: LLeg
   markingCategory: LeftLeg # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: spotted_l_leg
@@ -390,6 +436,7 @@
   id: ChitinidRLegSpotted
   bodyPart: RLeg
   markingCategory: RightLeg # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: spotted_r_leg
@@ -398,6 +445,7 @@
   id: ChitinidLArmSpotted
   bodyPart: LArm
   markingCategory: LeftArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: spotted_l_arm
@@ -406,6 +454,7 @@
   id: ChitinidRArmSpotted
   bodyPart: RArm
   markingCategory: RightArm # Goob
+  speciesRestriction: [Chitinid]
   sprites:
   - sprite: _DV/Mobs/Customization/Chitinid/chitinid_parts.rsi
     state: spotted_r_arm

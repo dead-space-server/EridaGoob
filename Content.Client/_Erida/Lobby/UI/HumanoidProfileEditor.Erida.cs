@@ -86,4 +86,14 @@ public sealed partial class HumanoidProfileEditor
         UpdateMarkings();
         QueueProfilePreview();
     }
+
+    private void RemoveForeignMarkings()
+    {
+        if (Profile == null)
+            return;
+
+        Profile = Profile.WithCharacterAppearance(_markingManager.WithoutForeignMarkings(Profile.Appearance, Profile.Species));
+        UpdateMarkings();
+        ReloadPreview();
+    }
 }
