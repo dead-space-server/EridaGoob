@@ -178,7 +178,7 @@ namespace Content.Shared.Humanoid.Markings
             }
 
             if (proto.MarkingCategory != category ||
-                proto.SpeciesRestrictions != null && !proto.SpeciesRestrictions.Contains(species) ||
+                // proto.SpeciesRestrictions != null && !proto.SpeciesRestrictions.Contains(species) || // Erida edit
                 proto.SexRestriction != null && proto.SexRestriction != sex)
             {
                 return false;
@@ -202,14 +202,17 @@ namespace Content.Shared.Humanoid.Markings
         {
             IoCManager.Resolve(ref prototypeManager);
 
+            /* Erida edit
             var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
             var onlyWhitelisted = prototypeManager.Index(speciesProto.MarkingPoints).OnlyWhitelisted;
+            */
 
             if (!TryGetMarking(marking, out var prototype))
             {
                 return false;
             }
 
+            /* Erida edit
             if (onlyWhitelisted && prototype.SpeciesRestrictions == null)
             {
                 return false;
@@ -220,6 +223,7 @@ namespace Content.Shared.Humanoid.Markings
             {
                 return false;
             }
+            */
 
             if (prototype.SexRestriction != null && prototype.SexRestriction != sex)
             {
@@ -233,6 +237,7 @@ namespace Content.Shared.Humanoid.Markings
         {
             IoCManager.Resolve(ref prototypeManager);
 
+            /* Erida edit
             var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
             var onlyWhitelisted = prototypeManager.Index(speciesProto.MarkingPoints).OnlyWhitelisted;
 
@@ -246,6 +251,7 @@ namespace Content.Shared.Humanoid.Markings
             {
                 return false;
             }
+            */
 
             if (prototype.SexRestriction != null && prototype.SexRestriction != sex)
             {

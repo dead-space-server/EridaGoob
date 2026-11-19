@@ -347,6 +347,7 @@ public abstract partial class SharedHumanoidAppearanceSystem : EntitySystem //go
 
         humanoid.Species = species;
         humanoid.MarkingSet.EnsureSpecies(species, humanoid.SkinColor, _markingManager);
+        humanoid.MarkingSet.RemoveForeign(species, _markingManager); // Erida edit
         var oldMarkings = humanoid.MarkingSet.GetForwardEnumerator().ToList();
         humanoid.MarkingSet = new(oldMarkings, prototype.MarkingPoints, _markingManager, _proto);
         RaiseMarkingsChanged(uid); // Goob

@@ -263,8 +263,13 @@ namespace Content.Client.Lobby.UI
 
             SpeciesButton.OnItemSelected += args =>
             {
+                var previousSpecies = Profile?.Species; // Erida edit
                 SpeciesButton.SelectId(args.Id);
                 SetSpecies(_species[args.Id].ID);
+                // Erida start
+                if (previousSpecies != Profile?.Species)
+                    RemoveForeignMarkings();
+                // Erida end
                 UpdateHairPickers();
                 OnSkinColorOnValueChanged();
                 UpdateHeightWidthSliders(); // Goobstation: port EE height/width sliders
