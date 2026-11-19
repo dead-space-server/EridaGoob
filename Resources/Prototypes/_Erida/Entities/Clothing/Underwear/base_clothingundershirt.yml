@@ -23,7 +23,7 @@
   - type: Clothing
     quickEquip: true
     slots:
-    - undershirt
+    - underweart
     equipSound:
       collection: GenericEquip
       params:

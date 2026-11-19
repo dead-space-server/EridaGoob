@@ -64,3 +64,33 @@
       uiWindowPos: 3,0
       strippingWindowPos: 0,2
       displayName: Back
+    # Erida start
+    - name: underwearb
+      slotTexture: underwearb
+      slotFlags: UNDERWEARB
+      stripTime: 12
+      uiWindowPos: 2,0.5
+      strippingWindowPos: 1,4
+      displayName: Underpants
+    - name: underweart
+      slotTexture: underweart
+      slotFlags: UNDERWEART
+      stripTime: 8
+      uiWindowPos: 2.5,0.5
+      strippingWindowPos: 2,4
+      displayName: Undershirt
+    - name: socks
+      slotTexture: socks
+      slotFlags: SOCKS
+      stripTime: 8
+      uiWindowPos: 2,0
+      strippingWindowPos: 0,4
+      displayName: Socks
+    - name: finger
+      slotTexture: finger
+      slotFlags: FINGER
+      stripTime: 2
+      uiWindowPos: 2,3
+      strippingWindowPos: 2,0
+      displayName: Finger
+    # Erida end

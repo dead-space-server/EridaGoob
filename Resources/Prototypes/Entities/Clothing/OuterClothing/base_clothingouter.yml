@@ -67,7 +67,7 @@
     sprintModifier: 0.9
   - type: HeldSpeedModifier
   - type: SlotBlock # Erida edit
-    blockList: [ UNDERPOCKET, UNDERSHIRT, UNDERPANTS, LEGS, INNERCLOTHING, GLOVES, SOCKS ]
+    blockList: [ UNDERPOCKET, UNDERWEART, UNDERWEARB, LEGS, INNERCLOTHING, GLOVES, SOCKS ]
     hideList: [ IDCARD, POCKET ]
   - type: Tag
     tags:
@@ -286,7 +286,7 @@
     requiredGlyphType: CosmicGlyphWarding
    # Erida start
   - type: SlotBlock
-    blockList: [ UNDERPOCKET, UNDERSHIRT, UNDERPANTS, LEGS, INNERCLOTHING, GLOVES, SOCKS, FEET ]
+    blockList: [ UNDERPOCKET, UNDERWEART, UNDERWEARB, LEGS, INNERCLOTHING, GLOVES, SOCKS, FEET ]
     hideList: [ IDCARD, POCKET ]
   - type: HideLayerClothing
     layers: { Tail: OUTERCLOTHING }
@@ -340,7 +340,7 @@
     requiredGlyphType: CosmicGlyphWarding
   # Erida start
   - type: SlotBlock
-    blockList: [ UNDERPOCKET, SOCKS, UNDERSHIRT, UNDERPANTS, FEET, LEGS, GLOVES, INNERCLOTHING, FEET ]
+    blockList: [ UNDERPOCKET, SOCKS, UNDERWEART, UNDERWEARB, FEET, LEGS, GLOVES, INNERCLOTHING, FEET ]
     hideList: [ IDCARD, POCKET ]
   - type: HideLayerClothing
     layers: { Tail: OUTERCLOTHING }
@@ -367,7 +367,7 @@
       enum.ToggleClothingUiKey.Key:
         type: ToggleableClothingBoundUserInterface
   - type: SlotBlock # Erida edit
-    blockList: [ UNDERPOCKET, UNDERSHIRT, UNDERPANTS, LEGS, INNERCLOTHING ]
+    blockList: [ UNDERPOCKET, UNDERWEART, UNDERWEARB, LEGS, INNERCLOTHING ]
     hideList: [ IDCARD, POCKET ]
 
 - type: entity

@@ -313,7 +313,7 @@
     hiddenSlots:
     - jumpsuit
   - type: SlotBlock # Erida edit
-    blockList: [ UNDERPOCKET, UNDERSHIRT, UNDERPANTS, LEGS, INNERCLOTHING, SOCKS, FEET ]
+    blockList: [ UNDERPOCKET, UNDERWEART, UNDERWEARB, LEGS, INNERCLOTHING, SOCKS, FEET ]
     hideList: [ POCKET, IDCARD ]
 
 - type: entity
@@ -327,7 +327,7 @@
   - type: Clothing
     sprite: _Erida/Clothing/OuterClothing/Suits/shrine-maiden.rsi
   - type: SlotBlock # Erida edit
-    blockList: [ UNDERPOCKET, UNDERSHIRT, UNDERPANTS, LEGS, INNERCLOTHING ]
+    blockList: [ UNDERPOCKET, UNDERWEART, UNDERWEARB, LEGS, INNERCLOTHING ]
     hideList: [ POCKET, IDCARD ]
 
 - type: entity
@@ -341,7 +341,7 @@
   - type: Clothing
     sprite: _Erida/Clothing/OuterClothing/Suits/witchrobe.rsi
   - type: SlotBlock # Erida edit
-    blockList: [ UNDERPOCKET, UNDERSHIRT, UNDERPANTS, LEGS, INNERCLOTHING ]
+    blockList: [ UNDERPOCKET, UNDERWEART, UNDERWEARB, LEGS, INNERCLOTHING ]
     hideList: [ POCKET, IDCARD ]
 
 - type: entity
@@ -363,7 +363,7 @@
     hiddenSlots:
     - jumpsuit
   - type: SlotBlock # Erida edit
-    blockList: [ UNDERPOCKET, UNDERSHIRT, UNDERPANTS, LEGS, INNERCLOTHING, SOCKS, FEET ]
+    blockList: [ UNDERPOCKET, UNDERWEART, UNDERWEARB, LEGS, INNERCLOTHING, SOCKS, FEET ]
     hideList: [ POCKET, IDCARD ]
 
 - type: entity
@@ -394,7 +394,7 @@
     - CorgiWearable
     - WhitelistChameleon
   - type: SlotBlock # Erida edit
-    blockList: [ UNDERPOCKET, UNDERSHIRT, UNDERPANTS, LEGS, INNERCLOTHING, SOCKS, FEET ]
+    blockList: [ UNDERPOCKET, UNDERWEART, UNDERWEARB, LEGS, INNERCLOTHING, SOCKS, FEET ]
     hideList: [ POCKET, IDCARD ]
   - type: AddAccentClothing
     accent: BarkAccent
@@ -420,7 +420,7 @@
     - jumpsuit
   # Erida start
   - type: SlotBlock
-    blockList: [ UNDERPOCKET, UNDERSHIRT, UNDERPANTS, LEGS, INNERCLOTHING, SOCKS, FEET ]
+    blockList: [ UNDERPOCKET, UNDERWEART, UNDERWEARB, LEGS, INNERCLOTHING, SOCKS, FEET ]
     hideList: [ POCKET, IDCARD ]
   - type: HideLayerClothing
     slots:

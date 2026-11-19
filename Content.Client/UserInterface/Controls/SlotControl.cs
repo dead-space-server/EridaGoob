@@ -220,6 +220,30 @@ namespace Content.Client.UserInterface.Controls
             HoverSpriteView.SetEntity(null);
         }
 
+        // Erida start
+        public void ApplyUiScale(float scale)
+        {
+            if (scale >= 1f)
+                return;
+
+            var sizeVec = new Vector2(DefaultButtonSize * scale);
+            var texVec = new Vector2(2f * scale);
+
+            MinSize = sizeVec;
+            SetSize = sizeVec;
+            ButtonRect.TextureScale = texVec;
+            HighlightRect.TextureScale = texVec;
+            BlockedRect.TextureScale = texVec;
+            SpriteView.Scale = texVec;
+            SpriteView.SetSize = sizeVec;
+            ProtoView.Scale = texVec;
+            ProtoView.SetSize = sizeVec;
+            HoverSpriteView.Scale = texVec;
+            HoverSpriteView.SetSize = sizeVec;
+            StorageButton.Scale = new Vector2(0.75f * scale);
+        }
+        // Erida end
+
         /// <summary>
         /// Causes the control to display a placeholder prototype, optionally faded
         /// </summary>

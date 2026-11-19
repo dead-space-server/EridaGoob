@@ -18,7 +18,7 @@
       - ClothMade
     - type: Clothing
       slots:
-        - UNDERSHIRT
+        - UNDERWEART
     - type: Sprite
       # noRot: true
       state: icon
@@ -41,7 +41,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: babydoll
 
 - type: entity
@@ -56,7 +56,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: band
 
 - type: entity
@@ -71,7 +71,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bee_shirt
 
 - type: entity
@@ -86,7 +86,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: blueshirtsport
 
 - type: entity
@@ -101,7 +101,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bowling
 
 - type: entity
@@ -116,7 +116,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bowlinga
 
 - type: entity
@@ -131,7 +131,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bowlingp
 
 - type: entity
@@ -146,7 +146,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bowlingw
 
 - type: entity
@@ -161,7 +161,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_alt
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -178,7 +178,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_assblastusa
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -195,7 +195,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_bee-kini
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -212,7 +212,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_binder_strapless
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -229,7 +229,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_binder
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -246,7 +246,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_commie
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -277,7 +277,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_neko
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -294,7 +294,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_strapless_alt
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -311,7 +311,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_strapless
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -328,7 +328,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_swimming_alt
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -345,7 +345,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_swimming
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -376,7 +376,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra_uk
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -393,7 +393,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: bra
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -410,7 +410,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: cowboyshirt_navy
 
 - type: entity
@@ -425,7 +425,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: cowboyshirt_navys
 
 - type: entity
@@ -440,7 +440,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: cowboyshirt_red
 
 - type: entity
@@ -455,7 +455,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: cowboyshirt_reds
 
 - type: entity
@@ -470,7 +470,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: cowboyshirt_s
 
 - type: entity
@@ -485,7 +485,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: cowboyshirt_white
 
 - type: entity
@@ -500,7 +500,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: cowboyshirt_whites
 
 - type: entity
@@ -515,7 +515,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: cowboyshirt
 
 # - type: entity
@@ -572,7 +572,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: greenshirtsport
 
 - type: entity
@@ -587,7 +587,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: halterneck_bra
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -604,7 +604,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: ian
 
 - type: entity
@@ -619,7 +619,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: ilovent
 
 - type: entity
@@ -634,7 +634,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: ljont
     - type: TemperatureProtection
       heatingCoefficient: 0.70
@@ -651,7 +651,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: longstripe_blue
 
 - type: entity
@@ -666,7 +666,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: longstripe
 
 - type: entity
@@ -681,7 +681,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: lover
 
 - type: entity
@@ -696,7 +696,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: matroska
 
 - type: entity
@@ -711,7 +711,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: peace
 
 - type: entity
@@ -726,7 +726,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: pogoman
 
 - type: entity
@@ -741,7 +741,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: polo
 
 - type: entity
@@ -756,7 +756,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: redshirtsport
 
 # - type: entity
@@ -799,7 +799,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_alien
 
 - type: entity
@@ -814,7 +814,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_assblastusa
 
 - type: entity
@@ -829,7 +829,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_bluejersey
 
 - type: entity
@@ -844,7 +844,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_clown
 
 - type: entity
@@ -859,7 +859,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_commie
 
 - type: entity
@@ -874,7 +874,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_meat
 
 - type: entity
@@ -889,7 +889,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_nano
 
 - type: entity
@@ -904,7 +904,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_question
 
 - type: entity
@@ -919,7 +919,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_redjersey
 
 - type: entity
@@ -934,7 +934,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_skull
 
 - type: entity
@@ -949,7 +949,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_ss13
 
 - type: entity
@@ -964,7 +964,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_stripes
 
 - type: entity
@@ -979,7 +979,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shirt_tiedye
 
 - type: entity
@@ -994,7 +994,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: shortsleeve
 
 - type: entity
@@ -1009,7 +1009,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: sports_bra_alt
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1026,7 +1026,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: sports_bra
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1043,7 +1043,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: striped_bra
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1060,7 +1060,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: swimming_black
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1077,7 +1077,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: swimming_blue
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1094,7 +1094,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: swimming_red
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1111,7 +1111,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: tank_fire
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1128,7 +1128,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: tank_midriff_alt
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1145,7 +1145,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: tank_midriff
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1162,7 +1162,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: tank_rainbow
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1179,7 +1179,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: tank_stripes
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1196,7 +1196,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: tank_sun
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1213,7 +1213,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: tanktop_alt
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1230,7 +1230,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: tanktop
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1247,7 +1247,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: tubetop
     - type: TemperatureProtection
       heatingCoefficient: 0.85
@@ -1264,7 +1264,7 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: uk
 
 - type: entity
@@ -1279,6 +1279,6 @@
     - type: Clothing
       sprite: _Backmen/Clothing/Under/undershirts.rsi
       clothingVisuals:
-        undershirt:
+        underweart:
           - state: undershirt
 
