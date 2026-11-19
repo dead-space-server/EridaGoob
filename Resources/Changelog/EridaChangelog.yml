@@ -2071,3 +2071,16 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/90
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Port] Zoom feature'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Система градиента для маркингов и волос
+  id: 152
+  time: '2026-11-19T00:01:19.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/91
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] Markings gradient'
+  media:
+    - >-
+      https://github.com/user-attachments/assets/b5828de1-6426-4672-95e1-a335c61e6178
+  highlight: true
