@@ -32,7 +32,7 @@ MAX_CHANGE_MESSAGE_LENGTH = 500
 DISCORD_MESSAGE_DELAY_SECONDS = 0.5
 DISCORD_COMPONENTS_V2_FLAG = 1 << 15
 DISCORD_MEDIA_GALLERY_MAX_ITEMS = 10
-ERIDA_EMBED_COLOR = 0x6D3286
+ERIDA_EMBED_COLOR = 0x9B59B6
 
 TYPE_ORDER = ["Add", "Tweak", "Fix", "Remove"]
 TYPES_TO_EMOJI = {
@@ -252,7 +252,7 @@ def text(content: str) -> Component:
 
 
 def separator(divider: bool) -> Component:
-    return {"type": 14, "divider": divider, "spacing": 1 if divider else 2}
+    return {"type": 14, "divider": divider, "spacing": 1}
 
 
 def build_header(publish_context: dict[str, Any] | None, role_id: str | None) -> str:
@@ -324,15 +324,14 @@ def build_highlight_blocks(entries: list[ChangelogEntry], media: list[tuple]) ->
     blocks: list[list[Component]] = []
     for entry in entries:
         lines = [f"## {strip_title_tag(str(entry.get('title') or 'Без названия'))}"]
-        meta = [str(entry.get("author") or "").strip(), format_pull_request_ref(entry)]
-        lines.append("-# " + " · ".join(m for m in meta if m))
-
         for change in entry["changes"]:
             message = get_change_message(change)
             if not message:
                 continue
             emoji = TYPES_TO_EMOJI.get(get_change_type(change), "▪️")
             lines.append(f"{emoji} {message}")
+
+        lines[-1] = f"{lines[-1]} {format_pull_request_ref(entry)}".rstrip()
 
         block = [separator(True), text(truncate("\n".join(lines), MESSAGE_TEXT_BUDGET))]
         entry_media = [m for m in media if m[4] is entry]
@@ -422,6 +421,10 @@ def pack_messages(header: str, blocks: list[list[Component]]) -> list[list[Compo
             messages.append(current)
             current = [text("-# Продолжение")]
             length = 0
+
+        # A divider closing the previous block already separates it from the next one.
+        if current[-1]["type"] == 14 and block[0]["type"] == 14:
+            block = block[1:]
 
         current += block
         length += block_length(block)
