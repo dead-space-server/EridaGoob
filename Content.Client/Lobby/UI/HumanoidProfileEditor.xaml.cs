@@ -2296,11 +2296,11 @@ namespace Content.Client.Lobby.UI
             }
             var hairMarking = Profile.Appearance.HairStyleId == HairStyles.DefaultHairStyle
                 ? new List<Marking>()
-                : new() { new(Profile.Appearance.HairStyleId, [Profile.Appearance.HairColor]) { Gradient = Profile.Appearance.HairGradient } }; // Erida edit
+                : new() { new(Profile.Appearance.HairStyleId, new List<Color> { Profile.Appearance.HairColor }) { Gradient = Profile.Appearance.HairGradient } }; // Erida edit
 
             var facialHairMarking = Profile.Appearance.FacialHairStyleId == HairStyles.DefaultFacialHairStyle
                 ? new List<Marking>()
-                : new() { new(Profile.Appearance.FacialHairStyleId, [Profile.Appearance.FacialHairColor]) { Gradient = Profile.Appearance.FacialHairGradient } }; // Erida edit
+                : new() { new(Profile.Appearance.FacialHairStyleId, new List<Color> { Profile.Appearance.FacialHairColor }) { Gradient = Profile.Appearance.FacialHairGradient } }; // Erida edit
 
             HairStylePicker.UpdateData(
                 hairMarking,
