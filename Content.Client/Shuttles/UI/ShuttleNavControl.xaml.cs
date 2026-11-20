@@ -473,9 +473,6 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                 // End Frontier: IFF drawing functions
             }
 
-            // Frontier Don't skip drawing blips if they're out of range.
-            NfDrawBlips(handle, blipDataList);
-
             // Detailed view
             var gridAABB = curGridToWorld.TransformBox(grid.Comp.LocalAABB);
 
@@ -486,6 +483,8 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
             DrawGrid(handle, curGridToView, grid, labelColor);
             DrawDocks(handle, gUid, curGridToView);
         }
+
+        NfDrawBlips(handle, blipDataList); // Erida edit
 
         // If we've set the controlling console, and it's on a different grid
         // to the shuttle itself, then draw an additional marker to help the
