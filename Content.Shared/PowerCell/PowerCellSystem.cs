@@ -1,3 +1,4 @@
+using Content.Shared._Erida.Silicons.CellService;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.Examine;
@@ -115,6 +116,9 @@ public sealed partial class PowerCellSystem : EntitySystem
 
     private void OnCellSlotExamined(Entity<PowerCellSlotComponent> ent, ref ExaminedEvent args)
     {
+        if (HasComp<SiliconCellServiceComponent>(ent)) // Erida edit
+            return;
+
         if (TryGetBatteryFromSlot(ent.AsNullable(), out var battery))
             OnBatteryExamined(battery.Value, ref args);
         else

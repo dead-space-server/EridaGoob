@@ -61,10 +61,24 @@
   #       startingItem: PowerCellMedium
   # - type: BatterySlotRequiresLock
   #   itemSlot: cell_slot
-  - type: Battery # Power cell slot replaced with high capacity battery
-    maxCharge: 1080
-    startingCharge: 1080
+  # - type: Battery # Power cell slot replaced with high capacity battery
+  #   maxCharge: 1080
+  #   startingCharge: 1080
   # Goobstation End - Energycrit
+  # Erida start
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+    fitsInCharger: true
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        locked: true
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+  - type: BatterySlotRequiresLock
+    itemSlot: cell_slot
+  - type: SiliconCellService
+  # Erida end
   - type: EncryptionHolderRequiresLock
   #- Goobstation - Energycrit
   #- type: SiliconEmitSoundOnDrained
