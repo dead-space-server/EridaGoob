@@ -297,6 +297,7 @@
         Brute: -0.07
   - type: Fingerprint
   - type: Blindable
+  - type: WalkBob # erida edit
   # Other
   - type: Temperature
     currentTemperature: 310.15
