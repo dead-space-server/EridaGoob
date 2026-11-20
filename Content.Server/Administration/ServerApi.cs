@@ -16,6 +16,7 @@ using Content.Server.Maps;
 using Content.Server.RoundEnd;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
+using Content.Shared._Erida.CCVar; // Erida edit
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Prototypes;
 using Robust.Server.ServerStatus;
@@ -91,12 +92,12 @@ public sealed partial class ServerApi : IPostInjectInit
 
     public void Initialize()
     {
-        _config.OnValueChanged(CCVars.AdminApiToken, UpdateToken, true);
+        _config.OnValueChanged(ECCVars.ApiToken, UpdateToken, true); // Erida edit: the bot signs with eapi.key
     }
 
     public void Shutdown()
     {
-        _config.UnsubValueChanged(CCVars.AdminApiToken, UpdateToken);
+        _config.UnsubValueChanged(ECCVars.ApiToken, UpdateToken); // Erida edit
     }
 
     private void UpdateToken(string token)
