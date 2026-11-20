@@ -6,7 +6,7 @@ using Content.Shared.Popups;
 using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared.IdentityManagement;
 
-namespace Content.Server._EinsteinEngines.Silicons.BatteryLocking;
+namespace Content.Shared._EinsteinEngines.Silicons.BatteryLocking; // Erida edit
 
 public sealed class BatterySlotRequiresLockSystem : EntitySystem
 
@@ -34,7 +34,7 @@ public sealed class BatterySlotRequiresLockSystem : EntitySystem
 
     private void LockToggleAttempted(EntityUid uid, BatterySlotRequiresLockComponent component, LockToggleAttemptEvent args)
     {
-        if (args.User == uid || !HasComp<SiliconComponent>(uid))
+        if (args.Silent || args.Cancelled || args.User == uid || !HasComp<SiliconComponent>(uid)) // Erida edit
             return;
 
         _popupSystem.PopupEntity(Loc.GetString("batteryslotrequireslock-component-alert-owner", ("user", Identity.Entity(args.User, EntityManager))), uid, uid, PopupType.Large);
