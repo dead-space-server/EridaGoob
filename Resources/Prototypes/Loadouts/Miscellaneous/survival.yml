@@ -33,6 +33,10 @@
     - Shadowkin
     - Hydrakin
     - Synth # Goob
+    # Erida start
+    - Anthropomorph
+    - Demon
+    # Erida end
 
 # Goobstation start
 - type: loadoutEffectGroup
@@ -111,6 +115,13 @@
     - Resomi
     - Tajaran
     - Shadowkin
+    # Erida start
+    - Chitinid
+    - Hydrakin
+    - Synth
+    - Anthropomorph
+    - Demon
+    # Erida end
 
 - type: loadoutEffectGroup
   id: OxygenBreatherMimeMoth
