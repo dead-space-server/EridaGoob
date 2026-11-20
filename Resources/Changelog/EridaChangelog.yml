@@ -2175,3 +2175,14 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/102
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Fix] Lavaland fixes'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: >-
+        В редакторе персонажа превью можно показать во всей одежде, только в
+        нижнем белье или без одежды. 
+  id: 160
+  time: '2026-11-20T03:48:59.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/101
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak] Clothing preview in lobby'
