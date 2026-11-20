@@ -2238,3 +2238,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/106
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Add] Underwear to all jobs'
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Анимированные борги более не имеют проблем с прогрузкой
+  id: 166
+  time: '2026-11-20T22:40:09.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/108
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak] Drake fixes'
