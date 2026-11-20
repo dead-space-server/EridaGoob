@@ -15,6 +15,7 @@ public sealed partial class DirectionalEmoteWindow : FancyWindow
     public bool HideName;
 
     public Action? AcceptPressed;
+    public Action? TextChanged;
     public DirectionalEmoteWindow()
     {
         RobustXamlLoader.Load(this);
@@ -28,6 +29,7 @@ public sealed partial class DirectionalEmoteWindow : FancyWindow
         MessageInput.OnTextChanged += e =>
         {
             Text = Rope.Collapse(e.TextRope).Trim();
+            TextChanged?.Invoke();
         };
 
         HideNameCheckBox.OnToggled += e =>
