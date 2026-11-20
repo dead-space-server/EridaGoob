@@ -2195,3 +2195,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/103
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Fix] Directional emote fixes'
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Старый баг с недоступностью кнопки респавна
+  id: 162
+  time: '2026-11-20T17:11:21.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/104
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Fix] Respawn button timer display'
