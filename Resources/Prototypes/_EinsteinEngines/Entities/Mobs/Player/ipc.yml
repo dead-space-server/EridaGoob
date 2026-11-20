@@ -6,6 +6,12 @@
   name: Urist McPositronic
   description: A positronic brain in a metal body.
   components:
+  # Erida start
+  - type: StepTriggerImmune
+    whitelist:
+      types:
+      - Shard
+  # Erida end
   - type: LanguageKnowledge # Einstein Engines - Languages
     speaks:
     - TauCetiBasic
