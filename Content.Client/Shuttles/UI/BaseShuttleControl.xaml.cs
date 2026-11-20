@@ -45,21 +45,9 @@ public partial class BaseShuttleControl : MapGridControl
     private readonly List<(Vector2 Start, Vector2 End)> _edges = new();
     private readonly HashSet<Entity<GridEdgeMarkerComponent>> _edgeMarkers = new();
 
-    // Erida start
-    private static readonly TimeSpan GridRebuildDelay = TimeSpan.FromSeconds(0.5);
-    private readonly List<(Vector2 Start, Vector2 End)> _mergedEdges = new();
-    private readonly Dictionary<Vector2, int> _edgeStarts = new();
-    private readonly Dictionary<Vector2, int> _edgeEnds = new();
-    private int[] _nextByStart = Array.Empty<int>();
-    private int[] _nextByEnd = Array.Empty<int>();
-    private bool[] _edgeUsed = Array.Empty<bool>();
-    // Erida end
-
     private EntityQuery<TransformComponent> _xformQuery; // Mono
 
     private Vector2[] _allVertices = Array.Empty<Vector2>();
-
-    private (DirectionFlag, Vector2i)[] _neighborDirections;
 
     public BaseShuttleControl() : this(32f, 32f, 32f)
     {
@@ -77,15 +65,6 @@ public partial class BaseShuttleControl : MapGridControl
         {
             ScaledVertices = _allVertices,
         };
-
-        _neighborDirections = new (DirectionFlag, Vector2i)[4];
-
-        for (var i = 0; i < 4; i++)
-        {
-            var dir = (DirectionFlag) Math.Pow(2, i);
-            var dirVec = dir.AsDir().ToIntVec();
-            _neighborDirections[i] = (dir, dirVec);
-        }
     }
 
     protected void DrawData(DrawingHandleScreen handle, string text)
@@ -158,9 +137,10 @@ public partial class BaseShuttleControl : MapGridControl
         // TODO: Need to prune old grid-data if we don't draw it.
         var gridData = GridData.GetOrNew(grid.Owner);
 
-        // Erida edit
+        // Erida start
         if (gridData.LastBuild < grid.Comp.LastTileModifiedTick
-            && (gridData.LastBuild == GameTick.Zero || Timing.RealTime >= gridData.NextBuild)) // Erida end
+            && (gridData.LastBuild == GameTick.Zero || Timing.RealTime >= gridData.NextBuild))
+        // Erida end
         {
             gridData.Vertices.Clear();
             _gridTileList.Clear();
@@ -173,7 +153,7 @@ public partial class BaseShuttleControl : MapGridControl
             {
                 var index = tileRef.Value.GridIndices;
                 // Mono - drawing logic rewritten
-                var def = (ContentTileDefinition) _tileDef[tileRef.Value.Tile.TypeId];
+                var def = (ContentTileDefinition)_tileDef[tileRef.Value.Tile.TypeId];
                 _gridTileList.Add((index, def));
 
                 // since our shape has to be convex, just draw it by taking our first vertex as origin
@@ -215,6 +195,7 @@ public partial class BaseShuttleControl : MapGridControl
             gridData.EdgeIndex = gridData.Vertices.Count;
             _edges.Clear();
 
+            // Erida start
             foreach (var (index, def) in _gridTileList)
             {
                 // We get all of the raw lines up front
@@ -270,7 +251,8 @@ public partial class BaseShuttleControl : MapGridControl
             }
 
             // Decompose the edges into longer lines to save data.
-            MergeEdges(); // Erida end
+            MergeEdges();
+            // Erida end
 
             gridData.Vertices.EnsureCapacity(_edges.Count * 2);
 
@@ -299,101 +281,14 @@ public partial class BaseShuttleControl : MapGridControl
 
         for (var i = 0; i < Math.Ceiling(triCount / BatchSize); i++)
         {
-            var start = (int) (i * BatchSize);
-            var end = (int) Math.Min(triCount, start + BatchSize);
+            var start = (int)(i * BatchSize);
+            var end = (int)Math.Min(triCount, start + BatchSize);
             var count = end - start;
             handle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, new Span<Vector2>(_allVertices, start, count), color.WithAlpha(alpha));
         }
 
         handle.DrawPrimitives(DrawPrimitiveTopology.LineList, new Span<Vector2>(_allVertices, gridData.EdgeIndex, edgeCount), color);
     }
-
-    // Erida start
-    /// <summary>
-    /// Joins collinear edges of <see cref="_edges"/> into longer lines.
-    /// </summary>
-    private void MergeEdges()
-    {
-        var count = _edges.Count;
-        Extensions.EnsureLength(ref _nextByStart, count);
-        Extensions.EnsureLength(ref _nextByEnd, count);
-        Extensions.EnsureLength(ref _edgeUsed, count);
-        _edgeStarts.Clear();
-        _edgeEnds.Clear();
-
-        for (var i = 0; i < count; i++)
-        {
-            var (start, end) = _edges[i];
-            _nextByStart[i] = _edgeStarts.TryGetValue(start, out var s) ? s : -1;
-            _edgeStarts[start] = i;
-            _nextByEnd[i] = _edgeEnds.TryGetValue(end, out var e) ? e : -1;
-            _edgeEnds[end] = i;
-            _edgeUsed[i] = false;
-        }
-
-        _mergedEdges.Clear();
-
-        for (var i = 0; i < count; i++)
-        {
-            if (_edgeUsed[i])
-                continue;
-
-            _edgeUsed[i] = true;
-            var (start, end) = _edges[i];
-
-            // Extend forward: edges starting where we end.
-            while (true)
-            {
-                var found = -1;
-                for (var j = _edgeStarts.GetValueOrDefault(end, -1); j != -1; j = _nextByStart[j])
-                {
-                    if (!_edgeUsed[j] && Continues(start, end, _edges[j].End))
-                    {
-                        found = j;
-                        break;
-                    }
-                }
-
-                if (found == -1)
-                    break;
-
-                _edgeUsed[found] = true;
-                end = _edges[found].End;
-            }
-
-            // Extend backward: edges ending where we start.
-            while (true)
-            {
-                var found = -1;
-                for (var j = _edgeEnds.GetValueOrDefault(start, -1); j != -1; j = _nextByEnd[j])
-                {
-                    if (!_edgeUsed[j] && Continues(_edges[j].Start, start, end))
-                    {
-                        found = j;
-                        break;
-                    }
-                }
-
-                if (found == -1)
-                    break;
-
-                _edgeUsed[found] = true;
-                start = _edges[found].Start;
-            }
-
-            _mergedEdges.Add((start, end));
-        }
-
-        _edges.Clear();
-        _edges.AddRange(_mergedEdges);
-    }
-
-    private static bool Continues(Vector2 a, Vector2 b, Vector2 c)
-    {
-        return Vector2.Dot(b - a, c - b) > 0f
-               && CollinearSimplifier.IsCollinear(a, b, c, 10f * float.Epsilon);
-    }
-    // Erida end
 
     private record struct GridDrawJob : IParallelRobustJob
     {
@@ -411,7 +306,7 @@ public partial class BaseShuttleControl : MapGridControl
     }
 }
 
-public sealed class GridDrawData
+public sealed partial class GridDrawData // Erida edit
 {
     /*
      * List of lists because we use LineStrip and TriangleStrip respectively (less data to pass to the GPU).
@@ -425,9 +320,4 @@ public sealed class GridDrawData
     public int EdgeIndex;
 
     public GameTick LastBuild;
-
-    /// <summary>
-    /// Erida
-    /// </summary>
-    public TimeSpan NextBuild;
 }
