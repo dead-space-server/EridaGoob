@@ -49,8 +49,6 @@ public partial class BaseShuttleControl : MapGridControl
 
     private Vector2[] _allVertices = Array.Empty<Vector2>();
 
-    private (DirectionFlag, Vector2i)[] _neighborDirections;
-
     public BaseShuttleControl() : this(32f, 32f, 32f)
     {
     }
@@ -67,15 +65,6 @@ public partial class BaseShuttleControl : MapGridControl
         {
             ScaledVertices = _allVertices,
         };
-
-        _neighborDirections = new (DirectionFlag, Vector2i)[4];
-
-        for (var i = 0; i < 4; i++)
-        {
-            var dir = (DirectionFlag)Math.Pow(2, i);
-            var dirVec = dir.AsDir().ToIntVec();
-            _neighborDirections[i] = (dir, dirVec);
-        }
     }
 
     protected void DrawData(DrawingHandleScreen handle, string text)
@@ -148,7 +137,10 @@ public partial class BaseShuttleControl : MapGridControl
         // TODO: Need to prune old grid-data if we don't draw it.
         var gridData = GridData.GetOrNew(grid.Owner);
 
-        if (gridData.LastBuild < grid.Comp.LastTileModifiedTick)
+        // Erida start
+        if (gridData.LastBuild < grid.Comp.LastTileModifiedTick
+            && (gridData.LastBuild == GameTick.Zero || Timing.RealTime >= gridData.NextBuild))
+        // Erida end
         {
             gridData.Vertices.Clear();
             _gridTileList.Clear();
@@ -203,45 +195,43 @@ public partial class BaseShuttleControl : MapGridControl
             gridData.EdgeIndex = gridData.Vertices.Count;
             _edges.Clear();
 
+            // Erida start
             foreach (var (index, def) in _gridTileList)
             {
                 // We get all of the raw lines up front
                 // then we decompose them into longer lines in a separate step.
-                foreach (var (dir, dirVec) in _neighborDirections)
+                // Mono - drawing logic rewritten
+                var bl = Maps.TileToVector(grid, index);
+
+                // start from drawing the end->start line
+                var prev = def.Vertices[def.Vertices.Count - 1];
+                for (var i = 0; i < def.Vertices.Count; i++)
                 {
-                    // Mono - drawing logic rewritten
-                    var bl = Maps.TileToVector(grid, index);
+                    var vert = def.Vertices[i];
 
-                    // start from drawing the end->start line
-                    var prev = def.Vertices[def.Vertices.Count - 1];
-                    for (var i = 0; i < def.Vertices.Count; i++)
+                    // if this line is adjacent to any cardinal direction edge
+                    // and we have a neighbour there,
+                    // then that's not an edge
+                    var dirFlag = DirectionFlag.None;
+                    if (prev.X == 0 && vert.X == 0)
+                        dirFlag = DirectionFlag.West;
+                    else if (prev.X == 1 && vert.X == 1)
+                        dirFlag = DirectionFlag.East;
+                    else if (prev.Y == 0 && vert.Y == 0)
+                        dirFlag = DirectionFlag.South;
+                    else if (prev.Y == 1 && vert.Y == 1)
+                        dirFlag = DirectionFlag.North;
+
+                    if (dirFlag != DirectionFlag.None
+                        && _gridNeighborSet.TryGetValue(index + dirFlag.AsDir().ToIntVec(), out var otherNeighbours)
+                        && (otherNeighbours & dirFlag) != 0)
                     {
-                        var vert = def.Vertices[i];
-
-                        // if this line is adjacent to any cardinal direction edge
-                        // and we have a neighbour there,
-                        // then that's not an edge
-                        var dirFlag = DirectionFlag.None;
-                        if (prev.X == 0 && vert.X == 0)
-                            dirFlag = DirectionFlag.West;
-                        else if (prev.X == 1 && vert.X == 1)
-                            dirFlag = DirectionFlag.East;
-                        else if (prev.Y == 0 && vert.Y == 0)
-                            dirFlag = DirectionFlag.South;
-                        else if (prev.Y == 1 && vert.Y == 1)
-                            dirFlag = DirectionFlag.North;
-
-                        if (dirFlag != DirectionFlag.None
-                            && _gridNeighborSet.TryGetValue(index + dirFlag.AsDir().ToIntVec(), out var otherNeighbours)
-                            && (otherNeighbours & dirFlag) != 0)
-                        {
-                            prev = vert;
-                            continue;
-                        }
-
-                        _edges.Add((bl + prev * tileSize, bl + vert * tileSize));
                         prev = vert;
+                        continue;
                     }
+
+                    _edges.Add((bl + prev * tileSize, bl + vert * tileSize));
+                    prev = vert;
                 }
             }
 
@@ -261,46 +251,8 @@ public partial class BaseShuttleControl : MapGridControl
             }
 
             // Decompose the edges into longer lines to save data.
-            // Now we decompose the lines into longer lines (less data to send to the GPU)
-            var decomposed = true;
-
-            while (decomposed)
-            {
-                decomposed = false;
-
-                for (var i = 0; i < _edges.Count; i++)
-                {
-                    var (start, end) = _edges[i];
-                    var neighborFound = false;
-                    var neighborIndex = 0;
-                    Vector2 neighborStart;
-                    Vector2 neighborEnd = Vector2.Zero;
-
-                    // Does our end correspond with another start?
-                    for (var j = i + 1; j < _edges.Count; j++)
-                    {
-                        (neighborStart, neighborEnd) = _edges[j];
-
-                        if (!end.Equals(neighborStart))
-                            continue;
-
-                        neighborFound = true;
-                        neighborIndex = j;
-                        break;
-                    }
-
-                    if (!neighborFound)
-                        continue;
-
-                    // Check if our start and the neighbor's end are collinear
-                    if (!CollinearSimplifier.IsCollinear(start, end, neighborEnd, 10f * float.Epsilon))
-                        continue;
-
-                    decomposed = true;
-                    _edges[i] = (start, neighborEnd);
-                    _edges.RemoveAt(neighborIndex);
-                }
-            }
+            MergeEdges();
+            // Erida end
 
             gridData.Vertices.EnsureCapacity(_edges.Count * 2);
 
@@ -311,6 +263,7 @@ public partial class BaseShuttleControl : MapGridControl
             }
 
             gridData.LastBuild = grid.Comp.LastTileModifiedTick;
+            gridData.NextBuild = Timing.RealTime + GridRebuildDelay; // Erida
         }
 
         var totalData = gridData.Vertices.Count;
@@ -353,7 +306,7 @@ public partial class BaseShuttleControl : MapGridControl
     }
 }
 
-public sealed class GridDrawData
+public sealed partial class GridDrawData // Erida edit
 {
     /*
      * List of lists because we use LineStrip and TriangleStrip respectively (less data to pass to the GPU).
