@@ -2213,3 +2213,19 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/105
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Add] Play time API endpoints'
+- author: Lytheriia
+  changes:
+    - type: Tweak
+      message: UI вендоматов изменён в сторону большего удобства выбора товаров
+    - type: Tweak
+      message: Система позирования стала более плавной
+  id: 164
+  time: '2026-11-20T22:38:56.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/107
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak] Posing & vending systems QOL'
+  media:
+    - >-
+      https://github.com/user-attachments/assets/a87ba2be-8cc5-41f0-9cb1-9a8a7e59f1c9
+    - >-
+      https://github.com/user-attachments/assets/f69ddff9-35e0-4e8b-bfa2-df390a3f5dac
