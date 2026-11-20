@@ -5,6 +5,7 @@
   id: BaseMobSynth
   name: Urist McBeeper
   components:
+  - type: TTS # Erida
   - type: LanguageKnowledge
     speaks:
     - TauCetiBasic

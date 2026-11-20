@@ -4,6 +4,7 @@
   name: Urist McPlasma
   abstract: true
   components:
+  - type: TTS # Erida
   - type: Barotrauma # Goob
     protectionSlots:
     - head
