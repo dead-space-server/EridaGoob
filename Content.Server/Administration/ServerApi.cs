@@ -708,6 +708,7 @@ public sealed partial class ServerApi : IPostInjectInit
         PlayerNotFound = 4,
         GameRuleNotFound = 5,
         BadRequest = 6,
+        PlayTimeNotLoaded = 7, // Erida edit
     }
 
     #endregion
