@@ -1,7 +1,7 @@
 ## UI
 ghost-respawn-rules-window-title = Правила респавна
 ghost-respawn-rules-window-confirm-button = Я ознакомился
-ghost-gui-respawn-button-denied = Респавн ({$time}с)
+ghost-gui-respawn-button-denied = Респавн ({$time})
 ghost-gui-respawn-button-allowed = Респавн
 ghost-gui-respawn = Респавн
 # DeltaV - we have our own rules for respawning
