@@ -158,3 +158,11 @@
   sprites:
     - sprite: _Orion/Mobs/Customization/human_hair.rsi
       state: hair_dave
+
+- type: marking
+  id: EridaWomenShortHaircut
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Erida/Customization/Markings/women_short_haircut.rsi
+      state: women-short-haircut

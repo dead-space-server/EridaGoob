@@ -93,3 +93,27 @@
   sprites:
     - sprite: _Erida/Customization/Markings/horns/head.rsi
       state: vampirehorn
+
+- type: marking
+  id: EridaBigEars
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+          category: Hair
+      fallbackTypes:
+        - !type:SkinColoring
+    layers:
+      BIG-Ears-3:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
+  sprites:
+    - sprite: _Erida/Customization/Markings/big_ears.rsi
+      state: BIG-Ears-1
+    - sprite: _Erida/Customization/Markings/big_ears.rsi
+      state: BIG-Ears-2
+    - sprite: _Erida/Customization/Markings/big_ears.rsi
+      state: BIG-Ears-3
