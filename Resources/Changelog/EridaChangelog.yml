@@ -2204,3 +2204,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/104
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Fix] Respawn button timer display'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Возможность переноса времени через дискорд
+  id: 163
+  time: '2026-11-20T17:15:08.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/105
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] Play time API endpoints'
