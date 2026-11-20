@@ -27,8 +27,8 @@
   - type: ClothingSlowOnDamageModifier
     modifier: 0.5
   - type: ToggleableClothing
-    clothingPrototype: LavalandEquipmentExplorerHoodReinforcedHEV
-    slot: head
+    clothingPrototypes:
+      head: LavalandEquipmentExplorerHoodReinforcedHEV
   - type: Construction
     graph: ExplorerSuit
     node: reinforcedhev
@@ -87,8 +87,8 @@
   - type: PreventChasmFalling
     deleteOnUse: false
   - type: ToggleableClothing
-    clothingPrototype: LavalandEquipmentExplorerHoodReinforcedHEV2
-    slot: head
+    clothingPrototypes:
+      head: LavalandEquipmentExplorerHoodReinforcedHEV2
   - type: Construction
     graph: ExplorerSuit
     node: reinforcedhev2
@@ -146,8 +146,8 @@
   - type: PressureArmorChange
     extraPenetrationModifier: 0.1 # This is Tier-3
   - type: ToggleableClothing
-    clothingPrototype: LavalandEquipmentExplorerHoodReinforcedHEV3
-    slot: head
+    clothingPrototypes:
+      head: LavalandEquipmentExplorerHoodReinforcedHEV3
   - type: Construction
     graph: ExplorerSuit
     node: reinforcedhev3
