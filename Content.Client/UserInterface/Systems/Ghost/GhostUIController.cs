@@ -4,6 +4,7 @@ using Content.Client.Ghost;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
 using Content.Goobstation.Shared.MisandryBox.Thunderdome;
+using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Robust.Shared.Console; // Frontier
 using Robust.Client.UserInterface;
@@ -14,7 +15,7 @@ using Robust.Shared.Configuration; // Frontier
 namespace Content.Client.UserInterface.Systems.Ghost;
 
 // TODO hud refactor BEFORE MERGE fix ghost gui being too far up
-public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSystem>
+public sealed partial class GhostUIController : UIController, IOnSystemChanged<GhostSystem> // Erida edit
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IEntityNetworkManager _net = default!;
@@ -41,6 +42,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
             (EventSource.Network, this, OnThunderdomePlayerCount);
         // DeltaV
         SubscribeNetworkEvent<RespawnResetEvent>(OnRespawnReseted);
+        SubscribeNetworkEvent<RoundRestartCleanupEvent>(OnRoundRestart); // Erida edit
     }
 
     private void OnScreenLoad()
@@ -164,6 +166,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
         Gui.GhostRespawnPressed += GuiOnGhostRespawnPressed; // Frontier
 
+        UpdateRespawn(); // Erida edit
         UpdateGui();
     }
 
