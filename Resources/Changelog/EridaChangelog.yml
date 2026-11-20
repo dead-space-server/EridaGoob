@@ -2229,3 +2229,12 @@ Entries:
       https://github.com/user-attachments/assets/a87ba2be-8cc5-41f0-9cb1-9a8a7e59f1c9
     - >-
       https://github.com/user-attachments/assets/f69ddff9-35e0-4e8b-bfa2-df390a3f5dac
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Исправлено отсутствие выбора нижнего белья на некоторых ролях
+  id: 165
+  time: '2026-11-20T22:39:14.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/106
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] Underwear to all jobs'
