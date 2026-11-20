@@ -2143,3 +2143,17 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/96
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Fix] Minor changes'
+- author: fapfaputa
+  changes:
+    - type: Add
+      message: Новая причёска и уши в кастомизации персонажа
+  id: 157
+  time: '2026-11-20T00:51:46.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/97
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] Big ears and haircut'
+  media:
+    - >-
+      https://github.com/user-attachments/assets/a67978fa-b0ed-43d4-8570-4ec6f50023dd
+    - >-
+      https://github.com/user-attachments/assets/0be55a9f-5cbb-4aef-bf40-b94212a98280
