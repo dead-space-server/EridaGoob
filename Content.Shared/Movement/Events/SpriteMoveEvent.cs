@@ -15,3 +15,8 @@ public readonly struct SpriteMoveEvent
         IsMoving = isMoving;
     }
 }
+
+// Erida start
+[ByRefEvent]
+public readonly record struct AfterSpriteMovementUpdateEvent(bool IsMoving);
+// Erida end

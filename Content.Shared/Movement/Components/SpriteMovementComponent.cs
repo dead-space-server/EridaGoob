@@ -40,4 +40,5 @@ public sealed partial class SpriteMovementComponent : Component
     // Erida start
     [DataField, AutoNetworkedField]
     public bool IsEnabled = true;
+    // Erida end
 }
