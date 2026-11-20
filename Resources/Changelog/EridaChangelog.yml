@@ -2126,3 +2126,20 @@ Entries:
   media:
     - >-
       https://github.com/user-attachments/assets/546d0f6d-9eb4-442b-973a-f78719b09d0e
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: КПБ получили слот батареи
+    - type: Fix
+      message: 'КПБ без обуви более не получают урон от стекла '
+    - type: Fix
+      message: Исправлено отсутствие аварийных наборов у некоторых рас
+    - type: Fix
+      message: Плазмалюды, кпб, воксы, синты вновь имеют ттс
+    - type: Tweak
+      message: Гост роли Интека получили ограничения по времени
+  id: 156
+  time: '2026-11-20T00:49:39.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/96
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Fix] Minor changes'
