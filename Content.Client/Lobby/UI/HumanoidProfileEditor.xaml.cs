@@ -3,6 +3,9 @@
 using System.IO;
 using System.Linq;
 using System.Numerics;
+// Erida start
+using Content.Client._Erida.Lobby;
+// Erida end
 using Content.Client.Humanoid;
 using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;
@@ -536,10 +539,7 @@ namespace Content.Client.Lobby.UI
 
             #endregion Left
 
-            ShowClothes.OnToggled += args =>
-            {
-                ReloadPreview();
-            };
+            InitializePreviewClothing(); // Erida edit
 
             SpeciesInfoButton.OnPressed += OnSpeciesInfoButtonPressed;
 
@@ -1333,7 +1333,11 @@ namespace Content.Client.Lobby.UI
             if (Profile == null || !_prototypeManager.HasIndex(Profile.Species))
                 return;
 
-            PreviewDummy = _controller.LoadProfileEntity(Profile, JobOverride, ShowClothes.Pressed);
+            // Erida start
+            PreviewDummy = _controller.LoadProfileEntity(Profile, JobOverride, _previewClothing != PreviewClothing.Naked);
+            if (_previewClothing == PreviewClothing.Underwear)
+                StripPreviewToUnderwear();
+            // Erida end
             SpriteView.SetEntity(PreviewDummy);
             _entManager.System<MetaDataSystem>().SetEntityName(PreviewDummy, Profile.Name);
 

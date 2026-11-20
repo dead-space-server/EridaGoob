@@ -13,4 +13,10 @@ public sealed partial class ECCVars
     /// </summary>
     public static readonly CVarDef<string> MarkingsFilter =
         CVarDef.Create("erida.ui.markings_filter", "own", CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// How dressed the profile editor preview is: 0 all clothing, 1 underwear only, 2 naked.
+    /// </summary>
+    public static readonly CVarDef<int> PreviewClothing =
+        CVarDef.Create("erida.ui.preview_clothing", 0, CVar.CLIENTONLY | CVar.ARCHIVE);
 }
