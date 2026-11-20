@@ -2157,3 +2157,12 @@ Entries:
       https://github.com/user-attachments/assets/a67978fa-b0ed-43d4-8570-4ec6f50023dd
     - >-
       https://github.com/user-attachments/assets/0be55a9f-5cbb-4aef-bf40-b94212a98280
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Добавлена настройка громкости TTS
+  id: 158
+  time: '2026-11-20T01:45:46.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/100
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] TTS volume slider'
