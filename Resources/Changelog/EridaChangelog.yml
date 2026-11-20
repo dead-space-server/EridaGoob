@@ -2108,3 +2108,21 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/93
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Fix] Client lags'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: 'Отдельный слот для колец  '
+    - type: Tweak
+      message: Изменён вид инвентаря
+    - type: Tweak
+      message: Гарпии получили слоты нижнего белья
+    - type: Fix
+      message: Хвосты из дормомата вновь отображаются на персонажах
+  id: 155
+  time: '2026-11-20T00:07:00.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/95
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Port] New slot displaycment'
+  media:
+    - >-
+      https://github.com/user-attachments/assets/546d0f6d-9eb4-442b-973a-f78719b09d0e
