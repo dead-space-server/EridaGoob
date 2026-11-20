@@ -2186,3 +2186,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/101
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Tweak] Clothing preview in lobby'
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Направленный эмоут вновь показывает индикатор над игроком
+  id: 161
+  time: '2026-11-20T04:13:50.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/103
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Fix] Directional emote fixes'
