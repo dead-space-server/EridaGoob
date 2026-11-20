@@ -32,7 +32,7 @@ public sealed partial class CCVars
     /// Default volume setting of TTS sound
     /// </summary>
     public static readonly CVarDef<float> TTSVolume =
-        CVarDef.Create("tts.volume", 0f, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("tts.volume", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
     /// Count of in-memory cached tts voice lines.
