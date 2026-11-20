@@ -1,11 +1,8 @@
 ent-LPPErpMachine = ДормоМат
     .desc = Торговый автомат со всем необходимым для отдыха в дормах!
 
-ent-LPPBrasMat = БраШкаф
-    .desc = Торговый автомат с различными бра.
-
-ent-LPPUnderpantsMat = ТрусоМат
-    .desc = Торговый автомат с трусами.
+ent-VendingMachineUnderwear = Нижнемат
+    .desc = Нижнее бельё для вас!
 
 ent-CaptainDrobe = КапитанШкаф
    .desc = Стильная униформа для сильного лидера!
