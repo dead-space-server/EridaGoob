@@ -19,6 +19,11 @@ public sealed partial class TTSSystem
 
     private void PlayTTS(byte[] data)
     {
+        // Erida start
+        if (_volume <= 0f || _announcementsVolume <= 0f)
+            return;
+        // Erida end
+
         var filePath = new ResPath($"{_fileIdx++}.ogg");
         _contentRoot.AddOrUpdateFile(filePath, data!);
 
@@ -35,16 +40,18 @@ public sealed partial class TTSSystem
 
         var mainSound = _audio.PlayGlobal(soundSpecifier, Filter.Local(), true, audioParams);
 
-        if (!mainSound.HasValue)
+        // Erida start
+        _contentRoot.RemoveFile(filePath);
+
+        if (!mainSound.HasValue
+            || !_prototypeManager.TryIndex<AudioPresetPrototype>("TTSCommunication", out var prototype))
             return;
+        // Erida end
 
         try // I really don't sure about this so I just put it into try-catch
         {
             var effect = _audio.CreateEffect();
             var aux = _audio.CreateAuxiliary();
-
-            if (!_prototypeManager.TryIndex<AudioPresetPrototype>("TTSCommunication", out var prototype))
-                return;
 
             AddComp<AudioPresetComponent>(aux.Entity);
             AddComp<AudioEffectComponent>(mainSound.Value.Entity);
@@ -58,8 +65,6 @@ public sealed partial class TTSSystem
         {
             _sawmill.Error($"Failed to apply audio effect: {ex}");
         }
-
-        _contentRoot.RemoveFile(filePath);
     }
 
     private void OnAnnounced(TTSAnnouncedEvent args)

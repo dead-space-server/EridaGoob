@@ -68,6 +68,8 @@ public sealed partial class AudioTab : Control
             SliderVolumeVoiceChat,
             0, 2); // Goobstation - Voice chat
 
+        Control.AddOptionPercentSlider(CCVars.TTSVolume, SliderVolumeTts, 0, 2); // Erida
+
         // Goobstation - Highlight Chat Ping/Audio!
         Control.AddOptionPercentSlider(
             CCVars.ChatHighlightVolume,
