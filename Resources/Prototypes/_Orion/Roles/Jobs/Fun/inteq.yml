@@ -4,6 +4,9 @@
   name: job-name-inteq-vanguard
   description: job-description-inteq-vanguard
   playTimeTracker: InteQVanguard
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 4h
   setPreference: false
   icon: JobIconInteQ
   supervisors: job-supervisors-hire
@@ -17,6 +20,9 @@
   name: job-name-inteq-vanguard-leader
   description: job-description-inteq-vanguard-leader
   playTimeTracker: InteQVanguardLeader
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 4h
   setPreference: false
   icon: JobIconInteQLeader
   supervisors: job-supervisors-hire
