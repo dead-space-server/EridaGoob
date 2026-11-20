@@ -2180,7 +2180,7 @@ Entries:
     - type: Add
       message: >-
         В редакторе персонажа превью можно показать во всей одежде, только в
-        нижнем белье или без одежды. 
+        нижнем белье или без одежды.
   id: 160
   time: '2026-11-20T03:48:59.0000000+00:00'
   url: https://github.com/dead-space-server/EridaGoob/pull/101
@@ -2220,6 +2220,7 @@ Entries:
     - type: Tweak
       message: Система позирования стала более плавной
   id: 164
+  highlight: true
   time: '2026-11-20T22:38:56.0000000+00:00'
   url: https://github.com/dead-space-server/EridaGoob/pull/107
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
