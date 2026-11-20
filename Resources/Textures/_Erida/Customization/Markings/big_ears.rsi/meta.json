@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "copyright": "Content created by Hp. . ., sprites by faputa",
+    "license": "CC-BY-SA-4.0",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "BIG-Ears-1",
+            "directions": 4
+        },
+        {
+            "name": "BIG-Ears-2",
+            "directions": 4
+        },
+        {
+            "name": "BIG-Ears-3",
+            "directions": 4
+        }
+    ]
+}

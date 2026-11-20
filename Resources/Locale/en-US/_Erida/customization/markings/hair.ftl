@@ -9,3 +9,4 @@ marking-ADTAllPrinceCharming = Prince Charming
 marking-ADTAllShavedFemale = Shaved Female
 marking-ADTAllShavedFemaleUnisex = Unisex with Bun
 marking-dave = Dave
+marking-EridaWomenShortHaircut = Short Women's Haircut

@@ -9,3 +9,4 @@ marking-ADTAllPrinceCharming = Принц
 marking-ADTAllShavedFemale = Женская с выбритым боком
 marking-ADTAllShavedFemaleUnisex = Унисекс с пучком
 marking-dave = Дэйв
+marking-EridaWomenShortHaircut = Короткая женская стрижка
