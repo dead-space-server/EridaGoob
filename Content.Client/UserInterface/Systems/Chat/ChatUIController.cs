@@ -1,3 +1,4 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Globalization;
@@ -587,7 +588,9 @@ public sealed partial class ChatUIController : UIController
         }
 
         // Nyano - Summary: - Begin modified code block to add telepathic as a channel for a psionic user.
-        if (_psionic != null && _psionic.IsPsionic)
+        if ((_psionic != null && _psionic.IsPsionic)
+            || (_player.LocalEntity is {} personalityEntity
+                && _ent.HasComponent<Content.Shared._Erida.SplitPersonality.PersonalityChannelComponent>(personalityEntity)))
         {
             FilterableChannels |= ChatChannel.Telepathic;
             CanSendChannels |= ChatSelectChannel.Telepathic;

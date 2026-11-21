@@ -1,5 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Erida.SplitPersonality;
 using Content.Shared.CCVar;
 using Content.Shared.Drugs;
 using Content.Shared.StatusEffectNew;
@@ -57,13 +59,17 @@ public sealed class RainbowOverlay : Overlay
 
     protected override void FrameUpdate(FrameEventArgs args)
     {
-        var playerEntity = _playerManager.LocalEntity;
+        var playerEntity = _entityManager.System<SharedPersonalitySystem>().PerceptionSource(_playerManager.LocalEntity);
 
         if (playerEntity == null)
             return;
 
         if (!_statusEffects.TryGetEffectsEndTimeWithComp<SeeingRainbowsStatusEffectComponent>(playerEntity, out var endTime))
+        {
+            Intoxication = 0;
+            TimeTicker = 0;
             return;
+        }
 
         endTime ??= TimeSpan.MaxValue;
         var timeLeft = (float)(endTime - _timing.CurTime).Value.TotalSeconds;

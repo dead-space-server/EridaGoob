@@ -1,3 +1,4 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._EinsteinEngines.Abilities.Psionics;
@@ -14,6 +15,8 @@ namespace Content.Client.Chat
         public override void Initialize()
         {
             base.Initialize();
+            SubscribeLocalEvent<Content.Shared._Erida.SplitPersonality.PersonalityChannelComponent, ComponentInit>((_, _, _) => _chatManager.UpdatePermissions());
+            SubscribeLocalEvent<Content.Shared._Erida.SplitPersonality.PersonalityChannelComponent, ComponentRemove>((_, _, _) => _chatManager.UpdatePermissions());
             SubscribeLocalEvent<TelepathyComponent, ComponentInit>(OnInit);
             SubscribeLocalEvent<TelepathyComponent, ComponentRemove>(OnRemove);
         }

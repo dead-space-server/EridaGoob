@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Base
@@ -1069,11 +1070,6 @@
   - type: SurgeryOrganCondition
     organ:
     - type: Brain
-  - type: SurgeryOrganOnAddCondition
-    components:
-      brain:
-      - type: OhioAccent
-      - type: RatvarianLanguage
-      - type: Clumsy
+  - type: MendPersonalityCondition
   - type: SurgeryPartCondition
     parts: [ Head ]

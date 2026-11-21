@@ -1,5 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Erida.SplitPersonality;
 using Content.Shared.CCVar;
 using Content.Shared.Flash;
 using Content.Shared.Flash.Components;
@@ -29,7 +31,7 @@ namespace Content.Client.Flash
         public override OverlaySpace Space => OverlaySpace.WorldSpace;
         private readonly ShaderInstance _shader;
         private bool _reducedMotion;
-        public float PercentComplete;
+        public float PercentComplete = 1f;
         public Texture? ScreenshotTexture;
 
         public FlashOverlay()
@@ -44,8 +46,10 @@ namespace Content.Client.Flash
 
         protected override void FrameUpdate(FrameEventArgs args)
         {
-            var playerEntity = _playerManager.LocalEntity;
+            var playerEntity = _entityManager.System<SharedPersonalitySystem>().PerceptionSource(_playerManager.LocalEntity);
 
+            var wasFlashed = PercentComplete < 1f;
+            PercentComplete = 1f;
             if (playerEntity == null)
                 return;
 
@@ -56,6 +60,11 @@ namespace Content.Client.Flash
             if (!_statusSys.TryGetTime(playerEntity.Value, _flash.FlashedKey, out var time, status))
                 return;
 
+            if (!wasFlashed && _entityManager.HasComponent<InactivePersonalityComponent>(_playerManager.LocalEntity))
+            {
+                ScreenshotTexture = null;
+                RequestScreenTexture = true;
+            }
             var curTime = _timing.CurTime;
             var lastsFor = (float)(time.Value.Item2 - time.Value.Item1).TotalSeconds;
             var timeDone = (float)(curTime - time.Value.Item1).TotalSeconds;

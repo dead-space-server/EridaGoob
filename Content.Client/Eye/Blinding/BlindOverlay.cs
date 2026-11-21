@@ -1,5 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Erida.SplitPersonality;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
@@ -39,7 +41,7 @@ namespace Content.Client.Eye.Blinding
             if (args.Viewport.Eye != eyeComp.Eye)
                 return false;
 
-            var playerEntity = _playerManager.LocalSession?.AttachedEntity;
+            var playerEntity = _entityManager.System<SharedPersonalitySystem>().PerceptionSource(_playerManager.LocalSession?.AttachedEntity);
 
             if (playerEntity == null)
                 return false;
@@ -67,7 +69,7 @@ namespace Content.Client.Eye.Blinding
             if (ScreenTexture == null)
                 return;
 
-            var playerEntity = _playerManager.LocalSession?.AttachedEntity;
+            var playerEntity = _entityManager.System<SharedPersonalitySystem>().PerceptionSource(_playerManager.LocalSession?.AttachedEntity);
 
             if (playerEntity == null)
                 return;

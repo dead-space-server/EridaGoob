@@ -1,5 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Erida.SplitPersonality;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Drowsiness;
 using Content.Shared.StatusEffectNew;
@@ -43,7 +45,7 @@ public sealed class DrowsinessOverlay : Overlay
 
     protected override void FrameUpdate(FrameEventArgs args)
     {
-        var playerEntity = _playerManager.LocalEntity;
+        var playerEntity = _entityManager.System<SharedPersonalitySystem>().PerceptionSource(_playerManager.LocalEntity);
 
         if (playerEntity == null
             || !_statusEffects.TryGetEffectsEndTimeWithComp<DrowsinessStatusEffectComponent>(playerEntity, out var endTime))
