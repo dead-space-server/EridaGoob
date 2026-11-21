@@ -5,6 +5,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Preferences.Managers;
 using Content.Shared._Erida.SplitPersonality;
 using Content.Shared.Actions;
+using Content.Shared.Access;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.DetailExaminable;
@@ -37,6 +38,7 @@ public sealed partial class SplitPersonalitySystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnSpawn);
+        SubscribeLocalEvent<SplitPersonalityComponent, AutoRenameIdentityAttemptEvent>(OnAutoRenameIdentity);
         SubscribeLocalEvent<SplitPersonalityComponent, SplitPersonalitySwitchActionEvent>(OnSwitch);
     }
 
@@ -89,6 +91,12 @@ public sealed partial class SplitPersonalitySystem : EntitySystem
         return palette;
     }
 
+    private void OnAutoRenameIdentity(Entity<SplitPersonalityComponent> ent, ref AutoRenameIdentityAttemptEvent args)
+    {
+        if (ent.Comp.SwitchingPersonality)
+            args.Cancelled = true;
+    }
+
     private void OnSwitch(Entity<SplitPersonalityComponent> ent, ref SplitPersonalitySwitchActionEvent args)
     {
         if (args.Handled || args.Performer != ent.Owner || !_mobState.IsAlive(ent.Owner) ||
@@ -98,7 +106,15 @@ public sealed partial class SplitPersonalitySystem : EntitySystem
 
         ent.Comp.AlternateActive = !ent.Comp.AlternateActive;
         var profile = ent.Comp.AlternateActive ? ent.Comp.Alternate : ent.Comp.Primary;
-        _metadata.SetEntityName(ent, profile.Name);
+        ent.Comp.SwitchingPersonality = true;
+        try
+        {
+            _metadata.SetEntityName(ent, profile.Name);
+        }
+        finally
+        {
+            ent.Comp.SwitchingPersonality = false;
+        }
         if (_config.GetCVar(CCVars.FlavorText))
         {
             var details = EnsureComp<DetailExaminableComponent>(ent);

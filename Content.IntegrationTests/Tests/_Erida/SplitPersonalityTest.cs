@@ -12,6 +12,10 @@ using Content.Shared.Actions.Components;
 using Content.Shared.DetailExaminable;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
+using Content.Shared.PDA;
+using Content.Server.PDA;
+using Content.Server.StationRecords.Systems;
+using Content.Shared.StationRecords;
 using Content.Shared.Preferences;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
@@ -54,9 +58,11 @@ public sealed class SplitPersonalityTest
         await pair.CleanReturnAsync();
     }
 
-    [TestCase("Human", "MobHuman")]
-    [TestCase("Demon", "MobDemon")]
-    public async Task SwitchKeepsBodyAndJobAndRestoresPrimary(string species, string prototype)
+    [TestCase("Human", "MobHuman", false)]
+    [TestCase("Demon", "MobDemon", false)]
+    [TestCase("Human", "MobHuman", true)]
+    [TestCase("Demon", "MobDemon", true)]
+    public async Task SwitchKeepsBodyAndJobAndRestoresPrimary(string species, string prototype, bool withPda)
     {
         await using var pair = await PoolManager.GetServerClient();
         var server = pair.Server;
@@ -81,11 +87,23 @@ public sealed class SplitPersonalityTest
             var originalColors = appearance.MarkingSet.Markings.SelectMany(p => p.Value).SelectMany(m => m.MarkingColors).ToArray();
             var originalHeight = appearance.Height;
             var originalSex = appearance.Sex;
-            var card = entities.SpawnEntity("PassengerIDCard", map.GridCoords);
+            var equipment = entities.SpawnEntity(withPda ? "PassengerPDA" : "PassengerIDCard", map.GridCoords);
+            var pda = withPda ? entities.GetComponent<PdaComponent>(equipment) : null;
+            var card = pda?.ContainedId ?? equipment;
             var cards = entities.System<IdCardSystem>();
-            cards.TryChangeFullName(card, "Primary");
+            cards.TryChangeFullName(card, "Registered owner");
             cards.TryChangeJobTitle(card, "Assistant");
-            Assert.That(entities.System<InventorySystem>().TryEquip(body, card, "id", force: true), Is.True);
+            Assert.That(entities.System<InventorySystem>().TryEquip(body, equipment, "id", force: true), Is.True);
+            if (pda != null)
+                entities.System<PdaSystem>().SetOwner(equipment, pda, body, "Registered owner");
+            var originalAccess = entities.GetComponent<AccessComponent>(card).Tags.ToArray();
+            var station = entities.SpawnEntity(null, map.GridCoords);
+            entities.AddComponent<StationRecordsComponent>(station);
+            var records = entities.System<StationRecordsSystem>();
+            var registration = new GeneralStationRecord { Name = "Registered owner", JobTitle = "Assistant" };
+            var registrationKey = records.AddRecordEntry(station, registration);
+            Assert.That(registrationKey.IsValid(), Is.True);
+            records.SetIdKey(equipment, registrationKey);
             var component = entities.EnsureComponent<SplitPersonalityComponent>(body);
             component.Primary = profile.Clone();
             component.PrimaryColors = PersonalityColors.Copy(appearance.MarkingSet);
@@ -118,19 +136,39 @@ public sealed class SplitPersonalityTest
                 Assert.That(appearance.EyeColor, Is.EqualTo(species == "Demon" ? Color.Red : originalEyes));
                 foreach (var hair in appearance.MarkingSet.Markings[Content.Shared.Humanoid.Markings.MarkingCategories.Hair])
                     Assert.That(hair.MarkingColors, Is.All.EqualTo(species == "Demon" ? Color.Red : Color.Black));
-                Assert.That(entities.GetComponent<IdCardComponent>(card).FullName, Is.EqualTo("Alternate"));
+                Assert.That(entities.GetComponent<IdCardComponent>(card).FullName, Is.EqualTo("Registered owner"));
+                Assert.That(entities.GetComponent<AccessComponent>(card).Tags, Is.EquivalentTo(originalAccess));
+                Assert.That(registration.Name, Is.EqualTo("Registered owner"));
+                Assert.That(registration.JobTitle, Is.EqualTo("Assistant"));
+                if (pda != null)
+                    Assert.That(pda.OwnerName, Is.EqualTo("Registered owner"));
                 Assert.That(entities.GetComponent<IdCardComponent>(card).LocalizedJobTitle, Is.EqualTo("Assistant"));
             });
             actions.PerformAction(body, action);
             Assert.Multiple(() =>
             {
                 Assert.That(component.AlternateActive, Is.False);
+                Assert.That(component.SwitchingPersonality, Is.False);
+                Assert.That(entities.GetComponent<IdCardComponent>(card).FullName, Is.EqualTo("Registered owner"));
+                Assert.That(entities.GetComponent<IdCardComponent>(card).LocalizedJobTitle, Is.EqualTo("Assistant"));
+                Assert.That(entities.GetComponent<AccessComponent>(card).Tags, Is.EquivalentTo(originalAccess));
+                Assert.That(registration.Name, Is.EqualTo("Registered owner"));
+                Assert.That(registration.JobTitle, Is.EqualTo("Assistant"));
+                if (pda != null)
+                    Assert.That(pda.OwnerName, Is.EqualTo("Registered owner"));
                 Assert.That(entities.GetComponent<MetaDataComponent>(body).EntityName, Is.EqualTo("Primary"));
                 Assert.That(appearance.EyeColor, Is.EqualTo(originalEyes));
                 Assert.That(appearance.SkinColor, Is.EqualTo(originalSkin));
                 Assert.That(appearance.MarkingSet.Markings.SelectMany(p => p.Value).SelectMany(m => m.MarkingColors), Is.EqualTo(originalColors));
             });
+            // Ordinary renames still update registered equipment outside the personality switch.
+            entities.System<MetaDataSystem>().SetEntityName(body, "Administrative rename");
+            Assert.That(entities.GetComponent<IdCardComponent>(card).FullName, Is.EqualTo("Administrative rename"));
+            Assert.That(registration.Name, Is.EqualTo("Administrative rename"));
+            if (pda != null)
+                Assert.That(pda.OwnerName, Is.EqualTo("Administrative rename"));
             entities.DeleteEntity(body);
+            entities.DeleteEntity(station);
         });
         await pair.CleanReturnAsync();
     }

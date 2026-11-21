@@ -15,5 +15,7 @@ public sealed partial class SplitPersonalityComponent : Component
     public MarkingSet PrimaryColors = new();
     public MarkingSet AlternateColors = new();
     public bool AlternateActive;
+    // Only true while this system raises the character rename event.
+    public bool SwitchingPersonality;
     public EntityUid? SwitchAction;
 }

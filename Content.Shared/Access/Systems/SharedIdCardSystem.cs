@@ -1,6 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Globalization;
+using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -54,7 +56,12 @@ public abstract class SharedIdCardSystem : EntitySystem
             return;
 
         if (TryFindIdCard(ev.Uid, out var idCard))
-            TryChangeFullName(idCard, ev.NewName, idCard);
+        {
+            var attempt = new AutoRenameIdentityAttemptEvent();
+            RaiseLocalEvent(ev.Uid, ref attempt);
+            if (!attempt.Cancelled)
+                TryChangeFullName(idCard, ev.NewName, idCard);
+        }
     }
 
     private void OnMapInit(EntityUid uid, IdCardComponent id, MapInitEvent args)
