@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
+
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System;
@@ -453,6 +455,7 @@ namespace Content.Server.Database
         public int Id { get; set; }
         public int Slot { get; set; }
         [Column("char_name")] public string CharacterName { get; set; } = null!;
+        public int? AlternatePersonalitySlot { get; set; }
         public string FlavorText { get; set; } = null!;
         // Orion-Start
         public string OOCFlavorText { get; set; } = null!;

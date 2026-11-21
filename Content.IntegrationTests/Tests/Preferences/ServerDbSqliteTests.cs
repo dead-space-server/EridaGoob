@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
+
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Collections.Generic;
@@ -91,6 +93,24 @@ namespace Content.IntegrationTests.Tests.Preferences
             await db.InitPrefsAsync(username, originalProfile);
             var prefs = await db.GetPlayerPreferencesAsync(username);
             Assert.That(prefs.Characters.Single(p => p.Key == slot).Value.MemberwiseEquals(originalProfile));
+            await pair.CleanReturnAsync();
+        }
+
+        [Test]
+        public async Task TestAlternatePersonalityRoundTrip()
+        {
+            await using var pair = await PoolManager.GetServerClient();
+            var db = GetDb(pair.Server);
+            var user = NewUserId();
+            var profile = CharlieCharlieson();
+            profile.AlternatePersonalitySlot = 1;
+            await db.InitPrefsAsync(user, profile);
+            var loaded = await db.GetPlayerPreferencesAsync(user);
+            Assert.That(((HumanoidCharacterProfile) loaded.SelectedCharacter).AlternatePersonalitySlot, Is.EqualTo(1));
+            profile.AlternatePersonalitySlot = null;
+            await db.SaveCharacterSlotAsync(user, profile, 0);
+            loaded = await db.GetPlayerPreferencesAsync(user);
+            Assert.That(((HumanoidCharacterProfile) loaded.SelectedCharacter).AlternatePersonalitySlot, Is.Null);
             await pair.CleanReturnAsync();
         }
 

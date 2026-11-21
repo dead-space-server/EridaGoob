@@ -1,4 +1,5 @@
 <!--
+SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
@@ -180,7 +181,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <!--         <BoxContainer Name="TraitsList" Orientation="Vertical" /> -->
                 <!--     </ScrollContainer> -->
                 <!-- </BoxContainer> -->
-                <traits:TraitsTab Name="Traits"/>
+                <BoxContainer Orientation="Vertical">
+                    <BoxContainer Orientation="Vertical" Margin="10" SeparationOverride="6">
+                        <Label Text="{Loc 'split-personality-setting'}" />
+                        <OptionButton Name="AlternatePersonalityButton" HorizontalExpand="True" />
+                        <Label Text="{Loc 'split-personality-setting-hint'}" />
+                    </BoxContainer>
+                    <traits:TraitsTab Name="Traits" VerticalExpand="True"/>
+                </BoxContainer>
                 <!-- End DV -->
                 <BoxContainer Name="MarkingsTab" Orientation="Vertical" Margin="10">
                     <!-- Markings -->

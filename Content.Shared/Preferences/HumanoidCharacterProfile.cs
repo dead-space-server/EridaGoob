@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 // SPDX-FileCopyrightText: 2019 Pieter-Jan Briers <pieterjan.briers@gmail.com>
 // SPDX-FileCopyrightText: 2020 20kdc <asdd2808@gmail.com>
 // SPDX-FileCopyrightText: 2020 DamianX <DamianX@users.noreply.github.com>
@@ -119,6 +122,10 @@ namespace Content.Shared.Preferences
 
         [DataField]
         public string Name { get; set; } = "John Doe";
+
+        /// <summary>The other saved character slot used as a second personality, or null when disabled.</summary>
+        [DataField]
+        public int? AlternatePersonalitySlot { get; set; }
 
         /// <summary>
         /// Detailed text that can appear for the character if <see cref="CCVars.FlavorText"/> is enabled.
@@ -348,6 +355,7 @@ namespace Content.Shared.Preferences
                 new Dictionary<string, RoleLoadout>(other.Loadouts),
                 other.BarkVoice) // Goob Station - Barks
         {
+            AlternatePersonalitySlot = other.AlternatePersonalitySlot;
         }
 
         /// <summary>
@@ -738,6 +746,7 @@ namespace Content.Shared.Preferences
         {
             if (maybeOther is not HumanoidCharacterProfile other) return false;
             if (Name != other.Name) return false;
+            if (AlternatePersonalitySlot != other.AlternatePersonalitySlot) return false;
             if (Age != other.Age) return false;
             if (Sex != other.Sex) return false;
             if (TTSVoice != other.TTSVoice) return false; // CorvaxGoob-TTS
@@ -774,6 +783,13 @@ namespace Content.Shared.Preferences
         {
             var configManager = collection.Resolve<IConfigurationManager>();
             var prototypeManager = collection.Resolve<IPrototypeManager>();
+
+            // The slot limit is SERVERONLY and is not registered on clients, which also validate profiles.
+            if (AlternatePersonalitySlot is { } slot &&
+                (slot < 0 ||
+                 configManager.IsCVarRegistered(CCVars.GameMaxCharacterSlots.Name) &&
+                 slot >= configManager.GetCVar(CCVars.GameMaxCharacterSlots)))
+                AlternatePersonalitySlot = null;
 
             if (!prototypeManager.TryIndex(Species, out var speciesPrototype) || speciesPrototype.RoundStart == false)
             {
@@ -1190,6 +1206,7 @@ namespace Content.Shared.Preferences
             hashCode.Add(_traitPreferences);
             hashCode.Add(_loadouts);
             hashCode.Add(Name);
+            hashCode.Add(AlternatePersonalitySlot);
             hashCode.Add(FlavorText);
             // Orion-Start
             hashCode.Add(OocFlavorText);
