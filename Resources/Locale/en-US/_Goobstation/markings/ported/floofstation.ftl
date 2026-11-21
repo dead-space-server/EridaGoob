@@ -1,4 +1,3 @@
-marking-ADTAllShavedFemale = Organized
 marking-ADTAllShavedFemale-shaved_female = shaved female
 
 marking-ADTAllhonor = Honor
