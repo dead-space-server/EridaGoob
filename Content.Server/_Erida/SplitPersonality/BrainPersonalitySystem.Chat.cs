@@ -27,6 +27,16 @@ public sealed partial class BrainPersonalitySystem
         SubscribeLocalEvent<PersonalityChannelComponent, HeadsetRadioReceiveRelayEvent>(OnHeadsetMessage);
     }
 
+    public bool HasBothParticipants(EntityUid brain)
+    {
+        if (!TryComp<BrainPersonalityComponent>(brain, out var state) || state.Host is not {} host
+            || state.Observer is not {} observer || state.Primary is not {} primary || state.Secondary is not {} secondary
+            || !TryComp<MindComponent>(primary, out var first) || !TryComp<MindComponent>(secondary, out var second))
+            return false;
+        return first.OwnedEntity == (state.SecondaryActive ? observer : host)
+            && second.OwnedEntity == (state.SecondaryActive ? host : observer);
+    }
+
     public bool TrySendTelepathy(EntityUid source, string message, bool hideChat)
     {
         if (!TryComp<PersonalityChannelComponent>(source, out var link))
@@ -34,7 +44,7 @@ public sealed partial class BrainPersonalitySystem
         // A participant in this mechanic never broadcasts onto the unrelated global psionic channel.
         if (!TryComp<BrainPersonalityComponent>(link.Brain, out var state)
             || !TryComp<OrganComponent>(link.Brain, out var organ) || organ.Body is not {} body
-            || !IsConscious(body) || state.Primary is not {} primary || state.Secondary is not {} secondary
+            || !IsConscious(body) || !HasBothParticipants(link.Brain) || state.Primary is not {} primary || state.Secondary is not {} secondary
             || !_mind.TryGetMind(source, out var sender, out _) || sender != primary && sender != secondary)
             return true;
         message = FormattedMessage.RemoveMarkupPermissive(message);

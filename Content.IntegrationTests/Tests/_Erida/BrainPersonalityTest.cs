@@ -98,10 +98,8 @@ public sealed class BrainPersonalityTest
             Assert.That(ghostAttempt.CanReturnGlobal, Is.True);
             Assert.That(em.System<ActionBlockerSystem>().CanInteract(observer, body), Is.False);
             Assert.That(em.System<ActionBlockerSystem>().CanConsciouslyPerformAction(observer), Is.False);
-            var action = em.Spawn(null, map.MapCoords);
-            em.AddComponent<Content.Shared.Actions.Components.ActionComponent>(action);
             var actionAttempt = new Content.Shared.Actions.Events.ActionAttemptEvent(observer);
-            em.EventBus.RaiseLocalEvent(action, ref actionAttempt);
+            em.EventBus.RaiseLocalEvent(observer, ref actionAttempt);
             Assert.That(actionAttempt.Cancelled, Is.True, "Even mind-provided abilities cannot be used while inactive");
             minds.TransferTo(secondary, observer);
             state.Secondary = secondary;
@@ -125,7 +123,9 @@ public sealed class BrainPersonalityTest
                 departedBody = em.Spawn("MobHuman", map.MapCoords);
                 var wizard = minds.CreateMind(null).Owner;
                 minds.TransferTo(primary, departedBody);
+                Assert.That(system.HasBothParticipants(brain), Is.False, "A departed mind must lose the private channel");
                 minds.TransferTo(wizard, body);
+                Assert.That(system.HasBothParticipants(brain), Is.True);
                 Assert.That(state.Primary, Is.EqualTo(wizard));
                 primary = wizard;
             }

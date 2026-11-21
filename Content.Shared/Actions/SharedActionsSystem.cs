@@ -1,3 +1,4 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
@@ -324,6 +325,9 @@ public abstract partial class SharedActionsSystem : EntitySystem
 
         // check for action use prevention
         var attemptEv = new ActionAttemptEvent(user);
+        RaiseLocalEvent(user, ref attemptEv);
+        if (attemptEv.Cancelled)
+            return false;
         RaiseLocalEvent(action, ref attemptEv);
         if (attemptEv.Cancelled)
             return false;
@@ -695,6 +699,9 @@ public abstract partial class SharedActionsSystem : EntitySystem
         // check for action use prevention
         // TODO: make code below use this event with a dedicated component
         var attemptEv = new ActionAttemptEvent(user);
+        RaiseLocalEvent(user, ref attemptEv);
+        if (attemptEv.Cancelled)
+            return false;
         RaiseLocalEvent(action, ref attemptEv);
         if (attemptEv.Cancelled)
             return false;

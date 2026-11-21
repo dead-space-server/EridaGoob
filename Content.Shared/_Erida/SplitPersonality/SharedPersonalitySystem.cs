@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: MIT
 
 using System.Linq;
-using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared._Shitmed.Medical.Surgery;
 using Content.Shared._Shitmed.Medical.Surgery.Conditions;
@@ -26,7 +25,7 @@ public sealed class SharedPersonalitySystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<InactivePersonalityComponent, InteractionAttemptEvent>((Entity<InactivePersonalityComponent> _, ref InteractionAttemptEvent ev) => ev.Cancelled = true);
         SubscribeLocalEvent<InactivePersonalityComponent, ConsciousAttemptEvent>((Entity<InactivePersonalityComponent> _, ref ConsciousAttemptEvent ev) => ev.Cancelled = true);
-        SubscribeLocalEvent<ActionComponent, ActionAttemptEvent>(OnActionAttempt);
+        SubscribeLocalEvent<InactivePersonalityComponent, ActionAttemptEvent>(OnActionAttempt);
         SubscribeLocalEvent<InactivePersonalityComponent, UseAttemptEvent>(Block);
         SubscribeLocalEvent<InactivePersonalityComponent, PickupAttemptEvent>(Block);
         SubscribeLocalEvent<InactivePersonalityComponent, DropAttemptEvent>(Block);
@@ -36,10 +35,10 @@ public sealed class SharedPersonalitySystem : EntitySystem
         SubscribeLocalEvent<MendPersonalityStepComponent, SurgeryStepCompleteCheckEvent>(OnStepCheck);
     }
 
-    private void OnActionAttempt(Entity<ActionComponent> action, ref ActionAttemptEvent args)
+    private void OnActionAttempt(Entity<InactivePersonalityComponent> observer, ref ActionAttemptEvent args)
     {
         // Also cover abilities supplied by a mind role, including those that skip consciousness checks.
-        args.Cancelled |= HasComp<InactivePersonalityComponent>(args.User);
+        args.Cancelled = true;
     }
 
     private void Block(EntityUid uid, InactivePersonalityComponent component, CancellableEntityEventArgs args) => args.Cancel();
