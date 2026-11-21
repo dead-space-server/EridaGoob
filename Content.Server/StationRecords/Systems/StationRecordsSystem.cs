@@ -1,8 +1,10 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Access.Systems;
 using Content.Shared.Access.Components;
+using Content.Shared.Access;
 using Content.Shared.Forensics.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
@@ -70,6 +72,11 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
 
         if (_idCard.TryFindIdCard(ev.Uid, out var idCard))
         {
+            var attempt = new AutoRenameIdentityAttemptEvent();
+            RaiseLocalEvent(ev.Uid, ref attempt);
+            if (attempt.Cancelled)
+                return;
+
             if (TryComp(idCard, out StationRecordKeyStorageComponent? keyStorage)
                 && keyStorage.Key is { } key)
             {

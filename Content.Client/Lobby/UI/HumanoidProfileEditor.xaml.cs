@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
+
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.IO;
@@ -515,6 +517,7 @@ namespace Content.Client.Lobby.UI
             Markings.OnMarkingColorChange += OnMarkingChange;
             Markings.OnMarkingRankChange += OnMarkingChange;
             InitializeMarkingGradients(); // Erida edit
+            InitializeSplitPersonality();
 
             #endregion Markings
 
@@ -1370,6 +1373,7 @@ namespace Content.Client.Lobby.UI
             JobOverride = null;
 
             UpdateNameEdit();
+            UpdateSplitPersonality();
             UpdateFlavorTextEdit();
             UpdateFlavorPreview(); // Orion
             UpdateSexControls();
@@ -1913,6 +1917,7 @@ namespace Content.Client.Lobby.UI
         private void SetSpecies(string newSpecies)
         {
             Profile = Profile?.WithSpecies(newSpecies);
+            UpdateSplitPersonality();
             OnSkinColorOnValueChanged(); // Species may have special color prefs, make sure to update it.
             Markings.SetSpecies(newSpecies); // Repopulate the markings tab as well.
             // In case there's job restrictions for the species

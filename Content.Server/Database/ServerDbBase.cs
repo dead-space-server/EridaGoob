@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
+
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Collections.Immutable;
@@ -319,7 +321,7 @@ namespace Content.Server.Database
                 traits.ToHashSet(),
                 loadouts,
                 barkVoice // Goob Station - Barks
-            );
+            ) { AlternatePersonalitySlot = profile.AlternatePersonalitySlot };
         }
 
         private static Profile ConvertProfiles(HumanoidCharacterProfile humanoid, int slot, Profile? profile = null)
@@ -334,6 +336,7 @@ namespace Content.Server.Database
             var markings = JsonSerializer.SerializeToDocument(markingStrings);
 
             profile.CharacterName = humanoid.Name;
+            profile.AlternatePersonalitySlot = humanoid.AlternatePersonalitySlot;
             profile.FlavorText = humanoid.FlavorText;
             // Orion-Start
             profile.OOCFlavorText = humanoid.OocFlavorText;

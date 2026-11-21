@@ -1,3 +1,4 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Access.Systems;
@@ -10,6 +11,7 @@ using Content.Server.Station.Systems;
 using Content.Server.Store.Systems;
 using Content.Server.Traitor.Uplink;
 using Content.Shared.Access.Components;
+using Content.Shared.Access;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Chat;
 using Content.Shared.DeviceNetwork.Components;
@@ -77,6 +79,11 @@ namespace Content.Server.PDA
 
             if (_idCard.TryFindIdCard(ev.Uid, out var idCard))
             {
+                var attempt = new AutoRenameIdentityAttemptEvent();
+                RaiseLocalEvent(ev.Uid, ref attempt);
+                if (attempt.Cancelled)
+                    return;
+
                 var query = EntityQueryEnumerator<PdaComponent>();
 
                 while (query.MoveNext(out var uid, out var comp))

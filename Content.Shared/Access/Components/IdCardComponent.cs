@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
+
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Access.Systems;
@@ -29,7 +31,20 @@ public sealed partial class IdCardComponent : Component
     private string? _jobTitle;
 
     [Access(typeof(SharedIdCardSystem), typeof(SharedPdaSystem), typeof(SharedAgentIdCardSystem), Other = AccessPermissions.ReadWriteExecute)]
-    public string? LocalizedJobTitle { set => _jobTitle = value; get => _jobTitle ?? Loc.GetString(JobTitle ?? string.Empty); }
+    public string? LocalizedJobTitle
+    {
+        set => _jobTitle = value;
+        get
+        {
+            if (_jobTitle != null)
+                return _jobTitle;
+
+            // Preview cards and newly spawned cards may not have a job yet.
+            return JobTitle is { } title && !string.IsNullOrWhiteSpace(title)
+                ? Loc.GetString(title)
+                : string.Empty;
+        }
+    }
 
     /// <summary>
     /// The state of the job icon rsi.

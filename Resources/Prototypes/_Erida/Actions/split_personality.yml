@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  parent: BaseAction
+  id: ActionSwitchPersonality
+  name: Switch personality
+  description: Switch to the other personality inhabiting this body.
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: state_laws }
+    useDelay: 10
+  - type: InstantAction
+    event: !type:SplitPersonalitySwitchActionEvent
