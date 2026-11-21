@@ -91,17 +91,7 @@ public sealed partial class GhostGui : UIWidget
     // Begin Frontier
     protected override void FrameUpdate(FrameEventArgs args)
     {
-        if (_respawnTime is null || _gameTiming.CurTime > _respawnTime)
-        {
-            GhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-allowed");
-            GhostRespawnButton.Disabled = false;
-        }
-        else
-        {
-            double delta = (_respawnTime.Value - _gameTiming.CurTime).TotalSeconds;
-            GhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-denied", ("time", $"{delta:f1}"));
-            GhostRespawnButton.Disabled = true;
-        }
+        UpdateRespawnButton(); // Erida edit
     }
     // End Frontier
 

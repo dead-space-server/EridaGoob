@@ -39,7 +39,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
     private bool _showingFeedback;
 
     // flavor text
-    private readonly string[] _successPhrases = [ "[ ENJOY ]", "[ THX! ]", "[ YUM! ]", "[ VEND ]" ];
+    private readonly LocId[] _successPhrases = [ "vending-machine-keypad-success1", "vending-machine-keypad-success2", "vending-machine-keypad-success3", "vending-machine-keypad-success4" ]; // Erida edit
 
     // nuke C scale
     private readonly int[] _bluesScale = [0, 2, 3, 4, 5, 6, 7, 9, 10];
@@ -58,6 +58,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
         _audio = _entManager.System<SharedAudioSystem>();
 
         BuildNumpad();
+        InitializeErida(); // Erida edit
         ResetLedIndicators();
         UpdateBufferLabel();
     }
@@ -133,6 +134,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
 
             ItemGrid.AddChild(slot);
             _slots.Add(slot);
+            SubscribeSlot(slot, i); // Erida edit
         }
 
         BuildLetterGrid();
@@ -296,6 +298,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
             if (!allowed)
             {
                 ShowFeedback(false);
+                BufferLabel.Text = Loc.GetString("vending-machine-keypad-empty"); // Erida edit
                 return;
             }
 
@@ -321,7 +324,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
         if (success)
         {
             BufferLabel.FontColorOverride = Color.Green;
-            BufferLabel.Text = _random.Pick(_successPhrases);
+            BufferLabel.Text = Loc.GetString(_random.Pick(_successPhrases)); // Erida edit
             GreenLed.Modulate = _greenOnColor;
             audio.PlayPredicted(new SoundPathSpecifier("/Audio/Machines/vending_jingle.ogg"), VendingMachineOwner, User, new AudioParams().WithVolume(-4f));
             OnAudioPlayed?.Invoke(VendingMachineKeypadSound.Success, 1f);
@@ -331,7 +334,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
         else
         {
             BufferLabel.FontColorOverride = Color.Red;
-            BufferLabel.Text = "[ EMPTY ]";
+            BufferLabel.Text = Loc.GetString("vending-machine-keypad-unavailable"); // Erida edit
             RedLed.Modulate = _redOnColor;
             audio.PlayPredicted(new SoundPathSpecifier("/Audio/Machines/buzz-two.ogg"), VendingMachineOwner, User, new AudioParams().WithVolume(-4f));
             OnAudioPlayed?.Invoke(VendingMachineKeypadSound.Error, 1f);
@@ -366,6 +369,7 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
         var numberText = _bufferNumber?.ToString() ?? (_cursorVisible && _bufferLetter != null && _bufferNumber == null ? "_" : "-");
 
         BufferLabel.Text = $"[ {letterText} {numberText} ]";
+        UpdateSelectedName(); // Erida edit
 
         UpdateHighlights();
     }

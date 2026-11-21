@@ -6,7 +6,5 @@ marking-ADTAllMorningHairstyle = Morning Hairstyle
 marking-ADTAllMorningHairstyle2 = Morning Hairstyle 2
 marking-ADTAllPonytail = Fluffy Ponytail
 marking-ADTAllPrinceCharming = Prince Charming
-marking-ADTAllShavedFemale = Shaved Female
 marking-ADTAllShavedFemaleUnisex = Unisex with Bun
-marking-dave = Dave
 marking-EridaWomenShortHaircut = Short Women's Haircut

@@ -10,7 +10,6 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Utility;
 
 namespace Content.Shared.Silicons.Borgs;
 
@@ -27,6 +26,7 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
     [Dependency] protected readonly IPrototypeManager Prototypes = default!;
     [Dependency] private readonly InteractionPopupSystem _interactionPopup = default!;
     [Dependency] private readonly INetManager _netManager = default!;
+    [Dependency] private readonly ChangeSpriteSystem _switchableState = default!; // Erida edit
 
     public static readonly EntProtoId ActionId = "ActionSelectBorgType";
 
@@ -142,18 +142,8 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
     {
 
         // Erida start
-        if (subtypePrototype != null && subtypePrototype.StatesWhiteList.Count != 0)
-        {
-            var switchableState = EnsureComp<BorgSwitchableStateComponent>(entity.Owner);
-            switchableState.DoAfterDuration = subtypePrototype.DoAfterDuration;
-            switchableState.StatesWhiteList = subtypePrototype.StatesWhiteList;
-            switchableState.BaseSprite = new SpriteSpecifier.Rsi(
-                subtypePrototype.SpritePath,
-                rsiState: prototype.SpriteBodyState
-            );
-
-            Dirty(entity.Owner, switchableState);
-        }
+        if (!_netManager.IsClient)
+            _switchableState.SetupStates(entity, prototype, subtypePrototype);
         // Erida end
 
         if (TryComp(entity, out InteractionPopupComponent? popup))
@@ -168,11 +158,14 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
         }
 
         // Erida start
-        var movementState = subtypePrototype != null && subtypePrototype.HaveMotionAnimation != null && subtypePrototype.HaveMotionAnimation.Value
-            ? prototype.SpriteBodyState + "_moving"
-            : prototype.SpriteBodyMovementState;
+        var movementState = subtypePrototype?.HaveMotionAnimation switch
+        {
+            true => prototype.SpriteBodyState + "_moving",
+            false => null,
+            null => prototype.SpriteBodyMovementState,
+        };
 
-        if (movementState is null || subtypePrototype != null && subtypePrototype.HaveMotionAnimation == false)
+        if (movementState == null)
         {
             RemComp<SpriteMovementComponent>(entity);
             return;
@@ -191,6 +184,8 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
         {
             State = movementState,
         };
+
+        Dirty(entity, spriteMovement);
         // Erida end
     }
 }

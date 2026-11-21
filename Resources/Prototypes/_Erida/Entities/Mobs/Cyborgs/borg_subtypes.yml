@@ -31,6 +31,7 @@
 - type: borgSubtype
   parentBorgType: mining
   id: mining_drake
+  haveMotionAnimation: true
   spritePath: _Erida/Mobs/Silicons/Drakes/miner.rsi
   dummyPrototype: BorgChassisMiningDrake
   statesWhiteList:
@@ -135,6 +136,7 @@
 - type: borgSubtype
   parentBorgType: medical
   id: medical_drake
+  haveMotionAnimation: true
   spritePath: _Erida/Mobs/Silicons/Drakes/medical.rsi
   dummyPrototype: BorgChassisMedicalDrake
   statesWhiteList:

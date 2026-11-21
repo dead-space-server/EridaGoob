@@ -55,10 +55,11 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
         LayoutContainer.SetPosition(CodeLabel, new Vector2(2f, 2f));
 
         AmountBadge.SetSize = new Vector2(BadgeSize, BadgeSize);
-        LayoutContainer.SetPosition(AmountBadge, new Vector2(SlotSize - BadgeSize - 2f, SlotSize - BadgeSize - 2f));
+        LayoutContainer.SetPosition(AmountBadge, new Vector2(SlotSize - BadgeSize - 2f, 2f)); // Erida edit
 
         SoldOverlay.SetSize = new Vector2(SlotSize, 22f);
         LayoutContainer.SetPosition(SoldOverlay, new Vector2(0f, (SlotSize - 22f) / 2f));
+        InitializeErida(); // Erida edit
     }
 
     public void SetItem(EntProtoId protoId, string code, uint amount, bool soldOut)
@@ -69,6 +70,7 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
         if (_protoManager.TryIndex(protoId, out var proto))
         {
             ToolTip = GetItemText(proto);
+            SetName(proto); // Erida edit
         }
 
         SetAmount(amount, soldOut);
@@ -120,6 +122,7 @@ public sealed partial class VendingMachineGridSlot : PanelContainer
     protected override void FrameUpdate(FrameEventArgs args)
     {
         base.FrameUpdate(args);
+        UpdateContents(); // Erida edit
 
         if (!_animating)
             return;
