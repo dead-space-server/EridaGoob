@@ -1,0 +1,37 @@
+# Markers that only viewcone holders see, and only outside of their view.
+
+- type: entity
+  id: ESBaseViewconeEffect
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ESViewconeOccludable
+    inverted: true
+    overrideBaseAlpha: true
+  - type: Sprite
+    sprite: _Erida/_ForEvents/Viewcone/viewcone_effects.rsi
+    drawdepth: Effects
+    noRot: true
+    color: '#FFFFFF00' # hidden until the set alpha overlay shows it
+    loop: false
+  - type: TimedDespawn
+    lifetime: 3.0
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  id: ESViewconeEffectFootstep
+  parent: ESBaseViewconeEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: footstep
+
+- type: entity
+  id: ESViewconeEffectAttack
+  parent: ESBaseViewconeEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: attack

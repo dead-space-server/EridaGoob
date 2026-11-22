@@ -161,6 +161,10 @@
   #- type: HideLayerClothing  #Goobstation
   #  layers:
   #    Hair: HEAD
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -35
+  # Erida end
 
 #Bombsuit Helmet
 - type: entity
@@ -191,6 +195,10 @@
     layers:
       Hair: HEAD
       Snout: HEAD
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -90
+  # Erida end
 
 #Janitorial Bombsuit Helmet
 - type: entity
@@ -287,6 +295,10 @@
     tags:
     - TemplarHelmet
   - type: FaceHuggerBlocker # Goobstation
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -90
+  # Erida end
 
 #Thunderdome Helmet
 - type: entity
@@ -373,6 +385,10 @@
         Slash: 0.95
         Heat: 0.85
         Cold: 0.85
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -90
+  # Erida end
 
 #Atmos Fire Helmet
 - type: entity
@@ -423,6 +439,10 @@
         Heat: 0.8
         Cold: 0.8
   - type: EyeProtection # goob
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -90
+  # Erida end
 
 #Chitinous Helmet
 - type: entity
