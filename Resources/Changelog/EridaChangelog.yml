@@ -2284,3 +2284,20 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/114
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Fix] Minor fixes'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Альтернативные названия должностей
+    - type: Add
+      message: Возможность менять цвет лобби на любой цвет
+    - type: Tweak
+      message: Полный рефактор стиля лобби и зависимых окон
+  id: 169
+  time: '2026-11-24T17:40:45.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/113
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] New lobby'
+  media:
+    - >-
+      https://github.com/user-attachments/assets/4e44f21b-34fa-4c0e-8181-d2a7fd13bd44
+  highlight: true
