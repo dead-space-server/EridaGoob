@@ -2271,3 +2271,16 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/112
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Add] Roleplay features'
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Локализация раздатчика амнезиака и набора Кунг-фу
+    - type: Fix
+      message: Защита берета синего щита
+    - type: Fix
+      message: Отсутствие мед худа у очков сщ
+  id: 168
+  time: '2026-11-24T17:21:41.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/114
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Fix] Minor fixes'
