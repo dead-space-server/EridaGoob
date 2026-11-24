@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Client._Erida.Stylesheets;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
@@ -55,6 +56,7 @@ namespace Content.Client.Entry
         [Dependency] private readonly IParallaxManager _parallaxManager = default!;
         [Dependency] private readonly IConfigurationManager _configManager = default!;
         [Dependency] private readonly IStylesheetManager _stylesheetManager = default!;
+        [Dependency] private readonly EridaThemeManager _eridaTheme = default!; // Erida edit
         [Dependency] private readonly IScreenshotHook _screenshotHook = default!;
         [Dependency] private readonly FullscreenHook _fullscreenHook = default!;
         [Dependency] private readonly ChangelogManager _changelogManager = default!;
@@ -161,6 +163,7 @@ namespace Content.Client.Entry
         {
             base.PostInit();
 
+            _eridaTheme.Initialize(); // Erida edit
             _stylesheetManager.Initialize();
 
             // Setup key contexts

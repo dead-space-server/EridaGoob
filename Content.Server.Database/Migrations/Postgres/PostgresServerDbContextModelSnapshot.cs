@@ -1331,6 +1331,11 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("real")
                         .HasColumnName("height");
 
+                    b.Property<string>("JobAlternateTitles")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("job_alternate_titles");
+
                     b.Property<string>("LinksFlavorText")
                         .IsRequired()
                         .HasColumnType("text")

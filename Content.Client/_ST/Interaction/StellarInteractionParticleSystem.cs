@@ -4,6 +4,7 @@
 
 using System.Numerics;
 using Content.Goobstation.Common.CCVar;
+using Content.Shared._Erida.CCVar;
 using Content.Shared._ST.Interaction;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
@@ -42,6 +43,10 @@ public sealed partial class StellarInteractionParticleSystem : EntitySystem
     private GameTick _shownTick;
 
     private float _inHandScale = 1f;
+    // Erida start
+    private bool _enabled = true;
+    private bool _inHandEnabled = true;
+    // Erida end
 
     private const string AnimateKey = "particle-animation";
 
@@ -58,6 +63,10 @@ public sealed partial class StellarInteractionParticleSystem : EntitySystem
 
         SubscribeAllEvent<StellarInteractionParticleEvent>(OnInteractionParticle);
         Subs.CVar(_cfg, GoobCVars.InHandInteractionParticleScale, v => _inHandScale = v, true);
+        // Erida start
+        Subs.CVar(_cfg, ECCVars.InteractionParticles, v => _enabled = v, true);
+        Subs.CVar(_cfg, ECCVars.InHandInteractionParticles, v => _inHandEnabled = v, true);
+        // Erida end
     }
 
     public override void FrameUpdate(float frameTime)
@@ -152,7 +161,7 @@ public sealed partial class StellarInteractionParticleSystem : EntitySystem
             type = StellarInteractionParticleType.InHand;
         }
 
-        if (type == StellarInteractionParticleType.InHand && _inHandScale <= 0f)
+        if (type == StellarInteractionParticleType.InHand ? !_inHandEnabled || _inHandScale <= 0f : !_enabled) // Erida edit
             return null;
 
         if ((performerXform.GridUid ?? performerXform.MapUid) is not { } frame)

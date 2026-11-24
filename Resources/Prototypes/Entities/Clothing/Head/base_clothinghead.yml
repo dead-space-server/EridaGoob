@@ -175,6 +175,10 @@
     blockList: [ MASK, EARS, EYES ]
   - type: StainBlocker # Funky
     slots: [MASK]
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -90
+  # Erida end
 
 - type: entity
   abstract: true
@@ -256,6 +260,10 @@
   - type: StainBlocker
     slots: [MASK]
   # Funky end
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -60
+  # Erida end
 
 - type: entity
   abstract: true

@@ -473,6 +473,7 @@ namespace Content.Server.Database
         public string Species { get; set; } = null!;
         [Column("ttsvoice")] public string TTSVoice { get; set; } = null!; // CorvaxGoob-TTS
         public string CustomSpecies { get; set; } = null!; // Erida edit
+        public string JobAlternateTitles { get; set; } = "{}"; // Erida edit
         public float Height { get; set; } = 1f; // Goobstation: port EE height/width sliders
         public float Width { get; set; } = 1f; // Goobstation: port EE height/width sliders
         public string BarkVoice { get; set; } = null!; // Goob Station - Barks

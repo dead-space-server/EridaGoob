@@ -210,6 +210,7 @@ public sealed partial class ContentAudioSystem
 
         _audio.Stop(_lobbySoundtrackInfo.MusicStreamEntityUid);
         _lobbySoundtrackInfo = null;
+        _lobbyPausedAt = null; // Erida edit
         var lobbySongChangedEvent = new LobbySoundtrackChangedEvent();
         _lobbySoundtrackChanged?.Invoke(lobbySongChangedEvent);
     }
@@ -246,6 +247,7 @@ public sealed partial class ContentAudioSystem
     {
         if (
             _lobbySoundtrackInfo != null
+            && _lobbyPausedAt == null // Erida edit
             && _timing.CurTime >= _lobbySoundtrackInfo.NextTrackOn
             && _lobbyPlaylist?.Length > 0
             )

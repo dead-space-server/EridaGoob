@@ -256,6 +256,7 @@ public sealed partial class MarkingPicker
             _gradientControl.GradientChanged += gradient => _tab.MarkingGradientChange(_prototype, gradient);
             _gradientControl.SwapPressed += () => _tab.MarkingGradientSwap(_prototype);
             _colorsContainer.AddChild(_gradientControl);
+            EridaColorSliders.Restyle(_colorsContainer);
         }
 
         private void UpdateGradientControl(Marking marking)

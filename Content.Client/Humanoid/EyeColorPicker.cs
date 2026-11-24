@@ -31,7 +31,7 @@ public sealed class EyeColorPicker : Control
 
         vBox.AddChild(_colorSelectors = new ColorSelectorSliders());
         _colorSelectors.SelectorType = ColorSelectorSliders.ColorSelectorType.Hsv; // defaults color selector to HSV
-        HullStyler.Apply(_colorSelectors); // Goob
+        // HullStyler.Apply(_colorSelectors); // Erida edit
 
         _colorSelectors.OnColorChanged += ColorValueChanged;
     }

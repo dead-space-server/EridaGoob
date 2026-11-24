@@ -3,6 +3,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared._Erida.Leash.Components;
+using Content.Shared._Erida._ForEvents.Viewcone;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CCVar;
 using Content.Shared.Friction;
@@ -61,6 +62,7 @@ public abstract partial class SharedMoverController : VirtualController
     [Dependency] private   readonly StandingStateSystem _standing = default!; // Goobstation - kil mofs
     [Dependency] private   readonly CommonMomentumSteeringSystem _momentumSteering = default!; // Goobstation - momentum steering
     [Dependency] private   readonly CommonMomentumThrustSystem _momentumThrust = default!; // Goobstation - jetpack thrust falloff
+    [Dependency] private   readonly ESViewconeEffectSystem _viewconeEffect = default!; // Erida edit
 
     protected EntityQuery<CanMoveInAirComponent> CanMoveInAirQuery;
     protected EntityQuery<FootstepModifierComponent> FootstepModifierQuery;
@@ -456,6 +458,8 @@ public abstract partial class SharedMoverController : VirtualController
                 {
                     _audio.PlayPredicted(sound, uid, uid, audioParams);
                 }
+
+                _viewconeEffect.SpawnFootstep(uid, wishDir); // Erida edit
             }
         }
     }

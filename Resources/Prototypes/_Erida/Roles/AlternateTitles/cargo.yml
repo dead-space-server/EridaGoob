@@ -1,0 +1,44 @@
+- type: jobAlternateTitle
+  id: AltTitleQuartermasterRequisitionsOfficer
+  job: Quartermaster
+  name: job-alt-name-quartermaster-requisitions-officer
+
+- type: jobAlternateTitle
+  id: AltTitleQuartermasterDeckChief
+  job: Quartermaster
+  name: job-alt-name-quartermaster-deck-chief
+
+- type: jobAlternateTitle
+  id: AltTitleQuartermasterWarehouseSupervisor
+  job: Quartermaster
+  name: job-alt-name-quartermaster-warehouse-supervisor
+
+- type: jobAlternateTitle
+  id: AltTitleQuartermasterSupplyForeman
+  job: Quartermaster
+  name: job-alt-name-quartermaster-supply-foreman
+
+- type: jobAlternateTitle
+  id: AltTitleQuartermasterLogisticsCoordinator
+  job: Quartermaster
+  name: job-alt-name-quartermaster-logistics-coordinator
+
+- type: jobAlternateTitle
+  id: AltTitleCargoTechnicianCourier
+  job: CargoTechnician
+  name: job-alt-name-cargo-technician-courier
+
+- type: jobAlternateTitle
+  id: AltTitleCargoTechnicianShuttlePilot
+  job: CargoTechnician
+  name: job-alt-name-cargo-technician-shuttle-pilot
+
+- type: jobAlternateTitle
+  id: AltTitleCargoTechnicianLogisticsClerk
+  job: CargoTechnician
+  name: job-alt-name-cargo-technician-logistics-clerk
+
+- type: jobAlternateTitle
+  id: AltTitleSalvageSpecialistScavenger
+  job: SalvageSpecialist
+  name: job-alt-name-salvage-specialist-scavenger

@@ -3,9 +3,9 @@
 using System.IO;
 using System.Linq;
 using System.Numerics;
-// Erida start
 using Content.Client._Erida.Lobby;
-// Erida end
+using Content.Client._Erida.Stylesheets;
+using Content.Client._Erida.Lobby;
 using Content.Client.Humanoid;
 using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;
@@ -207,6 +207,7 @@ namespace Content.Client.Lobby.UI
             NameRandomize.OnPressed += args => RandomizeName();
             RandomizeEverythingButton.OnPressed += args => { RandomizeEverything(); };
             WarningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]");
+            InitializeEridaLayout(); // Erida edit
 
             #endregion Name
 
@@ -1211,6 +1212,7 @@ namespace Content.Client.Lobby.UI
             }
 
             ReflowAntagGrids();
+            RestyleAntags(); // Erida edit
         }
 
         private AntagSelector BuildAntagCard(AntagPrototype antag) // erida edit
@@ -1502,7 +1504,7 @@ namespace Content.Client.Lobby.UI
 
                     category.AddChild(new PanelContainer
                     {
-                        PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                        StyleClasses = { EridaStyleClass.VanillaHeader }, // Erida edit
                         Children =
                         {
                             new Label
@@ -1545,6 +1547,7 @@ namespace Content.Client.Lobby.UI
                     var jobIcon = _prototypeManager.Index(job.Icon);
                     icon.Texture = _sprite.Frame0(jobIcon.Icon);
                     selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides);
+                    SetupAltTitles(selector, job); // Erida edit
 
                     if (!_requirements.IsAllowed(job, (HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter, out var reason))
                     {
@@ -1891,6 +1894,7 @@ namespace Content.Client.Lobby.UI
             }
 
             UpdateGenderControls();
+            UpdateAltTitleGender(); // Erida edit
             Markings.SetSex(newSex);
             UpdateTTSVoicesControls();
             ReloadPreview();
@@ -1899,6 +1903,7 @@ namespace Content.Client.Lobby.UI
         private void SetGender(Gender newGender)
         {
             Profile = Profile?.WithGender(newGender);
+            UpdateAltTitleGender(); // Erida edit
             ReloadPreview();
         }
 
@@ -2400,6 +2405,7 @@ namespace Content.Client.Lobby.UI
         {
             SaveButton.Disabled = Profile is null || !IsDirty;
             ResetButton.Disabled = Profile is null || !IsDirty;
+            UpdateProfileActions(); // Erida edit
         }
 
         private void SetPreviewRotation(Direction direction)

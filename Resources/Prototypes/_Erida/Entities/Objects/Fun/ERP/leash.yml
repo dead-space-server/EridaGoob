@@ -11,4 +11,4 @@
   - type: Item
     sprite: _Erida/Objects/Fun/ERP/leash.rsi
     size: Small
-
+  - type: Leash

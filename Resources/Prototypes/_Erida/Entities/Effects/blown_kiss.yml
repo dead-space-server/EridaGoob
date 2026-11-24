@@ -1,0 +1,28 @@
+- type: entity
+  id: ProjectileBlownKiss
+  name: blown kiss
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    sprite: _Erida/Effects/hearts.rsi
+    state: hearts
+    scale: 0.6, 0.6
+  - type: Physics
+    bodyType: Dynamic
+  - type: TileFrictionModifier
+    modifier: 0
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.15
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+  - type: TimedDespawn
+    lifetime: 2
+  - type: BlownKiss

@@ -1,0 +1,7 @@
+- type: shader
+  id: Viewcone
+  kind: source
+  path: "/Textures/_Erida/_ForEvents/Viewcone/viewcone.swsl"
+  params:
+    GrainMult: 0.35
+    DarkenAmount: 0.0

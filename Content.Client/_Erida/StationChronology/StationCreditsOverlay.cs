@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.ComponentModel;
 using System.Numerics;
-using System.Runtime.ExceptionServices;
-using System.Text;
 using Content.Client.Resources;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
@@ -27,7 +24,6 @@ public sealed class StationCreditsOverlay : Overlay
     public string? Text;
     public int Index;
     public bool Reverse;
-    public Vector2 Position;
     public TimeSpan CharInterval;
     private TimeSpan _nextUpd = TimeSpan.Zero;
 
@@ -35,8 +31,10 @@ public sealed class StationCreditsOverlay : Overlay
     public TimeSpan CharIntervalDescription;
     public int IndexDescription;
     public bool ReverseDescription;
-    public Vector2 PositionDescription;
     private TimeSpan _nextUpdDescription = TimeSpan.Zero;
+
+    private const float TitleOffset = 160f;
+    private const float DescriptionOffset = 270f;
 
     public StationCreditsOverlay()
     {
@@ -50,7 +48,6 @@ public sealed class StationCreditsOverlay : Overlay
         Text = null;
         Index = 0;
         Reverse = false;
-        Position = Vector2.Zero;
         _nextUpd = TimeSpan.Zero;
     }
     public void ResetDescription()
@@ -58,7 +55,6 @@ public sealed class StationCreditsOverlay : Overlay
         TextDescription = null;
         IndexDescription = 0;
         ReverseDescription = false;
-        PositionDescription = Vector2.Zero;
         _nextUpdDescription = TimeSpan.Zero;
     }
 
@@ -69,10 +65,8 @@ public sealed class StationCreditsOverlay : Overlay
 
         DrawDescription(args); //if there is no description, this returns almost immediately so it shouldnt interfere
 
-        if (Position == Vector2.Zero)
-            Position = CalcPosition(_font, Text, new Vector2(args.ViewportBounds.Width, args.ViewportBounds.Height));
-
-        args.ScreenHandle.DrawString(_font, Position, Text[..Index]);
+        var position = CalcPosition(args, _font, Text, TitleOffset);
+        args.ScreenHandle.DrawString(_font, position, Text[..Index]);
 
         if (_nextUpd > _timing.CurTime)
             return;
@@ -104,12 +98,8 @@ public sealed class StationCreditsOverlay : Overlay
         if (TextDescription == null || TextDescription == string.Empty)
             return;
 
-
-        if (PositionDescription == Vector2.Zero)
-            PositionDescription = CalcPositionDescription(_descriptionfont, TextDescription, new Vector2(args.ViewportBounds.Width, args.ViewportBounds.Height));
-
-
-        args.ScreenHandle.DrawString(_descriptionfont, PositionDescription, TextDescription[..IndexDescription], Color.DarkGray);
+        var position = CalcPosition(args, _descriptionfont, TextDescription, DescriptionOffset);
+        args.ScreenHandle.DrawString(_descriptionfont, position, TextDescription[..IndexDescription], Color.DarkGray);
 
         if (_nextUpdDescription > _timing.CurTime)
             return;
@@ -136,35 +126,13 @@ public sealed class StationCreditsOverlay : Overlay
         _nextUpdDescription += CharIntervalDescription;
     }
 
-    private Vector2 CalcPosition(Font font, string str, Vector2 viewport)
+    /// <summary>
+    /// Centers the full string horizontally in the game viewport, so the typing animation does not shift it.
+    /// </summary>
+    private static Vector2 CalcPosition(in OverlayDrawArgs args, Font font, string str, float offset)
     {
-        Vector2 strSize = new();
-        foreach (Rune r in str)
-        {
-            if (font.TryGetCharMetrics(r, 1, out var metrics))
-            {
-                strSize.X += metrics.Width;
-                strSize.Y = Math.Max(strSize.Y, metrics.Height);
-            }
-        }
-
-        Vector2 pos = new Vector2((viewport.X - strSize.X) / 2, strSize.Y + 110);
-        return pos;
-    }
-
-    private Vector2 CalcPositionDescription(Font font, string str, Vector2 viewport)
-    {
-        Vector2 strSize = new();
-        foreach (Rune r in str)
-        {
-            if (font.TryGetCharMetrics(r, 1, out var metrics))
-            {
-                strSize.X += metrics.Width;
-                strSize.Y = Math.Max(strSize.Y, metrics.Height);
-            }
-        }
-
-        Vector2 pos = new Vector2((viewport.X - strSize.X) / 2, strSize.Y + 110 + 140); //140 should be enough to give the title font space
-        return pos;
+        var bounds = args.ViewportBounds;
+        var size = args.ScreenHandle.GetDimensions(font, str, 1f);
+        return new Vector2(bounds.Left + (bounds.Width - size.X) / 2, bounds.Top + offset);
     }
 }

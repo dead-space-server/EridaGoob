@@ -1,2 +1,9 @@
 ui-options-mouse-wheel-zoom = Можно масштабировать колёсиком мыши
 ui-options-function-zoom-mod = Клавиша-модификатор масштабирования камеры (колёсико мыши)
+ui-options-animations-header = Анимации
+ui-options-interaction-particles = Показывать анимацию взаимодействий
+ui-options-inhand-interaction-particles = Показывать предмет над персонажем при подборе и использовании
+ui-options-round-join-animation = Анимация при входе в раунд
+ui-options-round-join-animation-intro = Заставка
+ui-options-round-join-animation-station-credits = Название станции и дата
+ui-options-round-join-animation-none = Нет

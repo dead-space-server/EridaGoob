@@ -31,6 +31,7 @@ public sealed partial class MarkingGradientControl : BoxContainer
     public MarkingGradientControl()
     {
         RobustXamlLoader.Load(this);
+        EridaColorSliders.Restyle(this);
 
         foreach (var style in Enum.GetValues<MarkingGradientStyle>())
         {

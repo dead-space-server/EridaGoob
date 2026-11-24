@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Client._Erida.Stylesheets;
 using Content.Client._RMC14.LinkAccount;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
@@ -70,6 +71,7 @@ namespace Content.Client.IoC
             collection.Register<ClientsidePlaytimeTrackingManager>();
             collection.Register<DiscordLinkingManager>(); // Erida
             collection.Register<RunechatFontCache>(); // Goob
+            collection.Register<EridaThemeManager>(); // Erida edit
         }
     }
 }

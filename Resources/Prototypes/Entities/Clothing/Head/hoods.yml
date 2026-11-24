@@ -44,6 +44,10 @@
         Aerial: -0.8
       chanceMultipliers:
         Aerial: 0.5
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -90
+  # Erida end
 
 - type: entity
   parent: ClothingHeadHatHoodBioGeneral
@@ -204,6 +208,10 @@
     - Snout
     - HeadTop
     - HeadSide
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -90
+  # Erida end
 
 - type: entity
   parent: ClothingHeadBase

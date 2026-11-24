@@ -1,0 +1,80 @@
+- type: Interaction
+  id: BaseSocialGesture
+  abstract: true
+  global: true
+  requiresHands: true
+  requiresCanInteract: true
+  contactInteraction: true
+  range: {max: 1.5}
+  cooldown: 3
+  hideByRequirement: true
+  requirement:
+    !type:MobStateRequirement
+    allowedStates: [Alive]
+
+- type: Interaction
+  id: Handshake
+  parent: BaseSocialGesture
+  priority: 2
+  action:
+    !type:SocialGestureAction
+    sound: {path: /Audio/Effects/thudswoosh.ogg}
+
+- type: Interaction
+  id: HighFive
+  parent: BaseSocialGesture
+  priority: 2
+  action:
+    !type:SocialGestureAction
+    sound: {path: /Audio/Effects/Emotes/clap-single.ogg}
+
+- type: Interaction
+  id: FistBump
+  parent: BaseSocialGesture
+  priority: 2
+  action:
+    !type:SocialGestureAction
+    sound: {path: /Audio/Effects/thudswoosh.ogg}
+
+- type: Interaction
+  id: TailPull
+  parent: [BaseGlobal, BaseHands]
+  priority: 1
+  hideByRequirement: true
+  requirement:
+    !type:ComplexRequirement
+    requirements:
+    - !type:MobStateRequirement
+      inverted: true
+    - !type:HasMarkingCategoryRequirement
+      category: Tail
+  action:
+    !type:NoOpAction
+
+- type: Interaction
+  id: BlowKiss
+  parent: BaseGlobal
+  priority: 3
+  requiresHands: true
+  requiresCanInteract: true
+  contactInteraction: false
+  range: {max: 10}
+  cooldown: 3
+  effectSuccess:
+    popup: Obvious
+  hideByRequirement: true
+  requirement:
+    !type:MobStateRequirement
+    allowedStates: [Alive]
+  action:
+    !type:BlowKissAction
+    projectile: ProjectileBlownKiss
+
+- type: Interaction
+  id: LightCigarette
+  parent: [BaseGlobal, BaseHands]
+  priority: 2
+  effectSuccess:
+    popup: Obvious
+  action:
+    !type:LightCigaretteAction
