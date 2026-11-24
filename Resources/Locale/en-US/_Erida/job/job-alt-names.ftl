@@ -9,15 +9,13 @@ job-alt-name-nanotrasen-representative-corporate-auditor = Corporate Auditor
 job-alt-name-nanotrasen-representative-consultant = NanoTrasen Consultant
 
 job-alt-name-head-of-security-security-commander = Security Commander
-job-alt-name-head-of-security-chief-warden = Chief Warden
 job-alt-name-head-of-security-sheriff = Sheriff
 
-job-alt-name-warden-dispatcher = Dispatcher
+job-alt-name-warden-brig-chief = Brig Chief
 job-alt-name-warden-jailer = Jailer
-job-alt-name-warden-dungeon-master = Dungeon Master
 
-job-alt-name-security-officer-hall-monitor = Hall Monitor
-job-alt-name-security-officer-operative = Security Operative
+job-alt-name-security-officer-patrol-officer = Patrol Officer
+job-alt-name-security-officer-guard = Security Guard
 job-alt-name-security-officer-specialist = Security Specialist
 
 job-alt-name-detective-forensic-investigator = Forensic Investigator
@@ -46,7 +44,7 @@ job-alt-name-virologist-disease-specialist = Disease Specialist
 job-alt-name-virologist-epidemiologist = Epidemiologist
 
 job-alt-name-psychologist-therapist = Therapist
-job-alt-name-psychologist-counselor = Guidance Counselor
+job-alt-name-psychologist-counselor = Counselor
 job-alt-name-psychologist-psychiatrist = Psychiatrist
 
 job-alt-name-research-director-research-lead = Research Lead
@@ -60,10 +58,6 @@ job-alt-name-research-assistant-lab-intern = Lab Intern
 job-alt-name-research-assistant-trainee = Science Trainee
 
 job-alt-name-chief-engineer-head-of-engineering = Head of Engineering
-job-alt-name-chief-engineer-foreman = { $gender ->
-    [female] Engineering Forewoman
-   *[other] Engineering Foreman
-}
 job-alt-name-chief-engineer-supervisor = Engineering Supervisor
 
 job-alt-name-station-engineer-maintenance-technician = Maintenance Technician
@@ -74,7 +68,6 @@ job-alt-name-station-engineer-damage-control = Damage Control Technician
 job-alt-name-station-engineer-architect = Architect
 
 job-alt-name-atmospheric-technician-fire-suppression = Fire Suppression Specialist
-job-alt-name-atmospheric-technician-firefighter = Emergency Fire Technician
 job-alt-name-atmospheric-technician-gas-synthesis = Gas Synthesis Technician
 job-alt-name-atmospheric-technician-life-support = Life Support Technician
 
@@ -108,17 +101,14 @@ job-alt-name-botanist-herbalist = Herbalist
 
 job-alt-name-chef-sous-chef = Sous-chef
 job-alt-name-chef-line-cook = Line Cook
-job-alt-name-chef-lunch-server = { $gender ->
-    [female] Lunch Lady
-   *[other] Lunch Man
-}
+job-alt-name-chef-lunch-server = Lunch Server
 
 job-alt-name-chaplain-preacher = Preacher
 job-alt-name-chaplain-spiritual-advisor = Spiritual Advisor
 job-alt-name-chaplain-shrine-keeper = Shrine Keeper
 
 job-alt-name-clown-jester = Jester
-job-alt-name-clown-bouffon = Bouffon
+job-alt-name-clown-bouffon = Buffoon
 
 job-alt-name-mime-pantomimist = Pantomimist
 job-alt-name-mime-silent-actor = Silent Actor
@@ -131,7 +121,7 @@ job-alt-name-janitor-rat-catcher = Rat Catcher
 job-alt-name-lawyer-attorney = Attorney
 job-alt-name-lawyer-legal-representative = Legal Representative
 
-job-alt-name-librarian-clerk = Clerk
+job-alt-name-librarian-archivist = Archivist
 job-alt-name-librarian-writer = Writer
 job-alt-name-librarian-professor = Professor
 job-alt-name-librarian-curator = Curator
@@ -161,15 +151,12 @@ job-alt-name-radio-host-broadcaster = Broadcaster
 
 job-alt-name-passenger-visitor = Visitor
 job-alt-name-passenger-entrepreneur = Entrepreneur
-job-alt-name-passenger-off-duty = Off-duty Crew
 job-alt-name-passenger-civilian = Civilian
 job-alt-name-passenger-freelancer = Freelancer
 job-alt-name-passenger-tourist = Tourist
 job-alt-name-passenger-traveler = Traveler
 
-job-alt-name-station-ai-overseer = Automated Overseer
+job-alt-name-station-ai-automated-supervisor = Automated Supervisor
 job-alt-name-station-ai-station-intelligence = Station Intelligence
 
-job-alt-name-borg-cyborg = Cyborg
-job-alt-name-borg-android = Android
 job-alt-name-borg-robot = Robot

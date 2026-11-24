@@ -104,9 +104,9 @@
   name: job-alt-name-lawyer-legal-representative
 
 - type: jobAlternateTitle
-  id: AltTitleLibrarianClerk
+  id: AltTitleLibrarianArchivist
   job: Librarian
-  name: job-alt-name-librarian-clerk
+  name: job-alt-name-librarian-archivist
 
 - type: jobAlternateTitle
   id: AltTitleLibrarianWriter

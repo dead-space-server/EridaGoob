@@ -1,22 +1,12 @@
 - type: jobAlternateTitle
-  id: AltTitleStationAiOverseer
+  id: AltTitleStationAiAutomatedSupervisor
   job: StationAi
-  name: job-alt-name-station-ai-overseer
+  name: job-alt-name-station-ai-automated-supervisor
 
 - type: jobAlternateTitle
   id: AltTitleStationAiStationIntelligence
   job: StationAi
   name: job-alt-name-station-ai-station-intelligence
-
-- type: jobAlternateTitle
-  id: AltTitleBorgCyborg
-  job: Borg
-  name: job-alt-name-borg-cyborg
-
-- type: jobAlternateTitle
-  id: AltTitleBorgAndroid
-  job: Borg
-  name: job-alt-name-borg-android
 
 - type: jobAlternateTitle
   id: AltTitleBorgRobot

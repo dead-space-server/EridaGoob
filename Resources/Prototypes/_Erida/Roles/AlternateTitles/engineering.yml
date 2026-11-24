@@ -4,11 +4,6 @@
   name: job-alt-name-chief-engineer-head-of-engineering
 
 - type: jobAlternateTitle
-  id: AltTitleChiefEngineerForeman
-  job: ChiefEngineer
-  name: job-alt-name-chief-engineer-foreman
-
-- type: jobAlternateTitle
   id: AltTitleChiefEngineerSupervisor
   job: ChiefEngineer
   name: job-alt-name-chief-engineer-supervisor
@@ -47,11 +42,6 @@
   id: AltTitleAtmosphericTechnicianFireSuppression
   job: AtmosphericTechnician
   name: job-alt-name-atmospheric-technician-fire-suppression
-
-- type: jobAlternateTitle
-  id: AltTitleAtmosphericTechnicianFirefighter
-  job: AtmosphericTechnician
-  name: job-alt-name-atmospheric-technician-firefighter
 
 - type: jobAlternateTitle
   id: AltTitleAtmosphericTechnicianGasSynthesis
