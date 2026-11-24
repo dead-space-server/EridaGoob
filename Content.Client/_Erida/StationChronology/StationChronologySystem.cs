@@ -2,30 +2,48 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Erida.CCVar;
 using Content.Shared._Erida.StationChronology;
 using Robust.Client.Graphics;
+using Robust.Shared.Configuration;
 
 namespace Content.Client._Erida.StationChronology;
 
 public sealed class StationChronology : EntitySystem
 {
-    [Dependency] private readonly IOverlayManager _overMan = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IOverlayManager _overMan = default!;
 
     private StationCreditsOverlay _overlay = default!;
-
+    private bool _enabled = true;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeNetworkEvent<ShowStationCreditsEvent>(OnShowStationCreditsEvent);
-
         _overlay = new StationCreditsOverlay();
         _overMan.AddOverlay(_overlay);
+
+        SubscribeNetworkEvent<ShowStationCreditsEvent>(OnShowStationCreditsEvent);
+        Subs.CVar(_cfg, ECCVars.RoundJoinAnimation, OnAnimationChanged, true);
+    }
+
+    private void OnAnimationChanged(int animation)
+    {
+        _enabled = animation == (int) RoundJoinAnimationType.StationCredits;
+
+        if (_enabled)
+            return;
+
+        _overlay.Reset();
+        _overlay.ResetDescription();
     }
 
     private void OnShowStationCreditsEvent(ShowStationCreditsEvent args)
     {
+        if (!_enabled)
+            return;
+
         _overlay.Reset();
         _overlay.ResetDescription();
 
