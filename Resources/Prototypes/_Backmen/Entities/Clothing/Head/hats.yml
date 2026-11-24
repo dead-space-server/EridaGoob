@@ -1,7 +1,7 @@
 ﻿# SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: [ClothingHeadHatArmoredCC, ClothingHeadBase] # Erida edit
   id: ClothingHeadHatBlackBeretBlueShield
   name: officer "Blueshield" black beret
   description: The officers' “Blueshield” black beret, instills a sense of tighter security.
@@ -10,12 +10,6 @@
     sprite: _Erida/Clothing/Head/Hats/blueberet.rsi
   - type: Clothing
     sprite: _Erida/Clothing/Head/Hats/blueberet.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
 
 - type: entity
   parent: ClothingHeadHatBlackBeretBlueShield

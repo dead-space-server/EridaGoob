@@ -125,7 +125,7 @@ selectable-set-blueshield-revolver-description =
 selectable-set-blueshield-dragon-name = Набор Кунг-Фу
 selectable-set-blueshield-dragon-description =
     Иногда приходится замарать руки.
-    Содержит в себя: книгу, способную обучить
+    Включает в себя: книгу, способную обучить
     продвинутому боевому искусству Кунг-Фу.
 selectable-set-blueshield-cqc-name = Набор для ближнего боя
 selectable-set-blueshield-cqc-description =
