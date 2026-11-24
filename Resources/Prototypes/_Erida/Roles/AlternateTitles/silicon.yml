@@ -1,0 +1,24 @@
+- type: jobAlternateTitle
+  id: AltTitleStationAiOverseer
+  job: StationAi
+  name: job-alt-name-station-ai-overseer
+
+- type: jobAlternateTitle
+  id: AltTitleStationAiStationIntelligence
+  job: StationAi
+  name: job-alt-name-station-ai-station-intelligence
+
+- type: jobAlternateTitle
+  id: AltTitleBorgCyborg
+  job: Borg
+  name: job-alt-name-borg-cyborg
+
+- type: jobAlternateTitle
+  id: AltTitleBorgAndroid
+  job: Borg
+  name: job-alt-name-borg-android
+
+- type: jobAlternateTitle
+  id: AltTitleBorgRobot
+  job: Borg
+  name: job-alt-name-borg-robot

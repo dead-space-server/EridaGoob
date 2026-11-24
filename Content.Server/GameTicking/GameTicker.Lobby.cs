@@ -116,7 +116,7 @@ namespace Content.Server.GameTicking
 
         private TickerLobbyInfoEvent GetInfoMsg()
         {
-            return new(GetInfoText());
+            return CreateLobbyInfoMsg(GetInfoText()); // Erida edit
         }
 
         private void UpdateLateJoinStatus()
@@ -172,6 +172,8 @@ namespace Content.Server.GameTicking
                 RaiseNetworkEvent(GetStatusMsg(playerSession), playerSession.Channel);
                 RaiseLocalEvent(new PlayerToggleReadyEvent(playerSession)); //imp edit, for preround ready manifest // imp ready manifest
             }
+
+            _lobbyInfoQueued = true; // Erida edit
         }
 
         public void ToggleReady(ICommonSession player, bool ready)

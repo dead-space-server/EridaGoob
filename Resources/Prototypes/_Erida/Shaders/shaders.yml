@@ -2,3 +2,8 @@
   id: EridaMarkingGradient
   kind: source
   path: "/Textures/_Erida/Shaders/marking_gradient.swsl"
+
+- type: shader
+  id: EridaGaussianBlur
+  kind: source
+  path: "/Textures/_Erida/Shaders/gaussian_blur.swsl"

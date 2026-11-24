@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 
+using Content.Client._Erida.Manifest;
 using Content.Client.Eui;
 using Content.Shared.CrewManifest;
 using Content.Shared.Eui;
@@ -10,7 +11,7 @@ namespace Content.Client.CrewManifest;
 [UsedImplicitly]
 public sealed class CrewManifestEui : BaseEui
 {
-    private readonly CrewManifestUi _window;
+    private readonly EridaCrewManifestWindow _window; // Erida edit
 
     public CrewManifestEui()
     {

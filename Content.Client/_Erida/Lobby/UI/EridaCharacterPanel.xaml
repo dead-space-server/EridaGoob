@@ -1,0 +1,51 @@
+<Control xmlns="https://spacestation14.io"
+         xmlns:nc="clr-namespace:Content.Client._Erida.UserInterface.Controls">
+    <BoxContainer Orientation="Vertical">
+        <BoxContainer Name="Loaded"
+                      Orientation="Vertical"
+                      SeparationOverride="8"
+                      Visible="False">
+            <nc:ShapedPanel StyleClasses="EridaCard" Orientation="Vertical">
+                <SpriteView Name="PreviewView"
+                            OverrideDirection="South"
+                            Scale="4 4"
+                            MaxSize="112 112"
+                            Stretch="Fill"
+                            HorizontalAlignment="Center"
+                            Margin="0 8" />
+            </nc:ShapedPanel>
+
+            <BoxContainer Orientation="Vertical">
+                <Label Name="NameLabel"
+                       StyleClasses="EridaTitle"
+                       Align="Center"
+                       ClipText="True" />
+                <Label Name="DetailsLabel"
+                       StyleClasses="EridaTextMuted"
+                       Align="Center" />
+            </BoxContainer>
+
+            <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                <nc:ShapedButton Name="CharacterSetup"
+                                 StyleClasses="EridaButtonTonal"
+                                 HorizontalExpand="True"
+                                 Text="{Loc 'erida-lobby-character-customize'}" />
+                <nc:ShapedButton Name="Currency"
+                                 StyleClasses="EridaButtonTonal"
+                                 HorizontalExpand="True"
+                                 Text="{Loc 'gs-balanceui-shop-label'}" />
+            </BoxContainer>
+
+            <nc:ShapedButton Name="PatronPerks"
+                             Access="Public"
+                             StyleClasses="EridaButtonGhost"
+                             Visible="False"
+                             Text="{Loc 'rmc-ui-patron-perks'}" />
+        </BoxContainer>
+
+        <Label Name="Unloaded"
+               StyleClasses="EridaTextMuted"
+               Align="Center"
+               Text="{Loc 'lobby-character-preview-panel-unloaded-preferences-label'}" />
+    </BoxContainer>
+</Control>

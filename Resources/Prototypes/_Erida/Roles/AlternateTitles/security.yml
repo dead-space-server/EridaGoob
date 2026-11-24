@@ -1,0 +1,54 @@
+- type: jobAlternateTitle
+  id: AltTitleHeadOfSecuritySecurityCommander
+  job: HeadOfSecurity
+  name: job-alt-name-head-of-security-security-commander
+
+- type: jobAlternateTitle
+  id: AltTitleHeadOfSecurityChiefWarden
+  job: HeadOfSecurity
+  name: job-alt-name-head-of-security-chief-warden
+
+- type: jobAlternateTitle
+  id: AltTitleHeadOfSecuritySheriff
+  job: HeadOfSecurity
+  name: job-alt-name-head-of-security-sheriff
+
+- type: jobAlternateTitle
+  id: AltTitleWardenDispatcher
+  job: Warden
+  name: job-alt-name-warden-dispatcher
+
+- type: jobAlternateTitle
+  id: AltTitleWardenJailer
+  job: Warden
+  name: job-alt-name-warden-jailer
+
+- type: jobAlternateTitle
+  id: AltTitleWardenDungeonMaster
+  job: Warden
+  name: job-alt-name-warden-dungeon-master
+
+- type: jobAlternateTitle
+  id: AltTitleSecurityOfficerHallMonitor
+  job: SecurityOfficer
+  name: job-alt-name-security-officer-hall-monitor
+
+- type: jobAlternateTitle
+  id: AltTitleSecurityOfficerOperative
+  job: SecurityOfficer
+  name: job-alt-name-security-officer-operative
+
+- type: jobAlternateTitle
+  id: AltTitleSecurityOfficerSpecialist
+  job: SecurityOfficer
+  name: job-alt-name-security-officer-specialist
+
+- type: jobAlternateTitle
+  id: AltTitleDetectiveForensicInvestigator
+  job: Detective
+  name: job-alt-name-detective-forensic-investigator
+
+- type: jobAlternateTitle
+  id: AltTitleSecurityCadetTrainee
+  job: SecurityCadet
+  name: job-alt-name-security-cadet-trainee

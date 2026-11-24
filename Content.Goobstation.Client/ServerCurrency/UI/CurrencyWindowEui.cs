@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Client._Erida.ServerCurrency;
 using Content.Client.Eui;
 using Content.Goobstation.Shared.ServerCurrency;
 using Content.Goobstation.Shared.ServerCurrency.UI;
@@ -9,10 +10,10 @@ namespace Content.Goobstation.Client.ServerCurrency.UI
 {
     public sealed class CurrencyEui : BaseEui
     {
-        private readonly CurrencyWindow _window;
+        private readonly EridaCurrencyWindow _window; // Erida edit
         public CurrencyEui()
         {
-            _window = new CurrencyWindow();
+            _window = new EridaCurrencyWindow(); // Erida edit
             _window.OnClose += () => SendMessage(new CurrencyEuiMsg.Close());
             _window.OnBuy += OnBuyMsg;
         }
