@@ -1062,6 +1062,7 @@ marking-cottonalt-hair_cottonalt = hair cottonalt
 marking-curly = Curly
 marking-curly-hair_curly = hair curly
 
+marking-dave = Dave
 marking-dave-hair_dave = hair dave
 
 marking-diagonal_bangs = Diagonal Bangs
