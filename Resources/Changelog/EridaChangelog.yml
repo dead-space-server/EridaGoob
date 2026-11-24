@@ -2248,3 +2248,26 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/108
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Tweak] Drake fixes'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: >-
+        Взаимодействия Пожать руку, Дать пять и Стукнуться кулачками, где второй
+        игрок должен ответить тем же жестом.
+    - type: Add
+      message: >-
+        Взаимодействия послать воздушный поцелуй, дать прикурить и дёрнуть за
+        хвост.
+    - type: Add
+      message: >-
+        Если вас разглядывает персонаж, стоящий перед вами или сбоку, вы это
+        замечаете.
+    - type: Add
+      message: >-
+        Временный статус, который видно при осмотре персонажа (ПКМ по себе
+        ->Задать статус).
+  id: 167
+  time: '2026-11-24T00:33:58.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/112
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] Roleplay features'
