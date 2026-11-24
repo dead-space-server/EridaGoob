@@ -17,6 +17,14 @@ public sealed partial class MiscTab
     {
         EridaTheme.AddOptions(Control);
         Control.AddOptionCheckBox(ECCVars.LobbyBackgroundRandom, LobbyBackgroundRandomCheckBox);
+        Control.AddOptionDropDown(ECCVars.RoundJoinAnimation, RoundJoinAnimationDropDown,
+        [
+            new OptionDropDownCVar<int>.ValueOption((int) RoundJoinAnimationType.Intro, Loc.GetString("ui-options-round-join-animation-intro")),
+            new OptionDropDownCVar<int>.ValueOption((int) RoundJoinAnimationType.StationCredits, Loc.GetString("ui-options-round-join-animation-station-credits")),
+            new OptionDropDownCVar<int>.ValueOption((int) RoundJoinAnimationType.None, Loc.GetString("ui-options-round-join-animation-none")),
+        ]);
+        Control.AddOptionCheckBox(ECCVars.InteractionParticles, InteractionParticlesCheckBox);
+        Control.AddOptionCheckBox(ECCVars.InHandInteractionParticles, InHandInteractionParticlesCheckBox);
 
         var backgrounds = EridaLobbyBackgrounds.GetAvailable(_prototypeManager);
         LobbyBackgroundDropDown.Visible = backgrounds.Count > 0;

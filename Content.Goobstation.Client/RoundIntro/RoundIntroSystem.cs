@@ -1,7 +1,7 @@
 using Content.Client.Gameplay;
 using Content.Client.Lobby;
-using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Shared.RoundIntro;
+using Content.Shared._Erida.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Roles;
 using Robust.Client.Graphics;
@@ -52,7 +52,7 @@ public sealed partial class RoundIntroSystem : EntitySystem
 
     private void OnJoinGameAttempt(ref ClientJoinGameAttemptEvent ev)
     {
-        if (!_cfg.GetCVar(GoobCVars.RoundIntroEnabled) || _state.CurrentState is not LobbyState)
+        if (_cfg.GetCVar(ECCVars.RoundJoinAnimation) != (int) RoundJoinAnimationType.Intro || _state.CurrentState is not LobbyState) // Erida edit
             return;
 
         ClearOverlay();

@@ -42,6 +42,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <CheckBox Name="LobbyBackgroundRandomCheckBox" Text="{Loc 'ui-options-lobby-background-random'}" />
                 <ui:OptionDropDown Name="LobbyBackgroundDropDown" Title="{Loc 'ui-options-lobby-background'}" />
                 <eoptions:EridaThemeOptions Name="EridaTheme" />
+                <Label Text="{Loc 'ui-options-animations-header'}"
+                       StyleClasses="LabelKeyText"/>
+                <ui:OptionDropDown Name="RoundJoinAnimationDropDown" Title="{Loc 'ui-options-round-join-animation'}" />
+                <CheckBox Name="InteractionParticlesCheckBox" Text="{Loc 'ui-options-interaction-particles'}" />
+                <CheckBox Name="InHandInteractionParticlesCheckBox" Text="{Loc 'ui-options-inhand-interaction-particles'}" />
                 <!-- Erida end -->
                 <!-- Goobstation Edit Start -->
                 <Label Text="{Loc 'ui-options-preferences'}"

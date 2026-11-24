@@ -43,4 +43,22 @@ public sealed partial class ECCVars
     /// </summary>
     public static readonly CVarDef<int> PreviewClothing =
         CVarDef.Create("erida.ui.preview_clothing", 0, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Whether interactions show the hand or item flying from the performer to the target.
+    /// </summary>
+    public static readonly CVarDef<bool> InteractionParticles =
+        CVarDef.Create("erida.ui.interaction_particles", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Whether using or picking up an item shows it popping up above the performer.
+    /// </summary>
+    public static readonly CVarDef<bool> InHandInteractionParticles =
+        CVarDef.Create("erida.ui.inhand_interaction_particles", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Which <see cref="RoundJoinAnimationType"/> is shown when joining a round.
+    /// </summary>
+    public static readonly CVarDef<int> RoundJoinAnimation =
+        CVarDef.Create("erida.ui.round_join_animation", (int) RoundJoinAnimationType.StationCredits, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

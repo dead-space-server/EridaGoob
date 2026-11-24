@@ -1,2 +1,9 @@
 ui-options-mouse-wheel-zoom = Can zoom using mouse wheel
 ui-options-function-zoom-mod = Camera zoom mod key (Mouse Wheel)
+ui-options-animations-header = Animations
+ui-options-interaction-particles = Show interaction animations
+ui-options-inhand-interaction-particles = Show the item above the character when picking up or using it
+ui-options-round-join-animation = Round join animation
+ui-options-round-join-animation-intro = Intro screen
+ui-options-round-join-animation-station-credits = Station name and date
+ui-options-round-join-animation-none = None
