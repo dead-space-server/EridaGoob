@@ -4,19 +4,14 @@
   name: job-alt-name-head-of-security-security-commander
 
 - type: jobAlternateTitle
-  id: AltTitleHeadOfSecurityChiefWarden
-  job: HeadOfSecurity
-  name: job-alt-name-head-of-security-chief-warden
-
-- type: jobAlternateTitle
   id: AltTitleHeadOfSecuritySheriff
   job: HeadOfSecurity
   name: job-alt-name-head-of-security-sheriff
 
 - type: jobAlternateTitle
-  id: AltTitleWardenDispatcher
+  id: AltTitleWardenBrigChief
   job: Warden
-  name: job-alt-name-warden-dispatcher
+  name: job-alt-name-warden-brig-chief
 
 - type: jobAlternateTitle
   id: AltTitleWardenJailer
@@ -24,19 +19,14 @@
   name: job-alt-name-warden-jailer
 
 - type: jobAlternateTitle
-  id: AltTitleWardenDungeonMaster
-  job: Warden
-  name: job-alt-name-warden-dungeon-master
+  id: AltTitleSecurityOfficerPatrolOfficer
+  job: SecurityOfficer
+  name: job-alt-name-security-officer-patrol-officer
 
 - type: jobAlternateTitle
-  id: AltTitleSecurityOfficerHallMonitor
+  id: AltTitleSecurityOfficerGuard
   job: SecurityOfficer
-  name: job-alt-name-security-officer-hall-monitor
-
-- type: jobAlternateTitle
-  id: AltTitleSecurityOfficerOperative
-  job: SecurityOfficer
-  name: job-alt-name-security-officer-operative
+  name: job-alt-name-security-officer-guard
 
 - type: jobAlternateTitle
   id: AltTitleSecurityOfficerSpecialist
