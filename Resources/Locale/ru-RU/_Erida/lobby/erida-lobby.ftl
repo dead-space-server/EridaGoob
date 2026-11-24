@@ -1,0 +1,55 @@
+erida-character-setup-characters = Персонажи
+erida-character-setup-new = Новый персонаж
+erida-character-setup-no-job = Без приоритетной роли
+erida-character-setup-slots = { $count } / { $max }
+erida-character-setup-title = Персонализация
+erida-late-join-no-jobs = Нет доступных ролей
+erida-late-join-no-stations = Нет станций для присоединения
+erida-lobby-button-bug-report = Баг-репорт
+erida-lobby-button-changelog = Обновления
+erida-lobby-button-discord-linked = Привязан
+erida-lobby-button-link-account = Привязка
+erida-lobby-character-customize = Персонализация
+erida-lobby-character-details = { $species } · { $age } { $age ->
+    [one] год
+    [few] года
+   *[other] лет
+}
+erida-lobby-phase-in-round = Идёт раунд
+erida-lobby-phase-preround = Подготовка к раунду
+erida-lobby-players-in-game = В раунде
+erida-lobby-players-in-lobby = В лобби
+erida-lobby-players-online = Онлайн
+erida-lobby-players-popup-title = Игроки
+erida-lobby-players-ready = Готовы
+erida-lobby-role-more = и ещё { $count }
+erida-lobby-role-none = Без приоритета
+erida-lobby-role-none-hint = Настройте приоритеты в редакторе персонажа
+erida-lobby-role-popup-title = Приоритеты ролей
+erida-lobby-role-priority-high = Высокий приоритет
+erida-lobby-role-priority-low = Низкий приоритет
+erida-lobby-role-priority-medium = Средний приоритет
+erida-lobby-round-time = Время раунда: { $hours } ч. { $minutes } мин
+erida-lobby-server-name = Erida
+erida-lobby-vote-dismiss = Скрыть голосование
+erida-observe-title = Наблюдение
+erida-options-lobby-chat-left = Чат слева в лобби
+erida-options-theme-accent = Акцентный цвет
+erida-options-theme-preview = Сгенерированная палитра
+erida-options-theme-transparency = Прозрачные панели
+erida-options-theme-transparency-amount = Прозрачность панелей
+erida-profile-editor-file = Файл
+erida-profile-editor-naming-rules-short = Имена и описания должны соответствовать правилам сервера
+erida-profile-editor-saved = Сохранено
+erida-profile-editor-section-basic = Основное
+erida-profile-editor-section-colors = Цвета
+erida-ready-manifest-empty = Пока никто не готов
+erida-ready-manifest-summary = Готово игроков: { $count }
+erida-ready-manifest-title = Манифест готовых
+erida-save-panel-text = Сохранить изменения персонажа перед выходом?
+ui-lobby-background-next = Следующий фон
+ui-lobby-background-previous = Предыдущий фон
+ui-lobby-song-next = Следующий трек
+ui-lobby-song-pause = Пауза
+ui-lobby-song-previous = Предыдущий трек
+ui-lobby-song-resume = Продолжить

@@ -348,6 +348,7 @@ namespace Content.Shared.Preferences
                 new Dictionary<string, RoleLoadout>(other.Loadouts),
                 other.BarkVoice) // Goob Station - Barks
         {
+            JobAlternateTitles = new(other.JobAlternateTitles); // Erida edit
         }
 
         /// <summary>
@@ -767,6 +768,7 @@ namespace Content.Shared.Preferences
             if (NsfwLinksFlavorText != other.NsfwLinksFlavorText) return false;
             if (NsfwTagsFlavorText != other.NsfwTagsFlavorText) return false;
             // Orion-End
+            if (!JobAltTitlesEqual(other)) return false; // Erida edit
             return Appearance.MemberwiseEquals(other.Appearance);
         }
 
@@ -1073,6 +1075,7 @@ namespace Content.Shared.Preferences
             }
 
             PreferenceUnavailable = prefsUnavailableMode;
+            ValidateJobAltTitles(prototypeManager); // Erida edit
 
             _antagPreferences.Clear();
             _antagPreferences.UnionWith(antags);

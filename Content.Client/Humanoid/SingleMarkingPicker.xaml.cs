@@ -150,6 +150,8 @@ public sealed partial class SingleMarkingPicker : BoxContainer
         {
             PopulateList(args.Text);
         };
+
+        InitializeMarkingTiles(); // Erida edit
     }
 
     public void UpdateData(List<Marking> markings, string species, int totalPoints)
@@ -205,6 +207,8 @@ public sealed partial class SingleMarkingPicker : BoxContainer
                 _ignoreItemSelected = false;
             }
         }
+
+        UpdateMarkingTiles(); // Erida edit
     }
 
     private void PopulateColors()
@@ -286,6 +290,7 @@ public sealed partial class SingleMarkingPicker : BoxContainer
         RemoveButton.HorizontalExpand = Slot < 0;
         AddButton.Disabled = PointsLeft == 0 && _totalPoints > -1 ;
         RemoveButton.Disabled = PointsUsed == 0;
+        UpdateSlotButtons(); // Erida edit
         SlotSelector.Clear();
 
         if (Slot < 0)

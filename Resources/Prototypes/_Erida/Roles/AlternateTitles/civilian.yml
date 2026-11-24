@@ -1,0 +1,34 @@
+- type: jobAlternateTitle
+  id: AltTitlePassengerVisitor
+  job: Passenger
+  name: job-alt-name-passenger-visitor
+
+- type: jobAlternateTitle
+  id: AltTitlePassengerEntrepreneur
+  job: Passenger
+  name: job-alt-name-passenger-entrepreneur
+
+- type: jobAlternateTitle
+  id: AltTitlePassengerOffDuty
+  job: Passenger
+  name: job-alt-name-passenger-off-duty
+
+- type: jobAlternateTitle
+  id: AltTitlePassengerCivilian
+  job: Passenger
+  name: job-alt-name-passenger-civilian
+
+- type: jobAlternateTitle
+  id: AltTitlePassengerFreelancer
+  job: Passenger
+  name: job-alt-name-passenger-freelancer
+
+- type: jobAlternateTitle
+  id: AltTitlePassengerTourist
+  job: Passenger
+  name: job-alt-name-passenger-tourist
+
+- type: jobAlternateTitle
+  id: AltTitlePassengerTraveler
+  job: Passenger
+  name: job-alt-name-passenger-traveler

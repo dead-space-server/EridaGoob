@@ -1,0 +1,70 @@
+<Control xmlns="https://spacestation14.io"
+         xmlns:nc="clr-namespace:Content.Client._Erida.UserInterface.Controls"
+         HorizontalExpand="True"
+         VerticalExpand="True">
+    <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+        <nc:ShapedPanel Name="SlotsPanel"
+                        StyleClasses="EridaPanel"
+                        Orientation="Vertical"
+                        SetWidth="320">
+            <BoxContainer Orientation="Vertical"
+                          VerticalExpand="True"
+                          Margin="8"
+                          SeparationOverride="6">
+                <BoxContainer Orientation="Horizontal" Margin="10 6 10 2">
+                    <Label StyleClasses="EridaTitle"
+                           HorizontalExpand="True"
+                           Text="{Loc 'erida-character-setup-characters'}" />
+                    <Label Name="SlotCount" StyleClasses="EridaTextMuted" VerticalAlignment="Center" />
+                </BoxContainer>
+
+                <nc:ShapedPanel StyleClasses="EridaSection" Orientation="Vertical" VerticalExpand="True">
+                    <ScrollContainer VerticalExpand="True" HScrollEnabled="False" Margin="6">
+                        <BoxContainer Name="Characters" Orientation="Vertical" SeparationOverride="4" />
+                    </ScrollContainer>
+                </nc:ShapedPanel>
+
+                <nc:ShapedButton Name="NewCharacter"
+                                 StyleClasses="EridaButtonFilled"
+                                 MinHeight="34"
+                                 Text="{Loc 'erida-character-setup-new'}" />
+
+                <BoxContainer Orientation="Vertical" SeparationOverride="2">
+                    <nc:ShapedButton Name="StatsButton"
+                                     StyleClasses="EridaButtonGhost"
+                                     Text="{Loc 'character-setup-gui-character-setup-stats-button'}" />
+                    <nc:ShapedButton Name="RulesButton"
+                                     StyleClasses="EridaButtonGhost"
+                                     Text="{Loc 'character-setup-gui-character-setup-rules-button'}" />
+                    <nc:ShapedButton Name="AdminRemarksButton"
+                                     StyleClasses="EridaButtonGhost"
+                                     Visible="False"
+                                     Text="{Loc 'character-setup-gui-character-setup-adminremarks-button'}" />
+                </BoxContainer>
+            </BoxContainer>
+        </nc:ShapedPanel>
+
+        <nc:ShapedPanel Name="EditorPanel"
+                        StyleClasses="EridaPanel"
+                        Orientation="Vertical"
+                        HorizontalExpand="True">
+            <BoxContainer Orientation="Horizontal" Margin="18 10 10 0" MinHeight="36">
+                <TextureRect Name="TitleIcon"
+                             StyleClasses="EridaIcon"
+                             Stretch="KeepAspectCentered"
+                             SetSize="20 20"
+                             VerticalAlignment="Center"
+                             Margin="0 0 8 0" />
+                <Label StyleClasses="EridaTitle"
+                       HorizontalExpand="True"
+                       VerticalAlignment="Center"
+                       Text="{Loc 'erida-character-setup-title'}" />
+                <nc:ShapedButton Name="CloseButtonControl"
+                                 StyleClasses="EridaButtonTonal"
+                                 VerticalAlignment="Center"
+                                 Text="{Loc 'character-setup-gui-character-setup-close-button'}" />
+            </BoxContainer>
+            <BoxContainer Name="CharEditor" HorizontalExpand="True" VerticalExpand="True" />
+        </nc:ShapedPanel>
+    </BoxContainer>
+</Control>

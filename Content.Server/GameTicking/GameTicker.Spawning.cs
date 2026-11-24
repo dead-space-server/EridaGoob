@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Erida.Roles;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
@@ -37,6 +38,7 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly SharedJobSystem _jobs = default!;
         [Dependency] private readonly AdminSystem _admin = default!;
+        [Dependency] private readonly JobAlternateTitleSystem _jobAltTitles = default!; // Erida edit
 
         public static readonly EntProtoId ObserverPrototypeName = "MobObserver";
         public static readonly EntProtoId AdminObserverPrototypeName = "AdminObserver";
@@ -257,6 +259,7 @@ namespace Content.Server.GameTicking
             }
 
             DoSpawn(player, character, station, jobId, silent, out var mob, out var jobPrototype, out var jobName);
+            var announcedJobName = _jobAltTitles.GetJobName(character, jobId, jobName); // Erida edit
 
             if (lateJoin && !silent)
             {
@@ -266,7 +269,7 @@ namespace Content.Server.GameTicking
                         Loc.GetString("latejoin-arrival-announcement-special",
                             ("character", MetaData(mob).EntityName),
                             ("entity", mob),
-                            ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))),
+                            ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(announcedJobName))), // Erida edit
                         Loc.GetString("latejoin-arrival-sender"),
                         playDefaultSound: false,
                         colorOverride: Color.Gold);
@@ -277,7 +280,7 @@ namespace Content.Server.GameTicking
                         Loc.GetString("latejoin-arrival-announcement",
                             ("character", MetaData(mob).EntityName),
                             ("entity", mob),
-                            ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))),
+                            ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(announcedJobName))), // Erida edit
                         Loc.GetString("latejoin-arrival-sender"),
                         playDefaultSound: false);
                 }

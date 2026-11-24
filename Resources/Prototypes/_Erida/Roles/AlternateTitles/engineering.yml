@@ -1,0 +1,74 @@
+- type: jobAlternateTitle
+  id: AltTitleChiefEngineerHeadOfEngineering
+  job: ChiefEngineer
+  name: job-alt-name-chief-engineer-head-of-engineering
+
+- type: jobAlternateTitle
+  id: AltTitleChiefEngineerForeman
+  job: ChiefEngineer
+  name: job-alt-name-chief-engineer-foreman
+
+- type: jobAlternateTitle
+  id: AltTitleChiefEngineerSupervisor
+  job: ChiefEngineer
+  name: job-alt-name-chief-engineer-supervisor
+
+- type: jobAlternateTitle
+  id: AltTitleStationEngineerMaintenanceTechnician
+  job: StationEngineer
+  name: job-alt-name-station-engineer-maintenance-technician
+
+- type: jobAlternateTitle
+  id: AltTitleStationEngineerMechanic
+  job: StationEngineer
+  name: job-alt-name-station-engineer-mechanic
+
+- type: jobAlternateTitle
+  id: AltTitleStationEngineerElectrician
+  job: StationEngineer
+  name: job-alt-name-station-engineer-electrician
+
+- type: jobAlternateTitle
+  id: AltTitleStationEngineerEngineOperator
+  job: StationEngineer
+  name: job-alt-name-station-engineer-engine-operator
+
+- type: jobAlternateTitle
+  id: AltTitleStationEngineerDamageControl
+  job: StationEngineer
+  name: job-alt-name-station-engineer-damage-control
+
+- type: jobAlternateTitle
+  id: AltTitleStationEngineerArchitect
+  job: StationEngineer
+  name: job-alt-name-station-engineer-architect
+
+- type: jobAlternateTitle
+  id: AltTitleAtmosphericTechnicianFireSuppression
+  job: AtmosphericTechnician
+  name: job-alt-name-atmospheric-technician-fire-suppression
+
+- type: jobAlternateTitle
+  id: AltTitleAtmosphericTechnicianFirefighter
+  job: AtmosphericTechnician
+  name: job-alt-name-atmospheric-technician-firefighter
+
+- type: jobAlternateTitle
+  id: AltTitleAtmosphericTechnicianGasSynthesis
+  job: AtmosphericTechnician
+  name: job-alt-name-atmospheric-technician-gas-synthesis
+
+- type: jobAlternateTitle
+  id: AltTitleAtmosphericTechnicianLifeSupport
+  job: AtmosphericTechnician
+  name: job-alt-name-atmospheric-technician-life-support
+
+- type: jobAlternateTitle
+  id: AltTitleTechnicalAssistantApprentice
+  job: TechnicalAssistant
+  name: job-alt-name-technical-assistant-apprentice
+
+- type: jobAlternateTitle
+  id: AltTitleTechnicalAssistantTrainee
+  job: TechnicalAssistant
+  name: job-alt-name-technical-assistant-trainee

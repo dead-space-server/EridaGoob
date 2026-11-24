@@ -1,0 +1,44 @@
+- type: jobAlternateTitle
+  id: AltTitleResearchDirectorResearchLead
+  job: ResearchDirector
+  name: job-alt-name-research-director-research-lead
+
+- type: jobAlternateTitle
+  id: AltTitleResearchDirectorScienceDirector
+  job: ResearchDirector
+  name: job-alt-name-research-director-science-director
+
+- type: jobAlternateTitle
+  id: AltTitleScientistXenoarchaeologist
+  job: Scientist
+  name: job-alt-name-scientist-xenoarchaeologist
+
+- type: jobAlternateTitle
+  id: AltTitleScientistAnomalyResearcher
+  job: Scientist
+  name: job-alt-name-scientist-anomaly-researcher
+
+- type: jobAlternateTitle
+  id: AltTitleScientistHardwareTechnician
+  job: Scientist
+  name: job-alt-name-scientist-hardware-technician
+
+- type: jobAlternateTitle
+  id: AltTitleResearchAssistantLabIntern
+  job: ResearchAssistant
+  name: job-alt-name-research-assistant-lab-intern
+
+- type: jobAlternateTitle
+  id: AltTitleResearchAssistantTrainee
+  job: ResearchAssistant
+  name: job-alt-name-research-assistant-trainee
+
+- type: jobAlternateTitle
+  id: AltTitleRoboticistMechatronics
+  job: Roboticist
+  name: job-alt-name-roboticist-mechatronics
+
+- type: jobAlternateTitle
+  id: AltTitleRoboticistCyborgTechnician
+  job: Roboticist
+  name: job-alt-name-roboticist-cyborg-technician

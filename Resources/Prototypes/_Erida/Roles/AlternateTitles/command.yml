@@ -1,0 +1,34 @@
+- type: jobAlternateTitle
+  id: AltTitleCaptainStationManager
+  job: Captain
+  name: job-alt-name-captain-station-manager
+
+- type: jobAlternateTitle
+  id: AltTitleCaptainCommandingOfficer
+  job: Captain
+  name: job-alt-name-captain-commanding-officer
+
+- type: jobAlternateTitle
+  id: AltTitleHeadOfPersonnelPersonnelCoordinator
+  job: HeadOfPersonnel
+  name: job-alt-name-head-of-personnel-personnel-coordinator
+
+- type: jobAlternateTitle
+  id: AltTitleHeadOfPersonnelHrOfficer
+  job: HeadOfPersonnel
+  name: job-alt-name-head-of-personnel-hr-officer
+
+- type: jobAlternateTitle
+  id: AltTitleNanotrasenRepresentativeCorporateLiaison
+  job: NanotrasenRepresentative
+  name: job-alt-name-nanotrasen-representative-corporate-liaison
+
+- type: jobAlternateTitle
+  id: AltTitleNanotrasenRepresentativeCorporateAuditor
+  job: NanotrasenRepresentative
+  name: job-alt-name-nanotrasen-representative-corporate-auditor
+
+- type: jobAlternateTitle
+  id: AltTitleNanotrasenRepresentativeConsultant
+  job: NanotrasenRepresentative
+  name: job-alt-name-nanotrasen-representative-consultant

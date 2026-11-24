@@ -5,7 +5,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 <tabs:MiscTab xmlns="https://spacestation14.io"
               xmlns:tabs="clr-namespace:Content.Client.Options.UI.Tabs"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-              xmlns:ui="clr-namespace:Content.Client.Options.UI">
+              xmlns:ui="clr-namespace:Content.Client.Options.UI"
+              xmlns:eoptions="clr-namespace:Content.Client._Erida.Options"> <!-- Erida edit -->
     <BoxContainer Orientation="Vertical">
         <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
             <BoxContainer Orientation="Vertical" Margin="8 8 8 8" VerticalExpand="True">
@@ -40,6 +41,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                        StyleClasses="LabelKeyText"/>
                 <CheckBox Name="LobbyBackgroundRandomCheckBox" Text="{Loc 'ui-options-lobby-background-random'}" />
                 <ui:OptionDropDown Name="LobbyBackgroundDropDown" Title="{Loc 'ui-options-lobby-background'}" />
+                <eoptions:EridaThemeOptions Name="EridaTheme" />
                 <!-- Erida end -->
                 <!-- Goobstation Edit Start -->
                 <Label Text="{Loc 'ui-options-preferences'}"

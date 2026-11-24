@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Client._Erida.Lobby.UI;
 using Content.Client.Guidebook;
 using Content.Client.Humanoid;
 using Content.Client.Inventory;
@@ -45,14 +46,14 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     [UISystemDependency] private readonly StationSpawningSystem _spawn = default!;
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
 
-    private CharacterSetupGui? _characterSetup;
+    private EridaCharacterSetup? _characterSetup; // Erida edit
     private HumanoidProfileEditor? _profileEditor;
-    private CharacterSetupGuiSavePanel? _savePanel;
+    private EridaSavePanel? _savePanel; // Erida edit
 
     /// <summary>
     /// This is the characher preview panel in the chat. This should only update if their character updates.
     /// </summary>
-    private LobbyCharacterPreviewPanel? PreviewPanel => GetLobbyPreview();
+    private EridaCharacterPanel? PreviewPanel => GetLobbyPreview(); // Erida edit
 
     /// <summary>
     /// This is the modified profile currently being edited.
@@ -79,7 +80,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         _configurationManager.OnValueChanged(CCVars.GameRoleWhitelist, _ => RefreshProfileEditor());
     }
 
-    private LobbyCharacterPreviewPanel? GetLobbyPreview()
+    private EridaCharacterPanel? GetLobbyPreview() // Erida edit
     {
         if (_stateManager.CurrentState is LobbyState lobby)
         {
@@ -185,13 +186,13 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         if (character is not HumanoidCharacterProfile humanoid)
         {
             PreviewPanel.SetSprite(EntityUid.Invalid);
-            PreviewPanel.SetSummaryText(string.Empty);
+            PreviewPanel.SetProfile(null); // Erida edit
             return;
         }
 
         var dummy = LoadProfileEntity(humanoid, null, true);
         PreviewPanel.SetSprite(dummy);
-        PreviewPanel.SetSummaryText(humanoid.Summary);
+        PreviewPanel.SetProfile(humanoid); // Erida edit
     }
 
     private void RefreshProfileEditor()
@@ -236,7 +237,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         if (_savePanel is { IsOpen: true })
             return;
 
-        _savePanel = new CharacterSetupGuiSavePanel();
+        _savePanel = new EridaSavePanel(); // Erida edit
 
         _savePanel.SaveButton.OnPressed += _ =>
         {
@@ -257,7 +258,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         _savePanel.OpenCentered();
     }
 
-    private (CharacterSetupGui, HumanoidProfileEditor) EnsureGui()
+    private (EridaCharacterSetup, HumanoidProfileEditor) EnsureGui() // Erida edit
     {
         if (_characterSetup != null && _profileEditor != null)
         {
@@ -280,7 +281,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
 
         _profileEditor.OnOpenGuidebook += _guide.OpenHelp;
 
-        _characterSetup = new CharacterSetupGui(_profileEditor);
+        _characterSetup = new EridaCharacterSetup(_profileEditor); // Erida edit
 
         _characterSetup.CloseButton.OnPressed += _ =>
         {

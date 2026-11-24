@@ -10,6 +10,11 @@ public sealed class DiscordLinkingSystem : EntitySystem
 {
     public bool IsVerified { get; private set; }
 
+    /// <summary>
+    /// Raised when the server answers a verification status request.
+    /// </summary>
+    public event Action? VerifiedChanged;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -20,6 +25,7 @@ public sealed class DiscordLinkingSystem : EntitySystem
     private void OnVerifyStatusResponse(VerifyStatusResponse msg)
     {
         IsVerified = msg.Verified;
+        VerifiedChanged?.Invoke();
     }
 
     public void RequestVerificationStatus()

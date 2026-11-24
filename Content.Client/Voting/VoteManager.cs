@@ -27,7 +27,7 @@ namespace Content.Client.Voting
         event Action CanCallStandardVotesChanged;
     }
 
-    public sealed class VoteManager : IVoteManager
+    public sealed partial class VoteManager : IVoteManager // Erida edit
     {
         [Dependency] private readonly IAudioManager _audio = default!;
         [Dependency] private readonly IBaseClient _client = default!;
@@ -167,6 +167,7 @@ namespace Content.Client.Voting
                     _votePopups.Remove(voteId);
                 }
 
+                ActiveVotesChanged?.Invoke(); // Erida edit
                 return;
             }
 
@@ -188,6 +189,11 @@ namespace Content.Client.Voting
             {
                 existingVote.Entries[i].Votes = message.Options[i].votes;
             }
+
+            // Erida start
+            if (@new)
+                ActiveVotesChanged?.Invoke();
+            // Erida end
 
             if (@new && _popupContainer != null)
             {

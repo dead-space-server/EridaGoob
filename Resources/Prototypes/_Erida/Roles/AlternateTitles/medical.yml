@@ -1,0 +1,89 @@
+- type: jobAlternateTitle
+  id: AltTitleChiefMedicalOfficerMedicalDirector
+  job: ChiefMedicalOfficer
+  name: job-alt-name-chief-medical-officer-medical-director
+
+- type: jobAlternateTitle
+  id: AltTitleChiefMedicalOfficerHeadPhysician
+  job: ChiefMedicalOfficer
+  name: job-alt-name-chief-medical-officer-head-physician
+
+- type: jobAlternateTitle
+  id: AltTitleChiefMedicalOfficerWardSupervisor
+  job: ChiefMedicalOfficer
+  name: job-alt-name-chief-medical-officer-ward-supervisor
+
+- type: jobAlternateTitle
+  id: AltTitleMedicalDoctorSurgeon
+  job: MedicalDoctor
+  name: job-alt-name-medical-doctor-surgeon
+
+- type: jobAlternateTitle
+  id: AltTitleMedicalDoctorNurse
+  job: MedicalDoctor
+  name: job-alt-name-medical-doctor-nurse
+
+- type: jobAlternateTitle
+  id: AltTitleMedicalDoctorPhysician
+  job: MedicalDoctor
+  name: job-alt-name-medical-doctor-physician
+
+- type: jobAlternateTitle
+  id: AltTitleChemistPharmacist
+  job: Chemist
+  name: job-alt-name-chemist-pharmacist
+
+- type: jobAlternateTitle
+  id: AltTitleChemistLabTechnician
+  job: Chemist
+  name: job-alt-name-chemist-lab-technician
+
+- type: jobAlternateTitle
+  id: AltTitleParamedicTraumaSpecialist
+  job: Paramedic
+  name: job-alt-name-paramedic-trauma-specialist
+
+- type: jobAlternateTitle
+  id: AltTitleParamedicEmt
+  job: Paramedic
+  name: job-alt-name-paramedic-emt
+
+- type: jobAlternateTitle
+  id: AltTitleParamedicRescuer
+  job: Paramedic
+  name: job-alt-name-paramedic-rescuer
+
+- type: jobAlternateTitle
+  id: AltTitleMedicalInternJuniorDoctor
+  job: MedicalIntern
+  name: job-alt-name-medical-intern-junior-doctor
+
+- type: jobAlternateTitle
+  id: AltTitleMedicalInternResident
+  job: MedicalIntern
+  name: job-alt-name-medical-intern-resident
+
+- type: jobAlternateTitle
+  id: AltTitleVirologistDiseaseSpecialist
+  job: Virologist
+  name: job-alt-name-virologist-disease-specialist
+
+- type: jobAlternateTitle
+  id: AltTitleVirologistEpidemiologist
+  job: Virologist
+  name: job-alt-name-virologist-epidemiologist
+
+- type: jobAlternateTitle
+  id: AltTitlePsychologistTherapist
+  job: Psychologist
+  name: job-alt-name-psychologist-therapist
+
+- type: jobAlternateTitle
+  id: AltTitlePsychologistCounselor
+  job: Psychologist
+  name: job-alt-name-psychologist-counselor
+
+- type: jobAlternateTitle
+  id: AltTitlePsychologistPsychiatrist
+  job: Psychologist
+  name: job-alt-name-psychologist-psychiatrist

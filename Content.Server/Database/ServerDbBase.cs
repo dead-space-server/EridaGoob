@@ -319,7 +319,7 @@ namespace Content.Server.Database
                 traits.ToHashSet(),
                 loadouts,
                 barkVoice // Goob Station - Barks
-            );
+            ) { JobAlternateTitles = ParseJobAltTitles(profile) }; // Erida edit
         }
 
         private static Profile ConvertProfiles(HumanoidCharacterProfile humanoid, int slot, Profile? profile = null)
@@ -353,6 +353,7 @@ namespace Content.Server.Database
             profile.Height = humanoid.Height; // Goobstation: port EE height/width sliders
             profile.Width = humanoid.Width; // Goobstation: port EE height/width sliders
             profile.CustomSpecies = humanoid.CustomSpecies; // Erida edit
+            profile.JobAlternateTitles = SerializeJobAltTitles(humanoid); // Erida edit
             profile.Age = humanoid.Age;
             profile.Sex = humanoid.Sex.ToString();
             profile.Gender = humanoid.Gender.ToString();

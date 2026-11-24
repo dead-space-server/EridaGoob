@@ -17,4 +17,10 @@ public sealed partial class ECCVars
     /// </summary>
     public static readonly CVarDef<float> DirectionalEmoteMaxDistance =
         CVarDef.Create("directional_emote.max_distance", 2.3f, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     Whether players can pick alternate job titles in the character editor.
+    /// </summary>
+    public static readonly CVarDef<bool> AlternateJobTitlesEnabled =
+        CVarDef.Create("ic.alternate_job_titles_enabled", true, CVar.SERVER | CVar.REPLICATED);
 }

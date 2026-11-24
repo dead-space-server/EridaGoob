@@ -139,6 +139,7 @@ namespace Content.Client.GameTicking.Managers
         private void LobbyInfo(TickerLobbyInfoEvent message)
         {
             ServerInfoBlob = message.TextBlob;
+            ApplyEridaLobbyInfo(message); // Erida edit
 
             InfoBlobUpdated?.Invoke();
         }

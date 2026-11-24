@@ -15,6 +15,7 @@ public sealed partial class MiscTab
 {
     private void AddLobbyBackgroundOptions()
     {
+        EridaTheme.AddOptions(Control);
         Control.AddOptionCheckBox(ECCVars.LobbyBackgroundRandom, LobbyBackgroundRandomCheckBox);
 
         var backgrounds = EridaLobbyBackgrounds.GetAvailable(_prototypeManager);

@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -11,10 +12,10 @@ namespace Content.Server._Erida.Administration;
 
 public sealed partial class EridaServerApi
 {
-    public async Task<bool> RegisterLinkingCode(Guid user, Guid code)
+    public async Task<DiscordLinkingCodeStatus> RegisterLinkingCode(Guid user, Guid code)
     {
         if (!await EnsureActive())
-            return false;
+            return DiscordLinkingCodeStatus.Unavailable;
 
         try
         {
@@ -23,15 +24,22 @@ public sealed partial class EridaServerApi
 
             using var resp = await _http.SendAsync(req);
 
-            if (!resp.IsSuccessStatusCode)
-                _sawmill.Error($"Link code register failed: {(int) resp.StatusCode}");
+            if (resp.IsSuccessStatusCode)
+                return DiscordLinkingCodeStatus.Ok;
 
-            return resp.IsSuccessStatusCode;
+            if (resp.StatusCode == HttpStatusCode.Conflict
+                && (await resp.Content.ReadAsStringAsync()).Contains("ALREADY_LINKED"))
+            {
+                return DiscordLinkingCodeStatus.AlreadyLinked;
+            }
+
+            _sawmill.Error($"Link code register failed: {(int) resp.StatusCode}");
+            return DiscordLinkingCodeStatus.Error;
         }
         catch (Exception e)
         {
             _sawmill.Error($"Link code register failed: {e.Message}");
-            return false;
+            return DiscordLinkingCodeStatus.Unavailable;
         }
     }
 

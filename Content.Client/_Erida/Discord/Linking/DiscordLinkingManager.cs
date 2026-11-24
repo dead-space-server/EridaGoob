@@ -9,19 +9,18 @@ namespace Content.Client._Erida.Discord.Linking;
 
 public sealed class DiscordLinkingManager : IPostInjectInit
 {
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private INetManager _net = default!;
 
-    public event Action<Guid>? CodeReceived;
-    public event Action? Updated;
-
-    private void OnCode(DiscordLinkingCodeMsg message)
-    {
-        CodeReceived?.Invoke(message.Code);
-    }
+    public event Action<DiscordLinkingCodeStatus, Guid>? CodeReceived;
 
     void IPostInjectInit.PostInject()
     {
         _net.RegisterNetMessage<DiscordLinkingCodeMsg>(OnCode);
         _net.RegisterNetMessage<DiscordLinkingRequestMsg>();
+    }
+
+    private void OnCode(DiscordLinkingCodeMsg message)
+    {
+        CodeReceived?.Invoke(message.Status, message.Code);
     }
 }

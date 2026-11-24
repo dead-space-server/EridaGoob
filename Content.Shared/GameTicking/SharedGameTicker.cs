@@ -134,6 +134,14 @@ namespace Content.Shared.GameTicking
     {
         public string TextBlob { get; }
 
+        // Erida start
+        public string MapName { get; init; } = string.Empty;
+        public string ModeTitle { get; init; } = string.Empty;
+        public int PlayerCount { get; init; }
+        public int ReadyCount { get; init; }
+        public int InGameCount { get; init; }
+        // Erida end
+
         public TickerLobbyInfoEvent(string textBlob)
         {
             TextBlob = textBlob;

@@ -68,4 +68,4 @@ random_species_weights = ""
 ssd_sleep_time = 3600
 
 [voice]
-enabled = true
+enabled = false

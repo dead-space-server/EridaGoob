@@ -1,0 +1,189 @@
+- type: jobAlternateTitle
+  id: AltTitleBartenderMixologist
+  job: Bartender
+  name: job-alt-name-bartender-mixologist
+
+- type: jobAlternateTitle
+  id: AltTitleBartenderBarista
+  job: Bartender
+  name: job-alt-name-bartender-barista
+
+- type: jobAlternateTitle
+  id: AltTitleBartenderSommelier
+  job: Bartender
+  name: job-alt-name-bartender-sommelier
+
+- type: jobAlternateTitle
+  id: AltTitleBotanistHydroponics
+  job: Botanist
+  name: job-alt-name-botanist-hydroponics
+
+- type: jobAlternateTitle
+  id: AltTitleBotanistHerbalist
+  job: Botanist
+  name: job-alt-name-botanist-herbalist
+
+- type: jobAlternateTitle
+  id: AltTitleChefSousChef
+  job: Chef
+  name: job-alt-name-chef-sous-chef
+
+- type: jobAlternateTitle
+  id: AltTitleChefLineCook
+  job: Chef
+  name: job-alt-name-chef-line-cook
+
+- type: jobAlternateTitle
+  id: AltTitleChefLunchServer
+  job: Chef
+  name: job-alt-name-chef-lunch-server
+
+- type: jobAlternateTitle
+  id: AltTitleChaplainPreacher
+  job: Chaplain
+  name: job-alt-name-chaplain-preacher
+
+- type: jobAlternateTitle
+  id: AltTitleChaplainSpiritualAdvisor
+  job: Chaplain
+  name: job-alt-name-chaplain-spiritual-advisor
+
+- type: jobAlternateTitle
+  id: AltTitleChaplainShrineKeeper
+  job: Chaplain
+  name: job-alt-name-chaplain-shrine-keeper
+
+- type: jobAlternateTitle
+  id: AltTitleClownJester
+  job: Clown
+  name: job-alt-name-clown-jester
+
+- type: jobAlternateTitle
+  id: AltTitleClownBouffon
+  job: Clown
+  name: job-alt-name-clown-bouffon
+
+- type: jobAlternateTitle
+  id: AltTitleMimePantomimist
+  job: Mime
+  name: job-alt-name-mime-pantomimist
+
+- type: jobAlternateTitle
+  id: AltTitleMimeSilentActor
+  job: Mime
+  name: job-alt-name-mime-silent-actor
+
+- type: jobAlternateTitle
+  id: AltTitleJanitorCustodian
+  job: Janitor
+  name: job-alt-name-janitor-custodian
+
+- type: jobAlternateTitle
+  id: AltTitleJanitorMaintenanceWorker
+  job: Janitor
+  name: job-alt-name-janitor-maintenance-worker
+
+- type: jobAlternateTitle
+  id: AltTitleJanitorSanitationTechnician
+  job: Janitor
+  name: job-alt-name-janitor-sanitation-technician
+
+- type: jobAlternateTitle
+  id: AltTitleJanitorRatCatcher
+  job: Janitor
+  name: job-alt-name-janitor-rat-catcher
+
+- type: jobAlternateTitle
+  id: AltTitleLawyerAttorney
+  job: Lawyer
+  name: job-alt-name-lawyer-attorney
+
+- type: jobAlternateTitle
+  id: AltTitleLawyerLegalRepresentative
+  job: Lawyer
+  name: job-alt-name-lawyer-legal-representative
+
+- type: jobAlternateTitle
+  id: AltTitleLibrarianClerk
+  job: Librarian
+  name: job-alt-name-librarian-clerk
+
+- type: jobAlternateTitle
+  id: AltTitleLibrarianWriter
+  job: Librarian
+  name: job-alt-name-librarian-writer
+
+- type: jobAlternateTitle
+  id: AltTitleLibrarianProfessor
+  job: Librarian
+  name: job-alt-name-librarian-professor
+
+- type: jobAlternateTitle
+  id: AltTitleLibrarianCurator
+  job: Librarian
+  name: job-alt-name-librarian-curator
+
+- type: jobAlternateTitle
+  id: AltTitleMusicianVisitingCelebrity
+  job: Musician
+  name: job-alt-name-musician-visiting-celebrity
+
+- type: jobAlternateTitle
+  id: AltTitleMusicianPerformer
+  job: Musician
+  name: job-alt-name-musician-performer
+
+- type: jobAlternateTitle
+  id: AltTitleMusicianBard
+  job: Musician
+  name: job-alt-name-musician-bard
+
+- type: jobAlternateTitle
+  id: AltTitleServiceWorkerWaiter
+  job: ServiceWorker
+  name: job-alt-name-service-worker-waiter
+
+- type: jobAlternateTitle
+  id: AltTitleServiceWorkerJuniorCook
+  job: ServiceWorker
+  name: job-alt-name-service-worker-junior-cook
+
+- type: jobAlternateTitle
+  id: AltTitleServiceWorkerBartenderApprentice
+  job: ServiceWorker
+  name: job-alt-name-service-worker-bartender-apprentice
+
+- type: jobAlternateTitle
+  id: AltTitleServiceWorkerCroupier
+  job: ServiceWorker
+  name: job-alt-name-service-worker-croupier
+
+- type: jobAlternateTitle
+  id: AltTitleServiceWorkerSteward
+  job: ServiceWorker
+  name: job-alt-name-service-worker-steward
+
+- type: jobAlternateTitle
+  id: AltTitleReporterInfluencer
+  job: Reporter
+  name: job-alt-name-reporter-influencer
+
+- type: jobAlternateTitle
+  id: AltTitleReporterDocumentarian
+  job: Reporter
+  name: job-alt-name-reporter-documentarian
+
+- type: jobAlternateTitle
+  id: AltTitleReporterMediaCoordinator
+  job: Reporter
+  name: job-alt-name-reporter-media-coordinator
+
+- type: jobAlternateTitle
+  id: AltTitleRadioHostStationDj
+  job: RadioHost
+  name: job-alt-name-radio-host-station-dj
+
+- type: jobAlternateTitle
+  id: AltTitleRadioHostBroadcaster
+  job: RadioHost
+  name: job-alt-name-radio-host-broadcaster
