@@ -3,6 +3,7 @@
 
 using System.Linq;
 using Content.Server._Erida.SplitPersonality;
+using Content.Shared._Erida.Actions;
 using Content.Server.Ghost.Roles;
 using Content.Shared._Erida.SplitPersonality;
 using Content.Shared._Shitmed.Medical.Surgery;
@@ -22,6 +23,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mind.Components;
 using Content.Shared.Movement.Components;
+using Content.Shared.Pointing;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
 
@@ -48,7 +50,7 @@ public sealed class BrainPersonalityTest
             var trauma = em.System<TraumaSystem>();
             var personalities = em.System<BrainPersonalitySystem>();
 
-            trauma.TryCreateOrganDamageModifier(brain, 174, body, "PersonalityTest");
+            trauma.TryCreateOrganDamageModifier(brain, 99, body, "PersonalityTest");
             Assert.That(em.HasComponent<SplitPersonalityTraumaComponent>(brain), Is.False);
             trauma.TryChangeOrganDamageModifier(brain, 1, body, "PersonalityTest");
             Assert.That(em.GetComponent<BrainPersonalityComponent>(brain).Rolled, Is.True);
@@ -61,7 +63,7 @@ public sealed class BrainPersonalityTest
             Assert.That(em.HasComponent<SplitPersonalityTraumaComponent>(brain), Is.False, "No repeat rolls or immediate relapse in the same damage episode");
             trauma.RestoreOrganIntegrity(brain);
             Assert.That(em.GetComponent<BrainPersonalityComponent>(brain).Rolled, Is.False);
-            trauma.TryCreateOrganDamageModifier(brain, 175, body, "PersonalityTest");
+            trauma.TryCreateOrganDamageModifier(brain, 100, body, "PersonalityTest");
             Assert.That(em.HasComponent<SplitPersonalityTraumaComponent>(brain), Is.True);
             personalities.Cure(brain);
         });
@@ -98,12 +100,15 @@ public sealed class BrainPersonalityTest
             Assert.That(ghostAttempt.CanReturnGlobal, Is.True);
             Assert.That(em.System<ActionBlockerSystem>().CanInteract(observer, body), Is.False);
             Assert.That(em.System<ActionBlockerSystem>().CanConsciouslyPerformAction(observer), Is.False);
-            var actionAttempt = new Content.Shared.Actions.Events.ActionAttemptEvent(observer);
+            var actionAttempt = new UserActionAttemptEvent(EntityUid.Invalid);
             em.EventBus.RaiseLocalEvent(observer, ref actionAttempt);
             Assert.That(actionAttempt.Cancelled, Is.True, "Even mind-provided abilities cannot be used while inactive");
+            var pointAttempt = new PointAttemptEvent(observer);
+            em.EventBus.RaiseLocalEvent(observer, pointAttempt);
+            Assert.That(pointAttempt.Cancelled, Is.True, "The inactive participant cannot point");
             minds.TransferTo(secondary, observer);
             state.Secondary = secondary;
-            state.Remaining = 180;
+            state.Remaining = TimeSpan.FromSeconds(180);
 
             Assert.That(system.Switch(brain), Is.True);
             Assert.That(minds.GetMind(body), Is.EqualTo(secondary));
@@ -172,27 +177,28 @@ public sealed class BrainPersonalityTest
             var state = em.GetComponent<BrainPersonalityComponent>(brain);
             minds.TransferTo(secondary, state.Observer);
             state.Secondary = secondary;
-            state.Remaining = 180;
-            state.Remaining = 1;
+            var organ = em.GetComponent<OrganComponent>(brain);
+            var step = TimeSpan.FromSeconds(2);
+            state.Remaining = TimeSpan.FromSeconds(1);
             em.EnsureComponent<SleepingComponent>(body);
-            system.Update(2);
-            Assert.That(state.Remaining, Is.EqualTo(1));
+            system.Advance((brain, state, organ), step);
+            Assert.That(state.Remaining, Is.EqualTo(TimeSpan.FromSeconds(1)));
             Assert.That(minds.GetMind(body), Is.EqualTo(primary));
             Assert.That(system.TrySendTelepathy(body, "sleeping", false), Is.True);
             em.RemoveComponent<SleepingComponent>(body);
             em.System<MobStateSystem>().ChangeMobState(body, MobState.Dead);
-            system.Update(2);
-            Assert.That(state.Remaining, Is.EqualTo(1));
+            system.Advance((brain, state, organ), step);
+            Assert.That(state.Remaining, Is.EqualTo(TimeSpan.FromSeconds(1)));
             Assert.That(system.Switch(brain), Is.False);
             Assert.That(minds.IsCharacterDeadPhysically(em.GetComponent<MindComponent>(secondary)), Is.True);
             em.System<Content.Shared.Administration.Systems.RejuvenateSystem>().PerformRejuvenate(body);
-            system.Update(2);
+            system.Advance((brain, state, organ), step);
             Assert.That(minds.GetMind(body), Is.EqualTo(secondary));
-            Assert.That(state.Remaining, Is.InRange(180, 600));
+            Assert.That(state.Remaining.TotalSeconds, Is.InRange(180, 600));
             // Both minds have no connected session. Ownership still changes only when the timer expires.
             var remaining = state.Remaining;
-            system.Update(0.5f);
-            Assert.That(state.Remaining, Is.EqualTo(remaining - 0.5f));
+            system.Advance((brain, state, organ), TimeSpan.FromSeconds(0.5));
+            Assert.That(state.Remaining, Is.EqualTo(remaining - TimeSpan.FromSeconds(0.5)));
             Assert.That(minds.GetMind(body), Is.EqualTo(secondary));
             em.DeleteEntity(brain);
             Assert.That(em.HasComponent<GhostComponent>(em.GetComponent<MindComponent>(primary).OwnedEntity), Is.True);
@@ -229,7 +235,7 @@ public sealed class BrainPersonalityTest
             secondary = state.Secondary!.Value;
             Assert.That(session.AttachedEntity, Is.EqualTo(state.Observer));
             Assert.That(minds.GetMind(body), Is.EqualTo(primary));
-            Assert.That(state.Remaining, Is.InRange(180, 600));
+            Assert.That(state.Remaining.TotalSeconds, Is.InRange(180, 600));
             Assert.That(roles.GhostRoles.Any(r => r.Owner == state.Observer), Is.False);
         });
         await pair.RunTicksSync(5);
@@ -272,7 +278,7 @@ public sealed class BrainPersonalityTest
             var state = em.GetComponent<BrainPersonalityComponent>(brain);
             minds.TransferTo(secondary, state.Observer);
             state.Secondary = secondary;
-            state.Remaining = 180;
+            state.Remaining = TimeSpan.FromSeconds(180);
             Assert.That(bodies.RemoveOrgan(brain), Is.True);
             Assert.That(minds.GetMind(brain), Is.EqualTo(primary));
             Assert.That(bodies.RemoveOrgan(otherBrain), Is.True);

@@ -1,4 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: MIT
 
 using Content.Shared._Erida.SplitPersonality;
@@ -21,6 +20,7 @@ namespace Content.Client.Eye.Blinding
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly IConfigurationManager _configManager = default!;
+        private readonly SharedPersonalitySystem _personality; // Erida edit
 
         public override bool RequestScreenTexture => true;
         public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -40,6 +40,7 @@ namespace Content.Client.Eye.Blinding
         public BlurryVisionOverlay()
         {
             IoCManager.InjectDependencies(this);
+            _personality = _entityManager.System<SharedPersonalitySystem>(); // Erida edit
             _cataractsShader = _prototypeManager.Index(CataractsShader).InstanceUnique();
             _circleMaskShader = _prototypeManager.Index(CircleShader).InstanceUnique();
 
@@ -57,7 +58,7 @@ namespace Content.Client.Eye.Blinding
             if (args.Viewport.Eye != eyeComp.Eye)
                 return false;
 
-            var playerEntity = _entityManager.System<SharedPersonalitySystem>().PerceptionSource(_playerManager.LocalSession?.AttachedEntity);
+            var playerEntity = _personality.PerceptionSource(_playerManager.LocalSession?.AttachedEntity); // Erida edit
 
             if (playerEntity == null)
                 return false;
@@ -82,7 +83,7 @@ namespace Content.Client.Eye.Blinding
             if (ScreenTexture == null)
                 return;
 
-            var playerEntity = _entityManager.System<SharedPersonalitySystem>().PerceptionSource(_playerManager.LocalSession?.AttachedEntity);
+            var playerEntity = _personality.PerceptionSource(_playerManager.LocalSession?.AttachedEntity); // Erida edit
 
             var worldHandle = args.WorldHandle;
             var viewport = args.WorldBounds;

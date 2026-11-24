@@ -14,7 +14,8 @@ public sealed partial class BrainPersonalityComponent : Component
     public EntityUid? Host;
     public bool SecondaryActive;
     public bool Transferring;
-    public float Remaining;
+    /// <summary>Conscious time left until control switches. It does not run while the body is unavailable.</summary>
+    public TimeSpan Remaining;
 }
 
 /// <summary>The waiting role is distinct from the observer occupied by the inactive participant.</summary>

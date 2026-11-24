@@ -3,6 +3,7 @@
 
 using System.Linq;
 using Content.Server.Administration.Logs;
+using Content.Server.GameTicking;
 using Content.Server.Ghost;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
@@ -18,6 +19,7 @@ using Content.Shared.Body.Organ;
 using Content.Shared.Body.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
@@ -25,7 +27,9 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Erida.SplitPersonality;
 
@@ -41,6 +45,14 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly GameTicker _ticker = default!;
+    [Dependency] private readonly GhostSystem _ghosts = default!;
+
+    private static readonly EntProtoId ObserverProto = "InactivePersonality";
+    private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(0.2);
+
+    private TimeSpan _lastUpdate;
 
     public override void Initialize()
     {
@@ -53,6 +65,7 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
         SubscribeLocalEvent<PersonalityChannelComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<MendPersonalityStepComponent, SurgeryStepEvent>(OnMend);
         SubscribeLocalEvent<GhostAttemptHandleEvent>(OnGhostAttempt);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _lastUpdate = _timing.CurTime);
         InitializeChat();
     }
 
@@ -92,7 +105,7 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
         if (_mind.TryGetMind(state.Host.Value, out var primary, out _))
             state.Primary = primary;
         Link(state.Host.Value, brain);
-        var observer = Spawn("InactivePersonality", Transform(brain).Coordinates);
+        var observer = Spawn(ObserverProto, _transform.GetMapCoordinates(brain));
         state.Observer = observer;
         Link(observer, brain);
         UpdateView(brain, state, organ);
@@ -100,12 +113,8 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
         Comp<PersonalityRoleComponent>(observer).Brain = brain;
     }
 
-    private void Link(EntityUid entity, EntityUid brain)
-    {
-        var link = EnsureComp<PersonalityChannelComponent>(entity);
-        link.Brain = brain;
-        Dirty(entity, link);
-    }
+    private void Link(EntityUid entity, EntityUid brain) =>
+        EnsureComp<PersonalityChannelComponent>(entity).Brain = brain;
 
     private void OnTakeRole(Entity<PersonalityRoleComponent> role, ref TakeGhostRoleEvent args)
     {
@@ -126,11 +135,11 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
         _adminLog.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(secondary)} became the second personality of {ToPrettyString(role.Comp.Brain)}");
     }
 
-    private float NextInterval()
+    private TimeSpan NextInterval()
     {
         var min = Math.Max(1, _config.GetCVar(CCVars.PersonalityMinimumInterval));
         var max = Math.Max(min, _config.GetCVar(CCVars.PersonalityMaximumInterval));
-        return _random.NextFloat(min, max);
+        return TimeSpan.FromSeconds(_random.NextFloat(min, max));
     }
 
     private void OnMindAdded(EntityUid host, PersonalityChannelComponent link, MindAddedMessage args)
@@ -148,18 +157,35 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
-        var query = EntityQueryEnumerator<BrainPersonalityComponent, OrganComponent, SplitPersonalityTraumaComponent>();
-        while (query.MoveNext(out var brain, out var state, out var organ, out _))
+        var curTime = _timing.CurTime;
+        var elapsed = curTime - _lastUpdate;
+        if (elapsed < UpdateInterval)
+            return;
+        _lastUpdate = curTime;
+
+        var query = EntityQueryEnumerator<SplitPersonalityTraumaComponent, BrainPersonalityComponent, OrganComponent>();
+        while (query.MoveNext(out var brain, out _, out var state, out var organ))
         {
-            UpdateView(brain, state, organ);
-            if (organ.Body is not {} body || !IsConscious(body) || state.Secondary == null || state.Primary == null)
-                continue;
-            state.Remaining -= frameTime;
-            if (state.Remaining > 0)
-                continue;
-            Switch(brain, state);
-            state.Remaining = NextInterval();
+            Advance((brain, state, organ), elapsed);
         }
+    }
+
+    /// <summary>Refreshes the inactive view and runs the switch timer for the given amount of time.</summary>
+    public void Advance(Entity<BrainPersonalityComponent, OrganComponent> brain, TimeSpan elapsed)
+    {
+        var (uid, state, organ) = brain;
+        UpdateView(uid, state, organ);
+        if (organ.Body is not {} body
+            || !IsConscious(body)
+            || state.Secondary == null
+            || state.Primary == null)
+            return;
+
+        state.Remaining -= elapsed;
+        if (state.Remaining > TimeSpan.Zero)
+            return;
+        Switch(uid, state);
+        state.Remaining = NextInterval();
     }
 
     private bool IsConscious(EntityUid body) =>
@@ -204,8 +230,11 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
         MoveHost(brain, state, host);
         if (state.Observer is not {} observer || TerminatingOrDeleted(observer))
             return;
-        // Track the physical body without parenting: deleting a body must not delete the inactive mind.
-        _transform.SetCoordinates(observer, Transform(host).Coordinates);
+        // Track the physical body without parenting: deleting a body or its container must not delete the inactive mind.
+        var hostPosition = _transform.GetMapCoordinates(host);
+        if (!hostPosition.Position.EqualsApprox(_transform.GetMapCoordinates(observer).Position)
+            || hostPosition.MapId != Transform(observer).MapID)
+            _transform.SetMapCoordinates(observer, hostPosition);
         var view = Comp<InactivePersonalityComponent>(observer);
         if (view.Body != organ.Body)
         {
@@ -237,9 +266,13 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
             return false;
         var outgoing = state.SecondaryActive ? secondary : primary;
         var incoming = state.SecondaryActive ? primary : secondary;
-        // A departed or freely ghosting participant cannot be pulled back by the timer.
-        if (!TryComp<MindComponent>(outgoing, out var outgoingMind) || outgoingMind.OwnedEntity != host
-            || !TryComp<MindComponent>(incoming, out var incomingMind) || incomingMind.OwnedEntity != observer)
+        // A departed, freely ghosting or visiting participant cannot be pulled back by the timer.
+        if (!TryComp<MindComponent>(outgoing, out var outgoingMind)
+            || outgoingMind.OwnedEntity != host
+            || outgoingMind.VisitingEntity != null
+            || !TryComp<MindComponent>(incoming, out var incomingMind)
+            || incomingMind.OwnedEntity != observer
+            || incomingMind.VisitingEntity != null)
             return false;
         state.Transferring = true;
         try
@@ -289,7 +322,7 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
                         var active = state.SecondaryActive ? state.Secondary : state.Primary;
                         if (active is {} activeMind && TryComp<MindComponent>(activeMind, out var activeComp)
                             && activeComp.OwnedEntity == host)
-                            _mind.TransferTo(activeMind, null, ghostCheckOverride: true);
+                            Release((activeMind, activeComp), host);
                     }
                     if (restorePrimary && state.SecondaryActive && !TerminatingOrDeleted(host)
                         && state.Primary is {} primary && TryComp<MindComponent>(primary, out var mind)
@@ -297,8 +330,8 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
                         _mind.TransferTo(primary, host, ghostCheckOverride: true);
                 }
                 // Transfer explicitly before deleting the observer; no return-to-body privilege survives treatment.
-                if (_mind.TryGetMind(observer, out var inactive, out _))
-                    _mind.TransferTo(inactive, null, ghostCheckOverride: true);
+                if (_mind.TryGetMind(observer, out var inactive, out var inactiveMind))
+                    Release((inactive, inactiveMind), observer);
                 QueueDel(observer);
             }
             if (state.Host is {} old && !TerminatingOrDeleted(old))
@@ -309,5 +342,16 @@ public sealed partial class BrainPersonalitySystem : EntitySystem
             state.SecondaryActive = false;
         }
         finally { state.Transferring = false; }
+    }
+
+    /// <summary>
+    /// Ghosts a participant without a way back. Like a deleted mind container, no ghost is made during round cleanup.
+    /// </summary>
+    private void Release(Entity<MindComponent> mind, EntityUid from)
+    {
+        _mind.TransferTo(mind, null, ghostCheckOverride: true, createGhost: false, mind: mind.Comp);
+        // SpawnGhost falls back to the observer spawn point when this position is on a terminating map.
+        if (_ticker.RunLevel != GameRunLevel.PreRoundLobby)
+            _ghosts.SpawnGhost((mind.Owner, mind.Comp), from);
     }
 }

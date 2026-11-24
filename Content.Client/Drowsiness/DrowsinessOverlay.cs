@@ -1,4 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._Erida.SplitPersonality;
@@ -22,6 +21,7 @@ public sealed class DrowsinessOverlay : Overlay
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IEntitySystemManager _sysMan = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    private readonly SharedPersonalitySystem _personality; // Erida edit
     private readonly StatusEffectsSystem _statusEffects = default!;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -37,6 +37,7 @@ public sealed class DrowsinessOverlay : Overlay
     public DrowsinessOverlay()
     {
         IoCManager.InjectDependencies(this);
+        _personality = _entityManager.System<SharedPersonalitySystem>(); // Erida edit
 
         _statusEffects = _sysMan.GetEntitySystem<StatusEffectsSystem>();
 
@@ -45,7 +46,7 @@ public sealed class DrowsinessOverlay : Overlay
 
     protected override void FrameUpdate(FrameEventArgs args)
     {
-        var playerEntity = _entityManager.System<SharedPersonalitySystem>().PerceptionSource(_playerManager.LocalEntity);
+        var playerEntity = _personality.PerceptionSource(_playerManager.LocalEntity); // Erida edit
 
         if (playerEntity == null
             || !_statusEffects.TryGetEffectsEndTimeWithComp<DrowsinessStatusEffectComponent>(playerEntity, out var endTime))

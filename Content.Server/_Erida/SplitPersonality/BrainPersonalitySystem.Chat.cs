@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: MIT
 
+using System.Diagnostics.CodeAnalysis;
 using Content.Server.Chat.Managers;
 using Content.Server.Radio;
 using Content.Server._EinsteinEngines.Language;
@@ -9,6 +10,7 @@ using Content.Shared.Body.Organ;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Mind;
+using Robust.Server.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
@@ -19,7 +21,7 @@ public sealed partial class BrainPersonalitySystem
 {
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly Robust.Server.Player.IPlayerManager _players = default!;
+    [Dependency] private readonly IPlayerManager _players = default!;
     [Dependency] private readonly LanguageSystem _language = default!;
 
     private void InitializeChat()
@@ -52,17 +54,19 @@ public sealed partial class BrainPersonalitySystem
             return true;
         var speaker = Loc.GetString(sender == primary ? "personality-primary" : "personality-secondary");
         var wrapped = Loc.GetString("personality-telepathy-message", ("speaker", speaker), ("message", FormattedMessage.EscapeText(message)));
-        foreach (var participant in new[] { primary, secondary })
-        {
-            if (TryComp<MindComponent>(participant, out var mind) && mind.UserId is {} user
-                && _players.TryGetSessionById(user, out var session))
-                _chat.ChatMessageToOne(ChatChannel.Telepathic, message, wrapped, source, hideChat, session.Channel, colorOverride: Color.PaleVioletRed);
-        }
+        Send(primary);
+        Send(secondary);
         _adminLog.Add(LogType.Chat, LogImpact.Low, $"Private personality telepathy from {ToPrettyString(sender)} in {ToPrettyString(link.Brain)}: {message}");
         return true;
+
+        void Send(EntityUid participant)
+        {
+            if (TrySession(participant, out var session))
+                _chat.ChatMessageToOne(ChatChannel.Telepathic, message, wrapped, source, hideChat, session.Channel, colorOverride: Color.PaleVioletRed);
+        }
     }
 
-    private bool TrySession(EntityUid mind, [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ICommonSession? session)
+    private bool TrySession(EntityUid mind, [NotNullWhen(true)] out ICommonSession? session)
     {
         session = null;
         return TryComp<MindComponent>(mind, out var component) && component.UserId is {} user

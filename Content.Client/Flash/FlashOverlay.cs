@@ -1,4 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Kiwuru / Kitty <olosa15f@gmail.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._Erida.SplitPersonality;
@@ -24,6 +23,7 @@ namespace Content.Client.Flash
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IConfigurationManager _configManager = default!;
+        private readonly SharedPersonalitySystem _personality; // Erida edit
 
         private readonly SharedFlashSystem _flash;
         private readonly StatusEffectsSystem _statusSys;
@@ -31,12 +31,13 @@ namespace Content.Client.Flash
         public override OverlaySpace Space => OverlaySpace.WorldSpace;
         private readonly ShaderInstance _shader;
         private bool _reducedMotion;
-        public float PercentComplete = 1f;
+        public float PercentComplete = 1f; // Erida edit
         public Texture? ScreenshotTexture;
 
         public FlashOverlay()
         {
             IoCManager.InjectDependencies(this);
+            _personality = _entityManager.System<SharedPersonalitySystem>(); // Erida edit
             _shader = _prototypeManager.Index(FlashedEffectShader).InstanceUnique();
             _flash = _entityManager.System<SharedFlashSystem>();
             _statusSys = _entityManager.System<StatusEffectsSystem>();
@@ -46,10 +47,12 @@ namespace Content.Client.Flash
 
         protected override void FrameUpdate(FrameEventArgs args)
         {
-            var playerEntity = _entityManager.System<SharedPersonalitySystem>().PerceptionSource(_playerManager.LocalEntity);
+            var playerEntity = _personality.PerceptionSource(_playerManager.LocalEntity); // Erida edit
 
+            // Erida start
             var wasFlashed = PercentComplete < 1f;
             PercentComplete = 1f;
+            // Erida end
             if (playerEntity == null)
                 return;
 
@@ -60,11 +63,14 @@ namespace Content.Client.Flash
             if (!_statusSys.TryGetTime(playerEntity.Value, _flash.FlashedKey, out var time, status))
                 return;
 
+            // Erida start
             if (!wasFlashed && _entityManager.HasComponent<InactivePersonalityComponent>(_playerManager.LocalEntity))
             {
                 ScreenshotTexture = null;
                 RequestScreenTexture = true;
             }
+            // Erida end
+
             var curTime = _timing.CurTime;
             var lastsFor = (float)(time.Value.Item2 - time.Value.Item1).TotalSeconds;
             var timeDone = (float)(curTime - time.Value.Item1).TotalSeconds;

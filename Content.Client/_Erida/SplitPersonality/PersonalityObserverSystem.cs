@@ -25,33 +25,39 @@ public sealed class PersonalityObserverSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<InactivePersonalityComponent, LocalPlayerDetachedEvent>((_, _, _) =>
-        {
-            RemoveEffects();
-            _observing = false;
-        });
+        // The owner-only component and the attach can arrive in either order.
+        SubscribeLocalEvent<InactivePersonalityComponent, LocalPlayerAttachedEvent>((_, _, _) => AddEffects());
+        SubscribeLocalEvent<InactivePersonalityComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<InactivePersonalityComponent, LocalPlayerDetachedEvent>((_, _, _) => RemoveEffects());
+        SubscribeLocalEvent<InactivePersonalityComponent, ComponentShutdown>(OnShutdown);
     }
 
-    public override void FrameUpdate(float frameTime)
+    private void OnStartup(EntityUid uid, InactivePersonalityComponent component, ComponentStartup args)
     {
-        base.FrameUpdate(frameTime);
-        var observing = HasComp<InactivePersonalityComponent>(_player.LocalEntity);
-        if (_observing == observing)
-            return;
-        _observing = observing;
-        if (observing)
-        {
-            _effects ??= new Overlay[] { new BlindOverlay(), new BlurryVisionOverlay(), new FlashOverlay(),
-                new DrunkOverlay(), new RainbowOverlay(), new DrowsinessOverlay(), new PersonalityUnavailableOverlay() };
-            foreach (var effect in _effects)
-                _overlays.AddOverlay(effect);
-        }
-        else
+        if (uid == _player.LocalEntity)
+            AddEffects();
+    }
+
+    private void OnShutdown(EntityUid uid, InactivePersonalityComponent component, ComponentShutdown args)
+    {
+        if (uid == _player.LocalEntity)
             RemoveEffects();
+    }
+
+    private void AddEffects()
+    {
+        if (_observing)
+            return;
+        _observing = true;
+        _effects ??= [ new BlindOverlay(), new BlurryVisionOverlay(), new FlashOverlay(),
+            new DrunkOverlay(), new RainbowOverlay(), new DrowsinessOverlay(), new PersonalityUnavailableOverlay() ];
+        foreach (var effect in _effects)
+            _overlays.AddOverlay(effect);
     }
 
     private void RemoveEffects()
     {
+        _observing = false;
         if (_effects == null)
             return;
         _lights.Enabled = true;

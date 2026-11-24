@@ -10,17 +10,24 @@ namespace Content.Shared._Erida.SplitPersonality;
 public sealed partial class SplitPersonalityTraumaComponent : Component;
 
 /// <summary>Links an occupied body to its affected brain, or the inactive participant to that body.</summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+/// <remarks>The client only needs to know that its own entity has the channel, so the brain is not networked.</remarks>
+[RegisterComponent, NetworkedComponent]
 public sealed partial class PersonalityChannelComponent : Component
 {
-    [DataField, AutoNetworkedField] public EntityUid Brain;
+    public override bool SendOnlyToOwner => true;
+
+    [DataField]
+    public EntityUid Brain;
 }
 
 /// <summary>A stationary, non-physical viewpoint. It has no ghost privileges or movement.</summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class InactivePersonalityComponent : Component
 {
-    [DataField, AutoNetworkedField] public EntityUid? Body;
+    public override bool SendOnlyToOwner => true;
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? Body;
 }
 
 [RegisterComponent, NetworkedComponent]
