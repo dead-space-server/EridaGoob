@@ -2301,3 +2301,14 @@ Entries:
     - >-
       https://github.com/user-attachments/assets/4e44f21b-34fa-4c0e-8181-d2a7fd13bd44
   highlight: true
+- author: Lytheriia
+  changes:
+    - type: Tweak
+      message: >-
+        Анимации взаимодействий и входа в раунд перенесены в настройки и по
+        умолчанию выключены
+  id: 170
+  time: '2026-11-24T19:21:39.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/115
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak] New settings'
