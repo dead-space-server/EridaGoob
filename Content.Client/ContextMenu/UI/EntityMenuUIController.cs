@@ -7,6 +7,7 @@ using Content.Client.Examine;
 using Content.Client.Gameplay;
 using Content.Client.Verbs;
 using Content.Client.Verbs.UI;
+using Content.Shared._Erida._ForEvents.Viewcone;
 using Content.Shared.CCVar;
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
@@ -53,6 +54,10 @@ namespace Content.Client.ContextMenu.UI
         [UISystemDependency] private readonly ExamineSystem _examineSystem = default!;
         [UISystemDependency] private readonly TransformSystem _xform = default!;
         [UISystemDependency] private readonly CombatModeSystem _combatMode = default!;
+        // Erida start
+        [UISystemDependency] private readonly InputSystem _inputSystem = default!;
+        [UISystemDependency] private readonly ESViewconeFacingSystem _viewconeFacing = default!;
+        // Erida end
 
         private bool _updating;
 
@@ -164,6 +169,11 @@ namespace Content.Client.ContextMenu.UI
 
         private bool HandleOpenEntityMenu(in PointerInputCmdHandler.PointerInputCmdArgs args)
         {
+            // Erida start
+            if (_inputSystem.Predicted)
+                return false;
+            // Erida end
+
             if (args.State != BoundKeyState.Down)
                 return false;
 
@@ -178,7 +188,7 @@ namespace Content.Client.ContextMenu.UI
             if (_verbSystem.TryGetEntityMenuEntities(coords, out var entities))
                 OpenRootMenu(entities);
 
-            return true;
+            return !_viewconeFacing.FacesOnUseSecondary(args.Session?.AttachedEntity); // Erida edit
         }
 
         /// <summary>

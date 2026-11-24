@@ -1,4 +1,4 @@
-using Content.Shared._ADT.Posing;
+using Content.Shared._Erida.Posing;
 
 namespace Content.Server._ADT.Posing;
 

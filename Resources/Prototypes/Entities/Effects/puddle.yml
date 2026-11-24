@@ -214,3 +214,7 @@
   - type: Tag
     tags:
     - DNASolutionScannable
+  # Erida start
+  - type: ESViewconeOccludable
+    occludeIfAnchored: true
+  # Erida end

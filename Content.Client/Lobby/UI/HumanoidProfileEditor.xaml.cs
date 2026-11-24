@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Client._Erida.Lobby;
 using Content.Client._Erida.Stylesheets;
+using Content.Client._Erida.Lobby;
 using Content.Client.Humanoid;
 using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;

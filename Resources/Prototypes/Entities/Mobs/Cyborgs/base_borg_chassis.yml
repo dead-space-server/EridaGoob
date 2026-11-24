@@ -321,6 +321,7 @@
   - type: SpeechSynthesis # Corvax-Frontier-Barks
     voice: Borg
   - type: DirectionalEmote # Erida edit
+  - type: ESViewconeOccludable # Erida
 
 - type: entity
   abstract: true

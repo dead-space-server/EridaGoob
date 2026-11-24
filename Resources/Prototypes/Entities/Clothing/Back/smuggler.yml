@@ -20,6 +20,10 @@
     layer: 1
   - type: HideContrabandContent #Goobstation Contraband detector
   - type: UndetectableContraband #Goobstation Contraband detector
+  # Erida start
+  - type: ESViewconeOccludable
+    occludeIfAnchored: true
+  # Erida end
 
 - type: entity
   abstract: true

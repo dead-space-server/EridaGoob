@@ -21,6 +21,10 @@
       - Snout
     - type: WeldingMaskOverlay
       texture: /Textures/_Funkystation/Clothing/Head/Welding/weldingOverlay.png
+    # Erida start
+    - type: ESViewconeModifier
+      angleModifier: -160
+    # Erida end
   - type: ItemTogglePrefix
     prefixOn: null
     prefixOff: up

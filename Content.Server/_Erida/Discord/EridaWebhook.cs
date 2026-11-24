@@ -158,13 +158,17 @@ public sealed partial class EridaWebhooks : IPostInjectInit
         return (color.RByte << 16) | (color.GByte << 8) | color.BByte;
     }
 
-    private WebhookEmbed CreateBaseEmbedWithNames(NetUserId adminId, NetUserId targetId)
+    private WebhookEmbed CreateBaseEmbedWithNames(
+        NetUserId adminId,
+        NetUserId targetId,
+        string? adminName = null,
+        string? targetName = null)
     {
         _playerManager.TryGetPlayerData(targetId, out var target);
         _playerManager.TryGetPlayerData(adminId, out var admin);
 
-        var targetName = target?.UserName ?? Loc.GetString("erida-webhook-unknown");
-        var adminName = admin?.UserName ?? Loc.GetString("erida-webhook-unknown");
+        targetName ??= target?.UserName ?? Loc.GetString("erida-webhook-unknown");
+        adminName ??= admin?.UserName ?? Loc.GetString("erida-webhook-unknown");
 
         return new WebhookEmbed()
         {

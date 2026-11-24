@@ -80,6 +80,11 @@ public sealed partial class DoAfterOverlay : Overlay // Goob
             if (xform.MapID != args.MapId)
                 continue;
 
+            // Erida start
+            if (!sprite.Visible)
+                continue;
+            // Erida end
+
             if (comp.DoAfters.Count == 0)
                 continue;
 

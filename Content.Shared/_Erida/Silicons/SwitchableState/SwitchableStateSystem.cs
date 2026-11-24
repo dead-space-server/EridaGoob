@@ -8,8 +8,11 @@ using Content.Shared.DoAfter;
 using Content.Shared.Light;
 using Content.Shared.Light.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
+using Content.Shared.Silicons.Borgs;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._Erida.Silicons.SwitchableState;
 
@@ -21,39 +24,45 @@ public sealed partial class ChangeSpriteSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _action = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifierSystem = default!;
     [Dependency] private readonly SharedHandheldLightSystem _lightSystem = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<BorgSwitchableStateComponent, ComponentInit>(OnCompInit);
-
+        SubscribeLocalEvent<BorgSwitchableStateComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<BorgSwitchableStateComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<BorgSwitchableStateComponent, SwitchStateActionEvent>(OnSwitchStateActionEvent);
         SubscribeLocalEvent<BorgSwitchableStateComponent, SwitchStateMessage>(OnSwitchStateMessage);
-
         SubscribeLocalEvent<BorgSwitchableStateComponent, SwitchStateDoAfterEvent>(OnDoAfter);
-
         SubscribeLocalEvent<BorgSwitchableStateComponent, LightToggleEvent>(OnLightToggle);
         SubscribeLocalEvent<BorgSwitchableStateComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
-
         SubscribeLocalEvent<BorgSwitchableStateComponent, MobStateChangedEvent>(OnMobstateChanged);
     }
 
-    private void OnCompInit(Entity<BorgSwitchableStateComponent> ent, ref ComponentInit args)
-    {
-        var action = _action.AddAction(ent, ent.Comp.ActionId);
+    #region Base events
 
-        if (action == null)
+    private void OnMapInit(Entity<BorgSwitchableStateComponent> ent, ref MapInitEvent args)
+    {
+        if (!_action.AddAction(ent, ref ent.Comp.ActionEntity, ent.Comp.ActionId))
             return;
 
-        _action.SetEntityIcon((action.Value, null), ent.Owner);
+        _action.SetEntityIcon((ent.Comp.ActionEntity.Value, null), ent.Owner);
+        Dirty(ent);
 
         var userInterfaceComp = EnsureComp<UserInterfaceComponent>(ent);
         _ui.SetUi((ent, userInterfaceComp), SwitchStateUiKey.Key, new InterfaceData("SwitchableStateBoundUserInterface"));
-
-        if (!ent.Comp.StatesWhiteList.ContainsKey(BorgStateType.Base))
-            ent.Comp.StatesWhiteList.Add(BorgStateType.Base, new Vector2(1, 1));
     }
+
+    private void OnShutdown(Entity<BorgSwitchableStateComponent> ent, ref ComponentShutdown args)
+    {
+        _action.RemoveAction(ent.Owner, ent.Comp.ActionEntity);
+        _ui.CloseUi(ent.Owner, SwitchStateUiKey.Key);
+    }
+
+    #endregion
+
+    #region Events
 
     private void OnSwitchStateActionEvent(Entity<BorgSwitchableStateComponent> ent, ref SwitchStateActionEvent args)
     {
@@ -70,17 +79,10 @@ public sealed partial class ChangeSpriteSystem : EntitySystem
 
     private void OnSwitchStateMessage(Entity<BorgSwitchableStateComponent> ent, ref SwitchStateMessage args)
     {
-        if (args.Type != BorgStateType.Base && !ent.Comp.StatesWhiteList.ContainsKey(args.Type))
-            return;
+        _ui.CloseUi(ent.Owner, SwitchStateUiKey.Key, args.Actor);
 
-        if (ent.Comp.CurrentType == args.Type)
-        {
-            if (TryComp<UserInterfaceComponent>(ent, out var uiComp) &&
-                _ui.IsUiOpen((ent, uiComp), SwitchStateUiKey.Key, args.Actor))
-                _ui.CloseUi((ent, uiComp), SwitchStateUiKey.Key, args.Actor);
-
+        if (!CanSwitch(ent, args.Type))
             return;
-        }
 
         var doAfterArgs = new DoAfterArgs(EntityManager,
             ent.Owner,
@@ -94,10 +96,6 @@ public sealed partial class ChangeSpriteSystem : EntitySystem
         };
 
         _doAfter.TryStartDoAfter(doAfterArgs);
-
-        if (TryComp<UserInterfaceComponent>(ent, out var uiComp2) &&
-            _ui.IsUiOpen((ent, uiComp2), SwitchStateUiKey.Key, args.Actor))
-            _ui.CloseUi((ent, uiComp2), SwitchStateUiKey.Key, args.Actor);
     }
 
     private void OnDoAfter(Entity<BorgSwitchableStateComponent> ent, ref SwitchStateDoAfterEvent args)
@@ -105,36 +103,85 @@ public sealed partial class ChangeSpriteSystem : EntitySystem
         if (args.Cancelled || args.Handled)
             return;
 
-        if (args.Type == ent.Comp.CurrentType)
-            return;
-
-        if (!TryComp<AppearanceComponent>(ent, out var appearanceComp))
+        if (!CanSwitch(ent, args.Type))
             return;
 
         args.Handled = true;
 
-        ChangeType(ent, args.Type, appearanceComp);
+        ChangeType(ent, args.Type);
     }
 
-    private void ChangeType(Entity<BorgSwitchableStateComponent> ent, BorgStateType newType, AppearanceComponent appearanceComponent)
+    private void OnLightToggle(Entity<BorgSwitchableStateComponent> ent, ref LightToggleEvent args)
     {
-        switch (newType)
+        if (ent.Comp.CurrentType != BorgStateType.Base && TryComp<HandheldLightComponent>(ent.Owner, out var comp))
+            _lightSystem.TurnOff((ent.Owner, comp), false);
+    }
+
+    private void OnRefreshSpeed(Entity<BorgSwitchableStateComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
+    {
+        if (!ent.Comp.StatesWhiteList.TryGetValue(ent.Comp.CurrentType, out var vector))
+            return;
+
+        args.ModifySpeed(vector.X, vector.Y);
+    }
+
+    private void OnMobstateChanged(Entity<BorgSwitchableStateComponent> ent, ref MobStateChangedEvent args)
+    {
+        switch (args.NewMobState)
         {
-            case BorgStateType.Base:
-                {
-                    SetRest(ent, false);
-                    break;
-                }
-            default:
-                {
-                    SetRest(ent, true);
-                    break;
-                }
+            case MobState.Critical:
+            case MobState.Dead:
+                if (ent.Comp.StatesWhiteList.ContainsKey(BorgStateType.Wreck))
+                    ChangeType(ent, BorgStateType.Wreck);
+                break;
+            case MobState.Alive when ent.Comp.CurrentType == BorgStateType.Wreck:
+                ChangeType(ent, BorgStateType.Base);
+                break;
         }
+    }
+
+    #endregion
+
+    #region Functions
+
+    /// <summary>
+    /// Sets up the states of the borg subtype, or removes the component if the subtype has none.
+    /// </summary>
+    public void SetupStates(EntityUid uid, BorgTypePrototype type, BorgSubtypePrototype? subtype)
+    {
+        if (TryComp<BorgSwitchableStateComponent>(uid, out var existing) && existing.CurrentType != BorgStateType.Base)
+            ChangeType((uid, existing), BorgStateType.Base);
+
+        if (subtype is not { StatesWhiteList.Count: > 0 })
+        {
+            RemComp<BorgSwitchableStateComponent>(uid);
+            return;
+        }
+
+        var comp = EnsureComp<BorgSwitchableStateComponent>(uid);
+        comp.DoAfterDuration = subtype.DoAfterDuration;
+        comp.StatesWhiteList = new Dictionary<BorgStateType, Vector2>(subtype.StatesWhiteList);
+        comp.StatesWhiteList.TryAdd(BorgStateType.Base, Vector2.One);
+        comp.BaseSprite = new SpriteSpecifier.Rsi(subtype.SpritePath, type.SpriteBodyState);
+
+        Dirty(uid, comp);
+        _movementSpeedModifierSystem.RefreshMovementSpeedModifiers(uid);
+    }
+
+    private bool CanSwitch(Entity<BorgSwitchableStateComponent> ent, BorgStateType type)
+    {
+        return type != ent.Comp.CurrentType
+            && ent.Comp.StatesWhiteList.ContainsKey(type)
+            && _mobState.IsAlive(ent);
+    }
+
+    private void ChangeType(Entity<BorgSwitchableStateComponent> ent, BorgStateType newType)
+    {
+        SetRest(ent, newType != BorgStateType.Base);
 
         ent.Comp.CurrentType = newType;
 
-        _appearance.SetData(ent, SwitchStateVisuals.Key, newType, appearanceComponent);
+        _appearance.SetData(ent, SwitchStateVisuals.Key, newType);
 
         _movementSpeedModifierSystem.RefreshMovementSpeedModifiers(ent.Owner);
         Dirty(ent);
@@ -148,54 +195,9 @@ public sealed partial class ChangeSpriteSystem : EntitySystem
             Dirty(ent.Owner, spriteMovement);
         }
 
-        if (isActive)
-        {
-            if (TryComp<HandheldLightComponent>(ent.Owner, out var comp))
-                _lightSystem.TurnOff((ent.Owner, comp));
-
-            ent.Comp.IsRestActive = true;
-        }
-        else
-        {
-            ent.Comp.IsRestActive = false;
-        }
+        if (isActive && TryComp<HandheldLightComponent>(ent.Owner, out var comp))
+            _lightSystem.TurnOff((ent.Owner, comp));
     }
 
-    private void OnLightToggle(Entity<BorgSwitchableStateComponent> ent, ref LightToggleEvent args)
-    {
-        if (ent.Comp.CurrentType != BorgStateType.Base && TryComp<HandheldLightComponent>(ent.Owner, out var comp))
-            _lightSystem.TurnOff((ent.Owner, comp), false);
-    }
-
-    private void OnRefreshSpeed(Entity<BorgSwitchableStateComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
-    {
-        var vector = ent.Comp.StatesWhiteList[ent.Comp.CurrentType];
-        args.ModifySpeed(vector.X, vector.Y);
-    }
-
-    private void OnMobstateChanged(Entity<BorgSwitchableStateComponent> ent, ref MobStateChangedEvent args)
-    {
-        if (!TryComp<AppearanceComponent>(ent, out var appearanceComp))
-            return;
-
-        switch (args.NewMobState)
-        {
-            case MobState.Critical:
-                {
-                    ChangeType(ent, BorgStateType.Wreck, appearanceComp);
-                    break;
-                }
-            case MobState.Dead:
-                {
-                    ChangeType(ent, BorgStateType.Wreck, appearanceComp);
-                    break;
-                }
-        }
-
-        if (args.OldMobState == MobState.Critical && args.NewMobState == MobState.Alive)
-        {
-            ChangeType(ent, BorgStateType.Base, appearanceComp);
-        }
-    }
+    #endregion
 }
-

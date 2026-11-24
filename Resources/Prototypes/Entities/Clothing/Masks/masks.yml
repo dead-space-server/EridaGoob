@@ -22,6 +22,10 @@
     layers:
       Snout: Mask
     hideOnToggle: true
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -90
+  # Erida end
 
 - type: entity
   parent: [ClothingMaskGas, BaseSecurityContraband]
@@ -45,6 +49,10 @@
   - type: Tag
     tags:
     - SecurityBreathMask # erida edit
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -20
+  # Erida end
 
 - type: entity
   parent: [ClothingMaskGas, BaseSyndicateContraband]
@@ -65,6 +73,10 @@
         Slash: 0.95
         Piercing: 0.95
         Heat: 0.95
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -35
+  # Erida end
 
 - type: entity
   parent: ClothingMaskGas
@@ -124,6 +136,10 @@
         Slash: 0.90
         Piercing: 0.95
         Heat: 0.95
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -35
+  # Erida end
 
 - type: entity
   parent: ClothingMaskPullableBase
@@ -789,6 +805,10 @@
     - WhitelistChameleon
     - GasMask
     - Mask
+  # Erida start
+  - type: ESViewconeModifier
+    angleModifier: -90
+  # Erida end
 
 # Entity tables
 - type: entityTable

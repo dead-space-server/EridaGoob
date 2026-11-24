@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Server._Erida.Players;
 using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.Players.PlayTimeTracking;
@@ -56,7 +57,7 @@ public delegate void CalcPlayTimeTrackersCallback(ICommonSession player, HashSet
 /// Operations like refreshing and sending play time info to clients are deferred until the next frame (note: not tick).
 /// </para>
 /// </remarks>
-public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjectInit
+public sealed partial class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjectInit // Erida edit
 {
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IServerNetManager _net = default!;
@@ -65,6 +66,7 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
     [Dependency] private readonly ITaskManager _task = default!;
     [Dependency] private readonly IRuntimeLog _runtimeLog = default!;
     [Dependency] private readonly UserDbDataManager _userDb = default!;
+    [Dependency] private readonly PlayTimeEditManager _playTimeEdit = default!; // Erida edit
 
     private ISawmill _sawmill = default!;
 
@@ -314,6 +316,8 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
     {
         var data = new PlayTimeData();
         _playTimeData.Add(session, data);
+
+        await _playTimeEdit.WaitPendingEdit(session.UserId); // Erida edit
 
         var playTimes = await _db.GetPlayTimes(session.UserId, cancel);
         cancel.ThrowIfCancellationRequested();

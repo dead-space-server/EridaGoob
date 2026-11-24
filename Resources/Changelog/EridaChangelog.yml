@@ -2166,3 +2166,108 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/100
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Add] TTS volume slider'
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: 'Исправлены баги от переноса старого лавалэнда на новый '
+  id: 159
+  time: '2026-11-20T03:48:46.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/102
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Fix] Lavaland fixes'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: >-
+        В редакторе персонажа превью можно показать во всей одежде, только в
+        нижнем белье или без одежды.
+  id: 160
+  time: '2026-11-20T03:48:59.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/101
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak] Clothing preview in lobby'
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Направленный эмоут вновь показывает индикатор над игроком
+  id: 161
+  time: '2026-11-20T04:13:50.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/103
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Fix] Directional emote fixes'
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Старый баг с недоступностью кнопки респавна
+  id: 162
+  time: '2026-11-20T17:11:21.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/104
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Fix] Respawn button timer display'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Возможность переноса времени через дискорд
+  id: 163
+  time: '2026-11-20T17:15:08.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/105
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] Play time API endpoints'
+- author: Lytheriia
+  changes:
+    - type: Tweak
+      message: UI вендоматов изменён в сторону большего удобства выбора товаров
+    - type: Tweak
+      message: Система позирования стала более плавной
+  id: 164
+  highlight: true
+  time: '2026-11-20T22:38:56.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/107
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak] Posing & vending systems QOL'
+  media:
+    - >-
+      https://github.com/user-attachments/assets/a87ba2be-8cc5-41f0-9cb1-9a8a7e59f1c9
+    - >-
+      https://github.com/user-attachments/assets/f69ddff9-35e0-4e8b-bfa2-df390a3f5dac
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Исправлено отсутствие выбора нижнего белья на некоторых ролях
+  id: 165
+  time: '2026-11-20T22:39:14.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/106
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] Underwear to all jobs'
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Анимированные борги более не имеют проблем с прогрузкой
+  id: 166
+  time: '2026-11-20T22:40:09.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/108
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak] Drake fixes'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: >-
+        Взаимодействия Пожать руку, Дать пять и Стукнуться кулачками, где второй
+        игрок должен ответить тем же жестом.
+    - type: Add
+      message: >-
+        Взаимодействия послать воздушный поцелуй, дать прикурить и дёрнуть за
+        хвост.
+    - type: Add
+      message: >-
+        Если вас разглядывает персонаж, стоящий перед вами или сбоку, вы это
+        замечаете.
+    - type: Add
+      message: >-
+        Временный статус, который видно при осмотре персонажа (ПКМ по себе
+        ->Задать статус).
+  id: 167
+  time: '2026-11-24T00:33:58.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/112
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] Roleplay features'

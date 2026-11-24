@@ -61,6 +61,7 @@
     noRot: false
   - type: Pullable
   - type: DamageExaminable
+  - type: ESViewconeOccludable # Erida
 
 - type: entity
   name: "storage item"

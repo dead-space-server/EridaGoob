@@ -22,7 +22,13 @@ public sealed partial class EridaWebhooks
             JobNames[job.PlayTimeTracker] = job.LocalizedName;
     }
 
-    public void SendTimeChangedMessage(NetUserId adminId, NetUserId targetId, Dictionary<string, TimeSpan> timeData, bool isSet = false)
+    public void SendTimeChangedMessage(
+        NetUserId adminId,
+        NetUserId targetId,
+        Dictionary<string, TimeSpan> timeData,
+        bool isSet = false,
+        string? adminName = null,
+        string? targetName = null)
     {
         if (_webhookIdentifierPlayTime == null || timeData.Count == 0)
             return;
@@ -33,16 +39,22 @@ public sealed partial class EridaWebhooks
         var firstTime = timeData.First().Value;
         if (timeData.Any(t => t.Value != firstTime))
         {
-            SendDifferentTimeChanges(adminId, targetId, timeData, isSet);
+            SendDifferentTimeChanges(adminId, targetId, timeData, isSet, adminName, targetName);
             return;
         }
 
-        SendEqualTimeChanges(adminId, targetId, timeData, isSet);
+        SendEqualTimeChanges(adminId, targetId, timeData, isSet, adminName, targetName);
     }
 
-    private void SendDifferentTimeChanges(NetUserId adminId, NetUserId targetId, Dictionary<string, TimeSpan> timeData, bool isSet = false)
+    private void SendDifferentTimeChanges(
+        NetUserId adminId,
+        NetUserId targetId,
+        Dictionary<string, TimeSpan> timeData,
+        bool isSet,
+        string? adminName,
+        string? targetName)
     {
-        var embed = CreateBaseEmbedWithNames(adminId, targetId);
+        var embed = CreateBaseEmbedWithNames(adminId, targetId, adminName, targetName);
 
         if (isSet)
         {
@@ -105,9 +117,15 @@ public sealed partial class EridaWebhooks
         }
     }
 
-    private void SendEqualTimeChanges(NetUserId adminId, NetUserId targetId, Dictionary<string, TimeSpan> timeData, bool isSet = false)
+    private void SendEqualTimeChanges(
+        NetUserId adminId,
+        NetUserId targetId,
+        Dictionary<string, TimeSpan> timeData,
+        bool isSet,
+        string? adminName,
+        string? targetName)
     {
-        var embed = CreateBaseEmbedWithNames(adminId, targetId);
+        var embed = CreateBaseEmbedWithNames(adminId, targetId, adminName, targetName);
 
         if (!isSet)
         {

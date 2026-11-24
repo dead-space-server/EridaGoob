@@ -409,6 +409,11 @@ namespace Content.Server.Voting.Managers
                 voteTally.Add(entry.Votes);
             }
 
+            // Erida start
+            var tally = string.Join(", ", v.Entries.Select(e => $"{e.Text}: {e.Votes}"));
+            _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Vote \"{v.Title}\" finished ({v.CastVotes.Count} voters): {tally}");
+            // Erida end
+
             v.Finished = true;
             v.Dirty = true;
             var args = new VoteFinishedEventArgs(winners.Length == 1 ? winners[0] : null, winners, voteTally);

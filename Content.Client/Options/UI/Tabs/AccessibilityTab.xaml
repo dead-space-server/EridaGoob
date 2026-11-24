@@ -11,6 +11,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <Label Text="{Loc 'ui-options-accessability-header-visuals'}"
                        StyleClasses="LabelKeyText"/>
                 <CheckBox Name="ReducedMotionCheckBox" Text="{Loc 'ui-options-reduced-motion'}" />
+                <!-- Erida start -->
+                <CheckBox Name="ViewconeDisableGrainCheckBox" Text="{Loc 'ui-options-disable-viewcone-grain'}" />
+                <ui:OptionSlider Name="ViewconeOcclusionOpacitySlider" Title="{Loc 'ui-options-viewcone-occlusion-opacity'}" />
+                <!-- Erida end -->
                 <CheckBox Name="EnableColorNameCheckBox" Text="{Loc 'ui-options-enable-color-name'}" />
                 <CheckBox Name="ColorblindFriendlyCheckBox" Text="{Loc 'ui-options-colorblind-friendly'}" />
                 <ui:OptionSlider Name="ScreenShakeIntensitySlider" Title="{Loc 'ui-options-screen-shake-intensity'}" />
