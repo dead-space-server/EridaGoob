@@ -7,6 +7,11 @@
   description: It's a box with basic internals inside.
   suffix: Standard
   components:
+  # Erida start
+  - type: Item
+    shape:
+    - 0,0,2,1
+  # Erida end
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -51,6 +56,11 @@
   description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
   suffix: Extended
   components:
+  # Erida start
+  - type: Item
+    shape:
+    - 0,0,2,1
+  # Erida end
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -96,6 +106,11 @@
   description: It's a box with basic internals inside.
   suffix: Security
   components:
+  # Erida start
+  - type: Item
+    shape:
+    - 0,0,2,1
+  # Erida end
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -141,6 +156,11 @@
   description: It's a box with basic internals inside.
   suffix: Medical
   components:
+  # Erida start
+  - type: Item
+    shape:
+    - 0,0,2,1
+  # Erida end
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -191,6 +211,10 @@
     - state: heart
   - type: Item
     heldPrefix: hug
+    # Erida start
+    shape:
+    - 0,0,2,1
+    # Erida end
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -285,6 +309,11 @@
   description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
   suffix: Syndicate
   components:
+  # Erida start
+  - type: Item
+    shape:
+    - 0,0,2,1
+  # Erida end
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
