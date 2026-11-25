@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Shared._Erida.SplitPersonality;
 using Content.Goobstation.Common.Examine; // Goobstation Change
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Ghost;
@@ -18,6 +19,7 @@ namespace Content.Shared.Examine
 {
     public abstract partial class ExamineSystemShared : EntitySystem
     {
+        [Dependency] private readonly SharedPersonalitySystem _personality = default!; // Erida edit
         [Dependency] private readonly OccluderSystem _occluder = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
@@ -55,6 +57,11 @@ namespace Content.Shared.Examine
 
         public bool IsInDetailsRange(EntityUid examiner, EntityUid entity)
         {
+            // Erida start
+            if (_personality.PerceptionSource(examiner) is not {} source)
+                return false;
+            examiner = source;
+            // Erida end
             if (IsClientSide(entity))
                 return true;
 
@@ -93,6 +100,13 @@ namespace Content.Shared.Examine
         [Pure]
         public virtual bool CanExamine(EntityUid examiner, MapCoordinates target, Ignored? predicate = null, EntityUid? examined = null, ExaminerComponent? examinerComp = null)
         {
+            // Erida start
+            if (_personality.PerceptionSource(examiner) is not {} source)
+                return false;
+            if (source != examiner)
+                examinerComp = null;
+            examiner = source;
+            // Erida end
             // TODO occluded container checks
             // also requires checking if the examiner has either a storage or stripping UI open, as the item may be accessible via that UI
 
@@ -143,6 +157,13 @@ namespace Content.Shared.Examine
         /// </summary>
         public float GetExaminerRange(EntityUid examiner, MobStateComponent? mobState = null)
         {
+            // Erida start
+            if (_personality.PerceptionSource(examiner) is not {} source)
+                return 0;
+            if (source != examiner)
+                mobState = null;
+            examiner = source;
+            // Erida end
             if (Resolve(examiner, ref mobState, logMissing: false))
             {
                 if (MobStateSystem.IsDead(examiner, mobState))

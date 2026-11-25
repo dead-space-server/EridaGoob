@@ -6,6 +6,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Content.Server._Goobstation.Wizard.Systems;
+using Content.Shared._Erida.SplitPersonality;
+using Content.Server._Erida.SplitPersonality;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Effects;
@@ -83,6 +85,10 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
+    // Erida start
+    [Dependency] private readonly BrainPersonalitySystem _personality = default!;
+    [Dependency] private readonly SharedPersonalitySystem _personalityView = default!;
+    // Erida end
     [Dependency] private readonly TelepathicChatSystem _telepath = default!; // Goobstation Change
     [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!; // Goobstation Change
     [Dependency] private readonly ScryingOrbSystem _scrying = default!; // Goobstation Change
@@ -241,6 +247,14 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (!CanSendInGame(message, shell, player))
             return;
+
+        // Erida start
+        if (desiredType == InGameICChatType.Telepathic
+            && _personality.TrySendTelepathy(source, message, range == ChatTransmitRange.HideChat))
+            return;
+        if (HasComp<InactivePersonalityComponent>(source))
+            return;
+        // Erida end
 
         ignoreActionBlocker = CheckIgnoreSpeechBlocker(source, ignoreActionBlocker);
 
@@ -744,9 +758,12 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
         {
-            if (session.AttachedEntity is not { Valid: true } listener)
+            if (session.AttachedEntity is not { Valid: true } playerEntity)
                 continue;
-            listener = session.AttachedEntity.Value;
+            // Erida start
+            if (_personalityView.PerceptionSource(playerEntity) is not {} listener)
+                continue;
+            // Erida end
 
             if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full)
                 continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
@@ -1028,7 +1045,10 @@ public sealed partial class ChatSystem : SharedChatSystem
                 continue;
             if (checkLOS && !data.Observer && !data.InLOS)
                 continue; // Floofstation - Some things don't go through walls, but they can go through windows!
-            EntityUid listener = session.AttachedEntity.Value;
+            // Erida start
+            if (_personalityView.PerceptionSource(playerEntity) is not {} listener)
+                continue;
+            // Erida end
 
             // Goob edit start
             // Raises a event for the deaf and blind component
@@ -1274,6 +1294,11 @@ public sealed partial class ChatSystem : SharedChatSystem
             if (player.AttachedEntity is not { Valid: true } playerEntity)
                 continue;
 
+            // Erida start
+            if (_personalityView.PerceptionSource(playerEntity) is not {} perception)
+                continue;
+            playerEntity = perception;
+            // Erida end
             if (!xforms.TryGetComponent(playerEntity, out var transformEntity)) // Goob
                 continue;
 

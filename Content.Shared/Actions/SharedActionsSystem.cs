@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Erida.Actions;
 using System.Linq;
 using Content.Shared._Goobstation.Wizard;
 using Content.Shared.ActionBlocker;
@@ -323,6 +324,12 @@ public abstract partial class SharedActionsSystem : EntitySystem
             return false;
 
         // check for action use prevention
+        // Erida start
+        var userAttemptEv = new UserActionAttemptEvent(action);
+        RaiseLocalEvent(user, ref userAttemptEv);
+        if (userAttemptEv.Cancelled)
+            return false;
+        // Erida end
         var attemptEv = new ActionAttemptEvent(user);
         RaiseLocalEvent(action, ref attemptEv);
         if (attemptEv.Cancelled)
@@ -694,6 +701,12 @@ public abstract partial class SharedActionsSystem : EntitySystem
 
         // check for action use prevention
         // TODO: make code below use this event with a dedicated component
+        // Erida start
+        var userAttemptEv = new UserActionAttemptEvent(action);
+        RaiseLocalEvent(user, ref userAttemptEv);
+        if (userAttemptEv.Cancelled)
+            return false;
+        // Erida end
         var attemptEv = new ActionAttemptEvent(user);
         RaiseLocalEvent(action, ref attemptEv);
         if (attemptEv.Cancelled)

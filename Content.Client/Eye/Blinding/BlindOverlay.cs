@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Erida.SplitPersonality;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
@@ -17,6 +18,7 @@ namespace Content.Client.Eye.Blinding
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly ILightManager _lightManager = default!;
+        private readonly SharedPersonalitySystem _personality; // Erida edit
 
         public override bool RequestScreenTexture => true;
         public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -28,6 +30,7 @@ namespace Content.Client.Eye.Blinding
         public BlindOverlay()
         {
             IoCManager.InjectDependencies(this);
+            _personality = _entityManager.System<SharedPersonalitySystem>(); // Erida edit
             _greyscaleShader = _prototypeManager.Index(GreyscaleShader).InstanceUnique();
             _circleMaskShader = _prototypeManager.Index(CircleShader).InstanceUnique();
         }
@@ -39,7 +42,7 @@ namespace Content.Client.Eye.Blinding
             if (args.Viewport.Eye != eyeComp.Eye)
                 return false;
 
-            var playerEntity = _playerManager.LocalSession?.AttachedEntity;
+            var playerEntity = _personality.PerceptionSource(_playerManager.LocalSession?.AttachedEntity); // Erida edit
 
             if (playerEntity == null)
                 return false;
@@ -67,7 +70,7 @@ namespace Content.Client.Eye.Blinding
             if (ScreenTexture == null)
                 return;
 
-            var playerEntity = _playerManager.LocalSession?.AttachedEntity;
+            var playerEntity = _personality.PerceptionSource(_playerManager.LocalSession?.AttachedEntity); // Erida edit
 
             if (playerEntity == null)
                 return;

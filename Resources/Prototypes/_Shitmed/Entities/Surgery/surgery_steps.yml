@@ -850,6 +850,7 @@
   name: Mend brain tissue
   categories: [ HideSpawnMenu ]
   components:
+  - type: MendPersonalityStep # Erida edit
   - type: SurgeryStep
     tool:
     - type: Hemostat

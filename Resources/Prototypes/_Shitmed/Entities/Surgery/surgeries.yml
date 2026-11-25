@@ -1069,11 +1069,12 @@
   - type: SurgeryOrganCondition
     organ:
     - type: Brain
-  - type: SurgeryOrganOnAddCondition
-    components:
-      brain:
-      - type: OhioAccent
-      - type: RatvarianLanguage
-      - type: Clumsy
+  # - type: SurgeryOrganOnAddCondition # Erida edit
+  #   components: # Erida edit
+  #     brain: # Erida edit
+  #     - type: OhioAccent # Erida edit
+  #     - type: RatvarianLanguage # Erida edit
+  #     - type: Clumsy # Erida edit
+  - type: MendPersonalityCondition # Erida edit
   - type: SurgeryPartCondition
     parts: [ Head ]

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration.Logs;
+using Content.Shared._Erida.SplitPersonality;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
@@ -54,6 +55,7 @@ public sealed partial class TelepathicChatSystem : EntitySystem
     private bool IsEligibleForTelepathy(EntityUid entity)
     {
         return HasComp<TelepathyComponent>(entity)
+            && !HasComp<PersonalityChannelComponent>(entity) // Erida edit
             && (!TryComp<MobStateComponent>(entity, out var mobstate) || mobstate.CurrentState == MobState.Alive);
     }
 

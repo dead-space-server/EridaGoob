@@ -50,6 +50,7 @@ using Content.Shared._Shitmed.Body;
 using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared._EinsteinEngines.Silicon.Components;
+using Content.Shared._Erida.SplitPersonality;
 using Content.Shared.Warps;
 using Robust.Shared.Utility;
 
@@ -389,6 +390,7 @@ namespace Content.Server.Ghost
                     continue;
 
                 if (attached == except) continue;
+                if (HasComp<InactivePersonalityComponent>(attached)) continue; // Erida edit
 
                 TryComp<MindContainerComponent>(attached, out var mind);
 

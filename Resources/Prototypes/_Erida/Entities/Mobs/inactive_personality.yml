@@ -1,0 +1,19 @@
+- type: entity
+  id: InactivePersonality
+  name: inactive personality
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InactivePersonality
+  - type: PersonalityRole
+  - type: GhostRole
+    name: personality-role-name
+    description: personality-role-description
+    rules: personality-role-rules
+    makeSentient: false
+    reregister: false
+  - type: MindContainer
+  - type: MobState
+  - type: Eye
+  - type: Examiner
+  - type: Input
+    context: human

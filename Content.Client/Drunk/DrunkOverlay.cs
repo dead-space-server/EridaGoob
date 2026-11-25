@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 
+using Content.Shared._Erida.SplitPersonality;
 using Content.Shared.Drunk;
 using Content.Shared.StatusEffect;
 using Content.Shared.StatusEffectNew;
@@ -20,6 +21,7 @@ public sealed class DrunkOverlay : Overlay
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IEntitySystemManager _sysMan = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    private readonly SharedPersonalitySystem _personality; // Erida edit
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
@@ -44,20 +46,24 @@ public sealed class DrunkOverlay : Overlay
     public DrunkOverlay()
     {
         IoCManager.InjectDependencies(this);
+        _personality = _entityManager.System<SharedPersonalitySystem>(); // Erida edit
         _drunkShader = _prototypeManager.Index(Shader).InstanceUnique();
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
     {
 
-        var playerEntity = _playerManager.LocalEntity;
+        var playerEntity = _personality.PerceptionSource(_playerManager.LocalEntity); // Erida edit
 
         if (playerEntity == null)
             return;
 
         var statusSys = _sysMan.GetEntitySystem<Shared.StatusEffectNew.StatusEffectsSystem>();
         if (!statusSys.TryGetMaxTime<DrunkStatusEffectComponent>(playerEntity.Value, out var status))
+        {
+            CurrentBoozePower = 0; // Erida edit
             return;
+        }
 
         var time = status.Item2;
 
