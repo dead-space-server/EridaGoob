@@ -2338,3 +2338,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/111
   avatar_url: https://avatars.githubusercontent.com/u/137194081?v=4
   title: Feature/brain trauma split personality
+- author: Lytheriia
+  changes:
+    - type: Tweak
+      message: RPD атмоса теперь может прокладывать трубы во всех трёх положениях.
+  id: 173
+  time: '2026-11-25T23:42:05.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/117
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak] RPD layers'
