@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Erida.Silicons.StationAi;
 using Content.Shared.Access.Systems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
@@ -44,6 +45,7 @@ namespace Content.Shared.Silicons.StationAi;
 public abstract partial class SharedStationAiSystem : EntitySystem
 {
     [Dependency] private readonly ISharedAdminManager _admin = default!;
+    [Dependency] private readonly AiRemoteGridSystem _aiRemoteGrid = default!; // Erida edit
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly ItemSlotsSystem _slots = default!;
@@ -230,7 +232,7 @@ public abstract partial class SharedStationAiSystem : EntitySystem
         var targetXform = Transform(target);
 
         // No cross-grid
-        if (targetXform.GridUid != Transform(args.User).GridUid && !ent.Comp.AllowCrossGrid) // Shitmed Change
+        if (targetXform.GridUid != Transform(args.User).GridUid && !ent.Comp.AllowCrossGrid && !_aiRemoteGrid.IsEyeRemoteGrid(ent, targetXform.GridUid)) // Shitmed Change // Erida edit
         {
             return;
         }

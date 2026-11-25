@@ -174,6 +174,11 @@ public abstract partial class SharedMoverController : VirtualController
             if (!MoverQuery.TryComp(relay.RelayEntity, out var relayTargetMover))
                 return;
 
+            // Erida start
+            if (relayTargetMover.LerpTarget < Timing.CurTime && XformQuery.TryComp(relay.RelayEntity, out var relayXform))
+                TryUpdateRelative(uid, mover, relayXform);
+            // Erida end
+
             // Always lerp rotation so relay entities aren't cooked.
             LerpRotation(uid, mover, frameTime);
             var dirtied = false;

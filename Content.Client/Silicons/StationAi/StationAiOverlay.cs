@@ -2,6 +2,7 @@
 
 using System.Numerics;
 using Content.Client.Graphics;
+using Content.Shared._Erida.Silicons.StationAi;
 using Content.Shared.Silicons.StationAi;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -64,7 +65,7 @@ public sealed partial class StationAiOverlay : Overlay //goob edit
 
         // Shitmed - Starlight Abductors Change Start
         if (_entManager.TryGetComponent(playerEnt, out StationAiOverlayComponent? stationAiOverlay)
-            && stationAiOverlay.AllowCrossGrid
+            && (stationAiOverlay.AllowCrossGrid || _entManager.System<AiRemoteGridSystem>().TryGetEyeRemoteGrid(playerEnt, out _)) // Erida edit
             && _entManager.TryGetComponent(playerEnt, out RelayInputMoverComponent? relay))
             playerEnt = relay.RelayEntity;
         // Shitmed Change End

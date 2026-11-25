@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Silicon.AiCameraWarping;
+using Content.Shared._Erida.Silicons.StationAi;
 using Content.Server.Station.Systems;
 using Content.Server.SurveillanceCamera;
 using Content.Shared.Silicons.StationAi;
@@ -13,6 +14,7 @@ namespace Content.Goobstation.Server.Silicon.AiCameraWarping;
 
 public sealed partial class StationAiWarpSystem : SharedStationAiWarpSystem
 {
+    [Dependency] private AiRemoteGridSystem _aiRemoteGrid = default!; // Erida edit
     [Dependency] private SharedStationAiSystem _stationAiSystem = default!;
     [Dependency] private SharedTransformSystem _xformSystem = default!;
     [Dependency] private UserInterfaceSystem _userInterface = default!;
@@ -64,13 +66,13 @@ public sealed partial class StationAiWarpSystem : SharedStationAiWarpSystem
 
         while (query.MoveNext(out var queryUid, out var comp))
         {
-            if (_xformSystem.GetGrid(queryUid) != aiGrid || !comp.Active)
+            if (!_aiRemoteGrid.CanReach(aiGrid, _xformSystem.GetGrid(queryUid)) || !comp.Active) // Erida edit
                 continue;
 
             var data = new CameraWarpData
             {
                 NetEntityUid = GetNetEntity(queryUid),
-                DisplayName = comp.CameraId
+                DisplayName = comp.UseEntityNameAsCameraId ? Name(queryUid) : comp.CameraId // Erida edit
             };
 
             cameras.Add(data);
@@ -96,7 +98,7 @@ public sealed partial class StationAiWarpSystem : SharedStationAiWarpSystem
             return;
 
         // The AI shouldn't be able to jump to cams on other stations/shuttles
-        if (_xformSystem.GetGrid(core.Owner) != _xformSystem.GetGrid(target))
+        if (!_aiRemoteGrid.CanReach(_xformSystem.GetGrid(core.Owner), _xformSystem.GetGrid(target))) // Erida edit
             return;
 
         _xformSystem.SetWorldPosition(core.Comp.RemoteEntity.Value, _xformSystem.GetWorldPosition(target));

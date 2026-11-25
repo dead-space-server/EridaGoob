@@ -16,7 +16,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server.StationEvents.Events;
 
-public sealed class MeteorSwarmSystem : GameRuleSystem<MeteorSwarmComponent>
+public sealed partial class MeteorSwarmSystem : GameRuleSystem<MeteorSwarmComponent> // Erida edit
 {
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
@@ -56,8 +56,8 @@ public sealed class MeteorSwarmSystem : GameRuleSystem<MeteorSwarmComponent>
         var mapId = Transform(grid).MapID;
         var playableArea = _physics.GetWorldAABB(grid);
 
-        var minimumDistance = (playableArea.TopRight - playableArea.Center).Length() + 50f;
-        var maximumDistance = minimumDistance + 100f;
+        var minimumDistance = (playableArea.TopRight - playableArea.Center).Length() + SpawnMargin; // Erida edit
+        var maximumDistance = minimumDistance + SpawnDepth; // Erida edit
 
         var center = playableArea.Center;
 
@@ -77,7 +77,7 @@ public sealed class MeteorSwarmSystem : GameRuleSystem<MeteorSwarmComponent>
             var subOffsetAngle = RobustRandom.Prob(0.5f)
                 ? angle + Math.PI / 2
                 : angle - Math.PI / 2;
-            var subOffset = subOffsetAngle.RotateVec(new Vector2( (playableArea.TopRight - playableArea.Center).Length() / 3 * RobustRandom.NextFloat(), 0));
+            var subOffset = subOffsetAngle.RotateVec(new Vector2( (playableArea.TopRight - playableArea.Center).Length() * SpawnSideShift * RobustRandom.NextFloat(), 0)); // Erida edit
 
             var spawnPosition = new MapCoordinates(center + offset + subOffset, mapId);
             var meteor = Spawn(spawnProto, spawnPosition);

@@ -2,6 +2,7 @@
 
 using System.Linq;
 using System.Numerics;
+using Content.Client._Erida.StationGoals;
 using Content.Client.Message;
 using Content.Shared.GameTicking;
 using Robust.Client.UserInterface.Controls;
@@ -115,6 +116,12 @@ namespace Content.Client.RoundEnd
             {
                 Orientation = LayoutOrientation.Vertical
             };
+
+            // Erida start
+            var goalResults = _entityManager.System<StationGoalSummarySystem>().Results;
+            if (goalResults.Count > 0)
+                playerInfoContainer.AddChild(new StationGoalSummaryPanel(goalResults));
+            // Erida end
 
             //Put observers at the bottom of the list. Put antags on top.
             var sortedPlayersInfo = playersInfo.OrderBy(p => p.Observer).ThenBy(p => !p.Antag);

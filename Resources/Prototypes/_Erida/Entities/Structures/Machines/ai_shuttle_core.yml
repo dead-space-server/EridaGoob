@@ -1,0 +1,61 @@
+- type: entity
+  parent: BaseMachinePowered
+  id: AiShuttleCore
+  name: AI shuttle remote control core
+  description: A shuttle console with an AI relay. On its shuttle the station AI sees through the cameras and can take the helm.
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+    noRot: true
+    layers:
+    - state: control
+    - state: control_on
+      shader: unshaded
+      visible: false
+      map: [ "enum.AiShuttleCoreVisuals.Controlled" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AiShuttleCoreVisuals.Controlled:
+        enum.AiShuttleCoreVisuals.Controlled:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: ShuttleConsole
+  - type: RadarConsole
+  - type: WorldLoader
+    radius: 256
+  - type: ActivatableUI
+    key: enum.ShuttleConsoleUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.ShuttleConsoleUiKey.Key:
+        type: ShuttleConsoleBoundUserInterface
+  - type: AiShuttleCore
+  - type: StationAiWhitelist
+  - type: StationAiVision
+  - type: SurveillanceCamera
+    useEntityNameAsCameraId: true
+  - type: Tag
+    tags:
+    - Structure
+  - type: LitOnPowered
+  - type: PointLight
+    enabled: false
+    radius: 1.5
+    energy: 2.0
+    color: "#ff0049"
+  - type: StaticPrice
+    price: 1000
+
