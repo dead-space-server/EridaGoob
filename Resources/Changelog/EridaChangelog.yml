@@ -2312,3 +2312,14 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/115
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Tweak] New settings'
+- author: Lytheriia
+  changes:
+    - type: Tweak
+      message: Планетоид вернулся в игру
+    - type: Tweak
+      message: Аварийные наборы уменьшены до 2x3 размера
+  id: 171
+  time: '2026-11-25T04:07:55.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/116
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Tweak]  Back vgroid + survival box changes'
