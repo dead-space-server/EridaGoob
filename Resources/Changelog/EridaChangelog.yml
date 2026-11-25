@@ -2347,3 +2347,28 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/117
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Tweak] RPD layers'
+- author: Lytheriia
+  changes:
+    - type: Add
+      message: Цель на постройку шаттла под управлением ЦИИ
+    - type: Add
+      message: Цель на производство мехов
+    - type: Add
+      message: Цель на создание защиты от метеоритов
+    - type: Add
+      message: >-
+        Спутник метеоритного щита и ядро удалённого управления шаттлом,
+        доступные лишь во время цели.
+    - type: Add
+      message: Отображение статуса выполнения цели в конце раунда
+    - type: Remove
+      message: Все старые цели
+    - type: Tweak
+      message: >-
+        Цели выдаются на 10ой минуте раунда и проверяют наличие требуемого к
+        выполнению персонала
+  id: 174
+  time: '2026-11-25T23:57:36.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/118
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Add] New new station goals system'
