@@ -2323,3 +2323,18 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/116
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Tweak]  Back vgroid + survival box changes'
+- author: Kiwuru
+  changes:
+    - type: Add
+      message: >-
+        Раздвоение личности после тяжёлой травмы мозга с гостролью второго
+        участника и  случайной сменой управления между ними
+    - type: Add
+      message: Телепатическое общение двух личностей в одном теле.
+    - type: Add
+      message: Лечение раздвоения личности операцией восстановления мозговой ткани
+  id: 172
+  time: '2026-11-25T10:18:04.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/111
+  avatar_url: https://avatars.githubusercontent.com/u/137194081?v=4
+  title: Feature/brain trauma split personality
