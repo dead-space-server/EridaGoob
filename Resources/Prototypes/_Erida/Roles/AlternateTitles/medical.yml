@@ -4,11 +4,6 @@
   name: job-alt-name-chief-medical-officer-medical-director
 
 - type: jobAlternateTitle
-  id: AltTitleChiefMedicalOfficerHeadPhysician
-  job: ChiefMedicalOfficer
-  name: job-alt-name-chief-medical-officer-head-physician
-
-- type: jobAlternateTitle
   id: AltTitleChiefMedicalOfficerWardSupervisor
   job: ChiefMedicalOfficer
   name: job-alt-name-chief-medical-officer-ward-supervisor

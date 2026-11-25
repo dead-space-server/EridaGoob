@@ -9,11 +9,6 @@
   name: job-alt-name-passenger-entrepreneur
 
 - type: jobAlternateTitle
-  id: AltTitlePassengerCivilian
-  job: Passenger
-  name: job-alt-name-passenger-civilian
-
-- type: jobAlternateTitle
   id: AltTitlePassengerFreelancer
   job: Passenger
   name: job-alt-name-passenger-freelancer

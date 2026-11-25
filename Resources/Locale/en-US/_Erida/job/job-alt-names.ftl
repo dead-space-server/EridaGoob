@@ -22,7 +22,6 @@ job-alt-name-detective-forensic-investigator = Forensic Investigator
 job-alt-name-security-cadet-trainee = Security Trainee
 
 job-alt-name-chief-medical-officer-medical-director = Medical Director
-job-alt-name-chief-medical-officer-head-physician = Head Physician
 job-alt-name-chief-medical-officer-ward-supervisor = Ward Supervisor
 
 job-alt-name-medical-doctor-surgeon = Surgeon
@@ -120,7 +119,6 @@ job-alt-name-lawyer-legal-representative = Legal Representative
 
 job-alt-name-librarian-archivist = Archivist
 job-alt-name-librarian-writer = Writer
-job-alt-name-librarian-professor = Professor
 job-alt-name-librarian-curator = Curator
 
 job-alt-name-musician-visiting-celebrity = Visiting Celebrity
@@ -148,11 +146,8 @@ job-alt-name-radio-host-broadcaster = Broadcaster
 
 job-alt-name-passenger-visitor = Visitor
 job-alt-name-passenger-entrepreneur = Entrepreneur
-job-alt-name-passenger-civilian = Civilian
 job-alt-name-passenger-freelancer = Freelancer
 job-alt-name-passenger-tourist = Tourist
 job-alt-name-passenger-traveler = Traveler
-
-job-alt-name-station-ai-station-intelligence = Station Intelligence
 
 job-alt-name-borg-robot = Robot

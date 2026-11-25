@@ -1,4 +1,7 @@
-job-alt-name-captain-station-manager = управляющий станцией
+job-alt-name-captain-station-manager = { $gender ->
+    [female] управляющая станцией
+   *[other] управляющий станцией
+}
 job-alt-name-captain-commanding-officer = командир станции
 
 job-alt-name-head-of-personnel-personnel-coordinator = координатор персонала
@@ -8,7 +11,7 @@ job-alt-name-nanotrasen-representative-corporate-liaison = { $gender ->
    *[other] корпоративный посредник
 }
 job-alt-name-nanotrasen-representative-corporate-auditor = корпоративный аудитор
-job-alt-name-nanotrasen-representative-consultant = консультант Нанотразен
+job-alt-name-nanotrasen-representative-consultant = консультант NanoTrasen
 
 job-alt-name-head-of-security-security-commander = командир службы безопасности
 job-alt-name-head-of-security-sheriff = шериф
@@ -37,7 +40,6 @@ job-alt-name-detective-forensic-investigator = криминалист
 job-alt-name-security-cadet-trainee = стажёр СБ
 
 job-alt-name-chief-medical-officer-medical-director = медицинский директор
-job-alt-name-chief-medical-officer-head-physician = главврач
 job-alt-name-chief-medical-officer-ward-supervisor = { $gender ->
     [female] заведующая отделением
    *[other] заведующий отделением
@@ -52,7 +54,7 @@ job-alt-name-chemist-lab-technician = { $gender ->
    *[other] лаборант
 }
 
-job-alt-name-paramedic-trauma-specialist = специалист по травмам
+job-alt-name-paramedic-trauma-specialist = травматолог
 job-alt-name-paramedic-emt = фельдшер скорой помощи
 job-alt-name-paramedic-rescuer = { $gender ->
     [female] спасательница
@@ -88,7 +90,7 @@ job-alt-name-station-engineer-maintenance-technician = техник по обс�
 job-alt-name-station-engineer-mechanic = механик
 job-alt-name-station-engineer-electrician = электрик
 job-alt-name-station-engineer-engine-operator = оператор двигателя
-job-alt-name-station-engineer-damage-control = аварийный техник
+job-alt-name-station-engineer-damage-control = техник аварийной службы
 job-alt-name-station-engineer-architect = архитектор
 
 job-alt-name-atmospheric-technician-fire-suppression = специалист по пожаротушению
@@ -104,7 +106,10 @@ job-alt-name-technical-assistant-trainee = стажёр инженерного �
 job-alt-name-roboticist-mechatronics = инженер-мехатроник
 job-alt-name-roboticist-cyborg-technician = техник по киборгам
 
-job-alt-name-quartermaster-requisitions-officer = офицер снабжения
+job-alt-name-quartermaster-requisitions-officer = { $gender ->
+    [female] начальница снабжения
+   *[other] начальник снабжения
+}
 job-alt-name-quartermaster-deck-chief = { $gender ->
     [female] начальница погрузки
    *[other] начальник погрузки
@@ -113,7 +118,7 @@ job-alt-name-quartermaster-warehouse-supervisor = { $gender ->
     [female] начальница склада
    *[other] начальник склада
 }
-job-alt-name-quartermaster-supply-foreman = глава снабжения
+job-alt-name-quartermaster-supply-foreman = бригадир снабжения
 job-alt-name-quartermaster-logistics-coordinator = координатор логистики
 
 job-alt-name-cargo-technician-courier = курьер
@@ -179,8 +184,8 @@ job-alt-name-janitor-rat-catcher = { $gender ->
 }
 
 job-alt-name-lawyer-attorney = { $gender ->
-    [female] защитница
-   *[other] защитник
+    [female] правозащитница
+   *[other] правозащитник
 }
 job-alt-name-lawyer-legal-representative = { $gender ->
     [female] юридическая представительница
@@ -192,7 +197,6 @@ job-alt-name-librarian-writer = { $gender ->
     [female] писательница
    *[other] писатель
 }
-job-alt-name-librarian-professor = профессор
 job-alt-name-librarian-curator = куратор
 
 job-alt-name-musician-visiting-celebrity = приглашённая звезда
@@ -235,10 +239,6 @@ job-alt-name-passenger-entrepreneur = { $gender ->
     [female] предпринимательница
    *[other] предприниматель
 }
-job-alt-name-passenger-civilian = { $gender ->
-    [female] гражданская
-   *[other] гражданский
-}
 job-alt-name-passenger-freelancer = фрилансер
 job-alt-name-passenger-tourist = { $gender ->
     [female] туристка
@@ -248,7 +248,5 @@ job-alt-name-passenger-traveler = { $gender ->
     [female] путешественница
    *[other] путешественник
 }
-
-job-alt-name-station-ai-station-intelligence = интеллект станции
 
 job-alt-name-borg-robot = робот

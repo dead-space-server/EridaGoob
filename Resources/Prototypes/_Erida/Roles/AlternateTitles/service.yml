@@ -114,11 +114,6 @@
   name: job-alt-name-librarian-writer
 
 - type: jobAlternateTitle
-  id: AltTitleLibrarianProfessor
-  job: Librarian
-  name: job-alt-name-librarian-professor
-
-- type: jobAlternateTitle
   id: AltTitleLibrarianCurator
   job: Librarian
   name: job-alt-name-librarian-curator
