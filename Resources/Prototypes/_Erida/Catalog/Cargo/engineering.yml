@@ -1,0 +1,19 @@
+- type: cargoProduct
+  id: EngineeringMeteorShieldSatellite
+  icon:
+    sprite: _Erida/Structures/Machines/meteor_shield.rsi
+    state: sat_inactive
+  product: MeteorShieldSatellite
+  cost: 1500
+  category: cargoproduct-category-name-engineering
+  group: market
+
+- type: cargoProduct
+  id: EngineeringAiShuttleCore
+  icon:
+    sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+    state: control
+  product: AiShuttleCore
+  cost: 3000
+  category: cargoproduct-category-name-engineering
+  group: market

@@ -1,0 +1,9 @@
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: StationGoalGygaxCentralElectronics
+  result: GygaxCentralElectronics
+
+- type: latheRecipe
+  parent: BaseSilverCircuitboardRecipe
+  id: StationGoalDurandCentralElectronics
+  result: DurandCentralElectronics

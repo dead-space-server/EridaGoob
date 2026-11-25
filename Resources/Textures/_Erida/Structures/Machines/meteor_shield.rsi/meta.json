@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "tgstation, https://github.com/tgstation/tgstation/blob/d225d4800b0e8908f27088cee8d51016f5e003d9/icons/obj/machines/satellite.dmi",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "sat_active"
+    },
+    {
+      "name": "sat_inactive"
+    }
+  ]
+}

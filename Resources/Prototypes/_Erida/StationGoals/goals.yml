@@ -1,0 +1,74 @@
+- type: entity
+  id: BaseStationGoal
+  abstract: true
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: BaseStationGoal
+  id: StationGoalKeepStation
+  name: keep the station running
+  components:
+  - type: StationGoalInfo
+    text: station-goal-keep-station
+    name: station-goal-name-keep-station
+  - type: RoundDurationCondition
+    duration: 7200
+  - type: CargoBalanceCondition
+    amount: 50000
+
+- type: entity
+  parent: BaseStationGoal
+  id: StationGoalMeteorShield
+  name: meteor shield
+  components:
+  - type: StationGoalInfo
+    text: station-goal-meteor-shield
+    name: station-goal-name-meteor-shield
+    minPlayers: 10
+    departments:
+      Engineering: 1
+      Cargo: 1
+  - type: MeteorShieldCoverageCondition
+    coverage: 0.5
+  - type: StationGoalCargoProducts
+    products:
+    - EngineeringMeteorShieldSatellite
+
+- type: entity
+  parent: BaseStationGoal
+  id: StationGoalAiShuttle
+  name: AI shuttle
+  components:
+  - type: StationGoalInfo
+    text: station-goal-ai-shuttle
+    name: station-goal-name-ai-shuttle
+    minPlayers: 10
+    departments:
+      Science: 1
+      Engineering: 1
+  - type: AiShuttleCondition
+  - type: StationGoalCargoProducts
+    products:
+    - EngineeringAiShuttleCore
+
+- type: entity
+  parent: BaseStationGoal
+  id: StationGoalCombatMechs
+  name: combat mechs
+  components:
+  - type: StationGoalInfo
+    text: station-goal-combat-mechs
+    name: station-goal-name-combat-mechs
+    minPlayers: 10
+    departments:
+      Science: 2
+      Cargo: 1
+  - type: StationGoalLatheRecipes
+    recipes:
+      StationGoalGygaxCentralElectronics: GygaxPeripheralsElectronics
+      StationGoalDurandCentralElectronics: DurandPeripheralsElectronics
+  - type: MechDeliveryCondition
+    mechs:
+    - MechGygax
+    - MechDurand
+    count: 3
