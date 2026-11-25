@@ -27,8 +27,8 @@ using System.Linq;
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands.Components;
 using Content.Shared.Access.Components;
+using Content.Shared._Erida.RCD;
 using Content.Shared.Access.Systems;
-using Content.Shared.Atmos.Components; // Goob - Check for pipe layer
 using Content.Shared.Doors.Systems;
 using Content.Shared.Doors.Components; // Goob - Check for Door Bolt
 
@@ -54,6 +54,7 @@ public sealed class RCDSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tags = default!;
     [Dependency] private readonly AccessReaderSystem _accessReader = default!; // Goobstation - RCD respects door access
+    [Dependency] private readonly RCDPipeLayerSystem _rcdPipeLayer = default!; // Erida edit
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
@@ -222,7 +223,7 @@ public sealed class RCDSystem : EntitySystem
 
         // Try to start the do after
         var effect = Spawn(effectPrototype, _mapSystem.ToCenterCoordinates(tile, mapGrid));
-        var ev = new RCDDoAfterEvent(GetNetCoordinates(location), component.ConstructionDirection, component.ProtoId, cost, GetNetEntity(effect));
+        var ev = new RCDDoAfterEvent(GetNetCoordinates(location), component.ConstructionDirection, component.ProtoId, cost, GetNetEntity(effect)) { PipeLayer = component.PipeLayer }; // Erida edit
 
         var doAfterArgs = new DoAfterArgs(EntityManager, user, delay, ev, uid, target: args.Target, used: uid)
         {
@@ -247,7 +248,7 @@ public sealed class RCDSystem : EntitySystem
             return;
 
         // Exit if the RCD prototype has changed
-        if (component.ProtoId != args.Event.StartingProtoId)
+        if (component.ProtoId != args.Event.StartingProtoId || component.PipeLayer != args.Event.PipeLayer) // Erida edit
         {
             args.Cancel();
             return;
@@ -497,7 +498,7 @@ public sealed class RCDSystem : EntitySystem
         {
             // If the entity is the exact same prototype as what we are trying to build, then block it.
             // This is to prevent spamming objects on the same tile (e.g. lights)
-            if (prototype.Prototype != null && MetaData(ent).EntityPrototype?.ID == prototype.Prototype)
+            if (prototype.Prototype != null && _rcdPipeLayer.IsSamePrototype(ent, prototype.Prototype)) // Erida edit
             {
                 var isIdentical = Transform(ent).Anchored; // Goob - unwrenched copies don't block
 
@@ -508,12 +509,10 @@ public sealed class RCDSystem : EntitySystem
                         isIdentical = false;
                 }
 
-                if (HasComp<AtmosPipeLayersComponent>(ent))     //Goob - check for pipe layers
-                {
-                    var entPipeLayer = Comp<AtmosPipeLayersComponent>(ent).CurrentPipeLayer;
-                    if (entPipeLayer != AtmosPipeLayer.Primary)
-                        isIdentical = false;
-                }
+                // Erida start
+                if (!_rcdPipeLayer.IsOnBuildLayer(ent, component, prototype.Prototype))
+                    isIdentical = false;
+                // Erida end
 
                 if (isIdentical)
                 {
@@ -683,6 +682,7 @@ public sealed class RCDSystem : EntitySystem
                     !string.IsNullOrEmpty(prototype.MirrorPrototype))
                     ? prototype.MirrorPrototype
                     : prototype.Prototype;
+                proto = _rcdPipeLayer.GetLayerPrototype(proto, component.PipeLayer); // Erida edit
 
                 var rotation = prototype.Rotation switch
                 {

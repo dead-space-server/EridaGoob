@@ -14,7 +14,7 @@ namespace Content.Client.RCD;
 /// <summary>
 /// System for handling structure ghost placement in places where RCD can create objects.
 /// </summary>
-public sealed class RCDConstructionGhostSystem : EntitySystem
+public sealed partial class RCDConstructionGhostSystem : EntitySystem // Erida edit
 {
     private const string PlacementMode = nameof(AlignRCDConstruction);
 
@@ -66,8 +66,10 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
             RaiseNetworkEvent(new RCDConstructionGhostRotationEvent(GetNetEntity(heldEntity.Value), _placementDirection));
         }
 
+        var placedProto = UpdatePipeLayer((heldEntity.Value, rcd), prototype.Prototype); // Erida edit
+
         // If the placer has not changed, exit
-        if (heldEntity == placerEntity && prototype.Prototype == placerProto)
+        if (heldEntity == placerEntity && placedProto == placerProto) // Erida edit
             return;
 
         // Create a new placer
@@ -75,7 +77,7 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         {
             MobUid = heldEntity.Value,
             PlacementOption = PlacementMode,
-            EntityType = prototype.Prototype,
+            EntityType = placedProto, // Erida edit
             Range = (int)Math.Ceiling(SharedInteractionSystem.InteractionRange),
             IsTile = (prototype.Mode == RcdMode.ConstructTile),
             UseEditorContext = false,

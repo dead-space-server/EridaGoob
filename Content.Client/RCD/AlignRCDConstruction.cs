@@ -17,7 +17,7 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Client.RCD;
 
-public sealed class AlignRCDConstruction : PlacementMode
+public sealed partial class AlignRCDConstruction : PlacementMode // Erida edit
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
     private readonly SharedMapSystem _mapSystem;
@@ -71,6 +71,8 @@ public sealed class AlignRCDConstruction : PlacementMode
             MouseCoords = new EntityCoordinates(MouseCoords.EntityId, new Vector2(CurrentTile.X + tileSize / 2 + pManager.PlacementOffset.X,
                 CurrentTile.Y + tileSize / 2 + pManager.PlacementOffset.Y));
         }
+
+        UpdatePipeLayer(gridId.Value); // Erida edit
     }
 
     public override void Render(in OverlayDrawArgs args)
@@ -78,6 +80,8 @@ public sealed class AlignRCDConstruction : PlacementMode
         var uid = pManager.CurrentPlacementOverlayEntity;
         if (!_entityManager.TryGetComponent(uid, out SpriteComponent? sprite) || !sprite.Visible)
             return;
+
+        DrawPipeLayerGuides(args); // Erida edit
 
         var locations = pManager.PlacementType switch
         {
