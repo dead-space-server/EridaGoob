@@ -74,7 +74,7 @@ public sealed class BrainPersonalityTest
     [TestCase(true)]
     public async Task SwitchAndSurgeryRespectCurrentPrimarySlot(bool replaceWithWizard)
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true });
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true, DummyTicker = false });
         var server = pair.Server;
         var map = await pair.CreateTestMap();
         await server.WaitAssertion(() =>
@@ -160,7 +160,7 @@ public sealed class BrainPersonalityTest
     [Test]
     public async Task TimerPausesAndBrainDestructionReleasesBothMinds()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true });
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true, DummyTicker = false });
         var server = pair.Server;
         var map = await pair.CreateTestMap();
         await server.WaitAssertion(() =>
@@ -210,7 +210,7 @@ public sealed class BrainPersonalityTest
     [Test]
     public async Task GhostRoleCreatesAnInactivePlayerAndTreatmentReleasesThem()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true, Connected = true });
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true, Connected = true, DummyTicker = false });
         var server = pair.Server;
         var map = await pair.CreateTestMap();
         EntityUid brain = default, body = default, secondary = default;
