@@ -14,11 +14,6 @@
   name: job-alt-name-head-of-personnel-personnel-coordinator
 
 - type: jobAlternateTitle
-  id: AltTitleHeadOfPersonnelHrOfficer
-  job: HeadOfPersonnel
-  name: job-alt-name-head-of-personnel-hr-officer
-
-- type: jobAlternateTitle
   id: AltTitleNanotrasenRepresentativeCorporateLiaison
   job: NanotrasenRepresentative
   name: job-alt-name-nanotrasen-representative-corporate-liaison

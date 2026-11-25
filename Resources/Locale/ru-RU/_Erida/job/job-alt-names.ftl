@@ -2,7 +2,6 @@ job-alt-name-captain-station-manager = управляющий станцией
 job-alt-name-captain-commanding-officer = командир станции
 
 job-alt-name-head-of-personnel-personnel-coordinator = координатор персонала
-job-alt-name-head-of-personnel-hr-officer = специалист по кадрам
 
 job-alt-name-nanotrasen-representative-corporate-liaison = { $gender ->
     [female] корпоративная посредница
@@ -45,10 +44,6 @@ job-alt-name-chief-medical-officer-ward-supervisor = { $gender ->
 }
 
 job-alt-name-medical-doctor-surgeon = хирург
-job-alt-name-medical-doctor-nurse = { $gender ->
-    [female] медсестра
-   *[other] медбрат
-}
 job-alt-name-medical-doctor-physician = терапевт
 
 job-alt-name-chemist-pharmacist = фармацевт
@@ -65,7 +60,6 @@ job-alt-name-paramedic-rescuer = { $gender ->
 }
 
 job-alt-name-medical-intern-junior-doctor = младший врач
-job-alt-name-medical-intern-resident = ординатор
 
 job-alt-name-virologist-disease-specialist = инфекционист
 job-alt-name-virologist-epidemiologist = эпидемиолог
@@ -255,7 +249,6 @@ job-alt-name-passenger-traveler = { $gender ->
    *[other] путешественник
 }
 
-job-alt-name-station-ai-automated-supervisor = автоматический управляющий
 job-alt-name-station-ai-station-intelligence = интеллект станции
 
 job-alt-name-borg-robot = робот

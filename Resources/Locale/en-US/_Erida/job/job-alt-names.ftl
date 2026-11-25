@@ -2,7 +2,6 @@ job-alt-name-captain-station-manager = Station Manager
 job-alt-name-captain-commanding-officer = Commanding Officer
 
 job-alt-name-head-of-personnel-personnel-coordinator = Personnel Coordinator
-job-alt-name-head-of-personnel-hr-officer = Human Resources Officer
 
 job-alt-name-nanotrasen-representative-corporate-liaison = Corporate Liaison
 job-alt-name-nanotrasen-representative-corporate-auditor = Corporate Auditor
@@ -27,7 +26,6 @@ job-alt-name-chief-medical-officer-head-physician = Head Physician
 job-alt-name-chief-medical-officer-ward-supervisor = Ward Supervisor
 
 job-alt-name-medical-doctor-surgeon = Surgeon
-job-alt-name-medical-doctor-nurse = Nurse
 job-alt-name-medical-doctor-physician = Physician
 
 job-alt-name-chemist-pharmacist = Pharmacist
@@ -38,7 +36,6 @@ job-alt-name-paramedic-emt = Emergency Medical Technician
 job-alt-name-paramedic-rescuer = Search & Rescue Technician
 
 job-alt-name-medical-intern-junior-doctor = Junior Doctor
-job-alt-name-medical-intern-resident = Resident
 
 job-alt-name-virologist-disease-specialist = Disease Specialist
 job-alt-name-virologist-epidemiologist = Epidemiologist
@@ -156,7 +153,6 @@ job-alt-name-passenger-freelancer = Freelancer
 job-alt-name-passenger-tourist = Tourist
 job-alt-name-passenger-traveler = Traveler
 
-job-alt-name-station-ai-automated-supervisor = Automated Supervisor
 job-alt-name-station-ai-station-intelligence = Station Intelligence
 
 job-alt-name-borg-robot = Robot
