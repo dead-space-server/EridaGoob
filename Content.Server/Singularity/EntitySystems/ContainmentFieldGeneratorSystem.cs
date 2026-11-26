@@ -11,13 +11,14 @@ using Content.Shared.Popups;
 using Content.Shared.Singularity.Components;
 using Content.Shared.Tag;
 using Robust.Server.GameObjects;
+using Robust.Server.Physics;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Server.Singularity.EntitySystems;
 
-public sealed class ContainmentFieldGeneratorSystem : EntitySystem
+public sealed partial class ContainmentFieldGeneratorSystem : EntitySystem // Erida edit
 {
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly AppearanceSystem _visualizer = default!;
@@ -39,6 +40,7 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ComponentRemove>(OnComponentRemoved);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, EventHorizonAttemptConsumeEntityEvent>(PreventBreach);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<GridSplitEvent>(OnGridSplit); // Erida edit
     }
 
     public override void Update(float frameTime)
@@ -113,6 +115,11 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
 
     private void OnAnchorChanged(Entity<ContainmentFieldGeneratorComponent> generator, ref AnchorStateChangedEvent args)
     {
+        // Erida start
+        if (_gridSplitAnchor.IsSplitMove(args.Transform))
+            return;
+        // Erida end
+
         if (!args.Anchored)
             RemoveConnections(generator);
         else

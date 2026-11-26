@@ -72,22 +72,21 @@ public sealed partial class AtmosphereSystem
             if (!TryComp(newGrid, out GridAtmosphereComponent? newGridAtmos))
                 newGridAtmos = AddComp<GridAtmosphereComponent>(newGrid);
 
-            // We assume the tiles on the new grid have the same coordinates as they did on the old grid...
+            // Erida changes in that file fixing problems with atmosphere. THX wizden
+            var tileOffset = GetSplitTileOffset(uid, newGrid, mapGrid); // Erida edit
             var enumerator = _mapSystem.GetAllTilesEnumerator(newGrid, mapGrid);
 
             while (enumerator.MoveNext(out var tile))
             {
                 var indices = tile.Value.GridIndices;
+                var oldIndices = indices + tileOffset; // Erida edit
 
                 // This split event happens *before* the spaced tiles have been invalidated, therefore we can still
                 // access their gas data. On the next atmos update tick, these tiles will be spaced. Poof!
-                if (!originalGridAtmos.Tiles.TryGetValue(indices, out var tileAtmosphere))
+                if (!originalGridAtmos.Tiles.TryGetValue(oldIndices, out var tileAtmosphere)) // Erida edit
                     continue;
 
-                // The new grid atmosphere has been initialized, meaning it has all the needed TileAtmospheres...
-                if (!newGridAtmos.Tiles.TryGetValue(indices, out var newTileAtmosphere))
-                    // Let's be honest, this is really not gonna happen, but just in case...!
-                    continue;
+                var newTileAtmosphere = GetOrNewTile(newGrid, newGridAtmos, indices); // Erida edit
 
                 // Copy a bunch of data over... Not great, maybe put this in TileAtmosphere?
                 newTileAtmosphere.Air = tileAtmosphere.Air?.Clone();
@@ -102,7 +101,7 @@ public sealed partial class AtmosphereSystem
                 // That looks bad, of course. We want to avoid that! Anyway that's a bit more complicated so out of scope.
 
                 // Invalidate the tile, it's redundant but redundancy is good! Also HashSet so really, no duplicates.
-                originalGridAtmos.InvalidatedCoords.Add(indices);
+                originalGridAtmos.InvalidatedCoords.Add(oldIndices); // Erida edit
                 newGridAtmos.InvalidatedCoords.Add(indices);
             }
         }
@@ -175,7 +174,7 @@ public sealed partial class AtmosphereSystem
         tile.AdjacentBits = AtmosDirection.Invalid;
         for (var i = 0; i < Atmospherics.Directions; i++)
         {
-            var direction = (AtmosDirection)(1 << i);
+            var direction = (AtmosDirection) (1 << i);
             var adjacentIndices = tile.GridIndices.Offset(direction);
 
             TileAtmosphere? adjacent;
@@ -195,7 +194,7 @@ public sealed partial class AtmosphereSystem
                 AddActiveTile(atmos, adjacent);
 
             var oppositeIndex = i.ToOppositeIndex();
-            var oppositeDirection = (AtmosDirection)(1 << oppositeIndex);
+            var oppositeDirection = (AtmosDirection) (1 << oppositeIndex);
 
             if (adjBlockDirs.IsFlagSet(oppositeDirection) || blockedDirs.IsFlagSet(direction))
             {
