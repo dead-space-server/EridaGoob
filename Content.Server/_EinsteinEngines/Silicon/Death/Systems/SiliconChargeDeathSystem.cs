@@ -54,7 +54,10 @@ public sealed class SiliconDeathSystem : SharedSiliconDeathSystem
         // Goobstation - Added batteryEnt argument
         if (!_silicon.TryGetSiliconBattery(uid, out var batteryComp, out var batteryEnt))
         {
-            SiliconDead(uid, siliconDeadComp, batteryComp, uid);
+            // Erida start
+            if (!siliconDeadComp.Dead)
+                SiliconDead(uid, siliconDeadComp, batteryComp, uid);
+            // Erida end
             return;
         }
 
@@ -173,7 +176,12 @@ public sealed class SiliconDeathSystem : SharedSiliconDeathSystem
             _actions.SetEnabled(combatMode.CombatToggleActionEntity, true);
 
         // Let you stand again
-        _standing.Stand(uid, force: true);
+        // Erida start
+        if (HasComp<KnockedDownComponent>(uid))
+            _stun.SetAutoStand(uid, true);
+        else
+            _standing.Stand(uid, force: true);
+        // Erida end
 
         // Update component
         siliconDeadComp.Dead = false;
