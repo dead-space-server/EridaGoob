@@ -2372,3 +2372,14 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/118
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Add] New new station goals system'
+- author: Lytheriia
+  changes:
+    - type: Fix
+      message: Отсоединённый грид больше не теряет свою атмосферу
+    - type: Fix
+      message: Отсоединение грида более не снимает провода с тайлов
+  id: 175
+  time: '2026-11-26T21:03:57.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/119
+  avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
+  title: '[Fix] Grid split issue'
