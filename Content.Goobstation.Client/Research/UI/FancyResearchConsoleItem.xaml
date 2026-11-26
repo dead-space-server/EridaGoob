@@ -4,28 +4,67 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 <LayoutContainer xmlns="https://spacestation14.io"
                  xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-                 xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                  xmlns:goob="clr-namespace:Content.Goobstation.Client.Research.UI"
-                 Margin="5"
                  HorizontalExpand="False">
-    <BoxContainer Orientation="Vertical" SetSize="80 80">
-        <PanelContainer VerticalExpand="True"
-                        HorizontalExpand="True"
-                        Name="Panel">
+    <!-- Erida start -->
+    <BoxContainer Name="CardBox"
+                  Orientation="Vertical"
+                  MinWidth="228"
+                  MaxWidth="228"
+                  MinHeight="48">
+        <PanelContainer Name="AccentPanel"
+                        VerticalExpand="True"
+                        HorizontalExpand="True">
             <PanelContainer.PanelOverride>
-                <graphics:StyleBoxFlat BackgroundColor="#162031"
-                                       BorderColor="#4972A1"
-                                       BorderThickness="2"/>
+                <gfx:StyleBoxFlat BorderThickness="3 0 0 0" />
             </PanelContainer.PanelOverride>
-            <goob:DrawButton Name="Button"
-                             Access="Public"
-                             ModulateSelfOverride="#00000000"
-                             HorizontalExpand="True"/>
-            <TextureRect
-                Name="ResearchDisplay"
-                TextureScale="2 2"
-                Stretch="KeepAspectCentered">
-            </TextureRect>
+            <PanelContainer Name="CardPanel"
+                            VerticalExpand="True"
+                            HorizontalExpand="True"
+                            Margin="2 0 0 0"
+                            RectClipContent="True">
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#1B1C21"
+                                      BorderColor="#2B2D36"
+                                      BorderThickness="1" />
+                </PanelContainer.PanelOverride>
+                <goob:DrawButton Name="Button"
+                                 Access="Public"
+                                 ModulateSelfOverride="#00000000"
+                                 HorizontalExpand="True"
+                                 VerticalExpand="True" />
+                <BoxContainer Orientation="Horizontal"
+                              Margin="7 5"
+                              SeparationOverride="7"
+                              VerticalAlignment="Center"
+                              MouseFilter="Ignore">
+                    <TextureRect Name="ResearchDisplay"
+                                 SetSize="28 28"
+                                 Stretch="KeepAspectCentered"
+                                 VerticalAlignment="Center"
+                                 MouseFilter="Ignore" />
+                    <BoxContainer Name="TextContainer"
+                                  Orientation="Vertical"
+                                  HorizontalExpand="True"
+                                  VerticalAlignment="Center"
+                                  SeparationOverride="2"
+                                  MouseFilter="Ignore">
+                        <RichTextLabel Name="TechNameLabel"
+                                       HorizontalExpand="True"
+                                       MouseFilter="Ignore" />
+                        <BoxContainer Name="MetaContainer"
+                                      Orientation="Horizontal"
+                                      SeparationOverride="5"
+                                      MouseFilter="Ignore">
+                            <Label Name="CostLabel"
+                                   MouseFilter="Ignore" />
+                            <Label Name="TierLabel"
+                                   MouseFilter="Ignore" />
+                        </BoxContainer>
+                    </BoxContainer>
+                </BoxContainer>
+            </PanelContainer>
         </PanelContainer>
     </BoxContainer>
+    <!-- Erida end -->
 </LayoutContainer>

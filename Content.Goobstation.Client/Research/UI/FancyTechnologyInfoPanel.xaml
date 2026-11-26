@@ -4,108 +4,169 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 <Control xmlns="https://spacestation14.io"
          xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-         xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls;assembly=Content.Client"
-         Margin="5"
-         MinWidth="450"
          VerticalExpand="True"
          HorizontalExpand="True">
+    <!-- Erida start -->
     <BoxContainer Orientation="Vertical"
-            VerticalExpand="True"
-            HorizontalExpand="True">
-        <BoxContainer
-            Name="InfoContainer"
-            Orientation="Vertical"
-            VerticalExpand="True"
-            HorizontalExpand="True"
-            Margin="5"
-            SizeFlagsStretchRatio="3">
-            <BoxContainer Orientation="Horizontal"
-                    HorizontalExpand="True">
+                  VerticalExpand="True"
+                  HorizontalExpand="True"
+                  Margin="8"
+                  SeparationOverride="8">
+        <PanelContainer HorizontalExpand="True">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#1F2129"
+                                  BorderColor="#2E313C"
+                                  BorderThickness="1" />
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Vertical"
+                          Margin="10"
+                          SeparationOverride="8">
                 <BoxContainer Orientation="Horizontal"
-                        HorizontalExpand="True"
-                        SizeFlagsStretchRatio="1">
-                    <TextureRect Name="DisciplineTexture"
-                            TextureScale="7 7"
-                            VerticalAlignment="Center"
-                            Margin="4"/>
-                    <TextureRect Name="TechnologyTexture"
-                                 TextureScale="2 2"
-                                 VerticalAlignment="Center"
-                                 Margin="4"/>
+                              SeparationOverride="10"
+                              VerticalAlignment="Center">
+                    <PanelContainer SetSize="52 52">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#14161B"
+                                              BorderColor="#2E313C"
+                                              BorderThickness="1" />
+                        </PanelContainer.PanelOverride>
+                        <TextureRect Name="TechnologyTexture"
+                                     SetSize="40 40"
+                                     Stretch="KeepAspectCentered"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center" />
+                    </PanelContainer>
+                    <BoxContainer Orientation="Vertical"
+                                  HorizontalExpand="True"
+                                  VerticalAlignment="Center"
+                                  SeparationOverride="3">
+                        <Label Name="TechnologyNameLabel"
+                               StyleClasses="LabelKeyText"
+                               ClipText="True"
+                               HorizontalExpand="True" />
+                        <BoxContainer Orientation="Horizontal"
+                                      SeparationOverride="6"
+                                      VerticalAlignment="Center">
+                            <TextureRect Name="DisciplineTexture"
+                                         SetSize="16 16"
+                                         Stretch="KeepAspectCentered"
+                                         VerticalAlignment="Center" />
+                            <Label Name="DisciplineLabel"
+                                   StyleClasses="LabelWeak"
+                                   VerticalAlignment="Center" />
+                            <Label Name="TierLabel"
+                                   StyleClasses="LabelWeak"
+                                   VerticalAlignment="Center" />
+                        </BoxContainer>
+                    </BoxContainer>
                 </BoxContainer>
-                <Control HorizontalExpand="True"
-                         SizeFlagsStretchRatio="2"/>
+
+                <GridContainer Columns="2"
+                               HSeparationOverride="6"
+                               VSeparationOverride="6"
+                               HorizontalExpand="True">
+                    <PanelContainer Name="CostAccentPanel" HorizontalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BorderThickness="3 0 0 0" BorderColor="#D4A74A" />
+                        </PanelContainer.PanelOverride>
+                        <PanelContainer Margin="2 0 0 0" HorizontalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BackgroundColor="#181A20"
+                                                  BorderColor="#2A2D36"
+                                                  BorderThickness="1" />
+                            </PanelContainer.PanelOverride>
+                            <BoxContainer Orientation="Vertical" Margin="8 5">
+                                <Label Text="{Loc 'research-console-metric-cost'}"
+                                       StyleClasses="LabelSubText" />
+                                <Label Name="TechnologyCostLabel"
+                                       ClipText="True" />
+                            </BoxContainer>
+                        </PanelContainer>
+                    </PanelContainer>
+
+                    <PanelContainer Name="StatusAccentPanel" HorizontalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BorderThickness="3 0 0 0" BorderColor="#5688C7" />
+                        </PanelContainer.PanelOverride>
+                        <PanelContainer Margin="2 0 0 0" HorizontalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BackgroundColor="#181A20"
+                                                  BorderColor="#2A2D36"
+                                                  BorderThickness="1" />
+                            </PanelContainer.PanelOverride>
+                            <BoxContainer Orientation="Vertical" Margin="8 5">
+                                <Label Text="{Loc 'research-console-metric-status'}"
+                                       StyleClasses="LabelSubText" />
+                                <Label Name="TechnologyStatusLabel"
+                                       ClipText="True" />
+                            </BoxContainer>
+                        </PanelContainer>
+                    </PanelContainer>
+                </GridContainer>
+
+                <Button Name="ResearchButton"
+                        Text="{Loc 'research-console-menu-server-research-button'}"
+                        StyleClasses="ButtonSquare"
+                        HorizontalExpand="True"
+                        MinHeight="34" />
             </BoxContainer>
-            <Label Name="TechnologyNameLabel"
-                    StyleClasses="LabelKeyText"
-                    HorizontalExpand="True"/>
-            <RichTextLabel Name="TechnologyCostLabel"
-                    HorizontalExpand="True"/>
-            <Button Name="ResearchButton"
-                    Text="{Loc 'research-console-menu-server-research-button'}"
-                    HorizontalAlignment="Left"
-                    Margin="0 4"/>
-        </BoxContainer>
-        <Control SizeFlagsStretchRatio="1"
-                 HorizontalExpand="True"/>
-        <BoxContainer
-            Orientation="Vertical"
-            VerticalExpand="True"
-            Margin="5"
-            SizeFlagsStretchRatio="5">
-            <RichTextLabel Name="NoPrereqLabel" HorizontalAlignment="Center" Text="{Loc 'research-console-no-tech-requirements'}" Visible="True"/>
-            <BoxContainer Name="PrereqsContainer"
-                          Orientation="Vertical"
-                          VerticalExpand="True"
-                          Margin="5"
-                          SizeFlagsStretchRatio="1"
-                          Visible="False">
+        </PanelContainer>
+
+        <PanelContainer HorizontalExpand="True">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#1F2129"
+                                  BorderColor="#2E313C"
+                                  BorderThickness="1" />
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Vertical"
+                          Margin="10 8"
+                          SeparationOverride="6">
                 <Label Text="{Loc 'research-console-required-text'}"
-                        HorizontalAlignment="Center"/>
-                <customControls:HSeparator StyleClasses="LowDivider"
-                        Margin="0 0 0 10"/>
-                <PanelContainer VerticalExpand="True">
-                    <PanelContainer.PanelOverride>
-                        <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
-                    </PanelContainer.PanelOverride>
-                    <ScrollContainer
-                        HScrollEnabled="False"
-                        HorizontalExpand="True"
-                        VerticalExpand="True">
-                        <BoxContainer
-                            Name="RequiredTechContainer"
-                            Orientation="Vertical"
-                            VerticalExpand="True">
-                        </BoxContainer>
-                    </ScrollContainer>
-                </PanelContainer>
+                       StyleClasses="LabelKeyText" />
+                <Label Name="NoPrereqLabel"
+                       Text="{Loc 'research-console-no-tech-requirements'}"
+                       StyleClasses="LabelWeak"
+                       Visible="True" />
+                <ScrollContainer Name="PrereqsScroll"
+                                 HScrollEnabled="False"
+                                 MaxHeight="150"
+                                 ReturnMeasure="True"
+                                 Visible="False">
+                    <BoxContainer Name="RequiredTechContainer"
+                                  Orientation="Vertical"
+                                  SeparationOverride="4"
+                                  HorizontalExpand="True" />
+                </ScrollContainer>
             </BoxContainer>
-            <BoxContainer
-                Name="RecipesContainer"
-                Orientation="Vertical"
-                VerticalExpand="True"
-                SizeFlagsStretchRatio="2"
-                Margin="5">
+        </PanelContainer>
+
+        <PanelContainer HorizontalExpand="True"
+                        VerticalExpand="True">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#1F2129"
+                                  BorderColor="#2E313C"
+                                  BorderThickness="1" />
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Vertical"
+                          Margin="10 8"
+                          SeparationOverride="6"
+                          VerticalExpand="True">
                 <Label Text="{Loc 'research-console-unlocks-text'}"
-                        HorizontalAlignment="Center"/>
-                <customControls:HSeparator StyleClasses="LowDivider"
-                        Margin="0 0 0 10"/>
-                <PanelContainer VerticalExpand="True">
-                    <PanelContainer.PanelOverride>
-                        <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
-                    </PanelContainer.PanelOverride>
-                    <ScrollContainer
-                        HScrollEnabled="False"
-                        HorizontalExpand="True"
-                        VerticalExpand="True">
-                        <BoxContainer
-                            Name="UnlocksContainer"
-                            Orientation="Vertical"
-                            VerticalExpand="True">
-                        </BoxContainer>
-                    </ScrollContainer>
-                </PanelContainer>
+                       StyleClasses="LabelKeyText" />
+                <Label Name="NoUnlocksLabel"
+                       Text="{Loc 'research-console-no-unlocks'}"
+                       StyleClasses="LabelWeak"
+                       Visible="False" />
+                <ScrollContainer HScrollEnabled="False"
+                                 HorizontalExpand="True"
+                                 VerticalExpand="True">
+                    <BoxContainer Name="UnlocksContainer"
+                                  Orientation="Vertical"
+                                  SeparationOverride="4"
+                                  HorizontalExpand="True" />
+                </ScrollContainer>
             </BoxContainer>
-        </BoxContainer>
+        </PanelContainer>
     </BoxContainer>
+    <!-- Erida end -->
 </Control>

@@ -2,69 +2,106 @@
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
+<!-- Erida start -->
 <controls:FancyWindow xmlns="https://spacestation14.io"
                       xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls;assembly=Content.Client"
                       xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls;assembly=Content.Client"
                       xmlns:goob="clr-namespace:Content.Goobstation.Client.Research.UI"
                       Title="{Loc 'research-console-menu-title'}"
-                      SetSize="1260 850">
+                      SetSize="1260 800"
+                      MinSize="960 640">
     <BoxContainer Orientation="Vertical"
                   HorizontalExpand="True"
                   VerticalExpand="True">
-        <BoxContainer Orientation="Horizontal"
-                      HorizontalExpand="True"
-                      VerticalExpand="False"
-                      MinHeight="60"
-                      Margin="10">
-            <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
-                <RichTextLabel Name="ResearchAmountLabel"/>
-                <Control VerticalExpand="True"/>
-                <BoxContainer Name="TierDisplayContainer" Orientation="Horizontal" HorizontalExpand="True" VerticalAlignment="Bottom"/>
-                <!-- This is where we put all of the little graphics that display discipline tiers!-->
+        <PanelContainer HorizontalExpand="True">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#181A20" />
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Horizontal"
+                          HorizontalExpand="True"
+                          Margin="10 8"
+                          SeparationOverride="10"
+                          VerticalAlignment="Center">
+                <PanelContainer>
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BorderThickness="3 0 0 0" BorderColor="#9A6EF0" />
+                    </PanelContainer.PanelOverride>
+                    <PanelContainer Margin="2 0 0 0">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#1F2129"
+                                              BorderColor="#2E313C"
+                                              BorderThickness="1" />
+                        </PanelContainer.PanelOverride>
+                        <BoxContainer Orientation="Vertical" Margin="10 4" MinWidth="130">
+                            <Label Text="{Loc 'research-console-points-label'}"
+                                   StyleClasses="LabelSubText" />
+                            <Label Name="ResearchAmountLabel"
+                                   StyleClasses="LabelKeyText" />
+                        </BoxContainer>
+                    </PanelContainer>
+                </PanelContainer>
+
+                <BoxContainer Name="TierDisplayContainer"
+                              Orientation="Horizontal"
+                              HorizontalExpand="True"
+                              SeparationOverride="6"
+                              VerticalAlignment="Center" />
+
+                <LineEdit Name="SearchBar"
+                          PlaceHolder="{Loc 'research-console-search-placeholder'}"
+                          MinWidth="195"
+                          MaxWidth="220"
+                          MinHeight="34"
+                          VerticalAlignment="Center" />
+
+                <Button Name="ServerButton"
+                        Text="{Loc 'research-console-menu-server-selection-button'}"
+                        StyleClasses="ButtonSquare"
+                        MinHeight="36"
+                        VerticalAlignment="Center" />
             </BoxContainer>
-            <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalAlignment="Right">
-                <Button Name="ServerButton" Text="{Loc 'research-console-menu-server-selection-button'}" MinHeight="40"/>
-            </BoxContainer>
-        </BoxContainer>
+        </PanelContainer>
+
+        <customControls:HSeparator StyleClasses="LowDivider" />
+
         <BoxContainer Orientation="Horizontal"
                       HorizontalExpand="True"
                       VerticalExpand="True">
-            <BoxContainer Orientation="Vertical"
-                          VerticalExpand="True"
-                          HorizontalExpand="True"
-                          SizeFlagsStretchRatio="3"
-                          Margin="0 0 0 10">
-                <PanelContainer Name="ResearchesContainer" VerticalExpand="True" HorizontalExpand="True">
-                    <PanelContainer.PanelOverride>
-                        <gfx:StyleBoxFlat BackgroundColor="#000000FF" />
-                    </PanelContainer.PanelOverride>
-                    <AnimatedTextureRect Name="StaticSprite"
-                        HorizontalExpand="True"
-                        VerticalExpand="True">
-                        <goob:ResearchesContainerPanel
-                            HorizontalExpand="True"
+            <PanelContainer HorizontalExpand="True"
                             VerticalExpand="True"
-                            Name="DragContainer"
-                            MouseFilter="Pass"
-                            RectClipContent="True">
-                            <!-- There lives all of technologies -->
-                        </goob:ResearchesContainerPanel>
-                    </AnimatedTextureRect>
-                    <Button Name="RecenterButton" Text="{Loc 'research-console-menu-recenter-button'}" MinHeight="40" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5 -5"/>
-                </PanelContainer>
-            </BoxContainer>
-            <PanelContainer SizeFlagsStretchRatio="2">
+                            SizeFlagsStretchRatio="3">
                 <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BackgroundColor="#1B1B1E" />
+                    <gfx:StyleBoxFlat BackgroundColor="#14161B" />
+                </PanelContainer.PanelOverride>
+                <goob:ResearchesContainerPanel Name="DragContainer"
+                                               HorizontalExpand="True"
+                                               VerticalExpand="True"
+                                               MouseFilter="Pass"
+                                               RectClipContent="True" />
+                <Button Name="RecenterButton"
+                        Text="{Loc 'research-console-menu-recenter-button'}"
+                        StyleClasses="ButtonSquare"
+                        MinHeight="30"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Margin="10" />
+            </PanelContainer>
+
+            <PanelContainer MinWidth="400"
+                            MaxWidth="440"
+                            VerticalExpand="True">
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#181A20"
+                                      BorderColor="#2A2D36"
+                                      BorderThickness="1 0 0 0" />
                 </PanelContainer.PanelOverride>
                 <BoxContainer Name="InfoContainer"
-                    Orientation="Vertical"
-                    VerticalExpand="True"
-                    HorizontalExpand="True"
-                    SizeFlagsStretchRatio="1"
-                    Margin="0"/>
+                              Orientation="Vertical"
+                              VerticalExpand="True"
+                              HorizontalExpand="True" />
             </PanelContainer>
         </BoxContainer>
     </BoxContainer>
 </controls:FancyWindow>
+<!-- Erida end -->
