@@ -229,6 +229,7 @@
     - !type:HasComponentCondition
       components:
       - type: HumanoidAppearance
+        species: Human # erida edit
 
 - type: achievement
   id: Dormammu
