@@ -2,7 +2,7 @@
 
 using Content.Goobstation.Common.Research;
 
-namespace Content.Goobstation.Client.Research.UI;
+namespace Content.Client._Erida.Research.UI;
 
 public static class ResearchUiPalette
 {

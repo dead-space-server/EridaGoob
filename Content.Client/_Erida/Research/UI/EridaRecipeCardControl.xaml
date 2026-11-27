@@ -1,0 +1,39 @@
+<!--
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
+<PanelContainer xmlns="https://spacestation14.io"
+                xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                HorizontalExpand="True">
+    <PanelContainer.PanelOverride>
+        <gfx:StyleBoxFlat BorderThickness="3 0 0 0" />
+    </PanelContainer.PanelOverride>
+    <PanelContainer Name="CardPanel"
+                    Margin="2 0 0 0"
+                    HorizontalExpand="True">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BackgroundColor="#181A20"
+                              BorderColor="#2A2D36"
+                              BorderThickness="1" />
+        </PanelContainer.PanelOverride>
+        <Button Name="Main"
+                ModulateSelfOverride="#00000000"
+                HorizontalExpand="True"
+                VerticalExpand="True" />
+        <BoxContainer Orientation="Horizontal"
+                      Margin="8 5"
+                      SeparationOverride="8"
+                      VerticalAlignment="Center"
+                      MouseFilter="Ignore">
+            <TextureRect Name="Showcase"
+                         SetSize="24 24"
+                         Stretch="KeepAspectCentered"
+                         VerticalAlignment="Center"
+                         MouseFilter="Ignore" />
+            <RichTextLabel Name="NameLabel"
+                           HorizontalExpand="True"
+                           VerticalAlignment="Center"
+                           MouseFilter="Ignore" />
+        </BoxContainer>
+    </PanelContainer>
+</PanelContainer>
