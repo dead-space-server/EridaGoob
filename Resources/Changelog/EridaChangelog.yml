@@ -2392,3 +2392,12 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/120
   avatar_url: https://avatars.githubusercontent.com/u/289052288?v=4
   title: '[Fix] Ipc battery change fix'
+- author: Tiwulovoe
+  changes:
+    - type: Tweak
+      message: Учебные патроны получили стан урон
+  id: 177
+  time: '2026-11-27T15:19:38.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/122
+  avatar_url: https://avatars.githubusercontent.com/u/250869396?v=4
+  title: StunShit-for-Masses
