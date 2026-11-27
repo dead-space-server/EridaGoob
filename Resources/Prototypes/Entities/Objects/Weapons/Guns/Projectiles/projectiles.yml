@@ -134,6 +134,8 @@
     damage:
       types:
         Blunt: 1
+  - type: StaminaDamageOnCollide
+    damage: 5
 
 - type: entity
   id: BaseBulletIncendiary
