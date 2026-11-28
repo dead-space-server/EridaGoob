@@ -12,7 +12,7 @@ namespace Content.Goobstation.Shared.AlertLevel;
 public sealed partial class AmberAlertComponent : Component
 {
     [DataField]
-    public bool Unlocked;
+    public bool Unlocked = true; // Erida edit. Red is always available, no unlock
 
     /// <summary>
     /// The first ID card (with Captain or Head of Security access) swiped.
