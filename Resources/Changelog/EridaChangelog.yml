@@ -2401,3 +2401,27 @@ Entries:
   url: https://github.com/dead-space-server/EridaGoob/pull/122
   avatar_url: https://avatars.githubusercontent.com/u/250869396?v=4
   title: StunShit-for-Masses
+- author: BerBer0s
+  changes:
+    - type: Tweak
+      message: >-
+        Переработан интерфейс консоли изучений РНД, дерево технологий теперь
+        строится слева направо с отображением названий, стоимости, уровня и
+        наглядных связей, класс прямо как в римворлд.
+    - type: Add
+      message: >-
+        Вкладки фильтрации по дисциплинам и поиск по названиям технологий и
+        открываемых рецептов с подсветкой цепочки требований.
+  id: 178
+  time: '2026-11-28T02:06:15.0000000+00:00'
+  url: https://github.com/dead-space-server/EridaGoob/pull/121
+  avatar_url: https://avatars.githubusercontent.com/u/224435325?v=4
+  title: '[Tweak] Research console UI rework'
+  media:
+    - >-
+      https://github.com/user-attachments/assets/2c551799-e716-42fc-9835-73d81c6543bd
+    - >-
+      https://github.com/user-attachments/assets/91c2a953-6dd4-4faf-97fd-462c0f007f3f
+    - >-
+      https://github.com/user-attachments/assets/ac87956b-ccbf-4a40-8f25-55c8b49edb0b
+  highlight: true
