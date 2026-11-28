@@ -524,7 +524,7 @@
   - type: UserInterface
     interfaces:
       enum.ResearchConsoleUiKey.Key:
-        type: FancyResearchConsoleBoundUserInterface # R&D Console rework
+        type: EridaResearchConsoleBoundUserInterface # Erida edit
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
       enum.WiresUiKey.Key:
